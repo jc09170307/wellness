@@ -2196,7 +2196,7 @@ document.addEventListener('DOMContentLoaded',function(){
           <div style="font-size:10px;color:var(--sec);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">Dance prescription</div>
           <div style="font-size:12px;color:var(--text2);margin-bottom:.5rem">${p.dance}</div>
           <div style="font-size:10px;color:var(--sec);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">Coach says</div>
-          <div style="font-size:12px;color:#333;font-style:italic;line-height:1.6">${p.affirmation}</div>
+          <div style="font-size:12px;color:var(--text2);font-style:italic;line-height:1.6">${p.affirmation}</div>
         </div>
       </div>
     `;
@@ -2244,7 +2244,7 @@ document.addEventListener('DOMContentLoaded',function(){
     `).join('');
 
     html += `<div style="background:#0a1e15;border-radius:10px;padding:.75rem;margin-top:.5rem">
-      <div style="font-size:10px;color:#085041;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">Dance prescription</div>
+      <div style="font-size:10px;color:#1D9E75;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">Dance prescription</div>
       <div style="font-size:13px;color:#085041">${dance}</div>
     </div>`;
 
@@ -2481,19 +2481,19 @@ document.addEventListener('DOMContentLoaded',function(){
       <!-- WHEN TO DANCE THIS -->
       <div style="background:${d.bg};border-radius:10px;padding:.75rem 1rem;margin-bottom:.75rem">
         <div style="font-size:11px;font-weight:500;color:${d.color};text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">When to dance this</div>
-        <div style="font-size:12px;color:#333;line-height:1.6">${d.when}</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.6">${d.when}</div>
       </div>
 
       <!-- EAM -->
       <div style="background:var(--bg);border-radius:10px;padding:.75rem 1rem;margin-bottom:.75rem">
         <div style="font-size:11px;font-weight:500;color:#0F6E56;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">EAM connection</div>
-        <div style="font-size:12px;color:#333;line-height:1.6">${d.eam}</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.6">${d.eam}</div>
       </div>
 
       <!-- POINT TO PRESS -->
       <div style="background:#0a1e15;border-radius:10px;padding:.75rem 1rem;margin-bottom:.75rem">
-        <div style="font-size:11px;font-weight:500;color:#085041;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Press before dancing</div>
-        <div style="font-size:12px;color:#085041;line-height:1.6">${d.point}</div>
+        <div style="font-size:11px;font-weight:500;color:#1D9E75;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Press before dancing</div>
+        <div style="font-size:12px;color:#5DCAA5;line-height:1.6">${d.point}</div>
       </div>
 
       <!-- NEUROSCIENCE -->
@@ -2518,7 +2518,7 @@ document.addEventListener('DOMContentLoaded',function(){
       <!-- OPEN SOLO -->
       <div style="background:${d.bg};border-radius:10px;padding:.75rem 1rem;margin-bottom:.75rem;border-left:3px solid ${d.color}">
         <div style="font-size:11px;font-weight:500;color:${d.color};text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Open solo concept</div>
-        <div style="font-size:12px;color:#333;line-height:1.6">${d.open}</div>
+        <div style="font-size:12px;color:var(--text2);line-height:1.6">${d.open}</div>
       </div>
 
       <!-- PLAYLIST -->
@@ -3618,7 +3618,7 @@ document.addEventListener('DOMContentLoaded',function(){
       +'<div style="font-size:13px;font-weight:500;color:'+p.color+';margin-bottom:.75rem">'+p.title+'</div>'
       +p.steps.map(function(s,i){return '<div style="display:flex;gap:8px;margin-bottom:.5rem;align-items:flex-start">'
         +'<div style="width:20px;height:20px;border-radius:50%;background:'+p.color+';color:#fff;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">'+(i+1)+'</div>'
-        +'<div style="font-size:12px;color:#333;line-height:1.6;flex:1">'+s+'</div></div>';}).join('')
+        +'<div style="font-size:12px;color:var(--text2);line-height:1.6;flex:1">'+s+'</div></div>';}).join('')
       +'<button onclick="document.getElementById(\'panic-result\').style.display=\'none\'" style="margin-top:.75rem;width:100%;padding:8px;border:.5px solid '+p.color+';border-radius:10px;background:transparent;cursor:pointer;font-size:12px;color:'+p.color+'">'+p.close+'</button>'
       +'</div>';
     result.scrollIntoView({behavior:'smooth',block:'nearest'});
