@@ -1,165 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Wellness Field Manual v3.5</title>
+    <title>Wellness Manual v4.0</title>
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <style>
         :root {
-            --bg: #0d1117; --bg2: #161b22; --bg3: #21262d;
-            --green: #2ea44f; --text: #c9d1d9; --text-bright: #f0f6fc;
-            --danger: #f85149; --accent-blue: #58a6ff; --border: #30363d;
+            --green: #0F6E56; --green-light: #0a3d2e; --bg: #0d1117; 
+            --bg2: #161b22; --bg3: #1c2128; --text: #e6edf3; 
+            --text-sec: #6e7681; --danger: #D85A30; --border: rgba(255,255,255,.12);
             --spring: cubic-bezier(0.4, 0, 0.2, 1);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, system-ui, sans-serif; }
-        body { background: var(--bg); color: var(--text); padding-bottom: 90px; -webkit-tap-highlight-color: transparent; }
-        
-        .app-header { padding: 30px 20px 20px; text-align: center; border-bottom: 1px solid var(--border); background: var(--bg2); }
-        .app-header h1 { font-size: 1.1rem; color: var(--text-bright); text-transform: uppercase; letter-spacing: 1px; }
-        .app-header p { font-size: 0.7rem; color: var(--green); margin-top: 4px; font-weight: 700; }
+        body { background: var(--bg); color: var(--text); padding-bottom: 90px; overflow-x: hidden; }
 
+        /* HEADER */
+        .app-header { padding: 30px 20px 20px; text-align: center; border-bottom: 1px solid var(--border); background: var(--bg2); }
+        .app-header h1 { font-size: 1.2rem; font-weight: 600; color: var(--text); }
+        .app-header p { font-size: 0.75rem; color: var(--green); margin-top: 4px; font-weight: 500; }
+
+        /* NAVIGATION & VIEWS */
         .view { display: none; padding: 16px; opacity: 0; transform: translateY(10px); transition: 0.35s var(--spring); }
         .view.active { display: block; opacity: 1; transform: translateY(0); }
 
-        .card { background: var(--bg2); border-radius: 16px; padding: 16px; margin-bottom: 16px; border: 1px solid var(--border); }
-        .sec-title { font-size: 11px; text-transform: uppercase; color: #8b949e; letter-spacing: 1px; margin-bottom: 12px; font-weight: 600; }
+        /* ORGANIZED CARDS (Restoring Claude's Styling) */
+        .card { background: var(--bg2); border-radius: 16px; padding: 18px; margin-bottom: 16px; border: 1px solid var(--border); }
+        .sec-title { font-size: 10px; text-transform: uppercase; color: var(--text-sec); letter-spacing: 0.08em; margin-bottom: 12px; font-weight: 700; }
+        
+        /* THE FIVE ELEMENT GRID */
+        .elem-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 10px; }
+        .elem-btn { background: var(--bg3); border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 4px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .elem-btn:active { transform: scale(0.92); border-color: var(--green); }
+        .elem-emoji { font-size: 1.2rem; display: block; margin-bottom: 4px; }
+        .elem-label { font-size: 9px; font-weight: 600; color: var(--text-sec); text-transform: uppercase; }
 
-        /* PULSING POINT ANIMATION */
+        /* PULSING CLINICAL NODES */
+        .diagram-container { position: relative; height: 350px; background: #0b0e14; border-radius: 14px; border: 1px solid var(--border); margin-bottom: 15px; }
         .pt-dot { width: 14px; height: 14px; background: var(--green); border-radius: 50%; position: absolute; cursor: pointer; }
         .pt-dot::after { content: ''; position: absolute; inset: -12px; background: var(--green); border-radius: 50%; opacity: 0.4; animation: pulse 2.2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 0.4; } 100% { transform: scale(2.5); opacity: 0; } }
 
-        .btn { width: 100%; padding: 14px; border-radius: 12px; border: none; font-weight: 700; cursor: pointer; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; transition: transform 0.1s; }
-        .btn:active { transform: scale(0.96); }
-        .btn-panic { background: var(--danger); color: white; box-shadow: 0 4px 15px rgba(248, 81, 73, 0.3); }
-        .btn-ritual { background: var(--bg3); color: var(--text-bright); border: 1px solid var(--border); }
+        /* RITUALS & MEDS LIST */
+        .list-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+        .list-icon { width: 30px; height: 30px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+        .list-content h4 { font-size: 14px; color: var(--text); margin-bottom: 2px; }
+        .list-content p { font-size: 11px; color: var(--text-sec); line-height: 1.4; }
+        .med-dose { font-size: 10px; background: var(--green-light); color: var(--green); padding: 2px 6px; border-radius: 4px; display: inline-block; margin-top: 4px; font-weight: 700; }
 
-        .nav { position: fixed; bottom: 0; left: 0; right: 0; height: 75px; background: rgba(22, 27, 34, 0.98); backdrop-filter: blur(15px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; z-index: 1000; padding-bottom: env(safe-area-inset-bottom); }
-        .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10px; color: #8b949e; text-decoration: none; background: none; border: none; }
+        /* BUTTONS */
+        .btn { width: 100%; padding: 15px; border-radius: 14px; border: none; font-weight: 700; cursor: pointer; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.95rem; }
+        .btn-panic { background: var(--danger); color: white; box-shadow: 0 4px 15px rgba(216, 90, 48, 0.3); }
+        .btn-tab { background: var(--bg3); color: var(--text); border: 1px solid var(--border); }
+
+        /* BOTTOM NAV */
+        .nav { position: fixed; bottom: 0; left: 0; right: 0; height: 75px; background: rgba(13,17,23,0.98); backdrop-filter: blur(15px); border-top: 1px solid var(--border); display: flex; justify-content: space-around; z-index: 1000; padding-bottom: env(safe-area-inset-bottom); }
+        .nav-item { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 10px; color: var(--text-sec); text-decoration: none; border: none; background: none; }
         .nav-item.active { color: var(--green); }
-        .nav-item span { font-size: 1.3rem; margin-bottom: 3px; }
+        .nav-item span { font-size: 1.4rem; margin-bottom: 2px; }
 
-        .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 2000; backdrop-filter: blur(4px); }
+        /* DRAWERS */
+        .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 2000; backdrop-filter: blur(5px); }
         .drawer-overlay.open { opacity: 1; visibility: visible; }
-        .drawer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg2); border-radius: 24px 24px 0 0; padding: 25px; transform: translateY(100%); transition: 0.4s var(--spring); z-index: 2001; max-height: 85vh; overflow-y: auto; }
+        .drawer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg2); border-radius: 24px 24px 0 0; padding: 25px; transform: translateY(100%); transition: 0.4s var(--spring); z-index: 2001; max-height: 80vh; overflow-y: auto; }
         .drawer.open { transform: translateY(0); }
         .handle { width: 40px; height: 5px; background: var(--border); border-radius: 10px; margin: -10px auto 20px; }
-
-        .med-row { padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-        .med-name { font-weight: 600; color: var(--text-bright); font-size: 0.95rem; }
-        .med-dose { font-size: 0.75rem; color: var(--accent-blue); }
-        .med-note { font-size: 0.7rem; color: #8b949e; margin-top: 2px; }
     </style>
 </head>
 <body>
 
 <div class="app-header">
-    <h1>Sobriety & Clinical Health</h1>
-    <p>DAcHM Candidate · Springfield, VA · 2026–2030</p>
+    <h1>Sobriety & Clinical Health Log</h1>
+    <p>White Belt · DAcHM Candidate · Springfield, VA</p>
 </div>
 
 <!-- VIEW: DASHBOARD -->
 <div id="view-dash" class="view active">
     <button class="btn btn-panic" onclick="openDrawer('panic')">🆘 60s CRAVING EMERGENCY</button>
 
+    <!-- FIVE ELEMENT ASSESSMENT -->
     <div class="card">
-        <div class="sec-title">5-Element Assessment</div>
-        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px;">
-            <button class="btn btn-ritual" onclick="selElem('Wood', 'Liver / Anger')">🌿</button>
-            <button class="btn btn-ritual" onclick="selElem('Fire', 'Heart / Mania')">🔥</button>
-            <button class="btn btn-ritual" onclick="selElem('Earth', 'Spleen / Worry')">🟤</button>
-            <button class="btn btn-ritual" onclick="selElem('Metal', 'Lung / Grief')">⚙️</button>
-            <button class="btn btn-ritual" onclick="selElem('Water', 'Kidney / Fear')">💧</button>
+        <div class="sec-title">Five Element Check-in</div>
+        <div class="elem-grid">
+            <div class="elem-btn" onclick="selElem('Wood', 'Liver Qi Movement', 'LR3 (Taichong)', '🌿')">
+                <span class="elem-emoji">🌿</span><span class="elem-label">Wood</span>
+            </div>
+            <div class="elem-btn" onclick="selElem('Fire', 'Shen Anchoring', 'HT7 (Shenmen)', '🔥')">
+                <span class="elem-emoji">🔥</span><span class="elem-label">Fire</span>
+            </div>
+            <div class="elem-btn" onclick="selElem('Earth', 'Yi Stability', 'ST36 (Zusanli)', '🟤')">
+                <span class="elem-emoji">🟤</span><span class="elem-label">Earth</span>
+            </div>
+            <div class="elem-btn" onclick="selElem('Metal', 'Grief Release', 'LU7 (Lieque)', '⚙️')">
+                <span class="elem-emoji">⚙️</span><span class="elem-label">Metal</span>
+            </div>
+            <div class="elem-btn" onclick="selElem('Water', 'Yin Foundation', 'KD6 (Zhaohai)', '💧')">
+                <span class="elem-emoji">💧</span><span class="elem-label">Water</span>
+            </div>
         </div>
-        <p id="elem-note" style="font-size: 0.75rem; margin-top: 12px; text-align: center; color: #8b949e;">Tap element to evaluate organ pattern</p>
+        <div id="elem-display" style="display:none; background: var(--bg); padding: 12px; border-radius: 10px; margin-top: 10px;">
+            <div style="font-size: 13px; font-weight: 600; color: var(--green); margin-bottom: 4px;" id="el-title">Element</div>
+            <p style="font-size: 11px; color: var(--text-sec); line-height: 1.5;" id="el-body">Assessment detail here...</p>
+        </div>
     </div>
 
+    <!-- DAILY RITUALS -->
     <div class="card">
         <div class="sec-title">Clinical Rituals</div>
-        <button class="btn btn-ritual" onclick="openDrawer('morning')">🌅 Morning Wake-up (9m)</button>
-        <button class="btn btn-ritual" onclick="openDrawer('evening')">🕯️ Evening Wind-down (12m)</button>
+        <button class="btn btn-tab" onclick="openDrawer('morning')">🌅 Morning Wake-up (9 min)</button>
+        <button class="btn btn-tab" onclick="openDrawer('evening')">🕯️ Evening Wind-down (12 min)</button>
     </div>
 </div>
 
 <!-- VIEW: MEDS -->
 <div id="view-meds" class="view">
     <div class="card">
-        <div class="sec-title">Morning Protocol</div>
-        <div class="med-row"><div><div class="med-name">Wellbutrin</div><div class="med-note">150mg · AM</div></div></div>
-        <div class="med-row"><div><div class="med-name">Lithium Carbonate</div><div class="med-note">150mg · AM/PM · Stay Hydrated</div></div></div>
-        <div class="med-row"><div><div class="med-name">Methylphenidate ER</div><div class="med-note">18mg · Morning Focus</div></div></div>
-        <div class="med-row"><div><div class="med-name">Tadalafil</div><div class="med-note">5mg · Continuous Coverage</div></div></div>
+        <div class="sec-title">Morning Medication Stack</div>
+        <div class="list-item">
+            <div class="list-icon">💊</div>
+            <div class="list-content">
+                <h4>Wellbutrin + Lithium</h4>
+                <p>Morning 150mg each. Anchors mood cycling. Stay hydrated.</p>
+                <span class="med-dose">Liver clearance: standard</span>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="list-icon">⚡</div>
+            <div class="list-content">
+                <h4>Methylphenidate ER</h4>
+                <p>18mg AM. Executive function support. Monitors Liver clearance.</p>
+                <span class="med-dose">ADHD Anchor</span>
+            </div>
+        </div>
     </div>
     <div class="card">
         <div class="sec-title">Evening & Liver Support</div>
-        <div class="med-row"><div><div class="med-name">Risperidone</div><div class="med-note">0.5mg · Transition Phase</div></div></div>
-        <div class="med-row"><div><div class="med-name">Milk Thistle / TUDCA</div><div class="med-note">FIB-4 Regeneration Support</div></div></div>
+        <div class="list-item">
+            <div class="list-icon">🌿</div>
+            <div class="list-content">
+                <h4>Milk Thistle + TUDCA</h4>
+                <p>Evening stack. Targeted FIB-4 Index recovery support.</p>
+                <span class="med-dose">Regenerative Protocol</span>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="list-icon">🌙</div>
+            <div class="list-content">
+                <h4>Risperidone</h4>
+                <p>0.5mg PM. Transition phase dosage. No alcohol interaction.</p>
+            </div>
+        </div>
     </div>
 </div>
 
 <!-- VIEW: POINTS -->
 <div id="view-points" class="view">
-    <div class="card" style="position: relative; height: 400px; background: #161b22; overflow: hidden; border: 1px solid var(--border);">
-        <div class="sec-title" style="text-align: center;">Animated Clinical Points</div>
-        <div class="pt-dot" style="top: 30%; left: 45%;" onclick="openDrawer('pc6')"></div>
-        <div class="pt-dot" style="top: 70%; left: 35%;" onclick="openDrawer('lr3')"></div>
-        <div class="pt-dot" style="top: 55%; left: 80%;" onclick="openDrawer('ear')"></div>
-        <div style="position: absolute; bottom: 20px; width: 100%; text-align: center;"><p style="font-size: 0.7rem; color: #8b949e;">Tap nodes for EAM rationale</p></div>
+    <div class="sec-title" style="margin-left: 5px;">Animated Point Map</div>
+    <div class="diagram-container">
+        <!-- PULSING POINTS -->
+        <div class="pt-dot" style="top: 30%; left: 45%;" onclick="showPointDetail('PC6 - Neiguan', 'Pericardium / Heart Protector', 'Located 2 cun above wrist. Anchors acute cravings and unbinds the chest.')"></div>
+        <div class="pt-dot" style="top: 72%; left: 38%;" onclick="showPointDetail('LR3 - Taichong', 'Liver / Great Surge', 'Dorsum of foot. Essential for Liver Qi stagnation and stress-induced laboratory spikes.')"></div>
+        <div class="pt-dot" style="top: 55%; left: 80%;" onclick="showPointDetail('Ear Shen Men', 'Spirit Gate', 'Triangular fossa. Master point for autonomic reset and sobriety maintenance.')"></div>
+        
+        <div style="position: absolute; bottom: 20px; width: 100%; text-align: center; pointer-events: none;">
+            <p style="font-size: 10px; color: var(--text-sec);">Tap pulsing clinical nodes</p>
+        </div>
     </div>
 </div>
 
 <!-- NAVIGATION -->
 <nav class="nav">
-    <button class="nav-item active" onclick="showView('view-dash', this)"><span>⚡</span>Dash</button>
-    <button class="nav-item" onclick="showView('view-meds', this)"><span>💊</span>Meds</button>
-    <button class="nav-item" onclick="showView('view-points', this)"><span>👐</span>Points</button>
+    <button class="nav-item active" onclick="changeView('view-dash', this)"><span>⚡</span>Dash</button>
+    <button class="nav-item" onclick="changeView('view-meds', this)"><span>💊</span>Meds</button>
+    <button class="nav-item" onclick="changeView('view-points', this)"><span>👐</span>Points</button>
 </nav>
 
+<!-- DRAWERS -->
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()"></div>
 <div class="drawer" id="mainDrawer">
     <div class="handle"></div>
-    <h2 id="d-title" style="color: var(--text-bright);">Protocol</h2>
-    <p id="d-subtitle" style="color: var(--green); font-size: 0.8rem; font-weight: 700; margin-bottom: 15px;"></p>
+    <h2 id="d-title" style="margin-bottom: 4px;">Protocol</h2>
+    <p id="d-subtitle" style="color: var(--green); font-size: 0.85rem; font-weight: 700; margin-bottom: 20px;"></p>
     <div id="d-body" style="font-size: 0.95rem; line-height: 1.6; color: var(--text);"></div>
-    <button class="btn btn-ritual" style="margin-top: 25px; background: var(--bg3);" onclick="closeDrawer()">Acknowledge</button>
+    <button class="btn btn-tab" style="margin-top: 30px; background: var(--green-light); color: white;" onclick="closeDrawer()">Acknowledge</button>
 </div>
 
 <script>
-    function showView(viewId, el) {
+    function changeView(viewId, el) {
         document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
         document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
         document.getElementById(viewId).classList.add('active'); el.classList.add('active');
+        if (navigator.vibrate) navigator.vibrate(10);
     }
-    function selElem(type, focus) {
-        document.getElementById('elem-note').innerHTML = `<strong>${type} Pattern</strong>: ${focus}. Apply specific ritual today.`;
+
+    function selElem(name, focus, pt, emoji) {
+        const display = document.getElementById('elem-display');
+        display.style.display = 'block';
+        document.getElementById('el-title').innerText = `${emoji} ${name} Assessment`;
+        document.getElementById('el-body').innerHTML = `Focusing on <b>${focus}</b> today. Primary intervention: <b>${pt}</b>. Check your ritual logs.`;
+        if (navigator.vibrate) navigator.vibrate(15);
     }
+
+    function showPointDetail(name, organ, body) {
+        const d = document.getElementById('mainDrawer');
+        document.getElementById('d-title').innerText = name;
+        document.getElementById('d-subtitle').innerText = organ;
+        document.getElementById('d-body').innerText = body;
+        document.getElementById('overlay').classList.add('open');
+        d.classList.add('open');
+    }
+
     function openDrawer(type) {
         const d = document.getElementById('mainDrawer');
         const t = document.getElementById('d-title');
         const s = document.getElementById('d-subtitle');
         const b = document.getElementById('d-body');
+
         if(type === 'morning') {
-            t.innerText = "Morning Wake-up"; s.innerText = "9-Minute Clinical Ritual";
-            b.innerHTML = "1. ST36 (2m): Tonify Spleen.<br>2. PC6 (2m): Anchor Shen.<br>3. Four Gates (2m): Move Qi.<br>4. Take morning Med Stack.";
+            t.innerText = "Morning Wake-up"; s.innerText = "9-Minute Clinical Protocol";
+            b.innerHTML = "1. <b>ST36 (2m)</b>: Tone Spleen Qi.<br>2. <b>PC6 (2m)</b>: Anchor Heart Protector.<br>3. <b>Four Gates (2m)</b>: Break overnight Qi constraint.<br>4. <b>Meds</b>: Take Morning Stack now.";
         } else if(type === 'evening') {
             t.innerText = "Evening Wind-down"; s.innerText = "12-Minute Kidney Yin Ritual";
-            b.innerHTML = "1. Evening meds.<br>2. KD6 (2m): Nourish Yin.<br>3. HT7 (2m): Calm the Heart.<br>4. 4-7-8 Breathing reset.";
+            b.innerHTML = "1. <b>Evening Meds</b>: Lithium PM & Milk Thistle.<br>2. <b>KD6 (2m)</b>: Nourish Yin base.<br>3. <b>HT7 (2m)</b>: Calm Heart Fire.<br>4. <b>4-7-8 Breathing</b>: Neurological reset.";
         } else if(type === 'panic') {
-            t.innerText = "Emergency Protocol"; s.innerText = "60s Impulse Interrupt";
-            b.innerHTML = "• 0-20s: Ear Shen Men (Pinch).<br>• 20-40s: Tragus (Craving Pt).<br>• 40-60s: PC6 (Hold firm).";
-        } else if(type === 'pc6') {
-            t.innerText = "PC6 — Neiguan"; s.innerText = "Inner Gate"; b.innerHTML = "Regulates Heart Qi, settles acute cravings, and unbinds the chest.";
-        } else if(type === 'lr3') {
-            t.innerText = "LR3 — Taichong"; s.innerText = "Great Surge"; b.innerHTML = "Essential for Liver Qi Stagnation and lowering laboratory stress markers.";
-        } else if(type === 'ear') {
-            t.innerText = "Ear Shen Men"; s.innerText = "Master Reset"; b.innerHTML = "Auricular master point to reset the autonomic nervous system during stress.";
+            t.innerText = "Crisis Protocol"; s.innerText = "60s Impulse Interrupt Sequence";
+            b.innerHTML = "• <b>Step 1 (0-20s)</b>: Ear Shen Men (Pinch Hard).<br>• <b>Step 2 (20-40s)</b>: Tragus Craving Pt (Pinch).<br>• <b>Step 3 (40-60s)</b>: PC6 Wrist (Firm Pressure).";
         }
-        document.getElementById('overlay').classList.add('open'); d.classList.add('open');
+        document.getElementById('overlay').classList.add('open');
+        d.classList.add('open');
     }
+
     function closeDrawer() {
         document.getElementById('overlay').classList.remove('open');
         document.getElementById('mainDrawer').classList.remove('open');
