@@ -1,7 +1,7 @@
 {
-  "name": "Wellness Manual v3.5",
+  "name": "Wellness Manual v4.0",
   "short_name": "Wellness",
-  "description": "Clinical DAcHM Field Manual & Sobriety Log",
+  "description": "Organized DAcHM Clinical Field Manual & Sobriety Log",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#0d1117",
