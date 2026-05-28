@@ -49,7 +49,7 @@ html[data-theme="dark"],html[data-theme="dark"] body{background:#111318;color:#e
 [data-theme="dark"] #dcc-wrap,[data-theme="dark"] #milestone-celebrate{background:var(--card) !important}
 [data-theme="dark"] [style*="background:#fff"]{background:var(--card) !important}
 [data-theme="dark"] [style*="background:var(--card)"]{background:var(--card) !important}
-[data-theme="dark"] .crisis-box{background:#FCEBEB;border:.5px solid #F09595;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem}
+[data-theme="dark"] .crisis-box{background:#FEF0F0;border:1.5px solid #E05555;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem}
 
 /* Foot diagram dark mode - darken skin tones */
 [data-theme="dark"] svg .foot-skin, [data-theme="dark"] svg path[fill="#F5DEC8"],
@@ -95,7 +95,7 @@ html[data-theme="dark"],body[data-theme="dark"]{background:#111318}
 [data-theme="dark"] #sticky-nav{background:var(--bg) !important;border-bottom:1px solid var(--border) !important}
 [data-theme="dark"] .chip{background:var(--bg3) !important;color:var(--text) !important;border-color:var(--border) !important}
 [data-theme="dark"] .chip.sel{background:var(--green) !important;color:#fff !important}
-[data-theme="dark"] .npill{font-size:12px;padding:6px 14px;border:1.5px solid rgba(0,0,0,.15);border-radius:100px;background:#fff;cursor:pointer;color:#444;white-space:nowrap;transition:all .15s;font-family:inherit;font-weight:400}
+[data-theme="dark"] .npill{font-size:12px;padding:6px 14px;border:1.5px solid rgba(0,0,0,.15);border-radius:100px;background:#ffffff;cursor:pointer;color:#333;white-space:nowrap;transition:all .15s;font-family:inherit;font-weight:400;-webkit-appearance:none}
 [data-theme="dark"] .npill.active-pill{background:#0F6E56 !important;color:#fff !important;border-color:#0F6E56 !important;border-radius:20px !important}
 [data-theme="dark"] .npill.red-pill{background:#2a1515 !important;border-color:#8B2020 !important;color:#ff9090 !important;border-radius:20px !important}
 [data-theme="dark"] .npill.red-pill{background:#2d1a1a !important;border-color:#8B2020 !important;color:#ff7b7b !important}
@@ -282,8 +282,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 /* CRISIS */
 .crisis-box{background:#200d0d;border:.5px solid #F09595;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1rem}
-.crisis-title{font-size:14px;font-weight:500;color:#A32D2D;margin-bottom:6px}
-.crisis-line{font-size:13px;color:#791F1F;margin-bottom:3px}
+.crisis-title{font-size:14px;font-weight:600;color:#C0392B;margin-bottom:6px}
+.crisis-line{font-size:13px;color:#922B21;margin-bottom:3px;line-height:1.5}
 
 .footer-note{font-size:11px;color:var(--sec);text-align:center;margin-top:2rem;line-height:1.8}
 
@@ -1172,13 +1172,14 @@ const ml=document.getElementById('msList');
 MS.forEach(m=>{
   const done=days>=m.d;
   const d=document.createElement('div');
-  const bg = m.slip ? '#261d0a' : done ? 'var(--green-light)' : 'var(--card)';
+  const bg = m.slip ? '#2a1a05' : done ? 'var(--green-light)' : 'var(--card)';
   const borderColor = m.slip ? '#EF9F27' : done ? '#5DCAA5' : 'var(--border)';
   const iconBg = m.slip ? '#BA7517' : done ? '#0F6E56' : 'var(--bg3)';
   const iconColor = (done||m.slip) ? '#fff' : 'var(--sec)';
+  const textColor = m.slip ? '#F0A500' : 'var(--text)';
   const icon = m.slip ? '⚡' : done ? '✓' : '○';
   d.style.cssText = `display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;background:${bg};border:1px solid ${borderColor};margin-bottom:6px`;
-  d.innerHTML=`<div style="width:24px;height:24px;border-radius:50%;background:${iconBg};color:${iconColor};display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">${icon}</div><div style="flex:1;font-size:13px;font-weight:500;color:var(--text)">${m.l}</div><div style="font-size:11px;color:var(--sec);flex-shrink:0">${m.dt||''}</div>`;
+  d.innerHTML=`<div style="width:24px;height:24px;border-radius:50%;background:${iconBg};color:${iconColor};display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">${icon}</div><div style="flex:1;font-size:13px;font-weight:500;color:${textColor}">${m.l}</div><div style="font-size:11px;color:var(--sec);flex-shrink:0">${m.dt||''}</div>`;
   ml.appendChild(d);
   if(!done&&!nxtSet){nxtSet=true;document.getElementById('nxtNum').textContent=m.d-days;document.getElementById('nxtLbl').textContent='days to '+m.l}
 });
