@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Wellness">
+<meta name="theme-color" content="#0F6E56">
+<link rel="apple-touch-icon" href="icon.svg">
+<title>Sobriety and Mental Health</title>
+<style>
+/* ── RESET ── */
+*{box-sizing:border-box;margin:0;padding:0}
+button,input,textarea,select{font-family:inherit;-webkit-appearance:none;appearance:none}
+
+/* ── CSS VARIABLES ── */
+:root{
+  --green:#0F6E56;--green2:#1D9E75;--green-light:#E1F5EE;--green-dark:#085041;
+  --red:#C0392B;--amber:#BA7517;--blue:#2471A3;--purple:#7F77DD;--pink:#D4537E;
+  --bg:#f8f7f4;--bg2:#ffffff;--bg3:#f0efe9;
+  --text:#1a1a1a;--text2:#444;--text3:#888;
+  --border:rgba(0,0,0,.12);--border2:rgba(0,0,0,.06);
+  --card:#ffffff;--nav:#f8f7f4;--sec:#999;
+  --chip:#ffffff;--chip-border:rgba(0,0,0,.15);
+  --skin:#F2DBC8;--skin-dark:#B8845A;
+}
+[data-theme="dark"]{
+  --bg:#111318;--bg2:#1c1f26;--bg3:#23272f;
+  --text:#e8eaf0;--text2:#b0b8c8;--text3:#7a8499;
+  --border:rgba(255,255,255,.1);--border2:rgba(255,255,255,.06);
+  --card:#1c1f26;--nav:#111318;--sec:#6e7681;
+  --chip:#23272f;--chip-border:rgba(255,255,255,.12);
+  --green-light:#0a2e1e;--skin:#C8956A;--skin-dark:#A07040;
+}
+
+/* ── BASE ── */
+html,body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;min-height:100vh;transition:background .3s,color .3s}
+body{padding-bottom:2rem}
+
+/* ── HEADER ── */
+.app-header{padding:1.25rem 1rem 1rem;border-bottom:.5px solid var(--border);position:relative;background:var(--bg)}
+.app-header h1{font-size:20px;font-weight:600;color:var(--text);text-align:center}
+.app-header p{font-size:11px;color:var(--sec);text-align:center;margin-top:3px}
+.theme-btn{position:absolute;top:1rem;right:1rem;background:rgba(128,128,128,.15);border:none;border-radius:20px;padding:4px 10px;font-size:13px;cursor:pointer;color:var(--text2)}
+
+/* ── STICKY NAV ── */
+.nav-wrap{position:sticky;top:0;z-index:100;background:var(--nav);border-bottom:.5px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.nav-wrap::-webkit-scrollbar{display:none}
+.nav-inner{display:flex;gap:6px;padding:.5rem 1rem;width:max-content}
+.pill{font-size:12px;padding:6px 14px;border:1.5px solid var(--chip-border);border-radius:100px;background:var(--chip);cursor:pointer;color:var(--text2);white-space:nowrap;font-weight:500;transition:all .15s;font-family:inherit}
+.pill:active{transform:scale(.96)}
+.pill.active{background:var(--green);color:#fff;border-color:var(--green)}
+.pill.red{background:#2a1010;border-color:#8B2020;color:#ff9090}
+.pill.green-tint{background:var(--green-light);border-color:var(--green);color:var(--green-dark)}
+.pill.blue-tint{background:#0e1a26;border-color:var(--blue);color:#7EC8E3}
+[data-theme="dark"] .pill{background:var(--chip);color:var(--text2);border-color:var(--chip-border)}
+[data-theme="dark"] .pill.active{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* ── SECTIONS ── */
+.sec-label{font-size:10px;font-weight:700;color:var(--sec);text-transform:uppercase;letter-spacing:.08em;padding:.75rem 1rem .4rem}
+.section{padding:0 1rem 1.5rem}
+.card{background:var(--card);border:.5px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:.75rem}
+.card-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:.5rem}
+.card-sub{font-size:12px;color:var(--text3);line-height:1.5}
+
+/* ── HERO (sobriety counter) ── */
+.hero{background:var(--card);border:.5px solid var(--border);border-radius:16px;padding:1.5rem;margin:1rem;text-align:center}
+.hero-days{font-size:64px;font-weight:700;color:var(--green);line-height:1}
+.hero-unit{font-size:18px;font-weight:400;color:var(--text2)}
+.hero-sub{font-size:13px;color:var(--text3);margin-top:.4rem}
+.hero-slip{background:#261d0a;border:1px solid #BA7517;border-radius:8px;padding:.4rem .75rem;font-size:12px;color:#EF9F27;margin:.75rem auto 0;display:inline-block}
+.hero-bar-wrap{margin:.75rem 0 0}
+.hero-bar-label{font-size:11px;color:var(--text3);margin-bottom:.3rem}
+.hero-bar{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.hero-bar-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--green2));border-radius:3px;transition:width 1s ease}
+.hero-bar-note{font-size:11px;color:var(--green2);margin-top:.3rem}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin:0 1rem .75rem}
+.metric{background:var(--card);border:.5px solid var(--border);border-radius:10px;padding:.75rem;text-align:center}
+.metric-val{font-size:22px;font-weight:600;color:var(--text)}
+.metric-lbl{font-size:10px;color:var(--text3);margin-top:2px}
+
+/* ── HALT ── */
+.halt-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.75rem}
+.halt-btn{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:.9rem;cursor:pointer;text-align:left;transition:all .15s}
+.halt-btn:active{transform:scale(.97)}
+.halt-emoji{font-size:24px;margin-bottom:.4rem}
+.halt-title{font-size:14px;font-weight:600;color:var(--text)}
+.halt-sub{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* ── CHIPS ── */
+.chip-wrap{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0 .75rem}
+.chip{font-size:12px;padding:5px 12px;border:1.5px solid var(--chip-border);border-radius:20px;cursor:pointer;background:var(--chip);color:var(--text2);transition:all .15s;font-family:inherit;font-weight:400}
+.chip.sel{background:var(--green);color:#fff;border-color:var(--green)}
+.chip-label{font-size:12px;color:var(--text3);margin-bottom:.3rem}
+
+/* ── CRISIS ── */
+.crisis-box{background:#FEF0F0;border:1.5px solid #E05555;border-radius:12px;padding:1rem 1.25rem;margin-bottom:.75rem}
+.crisis-title{font-size:14px;font-weight:700;color:#C0392B;margin-bottom:.4rem}
+.crisis-line{font-size:13px;color:#922B21;line-height:1.6}
+[data-theme="dark"] .crisis-box{background:#1f0f0f !important;border-color:#C0392B !important}
+[data-theme="dark"] .crisis-title{color:#E74C3C !important}
+[data-theme="dark"] .crisis-line{color:#E57373 !important}
+
+/* ── MILESTONE LIST ── */
+.ms-list{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+
+/* ── SVG ANIMATIONS ── */
+.pt-ring{animation:ptPulse 2.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes ptPulse{0%,100%{opacity:.12;transform:scale(1)}50%{opacity:.38;transform:scale(1.8)}}
+
+/* ── DETAIL CARD ── */
+.det-card{background:var(--bg3);border-radius:10px;padding:.75rem;margin-top:.5rem;font-size:12px;color:var(--text2);line-height:1.6}
+
+/* ── WIND-DOWN ── */
+.wd-card{background:var(--green-light);border:1.5px solid var(--green);border-radius:12px;padding:1.25rem;margin-bottom:.75rem}
+.wd-step-label{font-size:10px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem}
+.wd-step-title{font-size:15px;font-weight:600;color:var(--green-dark);margin-bottom:.5rem}
+[data-theme="dark"] .wd-step-title{color:var(--green2)}
+.wd-where{background:var(--green-dark);color:#fff;border-radius:8px;padding:.4rem .75rem;font-size:11px;font-weight:500;margin-bottom:.5rem}
+[data-theme="dark"] .wd-where{background:#0a2e1e}
+.wd-text{font-size:12px;color:var(--green-dark);line-height:1.6;margin-bottom:.75rem}
+[data-theme="dark"] .wd-text{color:var(--text2)}
+.wd-timer{font-size:36px;font-weight:600;color:var(--green);text-align:center;margin-bottom:.5rem}
+.wd-timer-lbl{font-size:11px;color:var(--sec);text-align:center;margin-bottom:.75rem}
+.wd-btns{display:flex;gap:8px}
+.wd-btn-start{flex:1;padding:10px;background:var(--green);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:13px;font-weight:500;font-family:inherit}
+.wd-btn-skip{flex:1;padding:10px;border:1px solid var(--border);border-radius:10px;background:transparent;cursor:pointer;font-size:13px;color:var(--text3);font-family:inherit}
+
+/* ── MORNING ── */
+.mr-card{background:#0a2e1e;border:1.5px solid var(--green);border-radius:12px;padding:1.25rem;margin-bottom:.75rem}
+[data-theme="dark"] .mr-card{background:#0a2218}
+.mr-step-label{font-size:10px;font-weight:700;color:var(--green2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem}
+.mr-step-title{font-size:15px;font-weight:600;color:#5DCAA5;margin-bottom:.5rem}
+.mr-where{background:rgba(15,110,86,.3);color:#5DCAA5;border-radius:8px;padding:.4rem .75rem;font-size:11px;font-weight:500;margin-bottom:.5rem}
+.mr-text{font-size:12px;color:#b0c8be;line-height:1.6;margin-bottom:.75rem}
+.mr-timer{font-size:36px;font-weight:600;color:var(--green2);text-align:center;margin-bottom:.5rem}
+.mr-timer-lbl{font-size:11px;color:var(--sec);text-align:center;margin-bottom:.75rem}
+.mr-btn-start{flex:1;padding:10px;background:var(--green);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:13px;font-weight:500;font-family:inherit}
+.mr-btn-skip{flex:1;padding:10px;border:1px solid rgba(255,255,255,.2);border-radius:10px;background:transparent;cursor:pointer;font-size:13px;color:#5DCAA5;font-family:inherit}
+
+/* ── MUSIC PLAYER ── */
+.music-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}
+.music-tab{font-size:12px;padding:6px 12px;border:1.5px solid var(--chip-border);border-radius:20px;cursor:pointer;background:var(--chip);color:var(--text2);font-family:inherit;font-weight:500;transition:all .15s}
+.music-tab.active{background:var(--green);color:#fff;border-color:var(--green)}
+.music-frame{border-radius:12px;overflow:hidden;border:.5px solid var(--border)}
+
+/* ── HANGUL CANVAS ── */
+.hangul-display{font-size:80px;text-align:center;padding:1rem;color:var(--text);font-weight:300;line-height:1}
+.hangul-info{text-align:center;margin-bottom:.75rem}
+.hangul-rom{font-size:18px;color:var(--green);font-weight:500}
+.hangul-name{font-size:13px;color:var(--text3);margin-top:.2rem}
+.hangul-canvas{border:1.5px solid var(--border);border-radius:12px;background:var(--bg2);cursor:crosshair;display:block;width:100%;touch-action:none}
+.hangul-btns{display:flex;gap:.5rem;margin-top:.5rem}
+.hangul-btn{flex:1;padding:8px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);cursor:pointer;font-size:13px;font-family:inherit}
+.hangul-btn.primary{background:var(--green);color:#fff;border-color:var(--green)}
+.hangul-cats{display:flex;gap:.4rem;margin-bottom:.5rem;flex-wrap:wrap}
+
+/* ── DANCE ── */
+.dance-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.75rem}
+.dance-tab{font-size:12px;padding:6px 12px;border:1.5px solid var(--chip-border);border-radius:20px;cursor:pointer;background:var(--chip);color:var(--text2);font-family:inherit;font-weight:500;transition:all .15s}
+.dance-tab.active{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* ── FORMS ── */
+.field-label{font-size:12px;color:var(--text3);margin-bottom:.3rem;font-weight:500}
+.field{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:.6rem .75rem;font-size:14px;font-family:inherit;background:var(--bg3);color:var(--text);margin-bottom:.75rem;resize:vertical;outline:none;transition:border .15s}
+.field:focus{border-color:var(--green)}
+.btn{width:100%;padding:11px;background:var(--green);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:14px;font-weight:600;font-family:inherit;transition:opacity .15s}
+.btn:active{opacity:.85}
+.btn.secondary{background:var(--bg3);color:var(--text2);border:1px solid var(--border)}
+
+/* ── CRISIS MODAL ── */
+#crisis-modal{display:none;position:fixed;inset:0;z-index:9999;background:#0d0608;overflow-y:auto;padding:1.5rem 1rem 5rem}
+
+/* ── JOURNAL ENTRIES ── */
+.je{background:var(--bg3);border-radius:10px;padding:.75rem;margin-bottom:.5rem}
+.je-date{font-size:10px;color:var(--sec);margin-bottom:.3rem}
+.je-text{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* ── MOOD TRACKER ── */
+.mood-row{display:flex;gap:.3rem;margin-bottom:.5rem}
+.mood-cell{flex:1;height:36px;border-radius:6px;border:.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--sec);cursor:pointer;transition:all .2s}
+
+/* ── SLEEP ── */
+.sleep-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.3rem;margin:.5rem 0}
+.sleep-cell{background:var(--bg3);border-radius:6px;padding:.4rem .2rem;text-align:center;font-size:10px;color:var(--sec)}
+.sleep-val{font-size:13px;font-weight:500;color:var(--text);margin-top:2px}
+
+/* ── RANGE INPUT ── */
+input[type=range]{width:100%;accent-color:var(--green);margin:.4rem 0}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="app-header">
+  <h1>Sobriety and mental health</h1>
+  <p>White belt · DAcHM candidate · VUIM 2026–2030</p>
+  <button class="theme-btn" id="theme-btn" onclick="toggleTheme()">🌙</button>
+</div>
+
+<!-- STICKY NAV -->
+<div class="nav-wrap">
+  <div class="nav-inner" id="nav-pills">
+    <button class="pill red" onclick="openCrisis()">🆘 Crisis</button>
+    <button class="pill red" onclick="nav('sec-now')">⚡ Now</button>
+    <button class="pill red" onclick="nav('sec-contacts')">📞 Call</button>
+    <button class="pill green-tint" onclick="nav('sec-morning')">🌄 Morning</button>
+    <button class="pill active" onclick="nav('sec-checkin')">🌅 Check-in</button>
+    <button class="pill" onclick="nav('sec-meds')">💊 Meds</button>
+    <button class="pill" onclick="nav('sec-halt')">HALT</button>
+    <button class="pill" onclick="nav('sec-mood')">🧠 Mood</button>
+    <button class="pill" onclick="nav('sec-dbt')">DBT</button>
+    <button class="pill" onclick="nav('sec-points')">👐 Points</button>
+    <button class="pill" onclick="nav('sec-dance')">💃 Dance</button>
+    <button class="pill" onclick="nav('sec-formulas')">📜 Formulas</button>
+    <button class="pill" onclick="nav('sec-teas')">🍵 Teas</button>
+    <button class="pill" onclick="nav('sec-herbs')">🌿 Herbs</button>
+    <button class="pill" onclick="nav('sec-liver')">🫀 Liver</button>
+    <button class="pill" onclick="nav('sec-labs')">🔬 Labs</button>
+    <button class="pill" onclick="nav('sec-tracker')">📊 Tracker</button>
+    <button class="pill" onclick="nav('sec-milestones')">🏅 Milestones</button>
+    <button class="pill" onclick="nav('sec-wins')">⭐ Wins</button>
+    <button class="pill" onclick="nav('sec-journal')">📓 Journal</button>
+    <button class="pill" onclick="nav('sec-scan')">🔍 Scan</button>
+    <button class="pill" onclick="nav('sec-builder')">🔧 Builder</button>
+    <button class="pill" onclick="nav('sec-floor')">🏆 Floor</button>
+    <button class="pill" onclick="nav('sec-music')">🎵 Music</button>
+    <button class="pill" onclick="nav('sec-hangul')">한 Hangul</button>
+    <button class="pill" onclick="nav('sec-buy')">🛒 Buy</button>
+    <button class="pill" onclick="nav('sec-backup')">💾 Backup</button>
+    <button class="pill" onclick="nav('sec-sleep')">🌙 Sleep</button>
+    <button class="pill blue-tint" onclick="nav('sec-winddown')">🕯️ Wind-down</button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+
+<!-- ═══ CHECK-IN (default view) ═══ -->
+<div id="sec-checkin">
+  <div class="hero">
+    <div class="hero-days" id="dayNum">—</div>
+    <div class="hero-unit">days on this journey</div>
+    <div class="hero-sub">Since November 23, 2025</div>
+    <div class="hero-slip">Apr 10, 2026 — rough patch noted. Not a reset.</div>
+    <div class="hero-bar-wrap">
+      <div class="hero-bar-label">Liver healing progress — every sober day counts</div>
+      <div class="hero-bar"><div class="hero-bar-fill" id="liverBar"></div></div>
+      <div class="hero-bar-note" id="liverNote"></div>
+    </div>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="metric-val" id="wkNum">—</div><div class="metric-lbl">weeks</div></div>
+    <div class="metric"><div class="metric-val" id="moNum">—</div><div class="metric-lbl">months</div></div>
+    <div class="metric"><div class="metric-val" id="nxtNum">—</div><div class="metric-lbl" id="nxtLbl">to next</div></div>
+  </div>
+
+  <div class="section">
+    <button class="btn" style="background:#C0392B;margin-bottom:.75rem" onclick="openCrisis()">🆘 60-Second Craving Emergency Protocol</button>
+
+    <div class="sec-label">Step 1 — How are you waking up?</div>
+    <div class="chip-label">Sleep quality</div>
+    <div class="chip-wrap" id="chips-sleep"></div>
+    <div class="chip-label">Body energy</div>
+    <div class="chip-wrap" id="chips-energy"></div>
+    <div class="chip-label">Mood pole</div>
+    <div class="chip-wrap" id="chips-mood-pole"></div>
+    <div class="chip-label">Craving pressure (0 = none, 5 = urgent)</div>
+    <input type="range" min="0" max="5" value="0" id="craving-slider" oninput="document.getElementById('craving-val').textContent=this.value">
+    <span id="craving-val" style="font-size:14px;font-weight:600;color:var(--text)">0</span>
+
+    <div class="sec-label" style="margin-top:1rem">Step 2 — Five Element check-in</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:.5rem">Tap the loudest element. It guides your protocol today.</div>
+    <div class="halt-grid" id="five-elements"></div>
+
+    <div class="sec-label">Step 3 — Craving to protocol</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:.5rem">One tap gets your full protocol.</div>
+    <div id="craving-protocols"></div>
+  </div>
+</div>
+
+<!-- ═══ CRISIS NOW ═══ -->
+<div id="sec-now" style="display:none">
+  <div class="section">
+    <div class="sec-label">Right now — one tap protocols</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:.75rem">No setup. No selecting. Just tap the one that matches right now.</div>
+    <div id="now-protocols"></div>
+  </div>
+</div>
+
+<!-- ═══ CONTACTS ═══ -->
+<div id="sec-contacts" style="display:none">
+  <div class="section">
+    <div class="sec-label">Call someone who loves you</div>
+    <div id="contact-cards"></div>
+    <div class="sec-label">Professional support</div>
+    <div class="crisis-box">
+      <div class="crisis-title">Pro Active Wellness</div>
+      <div class="crisis-line">📞 703-822-5003</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MORNING RITUAL ═══ -->
+<div id="sec-morning" style="display:none">
+  <div class="section">
+    <div class="sec-label">Morning ritual — 9 minutes before you stand up</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:.75rem">Sets the Qi, anchors the Shen, checks the meds — before the day takes over.</div>
+    <div id="morning-steps-preview"></div>
+    <button class="btn" onclick="startMorning()" id="morning-start-btn">Begin morning ritual</button>
+    <div id="morning-active" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ═══ MEDS ═══ -->
+<div id="sec-meds" style="display:none">
+  <div class="section">
+    <div class="sec-label">Morning stack</div>
+    <div id="meds-morning"></div>
+    <div class="sec-label">Afternoon</div>
+    <div id="meds-afternoon"></div>
+    <div class="sec-label">Evening</div>
+    <div id="meds-evening"></div>
+    <div class="sec-label">Timed</div>
+    <div id="meds-timed"></div>
+    <button class="btn secondary" onclick="resetMeds()" style="margin-top:.5rem">Reset all for tomorrow</button>
+  </div>
+</div>
+
+<!-- ═══ HALT ═══ -->
+<div id="sec-halt" style="display:none">
+  <div class="section">
+    <div class="sec-label">HALT check — which one is this?</div>
+    <div class="halt-grid" id="halt-grid"></div>
+    <div id="halt-detail"></div>
+  </div>
+</div>
+
+<!-- ═══ MOOD (hypomania) ═══ -->
+<div id="sec-mood" style="display:none">
+  <div class="section">
+    <div class="sec-label">Hypomania & impulse early warning</div>
+    <div id="mood-checks"></div>
+    <div id="mood-response"></div>
+  </div>
+</div>
+
+<!-- ═══ DBT ═══ -->
+<div id="sec-dbt" style="display:none">
+  <div class="section">
+    <div class="sec-label">DBT skills — EAM mapped</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:.75rem">Western regulation science meets classical channel theory.</div>
+    <div id="dbt-list"></div>
+  </div>
+</div>
+
+<!-- ═══ POINTS ═══ -->
+<div id="sec-points" style="display:none">
+  <div class="section">
+    <div class="sec-label">Acupressure point diagrams — tap any dot</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:.5rem">🟢 Public (discreet anywhere) &nbsp; 🟡 Private (home/car/bathroom)</div>
+    <div style="display:flex;gap:.5rem;margin-bottom:.75rem">
+      <button class="pill active" id="tab-wrist" onclick="showDiagram('wrist')">Wrist & hand</button>
+      <button class="pill" id="tab-foot" onclick="showDiagram('foot')">Foot & leg</button>
+      <button class="pill" id="tab-ear" onclick="showDiagram('ear')">Ear</button>
+    </div>
+    <div id="diagram-area"></div>
+    <div id="point-detail" class="det-card" style="display:none"></div>
+  </div>
+</div>
+
+<!-- ═══ DANCE ═══ -->
+<div id="sec-dance" style="display:none">
+  <div class="section">
+    <div class="sec-label">American Rhythm — your dance pharmacy</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:.75rem">Five dances · Five organs · Five emotional states.</div>
+    <div class="dance-tabs" id="dance-tabs"></div>
+    <div id="dance-panel"></div>
+  </div>
+</div>
+
+<!-- ═══ FORMULAS ═══ -->
+<div id="sec-formulas" style="display:none">
+  <div class="section">
+    <div class="sec-label">Classical TCM formulas — your pattern reference</div>
+    <div id="formulas-list"></div>
+  </div>
+</div>
+
+<!-- ═══ TEAS ═══ -->
+<div id="sec-teas" style="display:none">
+  <div class="section">
+    <div class="sec-label">Single herb teas</div>
+    <div id="teas-list"></div>
+  </div>
+</div>
+
+<!-- ═══ HERBS ═══ -->
+<div id="sec-herbs" style="display:none">
+  <div class="section">
+    <div class="sec-label">Herbal allies — your daily support</div>
+    <div id="herbs-list"></div>
+  </div>
+</div>
+
+<!-- ═══ LIVER ═══ -->
+<div id="sec-liver" style="display:none">
+  <div class="section">
+    <div class="sec-label">Your liver — the why behind all of this</div>
+    <div id="liver-markers"></div>
+    <div class="card" style="background:#0a2e1e;border-color:var(--green)">
+      <div style="font-size:13px;color:#5DCAA5;line-height:1.6">When you were sober Nov 23 – Jan 26, your AST dropped from 181 → 41. Your body heals when you stop. Every sober day is a healing day. LR3 every day supports liver Qi directly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LABS ═══ -->
+<div id="sec-labs" style="display:none">
+  <div class="section">
+    <div class="sec-label">Lab results tracker — FIB-4 trend</div>
+    <div id="labs-content"></div>
+  </div>
+</div>
+
+<!-- ═══ MOOD TRACKER ═══ -->
+<div id="sec-tracker" style="display:none">
+  <div class="section">
+    <div class="sec-label">Weekly mood tracker</div>
+    <div id="tracker-content"></div>
+  </div>
+</div>
+
+<!-- ═══ MILESTONES ═══ -->
+<div id="sec-milestones" style="display:none">
+  <div class="section">
+    <div class="sec-label">Your milestones — every one earned</div>
+    <div class="ms-list" id="ms-list"></div>
+  </div>
+</div>
+
+<!-- ═══ WINS ═══ -->
+<div id="sec-wins" style="display:none">
+  <div class="section">
+    <div class="sec-label">Quick wins — ADHD positive reinforcement</div>
+    <textarea class="field" id="win-input" placeholder="What did you do well today?" rows="2"></textarea>
+    <button class="btn" onclick="addWin()">Log this win</button>
+    <div id="wins-list" style="margin-top:.75rem"></div>
+  </div>
+</div>
+
+<!-- ═══ JOURNAL ═══ -->
+<div id="sec-journal" style="display:none">
+  <div class="section">
+    <div class="sec-label">Journal</div>
+    <textarea class="field" id="journal-input" placeholder="What's present right now?" rows="4"></textarea>
+    <button class="btn" onclick="addJournal()">Save entry</button>
+    <div id="journal-list" style="margin-top:.75rem"></div>
+  </div>
+</div>
+
+<!-- ═══ BODY SCAN ═══ -->
+<div id="sec-scan" style="display:none">
+  <div class="section">
+    <div class="sec-label">Body scan — where is the tension?</div>
+    <div id="scan-content"></div>
+  </div>
+</div>
+
+<!-- ═══ BUILDER ═══ -->
+<div id="sec-builder" style="display:none">
+  <div class="section">
+    <div class="sec-label">Custom protocol builder</div>
+    <div id="builder-content"></div>
+  </div>
+</div>
+
+<!-- ═══ FLOOR ═══ -->
+<div id="sec-floor" style="display:none">
+  <div class="section">
+    <div class="sec-label">Competition floor checklist</div>
+    <div id="floor-content"></div>
+  </div>
+</div>
+
+<!-- ═══ MUSIC ═══ -->
+<div id="sec-music" style="display:none">
+  <div class="section">
+    <div class="sec-label">Your playlists</div>
+    <div class="music-tabs" id="music-tabs"></div>
+    <div id="music-player"></div>
+  </div>
+</div>
+
+<!-- ═══ HANGUL ═══ -->
+<div id="sec-hangul" style="display:none">
+  <div class="section">
+    <div class="sec-label">Hangul practice — S Pen optimized</div>
+    <div class="hangul-cats" id="hangul-cats"></div>
+    <div class="hangul-display" id="hangul-char">ㄱ</div>
+    <div class="hangul-info">
+      <div class="hangul-rom" id="hangul-rom">g/k</div>
+      <div class="hangul-name" id="hangul-name">Giyeok — first consonant</div>
+    </div>
+    <canvas class="hangul-canvas" id="hangul-canvas" height="220"></canvas>
+    <div class="hangul-btns">
+      <button class="hangul-btn" onclick="clearCanvas()">Clear</button>
+      <button class="hangul-btn" onclick="prevChar()">← Prev</button>
+      <button class="hangul-btn primary" onclick="nextChar()">Next →</button>
+    </div>
+    <div id="phrase-area" style="margin-top:1rem"></div>
+  </div>
+</div>
+
+<!-- ═══ BUY ═══ -->
+<div id="sec-buy" style="display:none">
+  <div class="section">
+    <div class="sec-label">Where to buy herbs</div>
+    <div id="buy-content"></div>
+  </div>
+</div>
+
+<!-- ═══ BACKUP ═══ -->
+<div id="sec-backup" style="display:none">
+  <div class="section">
+    <div class="sec-label">Data backup & restore</div>
+    <div class="card">
+      <div class="card-title">Export your data</div>
+      <div class="card-sub" style="margin-bottom:.75rem">Journal, sleep logs, mood entries, med checks. Export regularly.</div>
+      <button class="btn" onclick="exportData()">Export backup JSON</button>
+    </div>
+    <div class="card" style="margin-top:.75rem">
+      <div class="card-title">Restore from backup</div>
+      <input type="file" id="restore-file" accept=".json" onchange="importData(event)" style="margin-bottom:.5rem;color:var(--text2)">
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SLEEP ═══ -->
+<div id="sec-sleep" style="display:none">
+  <div class="section">
+    <div class="sec-label">Sleep tracker — Kidney Yin pattern</div>
+    <div id="sleep-content"></div>
+  </div>
+</div>
+
+<!-- ═══ WIND-DOWN ═══ -->
+<div id="sec-winddown" style="display:none">
+  <div class="section">
+    <div class="sec-label">Pre-sleep wind-down protocol</div>
+    <div style="font-size:12px;color:var(--text3);margin-bottom:.75rem">Done before you lie down. Calls the Shen home.</div>
+    <div id="winddown-steps-preview"></div>
+    <button class="btn" style="background:var(--blue)" onclick="startWinddown()" id="winddown-start-btn">Begin wind-down</button>
+    <div id="winddown-active" style="display:none"></div>
+  </div>
+</div>
+
+</div><!-- end main-content -->
+
+<!-- ═══ CRISIS MODAL ═══ -->
+<div id="crisis-modal">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+    <div>
+      <div style="font-size:22px;font-weight:700;color:#fff">You are not alone.</div>
+      <div style="font-size:13px;color:#E74C3C;margin-top:4px" id="crisis-days-text"></div>
+    </div>
+    <button onclick="closeCrisis()" style="background:rgba(255,255,255,.1);border:none;color:#fff;border-radius:50%;width:36px;height:36px;font-size:20px;cursor:pointer;font-family:inherit">×</button>
+  </div>
+
+  <div class="sec-label" style="color:#E74C3C;padding:0 0 .5rem">Call someone who loves you</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem">
+    <a href="tel:7032820961" style="text-decoration:none">
+      <div style="background:#1c1f26;border-radius:14px;padding:1rem;text-align:center;border:1.5px solid rgba(255,255,255,.1)">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#0F6E56,#1D9E75);margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden"><img src="mom.jpg" onerror="this.parentNode.innerHTML='👩'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+        <div style="font-size:13px;font-weight:600;color:#fff">Mom</div>
+        <div style="font-size:10px;color:#6e7681;margin-top:2px">📞 Call</div>
+      </div>
+    </a>
+    <a href="tel:7032820342" style="text-decoration:none">
+      <div style="background:#1c1f26;border-radius:14px;padding:1rem;text-align:center;border:1.5px solid rgba(255,255,255,.1)">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#BA7517,#EF9F27);margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden"><img src="tota.jpg" onerror="this.parentNode.innerHTML='👵'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+        <div style="font-size:13px;font-weight:600;color:#fff">Tota</div>
+        <div style="font-size:10px;color:#6e7681;margin-top:2px">📞 Call</div>
+      </div>
+    </a>
+    <a href="tel:5713604110" style="text-decoration:none">
+      <div style="background:#1c1f26;border-radius:14px;padding:1rem;text-align:center;border:1.5px solid rgba(255,255,255,.1)">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#D4537E,#993556);margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden"><img src="lily.jpg" onerror="this.parentNode.innerHTML='👧'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+        <div style="font-size:13px;font-weight:600;color:#fff">Lily</div>
+        <div style="font-size:10px;color:#6e7681;margin-top:2px">📞 Call</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="sec-label" style="color:#E74C3C;padding:0 0 .5rem">60-second body reset</div>
+  <div style="background:#1c1f26;border-radius:14px;padding:1.25rem;margin-bottom:1.5rem;border:1.5px solid #C0392B">
+    <div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:.75rem">🆘 Craving Emergency Protocol</div>
+    <div style="display:flex;flex-direction:column;gap:.4rem">
+      <div style="display:flex;align-items:center;gap:10px;padding:.5rem;background:rgba(255,255,255,.05);border-radius:8px">
+        <div style="width:26px;height:26px;border-radius:50%;background:#C0392B;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+        <div style="font-size:13px;color:#e6edf3"><b style="color:#E74C3C">0–20s:</b> Ear Shen Men — pinch upper hollow of both ears hard</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:.5rem;background:rgba(255,255,255,.05);border-radius:8px">
+        <div style="width:26px;height:26px;border-radius:50%;background:#C0392B;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+        <div style="font-size:13px;color:#e6edf3"><b style="color:#E74C3C">20–40s:</b> Craving Point — pinch the tragus (front ear flap) firmly</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;padding:.5rem;background:rgba(255,255,255,.05);border-radius:8px">
+        <div style="width:26px;height:26px;border-radius:50%;background:#C0392B;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+        <div style="font-size:13px;color:#e6edf3"><b style="color:#E74C3C">40–60s:</b> PC6 — press inner wrist between tendons, both sides</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label" style="color:#E74C3C;padding:0 0 .5rem">Ground yourself now</div>
+  <div style="background:#1c1f26;border-radius:14px;padding:1.25rem;margin-bottom:1rem;border:1.5px solid rgba(255,255,255,.1)">
+    <div style="font-size:13px;color:#b0b8c8;line-height:1.8">
+      <div>🦶 <b style="color:#1D9E75">KD1</b> — press your feet into the floor right now</div>
+      <div>👁️ <b style="color:#1D9E75">5 things</b> you can see — name them out loud</div>
+      <div>🌬️ <b style="color:#1D9E75">Exhale longer</b> than you inhale — exhale is safety</div>
+    </div>
+  </div>
+
+  <div style="background:#1c1f26;border-radius:14px;padding:1.25rem;margin-bottom:1rem;border:1.5px solid rgba(255,255,255,.08);text-align:center">
+    <div style="font-size:13px;color:#b0b8c8;line-height:1.7;font-style:italic" id="crisis-quote"></div>
+    <div style="font-size:11px;color:#6e7681;margin-top:.5rem" id="crisis-quote-src"></div>
+  </div>
+
+  <div style="background:#1c1f26;border-radius:14px;padding:1.25rem;border:1.5px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;cursor:pointer" onclick="closeCrisis();nav('sec-dance')">
+    <div>
+      <div style="font-size:14px;font-weight:500;color:#fff">💃 Emergency dance prescription</div>
+      <div style="font-size:12px;color:#6e7681;margin-top:2px">Cha Cha or Mambo — move the Liver Qi</div>
+    </div>
+    <div style="color:#1D9E75;font-size:18px">▸</div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+// ══════════════════════════════════════════════
+// CONSTANTS & DATA
+// ══════════════════════════════════════════════
+
+const START_DATE = new Date("2025-11-23T00:00:00");
+const DAYS = Math.floor((new Date() - START_DATE) / 86400000);
+
+const PLAYLISTS = {
+  chill:  "PLB3qQUxqNGYhQdAANbJEgUlOZaJ-6QDdg",
+  bolero: "PLB3qQUxqNGYgl7YckT7RJhOzspZvdBifm",
+  chacha: "PLB3qQUxqNGYgRf5Lc3wKiibZB8Vp8tfpI",
+  mambo:  "PLB3qQUxqNGYgsH7qeU1_7vlTRJM-OHRV0",
+  rumba:  "PLB3qQUxqNGYgVFPNvfmYq8M7_7o6F4tbZ",
+  swing:  "PLB3qQUxqNGYiMdPBN1IApxaghsV4rY8i4"
+};
+
+const MEDS = {
+  morning: [
+    {name:"Wellbutrin",dose:"150mg",note:"Mood anchor. CYP2B6 metabolism. Take with food."},
+    {name:"Lithium Carbonate",dose:"150mg",note:"Hydration critical. Check levels regularly."},
+    {name:"Methylphenidate ER",dose:"18mg",note:"ADHD executive function. Before 8am ideally."},
+    {name:"Tongkat Ali",dose:"1 cap",note:"Testosterone support."},
+    {name:"Vitamin D3/K2",dose:"1 cap",note:"Bone and immune support."},
+    {name:"BodyBio PC",dose:"1 cap",note:"Phospholipid liver support."},
+    {name:"TUDCA Plus",dose:"1 cap AM",note:"Liver bile acid support. ⚠️ Liver annotation."},
+    {name:"AugNAC",dose:"1 cap AM",note:"N-acetylcysteine + glycine. Glutathione support."},
+    {name:"Tadalafil",dose:"5mg",note:"Daily therapeutic dose. Morning recommended per Dr. Lawson."}
+  ],
+  afternoon: [
+    {name:"Methylphenidate",dose:"10mg",note:"Afternoon focus. Take BEFORE 3pm."}
+  ],
+  evening: [
+    {name:"Lithium Carbonate",dose:"150mg PM",note:"Evening dose. Hydrate."},
+    {name:"Risperidone",dose:"0.5mg",note:"Transitioning antipsychotic. 2hrs apart from FLORASSIST."},
+    {name:"TUDCA Plus",dose:"1 cap PM",note:"Evening liver support."},
+    {name:"AugNAC",dose:"1 cap PM",note:"Evening glutathione support."},
+    {name:"Advanced Milk Thistle",dose:"1 cap",note:"Phospholipid-bound silymarin. With food."},
+    {name:"FLORASSIST",dose:"1 cap",note:"Probiotic. With food. 2hrs apart from Risperidone."}
+  ],
+  timed: [
+    {name:"ALAmax CR",dose:"1 cap",note:"30 min BEFORE breakfast AND dinner. Alpha lipoic acid."}
+  ]
+};
+
+const CONTACTS = [
+  {name:"Mom",phone:"7032820961",emoji:"👩",color:"linear-gradient(135deg,#0F6E56,#1D9E75)"},
+  {name:"Tota",phone:"7032820342",emoji:"👵",color:"linear-gradient(135deg,#BA7517,#EF9F27)"},
+  {name:"Lily",phone:"5713604110",emoji:"👧",color:"linear-gradient(135deg,#D4537E,#993556)"}
+];
+
+const MILESTONES = [
+  {d:7,   l:"1 week",              dt:"Nov 30, 2025"},
+  {d:30,  l:"30 days",             dt:"Dec 23, 2025"},
+  {d:60,  l:"60 days",             dt:"Jan 22, 2026"},
+  {d:90,  l:"90 days",             dt:"Feb 20, 2026"},
+  {d:138, l:"Apr 10 — rough patch",dt:"Apr 10, 2026", slip:true},
+  {d:180, l:"6 months",            dt:"May 22, 2026"},
+  {d:365, l:"1 year",              dt:"Nov 23, 2026"},
+  {d:548, l:"18 months",           dt:"May 25, 2027"},
+  {d:730, l:"2 years",             dt:"Nov 23, 2027"},
+  {d:1461,l:"Graduation DAcHM",    dt:"Summer 2030"}
+];
+
+const FORMULAS = [
+  {name:"Ge Hua Jie Cheng Tang",use:"AUD — alcohol accumulation, damp-heat",herbs:"Ge Hua, Bai Dou Kou, Ze Xie, Zhu Ling, Cang Zhu, Fu Ling, Ren Shen, Bai Zhu, Shen Qu, Gan Jiang, Chen Pi, Mu Xiang, Qing Pi"},
+  {name:"Huang Lian Jie Du Tang",use:"AUD — heat toxin, agitation, liver fire",herbs:"Huang Lian, Huang Qin, Huang Bai, Zhi Zi"},
+  {name:"Long Dan Xie Gan Tang",use:"AUD — liver-gallbladder damp-heat, flank pain",herbs:"Long Dan Cao, Huang Qin, Zhi Zi, Ze Xie, Mu Tong, Che Qian Zi, Sheng Di, Dang Gui, Chai Hu, Gan Cao — MAX 10-14 days then 2-week break"},
+  {name:"Tian Wang Bu Xin Dan",use:"Bipolar II — Heart/Kidney yin deficiency, insomnia",herbs:"Sheng Di, Xuan Shen, Mai Men Dong, Tian Men Dong, Dan Shen, Dang Gui, Ren Shen, Fu Ling, Suan Zao Ren, Bai Zi Ren, Yuan Zhi, Wu Wei Zi, Jie Geng"},
+  {name:"Gan Mai Da Zao Tang",use:"Bipolar II — Restless organ disorder, emotional volatility",herbs:"Gan Cao, Xiao Mai, Da Zao"},
+  {name:"Gui Pi Tang",use:"Bipolar II depression — Heart/Spleen deficiency",herbs:"Ren Shen, Huang Qi, Bai Zhu, Fu Ling, Suan Zao Ren, Long Yan Rou, Mu Xiang, Dang Gui, Yuan Zhi, Gan Cao, Sheng Jiang, Da Zao"},
+  {name:"Kong Xian Dan",use:"ADHD — phlegm misting the Heart, poor focus",herbs:"Bai Fan, Zhu Sha (substitute: Chen Sha) — short-term only"},
+  {name:"Bu Zhong Yi Qi Tang",use:"Spleen Qi deficiency — fatigue, ADHD brain fog",herbs:"Huang Qi, Ren Shen, Bai Zhu, Zhi Gan Cao, Dang Gui, Chen Pi, Sheng Ma, Chai Hu — 4-6 week course given FIB-4"},
+  {name:"Chai Hu Shu Gan San",use:"Liver Qi stagnation — irritability, craving surge",herbs:"Chai Hu, Bai Shao, Zhi Ke, Chen Pi, Chuan Xiong, Xiang Fu, Zhi Gan Cao — 4-6 week course"},
+  {name:"Zhu Ling Tang",use:"Damp-heat in Bladder — edema, liver fluid retention",herbs:"Zhu Ling, Fu Ling, Ze Xie, E Jiao, Hua Shi"},
+  {name:"Gui Zhi Fu Ling Wan",use:"Blood stasis — portal hypertension, caution platelets 58",herbs:"Gui Zhi, Fu Ling, Mu Dan Pi, Chi Shao, Tao Ren — ⚠️ Blood-moving, use with caution"}
+];
+
+const TEAS = [
+  {name:"Gou Qi Zi (Wolfberry)",cat:"Liver/Kidney",prep:"10-15 berries, steep 5 min hot water",note:"Daily use ok. Nourishes Liver and Kidney Yin. Supports visual health."},
+  {name:"Ju Hua (Chrysanthemum)",cat:"Liver/Eyes",prep:"5-8 flowers, steep 3-5 min",note:"Clears Liver heat. Good for screen fatigue and hypomania edge."},
+  {name:"Pu Er Cha (Pu-erh Tea)",cat:"Spleen/Liver",prep:"3-5g, rinse first, steep 30 sec",note:"Moves Liver Qi, transforms damp. Morning use. Caffeine present."},
+  {name:"He Huan Hua (Mimosa Flower)",cat:"Heart/Liver",prep:"3-6g, steep 5 min",note:"Calms the Shen. Good for anxiety and insomnia edge."},
+  {name:"Bai He (Lily Bulb)",cat:"Lung/Heart",prep:"15-30g, simmer 20 min",note:"Clears Lung heat, nourishes Heart Yin. Grief and sadness."},
+  {name:"Wu Wei Zi (Schisandra)",cat:"Liver/Kidney",prep:"6-9g, steep 10 min",note:"3x/week MAX. CYP3A4 interaction — caution with Risperidone and Tadalafil."},
+  {name:"Gan Cao (Licorice root)",cat:"Spleen/All channels",prep:"3-6g, steep 5 min",note:"2-3x/week MAX with Lithium. Harmonizes formulas."},
+  {name:"Dan Shen (Salvia root)",cat:"Heart/Liver",prep:"9-15g, steep 10 min",note:"Moves Blood, calms Shen. Good for Heart palpitations."}
+];
+
+const HANGUL_DATA = {
+  consonants: [
+    {char:"ㄱ",rom:"g/k",name:"Giyeok"},
+    {char:"ㄴ",rom:"n",name:"Nieun"},
+    {char:"ㄷ",rom:"d/t",name:"Digeut"},
+    {char:"ㄹ",rom:"r/l",name:"Rieul"},
+    {char:"ㅁ",rom:"m",name:"Mieum"},
+    {char:"ㅂ",rom:"b/p",name:"Bieup"},
+    {char:"ㅅ",rom:"s",name:"Siot"},
+    {char:"ㅇ",rom:"silent/ng",name:"Ieung"},
+    {char:"ㅈ",rom:"j",name:"Jieut"},
+    {char:"ㅊ",rom:"ch",name:"Chieut"},
+    {char:"ㅋ",rom:"k",name:"Kieuk"},
+    {char:"ㅌ",rom:"t",name:"Tieut"},
+    {char:"ㅍ",rom:"p",name:"Pieup"},
+    {char:"ㅎ",rom:"h",name:"Hieut"}
+  ],
+  vowels: [
+    {char:"ㅏ",rom:"a",name:"A — as in 'father'"},
+    {char:"ㅑ",rom:"ya",name:"Ya"},
+    {char:"ㅓ",rom:"eo",name:"Eo — as in 'ugh'"},
+    {char:"ㅕ",rom:"yeo",name:"Yeo"},
+    {char:"ㅗ",rom:"o",name:"O — as in 'go'"},
+    {char:"ㅛ",rom:"yo",name:"Yo"},
+    {char:"ㅜ",rom:"u",name:"U — as in 'you'"},
+    {char:"ㅠ",rom:"yu",name:"Yu"},
+    {char:"ㅡ",rom:"eu",name:"Eu — as in 'uh'"},
+    {char:"ㅣ",rom:"i",name:"I — as in 'see'"}
+  ],
+  phrases: [
+    {kor:"안녕하세요",rom:"Annyeonghaseyo",eng:"Hello (formal)"},
+    {kor:"감사합니다",rom:"Gamsahamnida",eng:"Thank you (formal)"},
+    {kor:"괜찮아요",rom:"Gwaenchanayo",eng:"I am okay"},
+    {kor:"오늘 기분이 어때요?",rom:"Oneul kibuni eottaeyo?",eng:"How are you feeling today?"},
+    {kor:"어디가 아프세요?",rom:"Eodiga apeusayo?",eng:"Where does it hurt?"},
+    {kor:"같이 춰요!",rom:"Gachi chwoyo!",eng:"Let's dance!"},
+    {kor:"복습해야 해요",rom:"Bokseupaeya haeyo",eng:"I need to review"},
+    {kor:"저는 소주 안 마셔요",rom:"Jeoneun soju an masyeoyo",eng:"I don't drink soju"},
+    {kor:"침술을 공부해요",rom:"Chimsureul gongbuhaeyo",eng:"I study acupuncture"},
+    {kor:"매일 연습해요",rom:"Maeil yeonseupaeyo",eng:"I practice every day"},
+    {kor:"천천히 말해 주세요",rom:"Cheoncheonhi malhae juseyo",eng:"Please speak slowly"},
+    {kor:"다시 한번 말해 주세요",rom:"Dasi hanbon malhae juseyo",eng:"Please say that again"}
+  ]
+};
+
+const CRISIS_QUOTES = [
+  {q:"To the mind that is still, the whole universe surrenders.", s:"Lao Tzu"},
+  {q:"The obstacle is the path.", s:"Zen Proverb"},
+  {q:"Knowing others is intelligence. Knowing yourself is true wisdom.", s:"Tao Te Ching"},
+  {q:"I wanted to drink. I wanted to not drink. The not-drink side won tonight.", s:"Matthew Perry"},
+  {q:"Fall seven times, stand up eight.", s:"Japanese Proverb"},
+  {q:"Water is fluid, soft, and yielding. But water will wear away rock.", s:"Lao Tzu"}
+];
+
+// ══════════════════════════════════════════════
+// THEME
+// ══════════════════════════════════════════════
+
+function getSunTimes() {
+  var month = new Date().getMonth();
+  var times = [
+    {rise:7,set:17},{rise:7,set:18},{rise:7,set:19},{rise:6,set:20},
+    {rise:6,set:20},{rise:6,set:21},{rise:6,set:21},{rise:6,set:20},
+    {rise:7,set:19},{rise:7,set:18},{rise:7,set:17},{rise:7,set:17}
+  ];
+  return times[month];
+}
+
+function applyTheme(mode) {
+  document.documentElement.setAttribute("data-theme", mode);
+  var btn = document.getElementById("theme-btn");
+  if (btn) btn.textContent = mode === "dark" ? "☀️" : "🌙";
+  localStorage.setItem("theme-current", mode);
+}
+
+function toggleTheme() {
+  var current = document.documentElement.getAttribute("data-theme");
+  var next = current === "dark" ? "light" : "dark";
+  localStorage.setItem("theme-override", next);
+  localStorage.setItem("theme-override-time", Date.now().toString());
+  applyTheme(next);
+}
+
+function autoTheme() {
+  var hour = new Date().getHours() + new Date().getMinutes() / 60;
+  var times = getSunTimes();
+  var isDark = hour < times.rise || hour >= times.set;
+  var override = localStorage.getItem("theme-override");
+  var overrideTime = parseInt(localStorage.getItem("theme-override-time") || "0");
+  var overrideValid = override && (Date.now() - overrideTime < 30 * 60 * 1000);
+  if (hour >= 21 || hour < 7) {
+    localStorage.removeItem("theme-override");
+    localStorage.removeItem("theme-override-time");
+    applyTheme("dark");
+  } else if (overrideValid) {
+    applyTheme(override);
+  } else {
+    applyTheme(isDark ? "dark" : "light");
+  }
+}
+
+// ══════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════
+
+var currentSection = "sec-checkin";
+
+function nav(id) {
+  var sections = document.querySelectorAll("#main-content > div");
+  sections.forEach(function(s) { s.style.display = "none"; });
+  var target = document.getElementById(id);
+  if (target) { target.style.display = "block"; }
+  currentSection = id;
+  var pills = document.querySelectorAll(".pill");
+  pills.forEach(function(p) {
+    p.classList.remove("active");
+    if (p.getAttribute("onclick") && p.getAttribute("onclick").indexOf(id) !== -1) {
+      p.classList.add("active");
+    }
+  });
+  window.scrollTo(0, 0);
+}
+
+// ══════════════════════════════════════════════
+// CRISIS MODAL
+// ══════════════════════════════════════════════
+
+function openCrisis() {
+  var modal = document.getElementById("crisis-modal");
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden";
+  var daysEl = document.getElementById("crisis-days-text");
+  if (daysEl) daysEl.textContent = DAYS + " days. This feeling is temporary. It will pass.";
+  var q = CRISIS_QUOTES[Math.floor(Math.random() * CRISIS_QUOTES.length)];
+  var qEl = document.getElementById("crisis-quote");
+  var sEl = document.getElementById("crisis-quote-src");
+  if (qEl) qEl.textContent = "\u201c" + q.q + "\u201d";
+  if (sEl) sEl.textContent = "\u2014 " + q.s;
+}
+
+function closeCrisis() {
+  document.getElementById("crisis-modal").style.display = "none";
+  document.body.style.overflow = "";
+}
+
+// ══════════════════════════════════════════════
+// SOBRIETY COUNTER
+// ══════════════════════════════════════════════
+
+function initCounter() {
+  var el = document.getElementById("dayNum");
+  if (el) el.innerHTML = DAYS + "<span class=\"hero-unit\"> days</span>";
+  var wk = document.getElementById("wkNum");
+  if (wk) wk.textContent = Math.floor(DAYS / 7);
+  var mo = document.getElementById("moNum");
+  if (mo) mo.textContent = Math.floor(DAYS / 30);
+  var pct = Math.min(100, Math.round((DAYS / 180) * 100));
+  var bar = document.getElementById("liverBar");
+  if (bar) bar.style.width = pct + "%";
+  var note = document.getElementById("liverNote");
+  if (note) note.textContent = pct + "% toward 180-day liver recovery milestone \u00b7 LR3 daily helps";
+  var milestones = [180, 365, 548, 730, 1461];
+  var next = milestones.find(function(m) { return m > DAYS; });
+  var nxtEl = document.getElementById("nxtNum");
+  var nxtLbl = document.getElementById("nxtLbl");
+  if (nxtEl && next) nxtEl.textContent = next - DAYS;
+  if (nxtLbl && next) nxtLbl.textContent = "days to next milestone";
+}
+
+// ══════════════════════════════════════════════
+// CHECK-IN CHIPS
+// ══════════════════════════════════════════════
+
+function makeChips(containerId, options) {
+  var container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = options.map(function(o) {
+    return "<button class=\"chip\" onclick=\"toggleChip(this)\">" + o + "</button>";
+  }).join("");
+}
+
+function toggleChip(el) {
+  var wrap = el.parentElement;
+  wrap.querySelectorAll(".chip").forEach(function(c) { c.classList.remove("sel"); });
+  el.classList.add("sel");
+}
+
+function initCheckin() {
+  makeChips("chips-sleep", ["Rested", "OK", "Poor", "No sleep"]);
+  makeChips("chips-energy", ["Strong", "Flat", "Depleted", "Restless"]);
+  makeChips("chips-mood-pole", ["Stable", "Elevated", "Low", "Mixed", "Anxious"]);
+
+  var elements = [
+    {emoji:"🌿",name:"Wood",organ:"Liver",emotion:"Anger",color:"#0F6E56"},
+    {emoji:"🔥",name:"Fire",organ:"Heart",emotion:"Joy/Mania",color:"#C0392B"},
+    {emoji:"🟤",name:"Earth",organ:"Spleen",emotion:"Worry",color:"#BA7517"},
+    {emoji:"⚙️",name:"Metal",organ:"Lung",emotion:"Grief",color:"#7a8499"},
+    {emoji:"💧",name:"Water",organ:"Kidney",emotion:"Fear",color:"#2471A3"}
+  ];
+
+  var grid = document.getElementById("five-elements");
+  if (grid) {
+    grid.innerHTML = elements.map(function(e) {
+      return "<div class=\"halt-btn\" onclick=\"selectElement(this,'" + e.name + "')\">" +
+        "<div class=\"halt-emoji\">" + e.emoji + "</div>" +
+        "<div class=\"halt-title\" style=\"color:" + e.color + "\">" + e.name + "</div>" +
+        "<div class=\"halt-sub\">" + e.organ + " \u00b7 " + e.emotion + "</div>" +
+        "</div>";
+    }).join("");
+  }
+
+  var protocols = [
+    {title:"Alcohol craving",sub:"The familiar pull",color:"#C0392B",bg:"#2a1510",
+     protocol:"Ear Shen Men \u2192 Craving Point \u2192 PC6 \u2192 starts immediately"},
+    {title:"I feel hypomanic",sub:"Too fast, too much",color:"#7F77DD",bg:"#181620",
+     protocol:"HT7 \u2192 KD1 into the floor \u2192 Waltz breath (1-2-3)"},
+    {title:"Spiraling / dissociating",sub:"Not here",color:"#2471A3",bg:"#0e1a26",
+     protocol:"KD1 feet on floor \u2192 Ear Shen Men \u2192 name 5 things you can see"},
+    {title:"Anger building",sub:"Liver Qi stagnant",color:"#0F6E56",bg:"#111a0d",
+     protocol:"LR3 + LI4 Four Gates \u2192 Cha Cha chass\u00e9 \u2192 breathe out longer than in"},
+    {title:"3am / can't sleep",sub:"Existential pull",color:"#BA7517",bg:"#261d0a",
+     protocol:"KD6 \u2192 HT7 \u2192 Ear Shen Men \u2192 you do not have to decide anything right now"}
+  ];
+
+  var cpEl = document.getElementById("craving-protocols");
+  if (cpEl) {
+    cpEl.innerHTML = protocols.map(function(p) {
+      return "<div style=\"background:" + p.bg + ";border:1.5px solid " + p.color + "33;border-radius:12px;padding:1rem;margin-bottom:.5rem;cursor:pointer\" onclick=\"showProtocol('" + p.protocol.replace(/'/g, "\\'") + "')\">" +
+        "<div style=\"font-size:14px;font-weight:600;color:" + p.color + "\">" + p.title + "</div>" +
+        "<div style=\"font-size:12px;color:var(--text3);margin-top:2px\">" + p.sub + "</div>" +
+        "</div>";
+    }).join("");
+  }
+}
+
+function selectElement(el, name) {
+  document.querySelectorAll("#five-elements .halt-btn").forEach(function(b) {
+    b.style.borderColor = "";
+  });
+  el.style.borderColor = "var(--green)";
+}
+
+function showProtocol(text) {
+  alert(text);
+}
+
+// ══════════════════════════════════════════════
+// NOW PROTOCOLS
+// ══════════════════════════════════════════════
+
+function initNow() {
+  var protocols = [
+    {title:"I have a craving right now",sub:"Ear Shen Men \u2192 Craving point \u2192 PC6 \u2014 starts immediately",color:"#C0392B",bg:"#2a1510"},
+    {title:"I feel hypomanic or too fast",sub:"HT7 \u2192 KD1 into the floor \u2192 Waltz breath",color:"#7F77DD",bg:"#181620"},
+    {title:"I am spiraling or dissociating",sub:"KD1 feet on floor \u2192 Ear Shen Men \u2192 name 5 things you can see",color:"#2471A3",bg:"#0e1a26"},
+    {title:"I am angry and it is building",sub:"LR3 + LI4 Four Gates \u2192 Cha Cha chass\u00e9 \u2192 breathe out longer than in",color:"#0F6E56",bg:"#111a0d"},
+    {title:"3am / can't sleep / existential pull",sub:"KD6 \u2192 HT7 \u2192 Ear Shen Men \u2192 you do not have to decide anything right now",color:"#BA7517",bg:"#261d0a"}
+  ];
+
+  var el = document.getElementById("now-protocols");
+  if (el) {
+    el.innerHTML = protocols.map(function(p) {
+      return "<div style=\"background:" + p.bg + ";border:1.5px solid " + p.color + "55;border-radius:12px;padding:1rem;margin-bottom:.5rem\">" +
+        "<div style=\"font-size:14px;font-weight:600;color:" + p.color + "\">" + p.title + "</div>" +
+        "<div style=\"font-size:12px;color:var(--text3);margin-top:4px;line-height:1.5\">" + p.sub + "</div>" +
+        "</div>";
+    }).join("");
+  }
+}
+
+// ══════════════════════════════════════════════
+// CONTACTS
+// ══════════════════════════════════════════════
+
+function initContacts() {
+  var el = document.getElementById("contact-cards");
+  if (!el) return;
+  el.innerHTML = CONTACTS.map(function(c) {
+    return "<a href=\"tel:" + c.phone + "\" style=\"text-decoration:none;display:block;margin-bottom:.75rem\">" +
+      "<div class=\"card\" style=\"display:flex;align-items:center;gap:1rem;padding:1rem\">" +
+      "<div style=\"width:56px;height:56px;border-radius:50%;background:" + c.color + ";display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden;flex-shrink:0\"><img src=\"" + c.name.toLowerCase() + ".jpg\" onerror=\"this.parentNode.innerHTML='" + c.emoji + "'\" style=\"width:100%;height:100%;object-fit:cover;border-radius:50%\"></div>" +
+      "<div><div style=\"font-size:16px;font-weight:600;color:var(--text)\">" + c.name + "</div><div style=\"font-size:13px;color:var(--green)\">📞 Tap to call</div></div>" +
+      "</div></a>";
+  }).join("");
+}
+
+// ══════════════════════════════════════════════
+// MEDS
+// ══════════════════════════════════════════════
+
+function initMeds() {
+  function renderMeds(containerId, meds) {
+    var el = document.getElementById(containerId);
+    if (!el) return;
+    var saved = JSON.parse(localStorage.getItem("meds-checked") || "{}");
+    el.innerHTML = meds.map(function(m, i) {
+      var key = containerId + "-" + i;
+      var checked = saved[key];
+      return "<div class=\"card\" style=\"display:flex;gap:.75rem;align-items:flex-start;padding:.9rem\">" +
+        "<input type=\"checkbox\" " + (checked ? "checked" : "") + " onchange=\"saveMed('" + key + "',this.checked)\" style=\"margin-top:2px;width:18px;height:18px;accent-color:var(--green);flex-shrink:0\">" +
+        "<div><div style=\"font-size:14px;font-weight:600;color:var(--text)\">" + m.name + " <span style=\"font-weight:400;color:var(--text3)\">" + m.dose + "</span></div>" +
+        "<div style=\"font-size:12px;color:var(--text3);margin-top:2px\">" + m.note + "</div></div>" +
+        "</div>";
+    }).join("");
+  }
+  renderMeds("meds-morning", MEDS.morning);
+  renderMeds("meds-afternoon", MEDS.afternoon);
+  renderMeds("meds-evening", MEDS.evening);
+  renderMeds("meds-timed", MEDS.timed);
+}
+
+function saveMed(key, val) {
+  var saved = JSON.parse(localStorage.getItem("meds-checked") || "{}");
+  saved[key] = val;
+  localStorage.setItem("meds-checked", JSON.stringify(saved));
+}
+
+function resetMeds() {
+  localStorage.removeItem("meds-checked");
+  initMeds();
+}
+
+// ══════════════════════════════════════════════
+// HALT
+// ══════════════════════════════════════════════
+
+function initHalt() {
+  var halts = [
+    {emoji:"🍽️",title:"Hungry",sub:"Spleen / Stomach pattern",
+     detail:"Low blood sugar triggers Spleen Qi deficiency patterns. ST36 (4 finger-widths below kneecap) activates digestive Qi. Eat something small — warm, cooked, easily digestible. Avoid cold/raw foods."},
+    {emoji:"🔥",title:"Angry",sub:"Liver Qi stagnant",
+     detail:"Liver Qi stagnation — the most common AUD trigger. LR3 + LI4 Four Gates to move the Qi. Cha Cha or Mambo prescription. Exhale longer than inhale — 1 count in, 2 counts out."},
+    {emoji:"💙",title:"Lonely",sub:"Heart / Lung pattern",
+     detail:"Heart Qi deficiency — connection is medicine. HT7 on wrist crease, pinky side. Call Mom, Tota, or Lily. PC6 to settle the Heart Protector. The Shen needs another Shen."},
+    {emoji:"😴",title:"Tired",sub:"Kidney Qi depleted",
+     detail:"Kidney Yin/Yang deficiency — the root. KD1 (ball of foot) pressed into the ground. KD6 below inner ankle for Yin nourishment. Rest is not weakness — it is Kidney restoration."}
+  ];
+
+  var grid = document.getElementById("halt-grid");
+  if (!grid) return;
+  grid.innerHTML = halts.map(function(h, i) {
+    return "<div class=\"halt-btn\" onclick=\"showHalt(" + i + ")\">" +
+      "<div class=\"halt-emoji\">" + h.emoji + "</div>" +
+      "<div class=\"halt-title\">" + h.title + "</div>" +
+      "<div class=\"halt-sub\">" + h.sub + "</div>" +
+      "</div>";
+  }).join("");
+  window._halts = halts;
+}
+
+function showHalt(i) {
+  var detail = document.getElementById("halt-detail");
+  if (!detail || !window._halts) return;
+  var h = window._halts[i];
+  detail.innerHTML = "<div class=\"det-card\">" + h.detail + "</div>";
+}
+
+// ══════════════════════════════════════════════
+// MILESTONES
+// ══════════════════════════════════════════════
+
+function initMilestones() {
+  var list = document.getElementById("ms-list");
+  if (!list) return;
+  list.innerHTML = MILESTONES.map(function(m) {
+    var done = DAYS >= m.d;
+    var bg = m.slip ? "#2a1a05" : done ? "var(--green-light)" : "var(--card)";
+    var borderColor = m.slip ? "#BA7517" : done ? "var(--green)" : "var(--border)";
+    var iconBg = m.slip ? "#BA7517" : done ? "var(--green)" : "var(--bg3)";
+    var iconColor = (done || m.slip) ? "#fff" : "var(--sec)";
+    var icon = m.slip ? "\u26A1" : done ? "\u2713" : "\u25CB";
+    var textColor = m.slip ? "#F0A500" : "var(--text)";
+    return "<div style=\"display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;background:" + bg + ";border:1px solid " + borderColor + "\">" +
+      "<div style=\"width:24px;height:24px;border-radius:50%;background:" + iconBg + ";color:" + iconColor + ";display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0\">" + icon + "</div>" +
+      "<div style=\"flex:1;font-size:13px;font-weight:500;color:" + textColor + "\">" + m.l + "</div>" +
+      "<div style=\"font-size:11px;color:var(--sec);flex-shrink:0\">" + (m.dt || "") + "</div>" +
+      "</div>";
+  }).join("");
+}
+
+// ══════════════════════════════════════════════
+// MUSIC PLAYER
+// ══════════════════════════════════════════════
+
+function initMusic() {
+  var tabs = [
+    {id:"chill",label:"🎵 Chill"},
+    {id:"chacha",label:"💃 Cha Cha"},
+    {id:"rumba",label:"🌹 Rumba"},
+    {id:"mambo",label:"🔥 Mambo"},
+    {id:"bolero",label:"🎭 Bolero"},
+    {id:"swing",label:"⚡ E.C. Swing"}
+  ];
+
+  var tabsEl = document.getElementById("music-tabs");
+  if (tabsEl) {
+    tabsEl.innerHTML = tabs.map(function(t) {
+      return "<button class=\"music-tab\" onclick=\"playPlaylist('" + t.id + "',this)\">" + t.label + "</button>";
+    }).join("");
+  }
+  playPlaylist("chill", tabsEl ? tabsEl.querySelector(".music-tab") : null);
+}
+
+function playPlaylist(id, btn) {
+  document.querySelectorAll(".music-tab").forEach(function(t) { t.classList.remove("active"); });
+  if (btn) btn.classList.add("active");
+  var player = document.getElementById("music-player");
+  if (!player) return;
+  var listId = PLAYLISTS[id];
+  player.innerHTML = "<div class=\"music-frame\"><iframe width=\"100%\" height=\"300\" src=\"https://www.youtube.com/embed/videoseries?list=" + listId + "&autoplay=1\" frameborder=\"0\" allow=\"autoplay;encrypted-media\" allowfullscreen></iframe></div>";
+}
+
+// ══════════════════════════════════════════════
+// HANGUL PRACTICE
+// ══════════════════════════════════════════════
+
+var hangulState = {
+  cat: "consonants",
+  idx: 0,
+  drawing: false,
+  lastX: 0,
+  lastY: 0
+};
+
+function initHangul() {
+  var cats = document.getElementById("hangul-cats");
+  if (cats) {
+    cats.innerHTML = [
+      {id:"consonants",label:"자음 Consonants"},
+      {id:"vowels",label:"모음 Vowels"},
+      {id:"phrases",label:"문장 Phrases"}
+    ].map(function(c) {
+      return "<button class=\"hangul-btn" + (c.id === "consonants" ? " primary" : "") + "\" onclick=\"setHangulCat('" + c.id + "',this)\">" + c.label + "</button>";
+    }).join("");
+  }
+  showHangulChar();
+  initCanvas();
+  showPhrases();
+}
+
+function setHangulCat(cat, btn) {
+  hangulState.cat = cat;
+  hangulState.idx = 0;
+  document.querySelectorAll(".hangul-cats .hangul-btn").forEach(function(b) { b.classList.remove("primary"); });
+  if (btn) btn.classList.add("primary");
+  showHangulChar();
+  clearCanvas();
+  var phraseArea = document.getElementById("phrase-area");
+  if (phraseArea) phraseArea.style.display = cat === "phrases" ? "block" : "none";
+}
+
+function showHangulChar() {
+  var cat = hangulState.cat;
+  if (cat === "phrases") return;
+  var data = HANGUL_DATA[cat];
+  var item = data[hangulState.idx];
+  if (!item) return;
+  var charEl = document.getElementById("hangul-char");
+  var romEl = document.getElementById("hangul-rom");
+  var nameEl = document.getElementById("hangul-name");
+  if (charEl) charEl.textContent = item.char;
+  if (romEl) romEl.textContent = item.rom;
+  if (nameEl) nameEl.textContent = item.name + " (" + (hangulState.idx + 1) + "/" + data.length + ")";
+}
+
+function nextChar() {
+  var cat = hangulState.cat;
+  if (cat === "phrases") return;
+  var data = HANGUL_DATA[cat];
+  hangulState.idx = (hangulState.idx + 1) % data.length;
+  showHangulChar();
+  clearCanvas();
+}
+
+function prevChar() {
+  var cat = hangulState.cat;
+  if (cat === "phrases") return;
+  var data = HANGUL_DATA[cat];
+  hangulState.idx = (hangulState.idx - 1 + data.length) % data.length;
+  showHangulChar();
+  clearCanvas();
+}
+
+function showPhrases() {
+  var phraseArea = document.getElementById("phrase-area");
+  if (!phraseArea) return;
+  phraseArea.style.display = "none";
+  phraseArea.innerHTML = HANGUL_DATA.phrases.map(function(p, i) {
+    return "<div class=\"card\" style=\"margin-bottom:.5rem\">" +
+      "<div style=\"font-size:22px;font-weight:300;color:var(--text);margin-bottom:.3rem\">" + p.kor + "</div>" +
+      "<div style=\"font-size:13px;color:var(--green);margin-bottom:.2rem\">" + p.rom + "</div>" +
+      "<div style=\"font-size:12px;color:var(--text3);margin-bottom:.5rem\">" + p.eng + "</div>" +
+      "<canvas id=\"phrase-canvas-" + i + "\" style=\"border:1px solid var(--border);border-radius:8px;width:100%;height:80px;touch-action:none;display:block\" height=\"80\"></canvas>" +
+      "<button onclick=\"clearPhraseCanvas(" + i + ")\" style=\"font-size:11px;color:var(--sec);background:none;border:none;cursor:pointer;margin-top:.3rem;font-family:inherit\">Clear</button>" +
+      "</div>";
+  }).join("");
+  HANGUL_DATA.phrases.forEach(function(p, i) { initPhraseCanvas(i); });
+}
+
+function initCanvas() {
+  var canvas = document.getElementById("hangul-canvas");
+  if (!canvas) return;
+  var ctx = canvas.getContext("2d");
+  canvas.width = canvas.offsetWidth || 300;
+
+  function getPos(e) {
+    var rect = canvas.getBoundingClientRect();
+    var src = e.touches ? e.touches[0] : e;
+    return {x: (src.clientX - rect.left) * (canvas.width / rect.width),
+            y: (src.clientY - rect.top) * (canvas.height / rect.height)};
+  }
+
+  function startDraw(e) {
+    e.preventDefault();
+    hangulState.drawing = true;
+    var pos = getPos(e);
+    hangulState.lastX = pos.x;
+    hangulState.lastY = pos.y;
+  }
+  function draw(e) {
+    e.preventDefault();
+    if (!hangulState.drawing) return;
+    var pos = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(hangulState.lastX, hangulState.lastY);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.strokeStyle = document.documentElement.getAttribute("data-theme") === "dark" ? "#e8eaf0" : "#1a1a1a";
+    ctx.lineWidth = 3;
+    ctx.lineCap = "round";
+    ctx.stroke();
+    hangulState.lastX = pos.x;
+    hangulState.lastY = pos.y;
+  }
+  function stopDraw() { hangulState.drawing = false; }
+
+  canvas.addEventListener("mousedown", startDraw);
+  canvas.addEventListener("mousemove", draw);
+  canvas.addEventListener("mouseup", stopDraw);
+  canvas.addEventListener("touchstart", startDraw, {passive:false});
+  canvas.addEventListener("touchmove", draw, {passive:false});
+  canvas.addEventListener("touchend", stopDraw);
+}
+
+function clearCanvas() {
+  var canvas = document.getElementById("hangul-canvas");
+  if (!canvas) return;
+  canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function initPhraseCanvas(i) {
+  var canvas = document.getElementById("phrase-canvas-" + i);
+  if (!canvas) return;
+  canvas.width = canvas.offsetWidth || 300;
+  var ctx = canvas.getContext("2d");
+  var drawing = false, lastX = 0, lastY = 0;
+
+  function getPos(e) {
+    var rect = canvas.getBoundingClientRect();
+    var src = e.touches ? e.touches[0] : e;
+    return {x:(src.clientX-rect.left)*(canvas.width/rect.width), y:(src.clientY-rect.top)*(canvas.height/rect.height)};
+  }
+  canvas.addEventListener("mousedown", function(e) { drawing=true; var p=getPos(e); lastX=p.x; lastY=p.y; });
+  canvas.addEventListener("mousemove", function(e) {
+    if(!drawing) return;
+    var p=getPos(e);
+    ctx.beginPath(); ctx.moveTo(lastX,lastY); ctx.lineTo(p.x,p.y);
+    ctx.strokeStyle=document.documentElement.getAttribute("data-theme")==="dark"?"#e8eaf0":"#1a1a1a";
+    ctx.lineWidth=2; ctx.lineCap="round"; ctx.stroke();
+    lastX=p.x; lastY=p.y;
+  });
+  canvas.addEventListener("mouseup", function() { drawing=false; });
+  canvas.addEventListener("touchstart", function(e) { e.preventDefault(); drawing=true; var p=getPos(e); lastX=p.x; lastY=p.y; }, {passive:false});
+  canvas.addEventListener("touchmove", function(e) {
+    e.preventDefault(); if(!drawing) return;
+    var p=getPos(e);
+    ctx.beginPath(); ctx.moveTo(lastX,lastY); ctx.lineTo(p.x,p.y);
+    ctx.strokeStyle=document.documentElement.getAttribute("data-theme")==="dark"?"#e8eaf0":"#1a1a1a";
+    ctx.lineWidth=2; ctx.lineCap="round"; ctx.stroke();
+    lastX=p.x; lastY=p.y;
+  }, {passive:false});
+  canvas.addEventListener("touchend", function() { drawing=false; });
+}
+
+function clearPhraseCanvas(i) {
+  var canvas = document.getElementById("phrase-canvas-" + i);
+  if (canvas) canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+}
+
+// ══════════════════════════════════════════════
+// JOURNAL & WINS
+// ══════════════════════════════════════════════
+
+function addJournal() {
+  var input = document.getElementById("journal-input");
+  if (!input || !input.value.trim()) return;
+  var entries = JSON.parse(localStorage.getItem("journal") || "[]");
+  entries.unshift({text:input.value.trim(), date:new Date().toLocaleString()});
+  localStorage.setItem("journal", JSON.stringify(entries));
+  input.value = "";
+  renderJournal();
+}
+
+function renderJournal() {
+  var list = document.getElementById("journal-list");
+  if (!list) return;
+  var entries = JSON.parse(localStorage.getItem("journal") || "[]");
+  list.innerHTML = entries.slice(0, 20).map(function(e) {
+    return "<div class=\"je\"><div class=\"je-date\">" + e.date + "</div><div class=\"je-text\">" + e.text + "</div></div>";
+  }).join("") || "<div style=\"font-size:13px;color:var(--sec)\">No entries yet.</div>";
+}
+
+function addWin() {
+  var input = document.getElementById("win-input");
+  if (!input || !input.value.trim()) return;
+  var wins = JSON.parse(localStorage.getItem("wins") || "[]");
+  wins.unshift({text:input.value.trim(), date:new Date().toLocaleString()});
+  localStorage.setItem("wins", JSON.stringify(wins));
+  input.value = "";
+  renderWins();
+}
+
+function renderWins() {
+  var list = document.getElementById("wins-list");
+  if (!list) return;
+  var wins = JSON.parse(localStorage.getItem("wins") || "[]");
+  list.innerHTML = wins.slice(0, 20).map(function(w) {
+    return "<div class=\"je\"><div class=\"je-date\">" + w.date + "</div><div class=\"je-text\">\u2b50 " + w.text + "</div></div>";
+  }).join("") || "<div style=\"font-size:13px;color:var(--sec)\">No wins logged yet. You did something well today.</div>";
+}
+
+// ══════════════════════════════════════════════
+// BACKUP
+// ══════════════════════════════════════════════
+
+function exportData() {
+  var data = {
+    exported: new Date().toISOString(),
+    journal: JSON.parse(localStorage.getItem("journal") || "[]"),
+    wins: JSON.parse(localStorage.getItem("wins") || "[]"),
+    sleep: JSON.parse(localStorage.getItem("sleep-log") || "[]"),
+    meds: JSON.parse(localStorage.getItem("meds-checked") || "{}"),
+    labs: JSON.parse(localStorage.getItem("lab-results") || "[]")
+  };
+  var blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "wellness-backup-" + new Date().toISOString().slice(0,10) + ".json";
+  a.click();
+}
+
+function importData(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      var data = JSON.parse(ev.target.result);
+      if (data.journal) localStorage.setItem("journal", JSON.stringify(data.journal));
+      if (data.wins) localStorage.setItem("wins", JSON.stringify(data.wins));
+      if (data.sleep) localStorage.setItem("sleep-log", JSON.stringify(data.sleep));
+      if (data.meds) localStorage.setItem("meds-checked", JSON.stringify(data.meds));
+      if (data.labs) localStorage.setItem("lab-results", JSON.stringify(data.labs));
+      alert("Backup restored successfully.");
+    } catch(err) {
+      alert("Error reading backup file.");
+    }
+  };
+  reader.readAsText(file);
+}
+
+// ══════════════════════════════════════════════
+// MORNING RITUAL
+// ══════════════════════════════════════════════
+
+var MORNING_STEPS = [
+  {min:2,title:"ST36 — wake up the Spleen",icon:"🌅",
+   where:"4 finger-widths below kneecap \u00b7 1 finger outside shin bone \u00b7 both legs",
+   text:"Still lying down. Find ST36 — 4 fingers below your kneecap, one finger-width outside the shin bone. Press firmly both sides. This tonifies Spleen Qi, counters ADHD morning fog, and tells your body it is time to wake up."},
+  {min:2,title:"PC6 — set the Heart Protector",icon:"\uD83E\uDEC0",
+   where:"3 finger-widths above wrist crease \u00b7 between the two tendons \u00b7 inner forearm",
+   text:"Before you check your phone. PC6 is 3 finger-widths above your wrist crease, between the two tendons you can feel on your inner forearm. Press firmly. This is your Pericardium. Set it before the world gets in."},
+  {min:2,title:"LR3 + LI4 — Four Gates",icon:"\uD83C\uDF3F",
+   where:"LR3: top of foot groove big/2nd toe \u00b7 LI4: web between thumb and index finger",
+   text:"Both points simultaneously if possible. LR3 on the foot and LI4 on the hand — together these are the Four Gates. They move stagnant Qi from overnight and set the channel tone for the whole day."},
+  {min:2,title:"Conscious intention",icon:"\u2600\uFE0F",
+   where:"Eyes open \u00b7 one breath \u00b7 one choice \u00b7 before you reach for your phone",
+   text:"One full breath before you choose your first action of the day. Today is day " + DAYS + ". You chose yesterday. You are choosing today."},
+  {min:1,title:"Morning med check-in",icon:"\uD83D\uDC8A",
+   where:"Take your morning meds NOW before standing up",
+   text:"Wellbutrin 150mg \u00b7 Lithium 150mg \u00b7 Methylphenidate ER 18mg \u00b7 Tongkat Ali \u00b7 D3/K2 \u00b7 BodyBio PC \u00b7 TUDCA AM \u00b7 AugNAC AM \u00b7 Tadalafil 5mg. Set ALAmax CR timer for 30 min before breakfast."}
+];
+
+var morningIdx = 0;
+var morningTimer = null;
+var morningSeconds = 0;
+
+function initMorningPreview() {
+  var el = document.getElementById("morning-steps-preview");
+  if (!el) return;
+  el.innerHTML = MORNING_STEPS.map(function(s, i) {
+    return "<div style=\"display:flex;gap:10px;padding:.6rem 0;border-bottom:.5px solid var(--border2);align-items:flex-start\">" +
+      "<div style=\"width:28px;height:28px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0\">" + s.icon + "</div>" +
+      "<div><div style=\"font-size:12px;font-weight:500;color:var(--green)\">" + s.title + " <span style=\"color:var(--sec);font-weight:400\">" + s.min + " min</span></div>" +
+      "<div style=\"font-size:11px;color:var(--text3)\">" + s.text.substring(0, 60) + "...</div></div>" +
+      "</div>";
+  }).join("");
+}
+
+function startMorning() {
+  morningIdx = 0;
+  var btn = document.getElementById("morning-start-btn");
+  if (btn) btn.style.display = "none";
+  renderMorningStep();
+}
+
+function renderMorningStep() {
+  var active = document.getElementById("morning-active");
+  if (!active) return;
+  if (morningIdx >= MORNING_STEPS.length) {
+    active.style.display = "block";
+    active.innerHTML = "<div class=\"mr-card\" style=\"text-align:center\">" +
+      "<div style=\"font-size:24px;margin-bottom:8px\">\u2600\uFE0F</div>" +
+      "<div style=\"font-size:15px;font-weight:600;color:#5DCAA5;margin-bottom:4px\">Morning ritual complete</div>" +
+      "<div style=\"font-size:12px;color:#b0c8be\">ST36, PC6, Four Gates, intention set, meds checked. The Qi is moving.</div></div>";
+    return;
+  }
+  var s = MORNING_STEPS[morningIdx];
+  morningSeconds = s.min * 60;
+  active.style.display = "block";
+  active.innerHTML = "<div class=\"mr-card\">" +
+    "<div class=\"mr-step-label\">Step " + (morningIdx + 1) + " of " + MORNING_STEPS.length + " \u00b7 " + s.min + " min</div>" +
+    "<div class=\"mr-step-title\">" + s.icon + " " + s.title + "</div>" +
+    "<div class=\"mr-where\">\uD83D\uDCCD " + s.where + "</div>" +
+    "<div class=\"mr-text\">" + s.text + "</div>" +
+    "<div class=\"mr-timer\" id=\"mr-timer\">" + s.min + ":00</div>" +
+    "<div class=\"mr-timer-lbl\">seconds remaining</div>" +
+    "<div style=\"display:flex;gap:8px\">" +
+    "<button class=\"mr-btn-start\" onclick=\"startMorningTimer()\">Start timer</button>" +
+    "<button class=\"mr-btn-skip\" onclick=\"morningIdx++;renderMorningStep()\">Skip \u2192</button>" +
+    "</div></div>";
+}
+
+function startMorningTimer() {
+  if (morningTimer) clearInterval(morningTimer);
+  morningTimer = setInterval(function() {
+    morningSeconds--;
+    var el = document.getElementById("mr-timer");
+    if (el) {
+      var m = Math.floor(morningSeconds / 60);
+      var s = morningSeconds % 60;
+      el.textContent = m + ":" + (s < 10 ? "0" : "") + s;
+    }
+    if (morningSeconds <= 0) {
+      clearInterval(morningTimer);
+      morningIdx++;
+      renderMorningStep();
+    }
+  }, 1000);
+}
+
+// ══════════════════════════════════════════════
+// WIND-DOWN
+// ══════════════════════════════════════════════
+
+var WINDDOWN_STEPS = [
+  {min:1,title:"Evening meds — take now",icon:"\uD83D\uDC8A",
+   where:"Before you lie down \u00b7 Lithium PM \u00b7 Risperidone \u00b7 TUDCA PM \u00b7 AugNAC PM \u00b7 Milk Thistle \u00b7 FLORASSIST",
+   text:"Take your evening stack before you start the wind-down. Once you press KD6 you want to stay horizontal. Risperidone 2 hours apart from FLORASSIST."},
+  {min:2,title:"KD6 — Kidney Yin, inner ankle",icon:"\uD83C\uDF19",
+   where:"1 thumb-width directly BELOW the inner ankle bone \u00b7 both feet \u00b7 firm pressure",
+   text:"Sit on the edge of your bed. Feel the bony bump on your inner ankle. Slide your thumb directly below that bump into the soft hollow. That is KD6. Press firmly. 30 seconds each side. Kidney Yin calling the Shen home."},
+  {min:2,title:"HT7 — Spirit Gate",icon:"\u2764\uFE0F",
+   where:"Wrist crease \u00b7 pinky side \u00b7 small notch beside pisiform bone",
+   text:"Lie down. Palm face up. Find the wrist crease — the horizontal line where your hand meets your wrist. Slide toward your pinky side until you feel a small notch. That is HT7. Gentle pressure — this is a whisper, not a press."},
+  {min:2,title:"Ear Shen Men — nervous system reset",icon:"\uD83D\uDC42",
+   where:"Triangular fossa \u00b7 Y-shaped upper hollow \u00b7 NOT the canal \u00b7 NOT the tragus",
+   text:"Both ears simultaneously. Find the Y-shaped hollow at the top of your ear — the triangular fossa. Press with your fingertip. Not emergency pressure. Bedtime pressure. Hold 1 minute."},
+  {min:3,title:"4-7-8 breath — Lung closing ritual",icon:"\uD83C\uDF2C\uFE0F",
+   where:"IN through nose 4 counts \u00b7 HOLD 7 counts \u00b7 OUT through mouth 8 counts",
+   text:"Inhale through nose for 4 counts. Hold for 7. Exhale through mouth for 8. The long exhale activates the parasympathetic. Do 4 full cycles. The Lung is closing the day."},
+  {min:3,title:"Body scan — crown to KD1",icon:"\uD83D\uDECF\uFE0F",
+   where:"Crown \u2192 jaw \u2192 shoulders \u2192 chest \u2192 belly \u2192 KD1 into mattress",
+   text:"Eyes closed. On each exhale let one area release — forehead, jaw, throat, shoulders, chest, belly, hips, legs. When you reach your feet feel KD1 pressing into the mattress. You are here. You are safe."}
+];
+
+var windownIdx = 0;
+var windownTimer = null;
+var windownSeconds = 0;
+
+function initWinddownPreview() {
+  var el = document.getElementById("winddown-steps-preview");
+  if (!el) return;
+  el.innerHTML = WINDDOWN_STEPS.map(function(s) {
+    return "<div style=\"display:flex;gap:10px;padding:.6rem 0;border-bottom:.5px solid var(--border2);align-items:flex-start\">" +
+      "<div style=\"width:28px;height:28px;border-radius:50%;background:#0e1a26;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0\">" + s.icon + "</div>" +
+      "<div><div style=\"font-size:12px;font-weight:500;color:var(--blue)\">" + s.title + " <span style=\"color:var(--sec);font-weight:400\">" + s.min + " min</span></div>" +
+      "<div style=\"font-size:11px;color:var(--text3)\">" + s.text.substring(0, 60) + "...</div></div>" +
+      "</div>";
+  }).join("");
+}
+
+function startWinddown() {
+  windownIdx = 0;
+  var btn = document.getElementById("winddown-start-btn");
+  if (btn) btn.style.display = "none";
+  renderWinddownStep();
+}
+
+function renderWinddownStep() {
+  var active = document.getElementById("winddown-active");
+  if (!active) return;
+  if (windownIdx >= WINDDOWN_STEPS.length) {
+    active.style.display = "block";
+    active.innerHTML = "<div class=\"wd-card\" style=\"text-align:center\">" +
+      "<div style=\"font-size:24px;margin-bottom:8px\">\uD83C\uDF19</div>" +
+      "<div style=\"font-size:15px;font-weight:600;color:var(--green-dark);margin-bottom:4px\">Wind-down complete</div>" +
+      "<div style=\"font-size:12px;color:var(--green-dark)\">The Shen is home. Sleep now.</div></div>";
+    return;
+  }
+  var s = WINDDOWN_STEPS[windownIdx];
+  windownSeconds = s.min * 60;
+  active.style.display = "block";
+  active.innerHTML = "<div class=\"wd-card\">" +
+    "<div class=\"wd-step-label\">Step " + (windownIdx + 1) + " of " + WINDDOWN_STEPS.length + " \u00b7 " + s.min + " min</div>" +
+    "<div class=\"wd-step-title\">" + s.icon + " " + s.title + "</div>" +
+    "<div class=\"wd-where\">\uD83D\uDCCD " + s.where + "</div>" +
+    "<div class=\"wd-text\">" + s.text + "</div>" +
+    "<div class=\"wd-timer\" id=\"wd-timer\">" + s.min + ":00</div>" +
+    "<div class=\"wd-timer-lbl\">seconds remaining</div>" +
+    "<div class=\"wd-btns\">" +
+    "<button class=\"wd-btn-start\" onclick=\"startWinddownTimer()\">Start timer</button>" +
+    "<button class=\"wd-btn-skip\" onclick=\"windownIdx++;renderWinddownStep()\">Skip \u2192</button>" +
+    "</div></div>";
+}
+
+function startWinddownTimer() {
+  if (windownTimer) clearInterval(windownTimer);
+  windownTimer = setInterval(function() {
+    windownSeconds--;
+    var el = document.getElementById("wd-timer");
+    if (el) {
+      var m = Math.floor(windownSeconds / 60);
+      var s = windownSeconds % 60;
+      el.textContent = m + ":" + (s < 10 ? "0" : "") + s;
+    }
+    if (windownSeconds <= 0) {
+      clearInterval(windownTimer);
+      windownIdx++;
+      renderWinddownStep();
+    }
+  }, 1000);
+}
+
+// ══════════════════════════════════════════════
+// LIVER MARKERS (static)
+// ══════════════════════════════════════════════
+
+function initLiver() {
+  var el = document.getElementById("liver-markers");
+  if (!el) return;
+  var rows = [
+    {name:"AST (SGOT)",vals:[{v:"181",c:"#C0392B"},{v:"41",c:"#0F6E56"},{v:"58",c:"#C0392B"}]},
+    {name:"Alk. Phosphatase",vals:[{v:"101",c:"var(--text)"},{v:"100",c:"#0F6E56"},{v:"126",c:"#C0392B"}]},
+    {name:"Bilirubin",vals:[{v:"2.2",c:"#C0392B"},{v:"2.6",c:"#C0392B"},{v:"2.7",c:"#C0392B"}]},
+    {name:"Platelets (<150 alert)",vals:[{v:"143",c:"var(--text)"},{v:"81",c:"#C0392B"},{v:"58",c:"#C0392B"}]},
+    {name:"FIB-4 Index",vals:[{v:"4.15",c:"#C0392B"},{v:"high risk",c:"#C0392B"},{v:">2.67",c:"var(--text3)"}]}
+  ];
+  var headers = ["Aug '23", "Jan '26", "Mar '26"];
+  el.innerHTML = "<div class=\"card\">" +
+    "<div style=\"display:flex;justify-content:space-between;font-size:10px;color:var(--sec);margin-bottom:.5rem;padding-right:4px\">" +
+    "<span>Marker</span><div style=\"display:flex;gap:20px\">" + headers.map(function(h) { return "<span>" + h + "</span>"; }).join("") + "</div></div>" +
+    rows.map(function(r) {
+      return "<div style=\"display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:.5px solid var(--border2)\">" +
+        "<span style=\"font-size:12px;color:var(--text2);flex:1\">" + r.name + "</span>" +
+        "<div style=\"display:flex;gap:20px\">" + r.vals.map(function(v) {
+          return "<span style=\"font-size:13px;font-weight:600;color:" + v.c + ";min-width:36px;text-align:right\">" + v.v + "</span>";
+        }).join("") + "</div></div>";
+    }).join("") + "</div>";
+}
+
+// ══════════════════════════════════════════════
+// FORMULAS
+// ══════════════════════════════════════════════
+
+function initFormulas() {
+  var el = document.getElementById("formulas-list");
+  if (!el) return;
+  el.innerHTML = FORMULAS.map(function(f) {
+    return "<div class=\"card\" style=\"margin-bottom:.75rem\">" +
+      "<div style=\"font-size:14px;font-weight:600;color:var(--text);margin-bottom:.3rem\">" + f.name + "</div>" +
+      "<div style=\"font-size:12px;color:var(--green);margin-bottom:.4rem;font-weight:500\">" + f.use + "</div>" +
+      "<div style=\"font-size:11px;color:var(--text3);line-height:1.6\">" + f.herbs + "</div>" +
+      "</div>";
+  }).join("");
+}
+
+// ══════════════════════════════════════════════
+// TEAS
+// ══════════════════════════════════════════════
+
+function initTeas() {
+  var el = document.getElementById("teas-list");
+  if (!el) return;
+  el.innerHTML = TEAS.map(function(t) {
+    return "<div class=\"card\" style=\"margin-bottom:.75rem\">" +
+      "<div style=\"font-size:14px;font-weight:600;color:var(--text);margin-bottom:.2rem\">" + t.name + "</div>" +
+      "<div style=\"font-size:11px;color:var(--green);font-weight:500;margin-bottom:.3rem\">" + t.cat + "</div>" +
+      "<div style=\"font-size:12px;color:var(--text2);margin-bottom:.3rem\">\uD83C\uDF75 " + t.prep + "</div>" +
+      "<div style=\"font-size:11px;color:var(--text3);line-height:1.5\">\u26A0\uFE0F " + t.note + "</div>" +
+      "</div>";
+  }).join("");
+}
+
+// ══════════════════════════════════════════════
+// BUY
+// ══════════════════════════════════════════════
+
+function initBuy() {
+  var el = document.getElementById("buy-content");
+  if (!el) return;
+  var suppliers = [
+    {name:"1stchineseherbs.com",note:"Personal Gmail. No license needed. Good for singles.",url:"https://1stchineseherbs.com"},
+    {name:"Mayway.com",note:"Use your VUIM student email for full access.",url:"https://mayway.com"},
+    {name:"Lhasa OMS",note:"Student ID verification (SheerID). Account pending.",url:"https://lhasaoms.com"},
+    {name:"Nuherbs.com",note:"Email with VUIM credentials.",url:"https://nuherbs.com"},
+    {name:"Amazon",note:"For supplements: TUDCA, AugNAC, BodyBio PC, ALAmax CR.",url:"https://amazon.com"}
+  ];
+  el.innerHTML = suppliers.map(function(s) {
+    return "<a href=\"" + s.url + "\" target=\"_blank\" style=\"text-decoration:none\">" +
+      "<div class=\"card\" style=\"display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem\">" +
+      "<div><div style=\"font-size:14px;font-weight:600;color:var(--text)\">" + s.name + "</div>" +
+      "<div style=\"font-size:12px;color:var(--text3);margin-top:2px\">" + s.note + "</div></div>" +
+      "<div style=\"color:var(--green);font-size:18px\">\u2197</div></div></a>";
+  }).join("");
+}
+
+// ══════════════════════════════════════════════
+// DANCE
+// ══════════════════════════════════════════════
+
+var DANCES = [
+  {id:"chacha",label:"\uD83D\uDC83 Cha Cha",playlist:"chacha",bpm:"110\u2013128",organ:"Liver / Gallbladder",element:"Wood",emotion:"Anger \u2192 movement",
+   when:"When anger is building. When frustration is circling. When Liver Qi is stagnant.",
+   eam:"Cha Cha gives Liver Qi somewhere to go. The staccato chassés move stuck Wood energy through the lower body.",
+   point:"LR3 — press firmly for 30 seconds each foot before you start.",
+   neuro:"110\u2013128 BPM activates motor cortex and basal ganglia simultaneously — the same pathways disrupted by ADHD."},
+  {id:"rumba",label:"\uD83C\uDF39 Rumba",playlist:"rumba",bpm:"96\u2013104",organ:"Heart / Small Intestine",element:"Fire",emotion:"Joy / connection",
+   when:"When you feel disconnected. When Heart Fire needs tending. When you need to feel something.",
+   eam:"Rumba is the slowest American Rhythm dance. It nourishes Heart Yin and reconnects the Shen.",
+   point:"PC6 — press inner wrist before you start. Heart Protector.",
+   neuro:"96\u2013104 BPM matches natural resting heart rate — creates coherence between movement and cardiovascular rhythm."},
+  {id:"mambo",label:"\uD83D\uDD25 Mambo",playlist:"mambo",bpm:"176\u2013200",organ:"Liver / Kidney",element:"Water/Wood",emotion:"Fear \u2192 power",
+   when:"When you need to interrupt a craving hard. When Kidney fear is rising. When you need to feel your power.",
+   eam:"Mambo is the fastest American Rhythm dance. It moves Kidney Yang and breaks Liver Qi stagnation simultaneously.",
+   point:"KD1 — press ball of foot before you start. Ground the Water.",
+   neuro:"176\u2013200 BPM creates maximum dopaminergic activation — the strongest natural craving interrupt."},
+  {id:"bolero",label:"\uD83C\uDFAD Bolero",playlist:"bolero",bpm:"96\u2013104",organ:"Lung / Large Intestine",element:"Metal",emotion:"Grief \u2192 release",
+   when:"When grief is present. When you need to let something go. When Metal needs to descend.",
+   eam:"Bolero is the most emotionally expressive American Rhythm dance. The slow sustained movement allows Lung Qi to descend and grief to move.",
+   point:"LU7 — press just above inner wrist on thumb side. Lung opens.",
+   neuro:"Sustained slow movement at 96\u2013104 BPM activates the parasympathetic while maintaining motor engagement — grief processing without shutdown."},
+  {id:"swing",label:"\u26A1 E.C. Swing",playlist:"swing",bpm:"136\u2013144",organ:"Spleen / Stomach",element:"Earth",emotion:"Worry \u2192 rhythm",
+   when:"When ADHD is loud. When Spleen is scattered. When you need a rhythmic anchor.",
+   eam:"East Coast Swing is the most rhythmically grounded American Rhythm dance. The triple step pattern (triple-triple-rock) re-establishes Spleen rhythm.",
+   point:"ST36 — press 4 fingers below kneecap before you start. Earth anchor.",
+   neuro:"Triple-step rhythm at 136\u2013144 BPM matches cerebellar timing patterns — the brain structure most affected by ADHD."}
+];
+
+function initDance() {
+  var tabs = document.getElementById("dance-tabs");
+  if (tabs) {
+    tabs.innerHTML = DANCES.map(function(d, i) {
+      return "<button class=\"dance-tab" + (i === 0 ? " active" : "") + "\" onclick=\"showDance('" + d.id + "',this)\">" + d.label + "</button>";
+    }).join("");
+  }
+  showDance("chacha", tabs ? tabs.querySelector(".dance-tab") : null);
+}
+
+function showDance(id, btn) {
+  document.querySelectorAll(".dance-tab").forEach(function(t) { t.classList.remove("active"); });
+  if (btn) btn.classList.add("active");
+  var d = DANCES.find(function(x) { return x.id === id; });
+  if (!d) return;
+  var panel = document.getElementById("dance-panel");
+  if (!panel) return;
+  panel.innerHTML = "<div class=\"card\">" +
+    "<div style=\"font-size:18px;font-weight:700;color:var(--text);margin-bottom:.2rem\">" + d.label + "</div>" +
+    "<div style=\"font-size:12px;color:var(--green);font-weight:500;margin-bottom:.5rem\">" + d.bpm + " BPM \u00b7 " + d.organ + " \u00b7 " + d.element + " Element</div>" +
+    "<div style=\"background:#2a1510;border-radius:10px;padding:.75rem;margin-bottom:.75rem\">" +
+    "<div style=\"font-size:10px;font-weight:700;color:#E74C3C;text-transform:uppercase;margin-bottom:.3rem\">When to dance this</div>" +
+    "<div style=\"font-size:13px;color:#e6edf3;line-height:1.6\">" + d.when + "</div></div>" +
+    "<div style=\"background:var(--bg3);border-radius:10px;padding:.75rem;margin-bottom:.75rem\">" +
+    "<div style=\"font-size:10px;font-weight:700;color:var(--green);text-transform:uppercase;margin-bottom:.3rem\">EAM connection</div>" +
+    "<div style=\"font-size:13px;color:var(--text2);line-height:1.6\">" + d.eam + "</div></div>" +
+    "<div style=\"font-size:12px;color:var(--text3);margin-bottom:.75rem\">\uD83E\uDD8E Press before dancing: " + d.point + "</div>" +
+    "<div style=\"font-size:12px;color:var(--text3);margin-bottom:.75rem\">\uD83E\uDDE0 " + d.neuro + "</div>" +
+    "<div style=\"font-size:10px;font-weight:700;color:var(--green);text-transform:uppercase;margin-bottom:.4rem\">Your playlist</div>" +
+    "<div class=\"music-frame\"><iframe width=\"100%\" height=\"200\" src=\"https://www.youtube.com/embed/videoseries?list=" + PLAYLISTS[d.playlist] + "\" frameborder=\"0\" allow=\"autoplay;encrypted-media\" allowfullscreen></iframe></div>" +
+    "</div>";
+}
+
+// ══════════════════════════════════════════════
+// INITIALIZE ALL
+// ══════════════════════════════════════════════
+
+(function init() {
+  autoTheme();
+  initCounter();
+  initCheckin();
+  initNow();
+  initContacts();
+  initMeds();
+  initHalt();
+  initMilestones();
+  initMusic();
+  initHangul();
+  initBuy();
+  initDance();
+  initMorningPreview();
+  initWinddownPreview();
+  initFormulas();
+  initTeas();
+  initLiver();
+  renderJournal();
+  renderWins();
+
+  // Hide all sections except checkin on load
+  var sections = document.querySelectorAll("#main-content > div");
+  sections.forEach(function(s) {
+    if (s.id !== "sec-checkin") s.style.display = "none";
+  });
+
+  // Auto-check theme every 5 minutes
+  setInterval(function() {
+    var override = localStorage.getItem("theme-override");
+    var overrideTime = parseInt(localStorage.getItem("theme-override-time") || "0");
+    if (!override || Date.now() - overrideTime > 30 * 60 * 1000) {
+      autoTheme();
+    }
+  }, 5 * 60 * 1000);
+})();
+</script>
+</body>
+</html>
