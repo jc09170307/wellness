@@ -118,7 +118,6 @@ body{padding-bottom:2rem}
 .wd-step-label{font-size:10px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem}
 .wd-step-title{font-size:15px;font-weight:600;color:var(--green-dark);margin-bottom:.5rem}
 [data-theme="dark"] .wd-step-title{color:var(--green2)}
-[data-theme="dark"] .wd-card{background:var(--green-light);border-color:var(--green)}
 .wd-where{background:var(--green-dark);color:#fff;border-radius:8px;padding:.4rem .75rem;font-size:11px;font-weight:500;margin-bottom:.5rem}
 [data-theme="dark"] .wd-where{background:#0a2e1e}
 .wd-text{font-size:12px;color:var(--green-dark);line-height:1.6;margin-bottom:.75rem}
@@ -301,6 +300,8 @@ input[type=range]{width:100%;accent-color:var(--green);margin:.4rem 0}
       <div class="crisis-title">Pro Active Wellness</div>
       <div class="crisis-line">📞 703-822-5003</div>
     </div>
+    <div class="sec-label" style="margin-top:.5rem">Contact photos</div>
+    <div id="contact-photo-section"></div>
   </div>
 </div>
 
@@ -344,6 +345,7 @@ input[type=range]{width:100%;accent-color:var(--green);margin:.4rem 0}
   <div class="section">
     <div class="sec-label">Hypomania & impulse early warning</div>
     <div id="mood-checks"></div>
+    <div id="mood-response"></div>
   </div>
 </div>
 
@@ -572,21 +574,21 @@ input[type=range]{width:100%;accent-color:var(--green);margin:.4rem 0}
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem">
     <a href="tel:7032820961" style="text-decoration:none">
       <div style="background:#1c1f26;border-radius:14px;padding:1rem;text-align:center;border:1.5px solid rgba(255,255,255,.1)">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#0F6E56,#1D9E75);margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden"><img src="mom.jpg" onerror="this.parentNode.innerHTML='👩'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#0F6E56,#1D9E75);margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden" id="crisis-photo-mom">👩</div>
         <div style="font-size:13px;font-weight:600;color:#fff">Mom</div>
         <div style="font-size:10px;color:#6e7681;margin-top:2px">📞 Call</div>
       </div>
     </a>
     <a href="tel:7032820342" style="text-decoration:none">
       <div style="background:#1c1f26;border-radius:14px;padding:1rem;text-align:center;border:1.5px solid rgba(255,255,255,.1)">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#BA7517,#EF9F27);margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden"><img src="tota.jpg" onerror="this.parentNode.innerHTML='👵'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#BA7517,#EF9F27);margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden" id="crisis-photo-tota">👵</div>
         <div style="font-size:13px;font-weight:600;color:#fff">Tota</div>
         <div style="font-size:10px;color:#6e7681;margin-top:2px">📞 Call</div>
       </div>
     </a>
     <a href="tel:5713604110" style="text-decoration:none">
       <div style="background:#1c1f26;border-radius:14px;padding:1rem;text-align:center;border:1.5px solid rgba(255,255,255,.1)">
-        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#D4537E,#993556);margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden"><img src="lily.jpg" onerror="this.parentNode.innerHTML='👧'" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#D4537E,#993556);margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden" id="crisis-photo-lily">👧</div>
         <div style="font-size:13px;font-weight:600;color:#fff">Lily</div>
         <div style="font-size:10px;color:#6e7681;margin-top:2px">📞 Call</div>
       </div>
@@ -837,21 +839,20 @@ function nav(id) {
   var sections = document.querySelectorAll("#main-content > div");
   sections.forEach(function(s) { s.style.display = "none"; });
   var target = document.getElementById(id);
-  if (target) { target.style.display = "block"; }
+  if (target) target.style.display = "block";
   currentSection = id;
-  // re-render sections that need live data
-  if (id === "sec-points") showDiagram(currentDiagram || "wrist");
-  if (id === "sec-tracker") initTracker();
-  if (id === "sec-sleep") initSleep();
-  if (id === "sec-labs") initLabs();
-  if (id === "sec-floor") initFloor();
+  // re-render live-data sections on navigate
+  if (id === "sec-points")    showDiagram(currentDiagram || "wrist");
+  if (id === "sec-tracker")   initTracker();
+  if (id === "sec-sleep")     initSleep();
+  if (id === "sec-labs")      initLabs();
+  if (id === "sec-floor")     initFloor();
+  if (id === "sec-contacts")  { initContacts(); initContactPhotos(); }
   var pills = document.querySelectorAll(".pill");
   pills.forEach(function(p) {
     p.classList.remove("active");
     var oc = p.getAttribute("onclick") || "";
-    if (oc.indexOf("'" + id + "'") !== -1 || oc.indexOf('"' + id + '"') !== -1) {
-      p.classList.add("active");
-    }
+    if (oc.indexOf("'" + id + "'") !== -1) p.classList.add("active");
   });
   window.scrollTo(0, 0);
 }
@@ -1010,10 +1011,15 @@ function initNow() {
 function initContacts() {
   var el = document.getElementById("contact-cards");
   if (!el) return;
+  var photoKeys = {"Mom":"photo-mom","Tota":"photo-tota","Lily":"photo-lily"};
   el.innerHTML = CONTACTS.map(function(c) {
+    var stored = localStorage.getItem(photoKeys[c.name]);
+    var avatar = stored
+      ? '<img src="'+stored+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%">'
+      : c.emoji;
     return "<a href=\"tel:" + c.phone + "\" style=\"text-decoration:none;display:block;margin-bottom:.75rem\">" +
       "<div class=\"card\" style=\"display:flex;align-items:center;gap:1rem;padding:1rem\">" +
-      "<div style=\"width:56px;height:56px;border-radius:50%;background:" + c.color + ";display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden;flex-shrink:0\"><img src=\"" + c.name.toLowerCase() + ".jpg\" onerror=\"this.parentNode.innerHTML='" + c.emoji + "'\" style=\"width:100%;height:100%;object-fit:cover;border-radius:50%\"></div>" +
+      "<div style=\"width:56px;height:56px;border-radius:50%;background:" + c.color + ";display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden;flex-shrink:0\">" + avatar + "</div>" +
       "<div><div style=\"font-size:16px;font-weight:600;color:var(--text)\">" + c.name + "</div><div style=\"font-size:13px;color:var(--green)\">📞 Tap to call</div></div>" +
       "</div></a>";
   }).join("");
@@ -1670,527 +1676,6 @@ function initBuy() {
 }
 
 // ══════════════════════════════════════════════
-// ACUPRESSURE DIAGRAMS
-// ══════════════════════════════════════════════
-
-var POINTS = {
-  wrist: {
-    label: "Wrist, Forearm & Hand",
-    pts: [
-      {id:"PC6",  x:50,  y:42,  label:"PC6",  full:"Pericardium 6",    color:"#1D9E75", pinyin:"Nèi Guān",    hangul:"내관",  rom:"Naegwan",   tip:"3 finger-widths above wrist crease · between 2 tendons · inner forearm. Calms Heart, relieves craving, settles nausea."},
-      {id:"HT7",  x:75,  y:70,  label:"HT7",  full:"Heart 7 Spirit Gate", color:"#7F77DD", pinyin:"Shén Mén",    hangul:"신문",  rom:"Sinmun",    tip:"Wrist crease · pinky side · small notch by pisiform bone. Calms Shen, anxiety, insomnia."},
-      {id:"LU7",  x:25,  y:58,  label:"LU7",  full:"Lung 7",            color:"#5aafd4", pinyin:"Liè Quē",     hangul:"열결",  rom:"Yeolgyeol",  tip:"Just above inner wrist on thumb side · 1.5 cun above wrist crease. Opens Lung, grief release."},
-      {id:"LI4",  x:68,  y:85,  label:"LI4",  full:"Large Intestine 4", color:"#E09D3A", pinyin:"Hé Gǔ",      hangul:"합곡",  rom:"Hapgok",    tip:"Web between thumb and index finger · fleshy mound. Moves Qi and Blood everywhere — Four Gates point."}
-    ],
-    // SVG of an arm/wrist/hand from inner wrist perspective
-    svg: `<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-height:300px">
-      <!-- forearm -->
-      <rect x="55" y="5" width="50" height="80" rx="25" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- wrist crease line -->
-      <line x1="52" y1="68" x2="108" y2="68" stroke="var(--skin-dark)" stroke-width="1" stroke-dasharray="3,2"/>
-      <text x="112" y="71" font-size="7" fill="var(--text3)" font-family="inherit">crease</text>
-      <!-- thumb -->
-      <ellipse cx="48" cy="90" rx="12" ry="20" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5" transform="rotate(-25 48 90)"/>
-      <!-- index finger -->
-      <rect x="55" y="85" width="13" height="42" rx="6" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- middle finger -->
-      <rect x="71" y="82" width="13" height="46" rx="6" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- ring finger -->
-      <rect x="87" y="84" width="12" height="44" rx="6" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- pinky -->
-      <rect x="102" y="88" width="10" height="36" rx="5" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- palm -->
-      <rect x="52" y="68" width="60" height="28" rx="4" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- tendons subtle -->
-      <line x1="72" y1="10" x2="72" y2="68" stroke="var(--skin-dark)" stroke-width="0.5" opacity="0.4"/>
-      <line x1="88" y1="10" x2="88" y2="68" stroke="var(--skin-dark)" stroke-width="0.5" opacity="0.4"/>
-    </svg>`
-  },
-  foot: {
-    label: "Foot, Ankle & Leg",
-    pts: [
-      {id:"LR3",  x:38,  y:30,  label:"LR3",  full:"Liver 3",          color:"#0F6E56", pinyin:"Tài Chōng",   hangul:"태충",  rom:"Taechung",  tip:"Top of foot · groove between big toe and 2nd toe · 2 cun up. Moves Liver Qi, craving interrupt, anger release."},
-      {id:"KD1",  x:55,  y:73,  label:"KD1",  full:"Kidney 1",         color:"#2471A3", pinyin:"Yǒng Quán",   hangul:"용천",  rom:"Yongcheon", tip:"Ball of foot · between 2nd & 3rd metatarsals · upper 1/3 sole. Grounds fear, emergency reset."},
-      {id:"KD6",  x:22,  y:57,  label:"KD6",  full:"Kidney 6",         color:"#5aafd4", pinyin:"Zhào Hǎi",    hangul:"조해",  rom:"Johae",     tip:"1 thumb-width directly BELOW inner ankle bone. Nourishes Kidney Yin, calls Shen home for sleep."},
-      {id:"SP6",  x:28,  y:28,  label:"SP6",  full:"Spleen 6",         color:"#D4537E", pinyin:"Sān Yīn Jiāo",hangul:"삼음교",rom:"Samumgyo",  tip:"3 cun above inner ankle · behind tibia. Three Yin meeting — Spleen, Liver, Kidney. ⚠️ Avoid in pregnancy."}
-    ],
-    svg: `<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-height:300px">
-      <!-- lower leg -->
-      <rect x="55" y="5" width="40" height="75" rx="18" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- tibia line subtle -->
-      <line x1="75" y1="5" x2="75" y2="75" stroke="var(--skin-dark)" stroke-width="0.6" opacity="0.3"/>
-      <!-- inner ankle bone -->
-      <ellipse cx="42" cy="90" rx="10" ry="8" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- outer ankle bone -->
-      <ellipse cx="108" cy="92" rx="9" ry="7" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- heel -->
-      <ellipse cx="75" cy="95" rx="28" ry="18" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- foot top -->
-      <ellipse cx="75" cy="112" rx="32" ry="22" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- big toe -->
-      <ellipse cx="50" cy="138" rx="10" ry="13" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- 2nd toe -->
-      <ellipse cx="65" cy="142" rx="8" ry="12" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- 3rd toe -->
-      <ellipse cx="78" cy="143" rx="7" ry="11" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- 4th toe -->
-      <ellipse cx="90" cy="141" rx="7" ry="10" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- pinky toe -->
-      <ellipse cx="101" cy="138" rx="6" ry="9" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- foot groove between big/2nd toe -->
-      <line x1="57" y1="128" x2="57" y2="115" stroke="var(--skin-dark)" stroke-width="0.8" opacity="0.5"/>
-    </svg>`
-  },
-  ear: {
-    label: "Ear — Auricular Points",
-    pts: [
-      {id:"SM",   x:48,  y:28,  label:"Shen Men", full:"Ear Shen Men",     color:"#7F77DD", pinyin:"Shén Mén",   hangul:"신문",  rom:"Sinmun",    tip:"Triangular fossa — Y-shaped upper hollow. NOT the canal, NOT the tragus. Master point for calm, craving, anxiety."},
-      {id:"CR",   x:35,  y:55,  label:"Craving",  full:"Craving / Lung Pt",color:"#C0392B", pinyin:"Kě Qiú",    hangul:"갈망점",rom:"Galmangjeom",tip:"Tragus (front ear flap). Pinch firmly. Lung point — AUD craving interrupt. 20 seconds in the 60-sec protocol."},
-      {id:"HRT",  x:60,  y:62,  label:"Heart",    full:"Heart Point",       color:"#D4537E", pinyin:"Xīn",       hangul:"심",    rom:"Sim",        tip:"Center of ear — concha. Heart Shen, palpitations, anxiety, mania calming."},
-      {id:"KD",   x:52,  y:75,  label:"Kidney",   full:"Kidney Point",      color:"#2471A3", pinyin:"Shèn",      hangul:"신",    rom:"Sin",        tip:"Lower concha. Kidney fear, root deficiency, hearing, bone health."}
-    ],
-    svg: `<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-height:300px">
-      <!-- outer ear helix -->
-      <path d="M80 10 C120 10 145 35 145 75 C145 115 120 148 80 152 C60 154 40 145 32 130 C22 112 28 95 38 88 C44 84 50 86 50 92 C50 102 44 112 48 122 C54 136 68 142 80 140 C110 138 128 115 128 80 C128 48 112 26 85 22 C75 20 68 24 65 30 C60 38 63 48 68 52 C72 56 78 54 80 48 C82 42 79 28 80 10 Z" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="2"/>
-      <!-- anti-helix -->
-      <path d="M68 52 C74 58 76 68 72 80 C68 90 62 95 62 105 C62 115 68 122 75 125" fill="none" stroke="var(--skin-dark)" stroke-width="1.5" opacity="0.6"/>
-      <!-- triangular fossa (upper hollow — Shen Men area) -->
-      <path d="M65 30 C72 28 82 32 85 40 C88 48 82 54 75 52 C68 50 63 42 65 30 Z" fill="var(--skin-dark)" opacity="0.15" stroke="var(--skin-dark)" stroke-width="0.8"/>
-      <!-- concha (bowl) -->
-      <ellipse cx="90" cy="85" rx="22" ry="28" fill="var(--skin-dark)" opacity="0.12" stroke="var(--skin-dark)" stroke-width="0.8"/>
-      <!-- ear canal -->
-      <ellipse cx="100" cy="90" rx="10" ry="13" fill="var(--skin-dark)" opacity="0.3"/>
-      <!-- tragus -->
-      <path d="M55 78 C48 72 46 82 50 88 C54 94 60 90 60 84 Z" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- lobe -->
-      <ellipse cx="68" cy="142" rx="15" ry="12" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-    </svg>`
-  }
-};
-
-var currentDiagram = "wrist";
-
-function showDiagram(type) {
-  currentDiagram = type;
-  ["wrist","foot","ear"].forEach(function(t) {
-    var btn = document.getElementById("tab-" + t);
-    if (btn) btn.classList.toggle("active", t === type);
-  });
-  var area = document.getElementById("diagram-area");
-  if (!area) return;
-  var diagram = POINTS[type];
-  if (!diagram) return;
-
-  var svgWrap = '<div style="position:relative;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.75rem;margin-bottom:.5rem">';
-  svgWrap += '<div style="font-size:12px;font-weight:600;color:var(--text3);margin-bottom:.5rem;text-align:center">' + diagram.label + ' — tap any point</div>';
-  svgWrap += '<div style="position:relative">';
-  svgWrap += diagram.svg;
-  // overlay dots
-  svgWrap += '<svg style="position:absolute;top:0;left:0;width:100%;height:100%" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">';
-  diagram.pts.forEach(function(p) {
-    svgWrap += '<circle class="pt-ring" cx="' + p.x + '" cy="' + p.y + '" r="10" fill="' + p.color + '" opacity="0.18"/>';
-    svgWrap += '<circle cx="' + p.x + '" cy="' + p.y + '" r="6" fill="' + p.color + '" style="cursor:pointer" onclick="showPointDetail(\'' + p.id + '\',\'' + type + '\')">';
-    svgWrap += '<title>' + p.full + '</title></circle>';
-    svgWrap += '<text x="' + (p.x + 9) + '" y="' + (p.y + 4) + '" font-size="8" fill="' + p.color + '" font-weight="700" font-family="inherit" style="pointer-events:none">' + p.label + '</text>';
-  });
-  svgWrap += '</svg>';
-  svgWrap += '</div></div>';
-
-  // Point chip list
-  svgWrap += '<div style="display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.5rem">';
-  diagram.pts.forEach(function(p) {
-    svgWrap += '<button onclick="showPointDetail(\'' + p.id + '\',\'' + type + '\')" style="font-size:11px;padding:4px 10px;border-radius:20px;border:1.5px solid ' + p.color + '33;background:' + p.color + '18;color:' + p.color + ';cursor:pointer;font-family:inherit;font-weight:600">' + p.label + '</button>';
-  });
-  svgWrap += '</div>';
-
-  area.innerHTML = svgWrap;
-  var det = document.getElementById("point-detail");
-  if (det) det.style.display = "none";
-}
-
-function showPointDetail(id, type) {
-  var diagram = POINTS[type];
-  if (!diagram) return;
-  var p = diagram.pts.find(function(x) { return x.id === id; });
-  if (!p) return;
-  var det = document.getElementById("point-detail");
-  if (!det) return;
-  det.style.display = "block";
-  det.innerHTML =
-    '<div style="font-size:15px;font-weight:700;color:' + p.color + ';margin-bottom:.25rem">' + p.full + ' (' + p.id + ')</div>' +
-    '<div style="font-size:12px;color:var(--text3);margin-bottom:.4rem">' +
-    '🔤 <b>' + p.pinyin + '</b> &nbsp;·&nbsp; ' +
-    '<span style="font-size:14px">' + p.hangul + '</span> &nbsp;·&nbsp; ' + p.rom + '</div>' +
-    '<div style="font-size:13px;color:var(--text2);line-height:1.6">' + p.tip + '</div>';
-}
-
-// ══════════════════════════════════════════════
-// DBT
-// ══════════════════════════════════════════════
-
-function initDbt() {
-  var el = document.getElementById("dbt-list");
-  if (!el) return;
-  var skills = [
-    {name:"TIPP — Temperature",eam:"Kidney Yang shock reset",detail:"Cold water on face or wrists. Dives the vagus nerve. KD1 into the floor simultaneously.",color:"#2471A3"},
-    {name:"TIPP — Intense Exercise",eam:"Liver Qi movement",detail:"Even 60 seconds of jumping jacks. Cha Cha chassé sequence. Moves Wood Qi out of the channel.",color:"#0F6E56"},
-    {name:"TIPP — Paced Breathing",eam:"Lung descending & dispersing",detail:"Exhale longer than inhale. 4 in, 8 out. LU7 pressed while breathing. Lung controls grief, breath controls the Shen.",color:"#5aafd4"},
-    {name:"TIPP — Paired Muscle Relax",eam:"Spleen and Stomach Qi regulation",detail:"Tense and release each muscle group. ST36 tonification. Earth grounds scattered Wood energy.",color:"#BA7517"},
-    {name:"Radical Acceptance",eam:"Water element — yielding without resistance",detail:"What you resist, persists. KD1 into the ground. Feel the resistance in the body and let the exhale take it. Water flows around rock.",color:"#2471A3"},
-    {name:"Opposite Action",eam:"Liver Qi direction reversal",detail:"If the urge is to isolate → call someone. If the urge is to drink → KD1 + dance. Liver Qi stagnation loves inaction — opposite action is channel theory.",color:"#0F6E56"},
-    {name:"Mindfulness — Describe",eam:"Spleen Qi — grounding in the present",detail:"Name what you observe without judgment. 5 things you can see. Earth element: what is real, what is here, what is now.",color:"#BA7517"},
-    {name:"Distress Tolerance — ACCEPTS",eam:"Multiple channel engagement",detail:"Activities, Contributing, Comparisons, Emotions (opposite), Pushing away, Thoughts, Sensations. Each engages a different channel to interrupt the loop.",color:"#7F77DD"}
-  ];
-  el.innerHTML = skills.map(function(s) {
-    return '<div class="card" style="margin-bottom:.5rem;border-left:3px solid ' + s.color + '">' +
-      '<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.2rem">' + s.name + '</div>' +
-      '<div style="font-size:11px;color:' + s.color + ';font-weight:500;margin-bottom:.35rem">⟶ EAM: ' + s.eam + '</div>' +
-      '<div style="font-size:12px;color:var(--text2);line-height:1.5">' + s.detail + '</div>' +
-      '</div>';
-  }).join("");
-}
-
-// ══════════════════════════════════════════════
-// BODY SCAN
-// ══════════════════════════════════════════════
-
-function initScan() {
-  var el = document.getElementById("scan-content");
-  if (!el) return;
-  var zones = [
-    {area:"Crown & Forehead",channel:"Governing Vessel / Bladder",q:"Any pressure, heaviness, heat?",action:"GV20 (top of head) — gentle circular pressure"},
-    {area:"Jaw & Neck",channel:"Stomach / San Jiao",q:"Grinding, clenching, tightness?",action:"ST6 (jaw muscle) — press and breathe out"},
-    {area:"Shoulders",channel:"Gallbladder / Small Intestine",q:"Lifted, braced, held?",action:"GB21 (shoulder top) — press down firmly, exhale"},
-    {area:"Chest & Heart",channel:"Heart / Pericardium",q:"Constricted, racing, hollow?",action:"PC6 (inner wrist) — press. One hand on chest."},
-    {area:"Belly & Diaphragm",channel:"Spleen / Stomach",q:"Tight, bloated, butterflies?",action:"ST25 (2 cun beside navel) — press gently both sides"},
-    {area:"Lower Back",channel:"Kidney / Bladder",q:"Dull ache, weakness, fear?",action:"KD1 (feet) + press lumbar — Kidney houses root"},
-    {area:"Hips & Groin",channel:"Liver / Gallbladder",q:"Holding, bracing, clenching?",action:"LR3 (foot web) — press. Liver controls tendons."},
-    {area:"Feet & KD1",channel:"Kidney",q:"Connected to ground? Floating?",action:"Press feet into floor. Feel KD1 — ball of foot into earth."}
-  ];
-  el.innerHTML = zones.map(function(z, i) {
-    return '<div class="card" style="margin-bottom:.5rem;cursor:pointer" onclick="this.querySelector(\'.scan-detail\').style.display=this.querySelector(\'.scan-detail\').style.display===\'none\'?\'block\':\'none\'">' +
-      '<div style="display:flex;justify-content:space-between;align-items:center">' +
-      '<div><div style="font-size:13px;font-weight:600;color:var(--text)">' + z.area + '</div>' +
-      '<div style="font-size:11px;color:var(--text3)">' + z.channel + '</div></div>' +
-      '<div style="color:var(--text3);font-size:16px">▸</div></div>' +
-      '<div class="scan-detail" style="display:none;margin-top:.5rem">' +
-      '<div style="font-size:12px;color:var(--green);margin-bottom:.25rem;font-style:italic">' + z.q + '</div>' +
-      '<div style="font-size:12px;color:var(--text2);line-height:1.5">→ ' + z.action + '</div>' +
-      '</div></div>';
-  }).join("");
-}
-
-// ══════════════════════════════════════════════
-// BUILDER
-// ══════════════════════════════════════════════
-
-function initBuilder() {
-  var el = document.getElementById("builder-content");
-  if (!el) return;
-  el.innerHTML = '<div class="card">' +
-    '<div class="card-title">Build a custom protocol</div>' +
-    '<div class="field-label">What is happening right now?</div>' +
-    '<textarea class="field" id="builder-situation" rows="2" placeholder="e.g. craving after a stressful call, 3am spiral, anger building before a meeting..."></textarea>' +
-    '<div class="field-label">Which HALT? (optional)</div>' +
-    '<div class="chip-wrap" id="builder-halt-chips"></div>' +
-    '<div class="field-label">Which Five Element? (optional)</div>' +
-    '<div class="chip-wrap" id="builder-element-chips"></div>' +
-    '<button class="btn" onclick="buildProtocol()">Generate my protocol</button>' +
-    '</div>' +
-    '<div id="builder-output" style="margin-top:.75rem"></div>';
-  makeChips("builder-halt-chips", ["Hungry","Angry","Lonely","Tired"]);
-  makeChips("builder-element-chips", ["Wood / Liver","Fire / Heart","Earth / Spleen","Metal / Lung","Water / Kidney"]);
-}
-
-function buildProtocol() {
-  var situation = (document.getElementById("builder-situation") || {}).value || "";
-  var haltEl = document.querySelector("#builder-halt-chips .chip.sel");
-  var elementEl = document.querySelector("#builder-element-chips .chip.sel");
-  var halt = haltEl ? haltEl.textContent : "";
-  var element = elementEl ? elementEl.textContent : "";
-
-  var steps = ["🫁 First: slow your breath — 4 counts in, 8 counts out. The Lung sets the tone for all else."];
-  if (halt === "Angry" || element.includes("Wood")) {
-    steps.push("🌿 Wood pattern: LR3 + LI4 (Four Gates) — press both simultaneously. Then consider Cha Cha or Mambo.");
-  } else if (halt === "Lonely" || element.includes("Fire")) {
-    steps.push("❤️ Fire pattern: PC6 (inner wrist) → HT7 (spirit gate). Call someone who loves you.");
-  } else if (halt === "Hungry" || element.includes("Earth")) {
-    steps.push("🟤 Earth pattern: ST36 (4 fingers below kneecap). Eat something warm and cooked first.");
-  } else if (element.includes("Metal")) {
-    steps.push("⚙️ Metal pattern: LU7 (above inner wrist, thumb side). Allow grief to move — Bolero dance prescription.");
-  } else if (halt === "Tired" || element.includes("Water")) {
-    steps.push("💧 Water pattern: KD1 (ball of foot) into the floor + KD6 (below inner ankle). Rest is Kidney restoration.");
-  } else {
-    steps.push("🟢 General: PC6 → HT7 → Ear Shen Men. These three calm any storm.");
-  }
-  if (situation.toLowerCase().indexOf("3am") !== -1 || situation.toLowerCase().indexOf("sleep") !== -1) {
-    steps.push("🌙 3am protocol: KD6 → HT7 → Ear Shen Men. You do not have to decide anything right now.");
-  }
-  steps.push("💃 If craving is urgent: 60-second emergency protocol → then Cha Cha or Mambo for full Liver Qi release.");
-  steps.push("📓 After: journal one sentence about what was happening. Pattern recognition is your clinical tool.");
-
-  var out = document.getElementById("builder-output");
-  if (out) {
-    out.innerHTML = '<div class="card" style="border-left:3px solid var(--green)">' +
-      '<div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:.5rem">Your protocol</div>' +
-      steps.map(function(s,i) {
-        return '<div style="display:flex;gap:8px;margin-bottom:.4rem;font-size:13px;color:var(--text2)">' +
-          '<span style="color:var(--green);font-weight:700;flex-shrink:0">' + (i+1) + '.</span>' + s + '</div>';
-      }).join("") + '</div>';
-  }
-}
-
-// ══════════════════════════════════════════════
-// FLOOR CHECKLIST
-// ══════════════════════════════════════════════
-
-function initFloor() {
-  var el = document.getElementById("floor-content");
-  if (!el) return;
-  var cats = [
-    {label:"Morning of comp", items:["ST36 + PC6 morning ritual","Morning meds taken (skip Methylphenidate timing check)","Ate a real breakfast — warm, cooked","Checked outfit: shoes, clothes, accessories","Packed: water bottle, light snack, deodorant, extra shirt"]},
-    {label:"At the venue", items:["Find restroom location first","Identify a quiet corner for reset","PC6 before entering the ballroom","Text Mom or Lily arrival confirmation","Do not drink alcohol — KD1 on the floor during waits"]},
-    {label:"Before each dance", items:["Ear Shen Men — 20 seconds each ear","LR3 — press firmly 30 seconds each foot","One full breath: 4 in, 8 out","Set your intention: this is practice, not judgment","Make eye contact with your partner before the music starts"]},
-    {label:"After each heat", items:["One breath before checking your phone","Notice: what felt good (neuroplasticity — reinforce it)","One thing to adjust — not five","Water sip between heats","LI4 if tension building in hands/shoulders"]},
-    {label:"End of comp", items:["Text your people how it went","Log in journal: one thing you are proud of","KD6 + HT7 wind-down tonight","No decisions about your dancing for 24 hours","You showed up. That is the whole win."]}
-  ];
-  var saved = JSON.parse(localStorage.getItem("floor-checks") || "{}");
-  el.innerHTML = cats.map(function(cat, ci) {
-    return '<div class="card" style="margin-bottom:.75rem">' +
-      '<div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:.5rem">' + cat.label + '</div>' +
-      cat.items.map(function(item, ii) {
-        var key = ci + "-" + ii;
-        var checked = saved[key] || false;
-        return '<div style="display:flex;gap:.5rem;align-items:flex-start;padding:.3rem 0;border-bottom:.5px solid var(--border2)">' +
-          '<input type="checkbox" ' + (checked ? "checked" : "") + ' onchange="saveFloor(\'' + key + '\',this.checked)" style="margin-top:2px;width:16px;height:16px;accent-color:var(--green);flex-shrink:0">' +
-          '<span style="font-size:12px;color:var(--text2)">' + item + '</span></div>';
-      }).join("") + '</div>';
-  }).join("") +
-  '<button class="btn secondary" onclick="resetFloor()" style="margin-top:.25rem">Reset checklist</button>';
-}
-
-function saveFloor(key, val) {
-  var saved = JSON.parse(localStorage.getItem("floor-checks") || "{}");
-  saved[key] = val;
-  localStorage.setItem("floor-checks", JSON.stringify(saved));
-}
-
-function resetFloor() {
-  localStorage.removeItem("floor-checks");
-  initFloor();
-}
-
-// ══════════════════════════════════════════════
-// TRACKER (weekly mood)
-// ══════════════════════════════════════════════
-
-function initTracker() {
-  var el = document.getElementById("tracker-content");
-  if (!el) return;
-  var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  var moods = ["😊","😐","😟","😤","😴","⚡"];
-  var moodLabels = ["Good","Okay","Low","Angry","Tired","Hypomanic"];
-  var saved = JSON.parse(localStorage.getItem("mood-tracker") || "{}");
-  var today = new Date();
-  var weekStart = new Date(today);
-  weekStart.setDate(today.getDate() - today.getDay());
-
-  var html = '<div class="card">';
-  html += '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:.25rem;margin-bottom:.5rem">';
-  for (var d = 0; d < 7; d++) {
-    var date = new Date(weekStart);
-    date.setDate(weekStart.getDate() + d);
-    var key = date.toISOString().slice(0,10);
-    var val = saved[key] || "";
-    var isToday = d === today.getDay();
-    html += '<div style="text-align:center">';
-    html += '<div style="font-size:10px;color:' + (isToday ? "var(--green)" : "var(--sec)") + ';font-weight:' + (isToday ? "700" : "400") + ';margin-bottom:.2rem">' + days[d] + '</div>';
-    html += '<select onchange="saveMood(\'' + key + '\',this.value)" style="width:100%;font-size:18px;text-align:center;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:.15rem 0;color:var(--text)">';
-    html += '<option value="">—</option>';
-    moods.forEach(function(m, mi) {
-      html += '<option value="' + m + '" ' + (val === m ? "selected" : "") + '>' + m + '</option>';
-    });
-    html += '</select></div>';
-  }
-  html += '</div>';
-  html += '<div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem">';
-  moods.forEach(function(m,mi) {
-    html += '<span style="font-size:11px;color:var(--text3)">' + m + ' ' + moodLabels[mi] + '</span>&nbsp;';
-  });
-  html += '</div></div>';
-  el.innerHTML = html;
-}
-
-function saveMood(key, val) {
-  var saved = JSON.parse(localStorage.getItem("mood-tracker") || "{}");
-  saved[key] = val;
-  localStorage.setItem("mood-tracker", JSON.stringify(saved));
-}
-
-// ══════════════════════════════════════════════
-// SLEEP TRACKER
-// ══════════════════════════════════════════════
-
-function initSleep() {
-  var el = document.getElementById("sleep-content");
-  if (!el) return;
-  var saved = JSON.parse(localStorage.getItem("sleep-log") || "[]");
-  var today = new Date().toISOString().slice(0,10);
-  el.innerHTML =
-    '<div class="card" style="margin-bottom:.75rem">' +
-    '<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.5rem">Log last night</div>' +
-    '<div class="field-label">Hours slept</div>' +
-    '<input type="number" class="field" id="sleep-hours" min="0" max="12" step="0.5" placeholder="7.5">' +
-    '<div class="field-label">Quality</div>' +
-    '<div class="chip-wrap" id="sleep-quality-chips"></div>' +
-    '<div class="field-label">Woke during night?</div>' +
-    '<div class="chip-wrap" id="sleep-woke-chips"></div>' +
-    '<button class="btn" onclick="logSleep()">Log sleep</button>' +
-    '</div>' +
-    '<div class="card">' +
-    '<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.5rem">Last 7 nights</div>' +
-    '<div class="sleep-grid">' +
-    (function() {
-      var html = "";
-      for (var i = 6; i >= 0; i--) {
-        var d = new Date(); d.setDate(d.getDate() - i);
-        var key = d.toISOString().slice(0,10);
-        var entry = saved.find(function(s) { return s.date === key; });
-        var hrs = entry ? entry.hours : "—";
-        var color = !entry ? "var(--bg3)" : entry.hours >= 7 ? "#0a2e1e" : entry.hours >= 5 ? "#261d0a" : "#2a1010";
-        var dayName = ["Su","Mo","Tu","We","Th","Fr","Sa"][d.getDay()];
-        html += '<div class="sleep-cell" style="background:' + color + '">' +
-          '<div>' + dayName + '</div><div class="sleep-val">' + hrs + '</div></div>';
-      }
-      return html;
-    })() +
-    '</div>' +
-    '<div style="font-size:11px;color:var(--text3);margin-top:.4rem">Kidney Yin governs sleep between 11pm–3am. Consistent sleep nourishes the root.</div>' +
-    '</div>';
-  makeChips("sleep-quality-chips", ["Deep","Light","Fragmented","Vivid dreams","Nightmares"]);
-  makeChips("sleep-woke-chips", ["No","1x","2-3x","Many"]);
-}
-
-function logSleep() {
-  var hours = parseFloat((document.getElementById("sleep-hours") || {}).value || "0");
-  var qualEl = document.querySelector("#sleep-quality-chips .chip.sel");
-  var wokeEl = document.querySelector("#sleep-woke-chips .chip.sel");
-  if (!hours) { alert("Enter hours slept."); return; }
-  var saved = JSON.parse(localStorage.getItem("sleep-log") || "[]");
-  var today = new Date().toISOString().slice(0,10);
-  saved = saved.filter(function(s) { return s.date !== today; });
-  saved.push({date:today, hours:hours, quality:qualEl ? qualEl.textContent : "", woke:wokeEl ? wokeEl.textContent : ""});
-  localStorage.setItem("sleep-log", JSON.stringify(saved));
-  initSleep();
-}
-
-// ══════════════════════════════════════════════
-// LABS
-// ══════════════════════════════════════════════
-
-function initLabs() {
-  var el = document.getElementById("labs-content");
-  if (!el) return;
-  var saved = JSON.parse(localStorage.getItem("lab-results") || "[]");
-  var defaults = [
-    {date:"Aug '23", ast:181, platelets:143, fib4:4.15, bili:2.2, note:"Pre-sobriety baseline"},
-    {date:"Jan '26", ast:41,  platelets:81,  fib4:null,  bili:2.6, note:"64 days sober — AST dramatic improvement"},
-    {date:"Mar '26", ast:58,  platelets:58,  fib4:null,  bili:2.7, note:"After slip — AST rising, platelets dropping"}
-  ];
-  var allLabs = defaults.concat(saved);
-
-  el.innerHTML =
-    '<div class="card" style="margin-bottom:.75rem">' +
-    '<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.5rem">Add new lab result</div>' +
-    '<div class="field-label">Date</div><input class="field" id="lab-date" placeholder="e.g. Jun \'26">' +
-    '<div class="field-label">AST (SGOT)</div><input class="field" id="lab-ast" type="number" placeholder="normal <40">' +
-    '<div class="field-label">Platelets</div><input class="field" id="lab-plat" type="number" placeholder="normal 150-400">' +
-    '<div class="field-label">Bilirubin</div><input class="field" id="lab-bili" type="number" step="0.1" placeholder="normal <1.2">' +
-    '<div class="field-label">Notes</div><input class="field" id="lab-note" placeholder="context...">' +
-    '<button class="btn" onclick="addLab()">Save result</button>' +
-    '</div>' +
-    '<div class="card">' +
-    '<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.5rem">FIB-4 trend</div>' +
-    allLabs.map(function(l) {
-      var astColor = l.ast > 40 ? "#C0392B" : "#0F6E56";
-      var platColor = l.platelets < 100 ? "#C0392B" : l.platelets < 150 ? "#BA7517" : "var(--green)";
-      return '<div style="padding:.5rem 0;border-bottom:.5px solid var(--border2)">' +
-        '<div style="font-size:11px;font-weight:700;color:var(--text3)">' + l.date + (l.note ? " · " + l.note : "") + '</div>' +
-        '<div style="display:flex;gap:1rem;margin-top:.25rem">' +
-        '<span style="font-size:12px">AST <b style="color:' + astColor + '">' + (l.ast || "—") + '</b></span>' +
-        '<span style="font-size:12px">PLT <b style="color:' + platColor + '">' + (l.platelets || "—") + '</b></span>' +
-        '<span style="font-size:12px">Bili <b style="color:var(--text)">' + (l.bili || "—") + '</b></span>' +
-        (l.fib4 ? '<span style="font-size:12px">FIB-4 <b style="color:#C0392B">' + l.fib4 + '</b></span>' : "") +
-        '</div></div>';
-    }).join("") +
-    '</div>';
-}
-
-function addLab() {
-  var date = (document.getElementById("lab-date")||{}).value;
-  var ast = parseFloat((document.getElementById("lab-ast")||{}).value);
-  var plat = parseFloat((document.getElementById("lab-plat")||{}).value);
-  var bili = parseFloat((document.getElementById("lab-bili")||{}).value);
-  var note = (document.getElementById("lab-note")||{}).value;
-  if (!date) { alert("Enter a date."); return; }
-  var saved = JSON.parse(localStorage.getItem("lab-results") || "[]");
-  saved.push({date:date, ast:ast||null, platelets:plat||null, bili:bili||null, note:note||""});
-  localStorage.setItem("lab-results", JSON.stringify(saved));
-  initLabs();
-}
-
-// ══════════════════════════════════════════════
-// MOOD (hypomania checks)
-// ══════════════════════════════════════════════
-
-function initMoodChecks() {
-  var el = document.getElementById("mood-checks");
-  if (!el) return;
-  var checks = [
-    {q:"Racing thoughts — hard to slow down?", risk:"high"},
-    {q:"Spending more than usual or unusual purchases?", risk:"high"},
-    {q:"Sleeping less but feeling fine or energized?", risk:"high"},
-    {q:"Talking faster or more than normal?", risk:"medium"},
-    {q:"Feeling more irritable than sad?", risk:"medium"},
-    {q:"Projects started but not finished, more than usual?", risk:"medium"},
-    {q:"Feeling invincible or like consequences don't apply?", risk:"high"},
-    {q:"Increased alcohol urge tied to mood elevation?", risk:"high"}
-  ];
-  el.innerHTML = '<div style="font-size:12px;color:var(--text3);margin-bottom:.5rem">Check any that apply right now.</div>' +
-    checks.map(function(c, i) {
-      var borderColor = c.risk === "high" ? "#C0392B" : "#BA7517";
-      return '<div style="display:flex;gap:.5rem;align-items:flex-start;padding:.5rem;margin-bottom:.35rem;border-radius:8px;border:1px solid var(--border2)" id="mood-row-' + i + '">' +
-        '<input type="checkbox" onchange="scoreMood()" style="margin-top:2px;width:18px;height:18px;accent-color:' + borderColor + ';flex-shrink:0" data-risk="' + c.risk + '">' +
-        '<span style="font-size:13px;color:var(--text2)">' + c.q + '</span></div>';
-    }).join("") +
-    '<div id="mood-response"></div>';
-}
-
-function scoreMood() {
-  var boxes = document.querySelectorAll("#mood-checks input[type=checkbox]");
-  var high = 0, total = 0;
-  boxes.forEach(function(b) {
-    if (b.checked) { total++; if (b.dataset.risk === "high") high++; }
-  });
-  var resp = document.getElementById("mood-response");
-  if (!resp) return;
-  var msg, color, bg;
-  if (high >= 3 || total >= 5) {
-    msg = "⚡ Hypomania alert. HT7 now. No big decisions today. Call your doctor if this is new. PC6 + KD1 grounding protocol.";
-    color = "#C0392B"; bg = "#2a1010";
-  } else if (high >= 1 || total >= 2) {
-    msg = "⚠️ Watch pattern. Note what you're noticing. HT7 + Ear Shen Men. Journal before acting on any impulse.";
-    color = "#BA7517"; bg = "#261d0a";
-  } else if (total === 0) {
-    msg = ""; resp.innerHTML = ""; return;
-  } else {
-    msg = "🟡 Mild activation. Keep monitoring. Stay with your wind-down routine tonight.";
-    color = "#BA7517"; bg = "#261d0a";
-  }
-  resp.innerHTML = '<div style="background:' + bg + ';border:1.5px solid ' + color + ';border-radius:10px;padding:.75rem;margin-top:.5rem;font-size:13px;color:' + color + '">' + msg + '</div>';
-}
-
-// ══════════════════════════════════════════════
 // DANCE
 // ══════════════════════════════════════════════
 
@@ -2256,6 +1741,594 @@ function showDance(id, btn) {
 }
 
 // ══════════════════════════════════════════════
+// HERBS
+// ══════════════════════════════════════════════
+
+function initHerbs() {
+  var el = document.getElementById("herbs-list");
+  if (!el) return;
+  var herbs = [
+    {name:"Ge Gen (Kudzu Root)",pinyin:"Gé Gēn",hangul:"갈근",cat:"AUD — primary herb",color:"#0F6E56",
+     use:"Reduces alcohol craving at receptor level. Isoflavones inhibit alcohol dehydrogenase.",
+     dose:"9–15g decoction or 500mg standardized extract",caution:"Generally safe. Monitor with liver compromise."},
+    {name:"Huang Qi (Astragalus)",pinyin:"Huáng Qí",hangul:"황기",cat:"Liver / Immune",color:"#1D9E75",
+     use:"Tonifies Wei Qi. Supports liver regeneration. Immune modulation.",
+     dose:"15–30g decoction daily",caution:"Avoid in acute infection or fever."},
+    {name:"Dang Gui (Angelica sinensis)",pinyin:"Dāng Guī",hangul:"당귀",cat:"Blood / Liver",color:"#D4537E",
+     use:"Nourishes Blood, moves Blood stasis. Liver Blood deficiency pattern.",
+     dose:"6–12g decoction",caution:"⚠️ Blood-moving — caution with platelets 58. Monitor closely."},
+    {name:"Bai Shao (White Peony)",pinyin:"Bái Sháo",hangul:"백작약",cat:"Liver / Yin",color:"#7F77DD",
+     use:"Nourishes Liver Yin, softens Liver, calms irritability and spasm.",
+     dose:"6–15g decoction",caution:"Caution with Cold-Damp Spleen pattern."},
+    {name:"Chai Hu (Bupleurum)",pinyin:"Chái Hú",hangul:"시호",cat:"Liver Qi",color:"#0F6E56",
+     use:"Spreads Liver Qi. Primary herb for Liver Qi stagnation — irritability, craving surge.",
+     dose:"3–9g decoction. Use in formula context.",caution:"Long-term solo use caution. Liver-protective context preferred."},
+    {name:"Fu Ling (Poria)",pinyin:"Fú Líng",hangul:"복령",cat:"Spleen / Heart",color:"#BA7517",
+     use:"Calms Shen, tonifies Spleen, resolves Dampness. Core in most formulas.",
+     dose:"9–15g decoction",caution:"Generally very safe."},
+    {name:"Suan Zao Ren (Jujube Seed)",pinyin:"Suān Zǎo Rén",hangul:"산조인",cat:"Heart / Sleep",color:"#2471A3",
+     use:"Nourishes Heart Yin, calms Shen. Primary herb for insomnia and anxiety.",
+     dose:"9–18g decoction. Toast for deficiency, raw for excess.",caution:"May cause mild drowsiness."},
+    {name:"Gou Qi Zi (Wolfberry)",pinyin:"Gǒu Qǐ Zǐ",hangul:"구기자",cat:"Liver / Kidney Yin",color:"#C0392B",
+     use:"Nourishes Liver and Kidney Yin. Supports visual health, liver function.",
+     dose:"Daily tea: 10–15 berries steeped 5 min",caution:"Generally safe. Daily use ok."},
+    {name:"TUDCA",pinyin:"(supplement)",hangul:"—",cat:"Liver — bile acid",color:"#1D9E75",
+     use:"Tauroursodeoxycholic acid. Protects hepatocytes from bile acid toxicity. Your primary liver support supplement.",
+     dose:"500mg AM + 500mg PM with meals (your current dose)",caution:"⚠️ Liver annotation flag in your records. Continue as directed."},
+    {name:"AugNAC (NAC + Glycine)",pinyin:"(supplement)",hangul:"—",cat:"Glutathione / Liver",color:"#0F6E56",
+     use:"N-acetylcysteine + glycine = GlyNAC. Raises glutathione, mitochondrial support, liver detox.",
+     dose:"1 cap AM + 1 cap PM (your current dose)",caution:"Generally very well tolerated."},
+    {name:"Milk Thistle (Silymarin)",pinyin:"(supplement)",hangul:"—",cat:"Liver — phospholipid bound",color:"#7F77DD",
+     use:"Silymarin protects hepatocytes. Phospholipid-bound form (Advanced Milk Thistle) has better absorption.",
+     dose:"1 cap evening with food (your current)",caution:"Mild CYP3A4 interaction — minor at standard doses."},
+    {name:"BodyBio PC",pinyin:"(supplement)",hangul:"—",cat:"Liver — phospholipids",color:"#BA7517",
+     use:"Phosphatidylcholine. Repairs liver cell membranes. Essential phospholipid therapy for ALD.",
+     dose:"1 cap AM (your current)",caution:"Generally safe. Take with food."}
+  ];
+  el.innerHTML = herbs.map(function(h) {
+    return '<div class="card" style="margin-bottom:.6rem;border-left:3px solid ' + h.color + '">' +
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.25rem">' +
+      '<div style="font-size:14px;font-weight:700;color:var(--text)">' + h.name + '</div>' +
+      '<span style="font-size:10px;padding:2px 8px;border-radius:10px;background:' + h.color + '22;color:' + h.color + ';font-weight:600;white-space:nowrap;margin-left:.5rem">' + h.cat + '</span></div>' +
+      '<div style="font-size:11px;color:var(--text3);margin-bottom:.35rem">' + h.pinyin + (h.hangul !== '—' ? ' · <span style="font-size:13px">' + h.hangul + '</span>' : '') + '</div>' +
+      '<div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:.3rem">' + h.use + '</div>' +
+      '<div style="font-size:11px;color:var(--green);margin-bottom:.2rem">💊 ' + h.dose + '</div>' +
+      '<div style="font-size:11px;color:#BA7517">⚠️ ' + h.caution + '</div>' +
+      '</div>';
+  }).join("");
+}
+
+// ══════════════════════════════════════════════
+// ACUPRESSURE DIAGRAMS
+// ══════════════════════════════════════════════
+
+var currentDiagram = "wrist";
+
+var POINT_DATA = {
+  wrist: {
+    label: "Wrist, Forearm & Hand",
+    viewBox: "0 0 200 260",
+    pts: [
+      {id:"PC6", cx:100, cy:90,  label:"PC6",  full:"Pericardium 6 · Nèi Guān",  hangul:"내관", color:"#1D9E75",
+       tip:"3 finger-widths above wrist crease · between the two tendons on inner forearm. Calms Heart, relieves craving, settles nausea. Public point."},
+      {id:"HT7", cx:140, cy:128, label:"HT7",  full:"Heart 7 · Shén Mén · Spirit Gate", hangul:"신문", color:"#7F77DD",
+       tip:"Wrist crease · pinky side · small notch beside the pisiform bone. Calms Shen, anxiety, insomnia. Whisper pressure at night."},
+      {id:"LU7", cx:62,  cy:108, label:"LU7",  full:"Lung 7 · Liè Quē",          hangul:"열결", color:"#5aafd4",
+       tip:"1.5 cun above wrist crease · thumb side · just above the styloid process. Opens Lung, grief release, Bolero point."},
+      {id:"LI4", cx:148, cy:205, label:"LI4",  full:"Large Intestine 4 · Hé Gǔ", hangul:"합곡", color:"#E09D3A",
+       tip:"Web between thumb and index finger · fleshy mound on back of hand. Moves Qi and Blood everywhere. Four Gates point with LR3. ⚠️ Avoid in pregnancy."}
+    ],
+    body: `
+      <!-- forearm -->
+      <rect x="72" y="8" width="56" height="105" rx="28" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- two tendons -->
+      <line x1="92" y1="8" x2="92" y2="110" stroke="var(--skin-dark)" stroke-width="0.7" opacity="0.35"/>
+      <line x1="108" y1="8" x2="108" y2="110" stroke="var(--skin-dark)" stroke-width="0.7" opacity="0.35"/>
+      <!-- wrist crease -->
+      <line x1="68" y1="113" x2="132" y2="113" stroke="var(--skin-dark)" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+      <text x="136" y="117" font-size="8" fill="var(--text3)" font-family="inherit">crease</text>
+      <!-- palm -->
+      <rect x="68" y="110" width="66" height="50" rx="4" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- thumb -->
+      <ellipse cx="56" cy="145" rx="14" ry="24" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5" transform="rotate(-20 56 145)"/>
+      <!-- index finger -->
+      <rect x="72" y="157" width="14" height="52" rx="7" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- middle finger -->
+      <rect x="89" y="153" width="14" height="58" rx="7" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- ring finger -->
+      <rect x="106" y="156" width="13" height="54" rx="6" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- pinky -->
+      <rect x="122" y="160" width="11" height="44" rx="5" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+    `
+  },
+  foot: {
+    label: "Foot, Ankle & Lower Leg",
+    viewBox: "0 0 200 260",
+    pts: [
+      {id:"SP6", cx:60,  cy:52,  label:"SP6",  full:"Spleen 6 · Sān Yīn Jiāo",  hangul:"삼음교", color:"#D4537E",
+       tip:"3 cun above the tip of the inner ankle bone · just behind the tibia. Three Yin meeting point. ⚠️ Avoid in pregnancy."},
+      {id:"KD6", cx:58,  cy:120, label:"KD6",  full:"Kidney 6 · Zhào Hǎi",     hangul:"조해", color:"#2471A3",
+       tip:"1 thumb-width directly BELOW the inner ankle bone · into the soft hollow. Nourishes Kidney Yin, calls Shen home for sleep. Wind-down point."},
+      {id:"LR3", cx:88,  cy:185, label:"LR3",  full:"Liver 3 · Tài Chōng",     hangul:"태충", color:"#0F6E56",
+       tip:"Top of foot · groove between big toe and 2nd toe · 2 cun up from the web. Moves Liver Qi. Four Gates with LI4. Dance prep point."},
+      {id:"KD1", cx:108, cy:220, label:"KD1",  full:"Kidney 1 · Yǒng Quán",    hangul:"용천", color:"#5aafd4",
+       tip:"Ball of foot · between 2nd & 3rd metatarsals on the sole · upper 1/3. Grounds fear, emergency grounding. Press into the floor."}
+    ],
+    body: `
+      <!-- lower leg -->
+      <rect x="72" y="5" width="48" height="90" rx="22" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- tibia line -->
+      <line x1="96" y1="5" x2="96" y2="92" stroke="var(--skin-dark)" stroke-width="0.6" opacity="0.3"/>
+      <!-- inner ankle bone bump -->
+      <ellipse cx="62" cy="112" rx="13" ry="10" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- outer ankle -->
+      <ellipse cx="130" cy="115" rx="11" ry="9" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- heel -->
+      <ellipse cx="96" cy="130" rx="32" ry="22" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- foot body -->
+      <path d="M64 130 Q60 155 65 175 Q70 195 85 205 Q100 215 118 210 Q135 205 140 185 Q145 165 140 145 Q135 125 128 118 L64 118 Z" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- big toe -->
+      <ellipse cx="72" cy="222" rx="12" ry="16" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- 2nd toe -->
+      <ellipse cx="88" cy="228" rx="9" ry="14" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- 3rd toe -->
+      <ellipse cx="102" cy="230" rx="9" ry="13" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- 4th toe -->
+      <ellipse cx="116" cy="227" rx="8" ry="12" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- pinky toe -->
+      <ellipse cx="128" cy="222" rx="7" ry="10" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- toe groove big/2nd -->
+      <line x1="80" y1="210" x2="80" y2="195" stroke="var(--skin-dark)" stroke-width="0.8" opacity="0.45"/>
+      <!-- sole line -->
+      <ellipse cx="108" cy="222" rx="20" ry="8" fill="var(--skin-dark)" opacity="0.1"/>
+    `
+  },
+  ear: {
+    label: "Ear — Auricular Points",
+    viewBox: "0 0 200 260",
+    pts: [
+      {id:"SM",  cx:96,  cy:68,  label:"Shen Men", full:"Ear Shen Men · 神門",       hangul:"신문", color:"#7F77DD",
+       tip:"Triangular fossa — the Y-shaped upper hollow at the top of the ear. NOT the canal, NOT the tragus. Master calming point. Emergency craving step 1."},
+      {id:"CR",  cx:68,  cy:118, label:"Craving",  full:"Craving Point · Lung Area",  hangul:"갈망점", color:"#C0392B",
+       tip:"Tragus — the small flap at the front of the ear canal opening. Pinch it firmly. Step 2 in the 60-second protocol (20–40s)."},
+      {id:"HRT", cx:118, cy:130, label:"Heart",    full:"Heart Point · 心",           hangul:"심", color:"#D4537E",
+       tip:"Center of the concha (bowl of the ear). Heart Shen, palpitations, anxiety, hypomania calming."},
+      {id:"KD",  cx:110, cy:155, label:"Kidney",   full:"Kidney Point · 腎",          hangul:"신", color:"#2471A3",
+       tip:"Lower concha. Kidney fear, root deficiency, tinnitus, bone health, midnight waking (1–3am Kidney time)."}
+    ],
+    body: `
+      <!-- outer helix -->
+      <path d="M100 18 C138 18 162 48 162 95 C162 142 138 178 100 182 C78 184 56 174 47 158 C36 138 43 118 54 110 C62 104 70 107 70 114 C70 126 62 138 67 150 C74 166 88 173 100 171 C128 169 148 144 148 100 C148 58 130 34 104 28 C92 25 83 30 80 38 C75 47 79 59 84 64 C89 69 96 67 98 60 C100 52 97 32 100 18 Z" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="2"/>
+      <!-- anti-helix fork -->
+      <path d="M83 64 C90 72 92 84 88 98 C84 110 77 117 77 130 C77 142 84 150 91 153" fill="none" stroke="var(--skin-dark)" stroke-width="1.8" opacity="0.5" stroke-linecap="round"/>
+      <path d="M83 64 C88 58 96 56 100 60" fill="none" stroke="var(--skin-dark)" stroke-width="1.4" opacity="0.4" stroke-linecap="round"/>
+      <!-- triangular fossa shaded -->
+      <path d="M82 46 C88 40 100 44 104 54 C108 62 102 68 94 66 C86 64 80 56 82 46 Z" fill="var(--skin-dark)" opacity="0.18"/>
+      <!-- concha bowl -->
+      <ellipse cx="114" cy="128" rx="26" ry="34" fill="var(--skin-dark)" opacity="0.12"/>
+      <!-- ear canal -->
+      <ellipse cx="124" cy="124" rx="12" ry="15" fill="var(--skin-dark)" opacity="0.32"/>
+      <!-- tragus -->
+      <path d="M72 105 C63 97 61 110 65 118 C69 126 76 122 76 114 Z" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+      <!-- anti-tragus -->
+      <ellipse cx="90" cy="152" rx="8" ry="5" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1" opacity="0.6"/>
+      <!-- lobe -->
+      <ellipse cx="82" cy="172" rx="18" ry="14" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
+    `
+  }
+};
+
+function showDiagram(type) {
+  currentDiagram = type;
+  ["wrist","foot","ear"].forEach(function(t) {
+    var btn = document.getElementById("tab-" + t);
+    if (btn) btn.classList.toggle("active", t === type);
+  });
+  var area = document.getElementById("diagram-area");
+  if (!area) return;
+  var d = POINT_DATA[type];
+  if (!d) return;
+
+  var html = '<div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.75rem;margin-bottom:.5rem">';
+  html += '<div style="font-size:11px;font-weight:600;color:var(--text3);text-align:center;margin-bottom:.5rem">' + d.label + ' — tap any dot</div>';
+  html += '<div style="position:relative;display:block">';
+  // base anatomy SVG
+  html += '<svg viewBox="' + d.viewBox + '" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;max-height:280px">';
+  html += d.body;
+  // animated rings + clickable dots
+  d.pts.forEach(function(p) {
+    html += '<circle class="pt-ring" cx="' + p.cx + '" cy="' + p.cy + '" r="13" fill="' + p.color + '" opacity="0.15"/>';
+    html += '<circle cx="' + p.cx + '" cy="' + p.cy + '" r="7" fill="' + p.color + '" style="cursor:pointer" onclick="showPointDetail(\'' + p.id + '\',\'' + type + '\')">';
+    html += '<animate attributeName="opacity" values="0.9;0.6;0.9" dur="2s" repeatCount="indefinite"/></circle>';
+    // label offset to avoid overlap
+    var tx = p.cx + (p.cx > 100 ? -48 : 12);
+    var ty = p.cy + 4;
+    html += '<text x="' + tx + '" y="' + ty + '" font-size="9" fill="' + p.color + '" font-weight="700" font-family="inherit" style="pointer-events:none">' + p.label + '</text>';
+  });
+  html += '</svg>';
+  html += '</div>';
+  // chip row
+  html += '<div style="display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem">';
+  d.pts.forEach(function(p) {
+    html += '<button onclick="showPointDetail(\'' + p.id + '\',\'' + type + '\')" style="font-size:11px;padding:4px 10px;border-radius:20px;border:1.5px solid ' + p.color + '55;background:' + p.color + '18;color:' + p.color + ';cursor:pointer;font-family:inherit;font-weight:600">' + p.label + '</button>';
+  });
+  html += '</div></div>';
+  area.innerHTML = html;
+  var det = document.getElementById("point-detail");
+  if (det) det.style.display = "none";
+}
+
+function showPointDetail(id, type) {
+  var d = POINT_DATA[type];
+  if (!d) return;
+  var p = d.pts.find(function(x) { return x.id === id; });
+  if (!p) return;
+  var det = document.getElementById("point-detail");
+  if (!det) return;
+  det.style.display = "block";
+  det.innerHTML =
+    '<div style="font-size:14px;font-weight:700;color:' + p.color + ';margin-bottom:.3rem">' + p.full + '</div>' +
+    '<div style="font-size:13px;margin-bottom:.4rem">' + p.hangul + '</div>' +
+    '<div style="font-size:13px;color:var(--text2);line-height:1.6">' + p.tip + '</div>';
+}
+
+// ══════════════════════════════════════════════
+// MOOD (hypomania checks)
+// ══════════════════════════════════════════════
+
+function initMoodChecks() {
+  var el = document.getElementById("mood-checks");
+  if (!el) return;
+  var checks = [
+    {q:"Racing thoughts — hard to slow down?", risk:"high"},
+    {q:"Spending more than usual or unusual purchases?", risk:"high"},
+    {q:"Sleeping less but feeling energized or fine?", risk:"high"},
+    {q:"Talking faster or more than normal?", risk:"medium"},
+    {q:"More irritable than sad?", risk:"medium"},
+    {q:"Many projects started, fewer finished?", risk:"medium"},
+    {q:"Feeling invincible or like consequences don't apply?", risk:"high"},
+    {q:"Increased alcohol urge tied to mood elevation?", risk:"high"}
+  ];
+  el.innerHTML = '<div style="font-size:12px;color:var(--text3);margin-bottom:.5rem">Check any that apply right now.</div>' +
+    checks.map(function(c, i) {
+      return '<div style="display:flex;gap:.5rem;align-items:flex-start;padding:.5rem;margin-bottom:.3rem;border-radius:8px;border:1px solid var(--border2)">' +
+        '<input type="checkbox" onchange="scoreMood()" style="margin-top:2px;width:18px;height:18px;accent-color:' + (c.risk==="high"?"#C0392B":"#BA7517") + ';flex-shrink:0" data-risk="' + c.risk + '">' +
+        '<span style="font-size:13px;color:var(--text2)">' + c.q + '</span></div>';
+    }).join("") +
+    '<div id="mood-response" style="margin-top:.5rem"></div>';
+}
+
+function scoreMood() {
+  var boxes = document.querySelectorAll("#mood-checks input[type=checkbox]");
+  var high = 0, total = 0;
+  boxes.forEach(function(b) { if (b.checked) { total++; if (b.dataset.risk==="high") high++; } });
+  var resp = document.getElementById("mood-response");
+  if (!resp) return;
+  if (total === 0) { resp.innerHTML = ""; return; }
+  var msg, color, bg;
+  if (high >= 3 || total >= 5) {
+    msg = "⚡ Hypomania alert. HT7 now. No big decisions today. Call your doctor if this is new or escalating. PC6 + KD1 grounding protocol.";
+    color = "#C0392B"; bg = "#2a1010";
+  } else if (high >= 1 || total >= 2) {
+    msg = "⚠️ Watch your pattern. HT7 + Ear Shen Men. Journal before acting on any impulse today.";
+    color = "#BA7517"; bg = "#261d0a";
+  } else {
+    msg = "🟡 Mild activation noticed. Stay with your wind-down routine tonight.";
+    color = "#BA7517"; bg = "#261d0a";
+  }
+  resp.innerHTML = '<div style="background:' + bg + ';border:1.5px solid ' + color + ';border-radius:10px;padding:.75rem;font-size:13px;color:' + color + '">' + msg + '</div>';
+}
+
+// ══════════════════════════════════════════════
+// DBT
+// ══════════════════════════════════════════════
+
+function initDbt() {
+  var el = document.getElementById("dbt-list");
+  if (!el) return;
+  var skills = [
+    {name:"TIPP — Temperature",eam:"Kidney Yang shock reset",detail:"Cold water on face or wrists. Activates the dive reflex. KD1 into the floor simultaneously. Fastest physiological interrupt.",color:"#2471A3"},
+    {name:"TIPP — Intense Exercise",eam:"Liver Qi movement",detail:"Even 60 seconds of jumping jacks. Cha Cha chassé sequence. Moves Wood Qi out of stagnation.",color:"#0F6E56"},
+    {name:"TIPP — Paced Breathing",eam:"Lung descending & dispersing",detail:"Exhale longer than inhale. 4 in, 8 out. LU7 pressed while breathing. Lung controls grief — breath controls the Shen.",color:"#5aafd4"},
+    {name:"TIPP — Paired Muscle Relax",eam:"Spleen and Stomach Qi regulation",detail:"Tense and release each muscle group. ST36 tonification. Earth grounds scattered Wood energy.",color:"#BA7517"},
+    {name:"Radical Acceptance",eam:"Water element — yielding without resistance",detail:"What you resist, persists. KD1 into the ground. Feel the resistance in the body and let the exhale take it. Water flows around rock.",color:"#2471A3"},
+    {name:"Opposite Action",eam:"Liver Qi direction reversal",detail:"If the urge is to isolate → call someone. If the urge is to drink → KD1 + dance. Liver Qi stagnation loves inaction.",color:"#0F6E56"},
+    {name:"Mindfulness — Describe",eam:"Spleen Qi — grounding in the present",detail:"Name what you observe without judgment. 5 things you can see. Earth element: what is real, what is here, what is now.",color:"#BA7517"},
+    {name:"ACCEPTS Distress Tolerance",eam:"Multiple channel engagement",detail:"Activities, Contributing, Comparisons, Emotions (opposite), Pushing away, Thoughts, Sensations. Each engages a different channel to interrupt the loop.",color:"#7F77DD"}
+  ];
+  el.innerHTML = skills.map(function(s) {
+    return '<div class="card" style="margin-bottom:.5rem;border-left:3px solid ' + s.color + '">' +
+      '<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.2rem">' + s.name + '</div>' +
+      '<div style="font-size:11px;color:' + s.color + ';font-weight:500;margin-bottom:.3rem">⟶ ' + s.eam + '</div>' +
+      '<div style="font-size:12px;color:var(--text2);line-height:1.5">' + s.detail + '</div></div>';
+  }).join("");
+}
+
+// ══════════════════════════════════════════════
+// BODY SCAN
+// ══════════════════════════════════════════════
+
+function initScan() {
+  var el = document.getElementById("scan-content");
+  if (!el) return;
+  var zones = [
+    {area:"Crown & Forehead",channel:"Governing Vessel / Bladder",q:"Pressure, heaviness, heat?",action:"GV20 (top of head) — gentle circular pressure"},
+    {area:"Jaw & Neck",channel:"Stomach / San Jiao",q:"Grinding, clenching, tightness?",action:"ST6 (jaw muscle) — press and breathe out"},
+    {area:"Shoulders",channel:"Gallbladder / Small Intestine",q:"Lifted, braced, held?",action:"GB21 (shoulder top) — press down firmly, exhale"},
+    {area:"Chest & Heart",channel:"Heart / Pericardium",q:"Constricted, racing, hollow?",action:"PC6 (inner wrist) — press. One hand on chest."},
+    {area:"Belly & Diaphragm",channel:"Spleen / Stomach",q:"Tight, bloated, butterflies?",action:"ST25 (2 cun beside navel) — press gently both sides"},
+    {area:"Lower Back",channel:"Kidney / Bladder",q:"Dull ache, weakness, fear holding here?",action:"KD1 (feet) + press lumbar — Kidney houses the root"},
+    {area:"Hips & Groin",channel:"Liver / Gallbladder",q:"Holding, bracing, clenching?",action:"LR3 (foot web) — press. Liver controls tendons."},
+    {area:"Feet — KD1",channel:"Kidney",q:"Connected to ground? Floating?",action:"Press feet into floor. Feel KD1 — ball of foot into earth. You are here."}
+  ];
+  el.innerHTML = zones.map(function(z) {
+    return '<div class="card" style="margin-bottom:.4rem;cursor:pointer" onclick="var d=this.querySelector(\'.sd\');d.style.display=d.style.display===\'none\'?\'block\':\'none\'">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center">' +
+      '<div><div style="font-size:13px;font-weight:600;color:var(--text)">' + z.area + '</div>' +
+      '<div style="font-size:11px;color:var(--text3)">' + z.channel + '</div></div>' +
+      '<div style="color:var(--text3)">▸</div></div>' +
+      '<div class="sd" style="display:none;margin-top:.5rem">' +
+      '<div style="font-size:12px;color:var(--green);font-style:italic;margin-bottom:.25rem">' + z.q + '</div>' +
+      '<div style="font-size:12px;color:var(--text2);line-height:1.5">→ ' + z.action + '</div></div></div>';
+  }).join("");
+}
+
+// ══════════════════════════════════════════════
+// BUILDER
+// ══════════════════════════════════════════════
+
+function initBuilder() {
+  var el = document.getElementById("builder-content");
+  if (!el) return;
+  el.innerHTML =
+    '<div class="card">' +
+    '<div class="field-label">What is happening right now?</div>' +
+    '<textarea class="field" id="builder-situation" rows="2" placeholder="e.g. craving after a stressful call, 3am spiral, anger building..."></textarea>' +
+    '<div class="field-label">HALT (optional)</div>' +
+    '<div class="chip-wrap" id="builder-halt"></div>' +
+    '<div class="field-label">Five Element (optional)</div>' +
+    '<div class="chip-wrap" id="builder-elem"></div>' +
+    '<button class="btn" onclick="buildProtocol()">Generate my protocol</button>' +
+    '</div><div id="builder-output" style="margin-top:.75rem"></div>';
+  makeChips("builder-halt", ["Hungry","Angry","Lonely","Tired"]);
+  makeChips("builder-elem", ["Wood / Liver","Fire / Heart","Earth / Spleen","Metal / Lung","Water / Kidney"]);
+}
+
+function buildProtocol() {
+  var situation = ((document.getElementById("builder-situation")||{}).value||"").toLowerCase();
+  var haltEl = document.querySelector("#builder-halt .chip.sel");
+  var elemEl = document.querySelector("#builder-elem .chip.sel");
+  var halt = haltEl ? haltEl.textContent : "";
+  var elem = elemEl ? elemEl.textContent : "";
+  var steps = ["🌬️ First: 4 counts in, 8 counts out. Lung sets the tone for all channels."];
+  if (halt==="Angry"||elem.includes("Wood")) steps.push("🌿 Wood: LR3 + LI4 Four Gates — press both. Then Cha Cha or Mambo to move the Qi.");
+  else if (halt==="Lonely"||elem.includes("Fire")) steps.push("❤️ Fire: PC6 → HT7 → call someone. The Shen needs another Shen.");
+  else if (halt==="Hungry"||elem.includes("Earth")) steps.push("🟤 Earth: ST36 first. Eat something warm and cooked before anything else.");
+  else if (elem.includes("Metal")) steps.push("⚙️ Metal: LU7 (above inner wrist, thumb side). Allow grief to move — Bolero prescription.");
+  else if (halt==="Tired"||elem.includes("Water")) steps.push("💧 Water: KD1 into the floor + KD6 below inner ankle. Rest is Kidney restoration.");
+  else steps.push("🟢 General reset: PC6 → HT7 → Ear Shen Men. These three calm any storm.");
+  if (situation.indexOf("3am")!==-1||situation.indexOf("sleep")!==-1) steps.push("🌙 3am: KD6 → HT7 → Ear Shen Men. You do not have to decide anything right now.");
+  if (situation.indexOf("craving")!==-1) steps.push("🆘 Craving: Ear Shen Men → Craving Point → PC6. 60-second protocol.");
+  steps.push("💃 If it is urgent: Cha Cha or Mambo immediately. Movement is medicine.");
+  steps.push("📓 After: one sentence in your journal. Pattern recognition is your clinical tool.");
+  var out = document.getElementById("builder-output");
+  if (out) out.innerHTML = '<div class="card" style="border-left:3px solid var(--green)">' +
+    '<div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:.5rem">Your protocol</div>' +
+    steps.map(function(s,i){return '<div style="display:flex;gap:8px;margin-bottom:.4rem;font-size:13px;color:var(--text2)"><span style="color:var(--green);font-weight:700;flex-shrink:0">'+(i+1)+'.</span>'+s+'</div>';}).join("")+'</div>';
+}
+
+// ══════════════════════════════════════════════
+// FLOOR CHECKLIST
+// ══════════════════════════════════════════════
+
+function initFloor() {
+  var el = document.getElementById("floor-content");
+  if (!el) return;
+  var cats = [
+    {label:"Morning of competition", items:["ST36 + PC6 morning ritual done","Morning meds taken","Ate a real breakfast — warm, cooked","Outfit checked: shoes, clothes, accessories","Packed: water, light snack, deodorant, extra shirt"]},
+    {label:"At the venue", items:["Found restroom location","Identified a quiet corner for reset","PC6 before entering the ballroom","Texted Mom or Lily arrival confirmation","No alcohol — KD1 on the floor during waits"]},
+    {label:"Before each dance", items:["Ear Shen Men — 20 seconds each ear","LR3 — 30 seconds each foot","One breath: 4 in, 8 out","Set intention: practice, not judgment","Eye contact with partner before music"]},
+    {label:"After each heat", items:["One breath before checking phone","Notice what felt good — reinforce it","One adjustment only — not five","Water sip","LI4 if tension building in hands/shoulders"]},
+    {label:"End of day", items:["Texted your people how it went","Journal: one thing you are proud of","KD6 + HT7 wind-down tonight","No decisions about your dancing for 24 hours","You showed up. That is the whole win."]}
+  ];
+  var saved = JSON.parse(localStorage.getItem("floor-checks")||"{}");
+  el.innerHTML = cats.map(function(cat,ci){
+    return '<div class="card" style="margin-bottom:.6rem"><div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:.4rem">'+cat.label+'</div>'+
+      cat.items.map(function(item,ii){
+        var key=ci+"-"+ii, chk=saved[key]||false;
+        return '<div style="display:flex;gap:.5rem;align-items:flex-start;padding:.3rem 0;border-bottom:.5px solid var(--border2)">'+
+          '<input type="checkbox" '+(chk?"checked":"")+ ' onchange="saveFloor(\''+key+'\',this.checked)" style="margin-top:2px;width:16px;height:16px;accent-color:var(--green);flex-shrink:0">'+
+          '<span style="font-size:12px;color:var(--text2)">'+item+'</span></div>';
+      }).join("")+'</div>';
+  }).join("")+'<button class="btn secondary" onclick="resetFloor()">Reset checklist</button>';
+}
+function saveFloor(k,v){var s=JSON.parse(localStorage.getItem("floor-checks")||"{}");s[k]=v;localStorage.setItem("floor-checks",JSON.stringify(s));}
+function resetFloor(){localStorage.removeItem("floor-checks");initFloor();}
+
+// ══════════════════════════════════════════════
+// MOOD TRACKER (weekly grid)
+// ══════════════════════════════════════════════
+
+function initTracker() {
+  var el = document.getElementById("tracker-content");
+  if (!el) return;
+  var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var moods = ["😊","😐","😟","😤","😴","⚡"];
+  var moodLabels = ["Good","Okay","Low","Angry","Tired","Hypomanic"];
+  var saved = JSON.parse(localStorage.getItem("mood-tracker")||"{}");
+  var today = new Date();
+  var weekStart = new Date(today);
+  weekStart.setDate(today.getDate()-today.getDay());
+  var html = '<div class="card"><div style="display:grid;grid-template-columns:repeat(7,1fr);gap:.2rem;margin-bottom:.5rem">';
+  for (var d=0;d<7;d++) {
+    var date=new Date(weekStart); date.setDate(weekStart.getDate()+d);
+    var key=date.toISOString().slice(0,10);
+    var val=saved[key]||"";
+    var isToday=d===today.getDay();
+    html+='<div style="text-align:center"><div style="font-size:10px;color:'+(isToday?"var(--green)":"var(--sec)")+';font-weight:'+(isToday?"700":"400")+';margin-bottom:.2rem">'+days[d]+'</div>'+
+      '<select onchange="saveMoodDay(\''+key+'\',this.value)" style="width:100%;font-size:16px;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:.1rem 0;color:var(--text);text-align:center">'+
+      '<option value="">—</option>'+moods.map(function(m){return '<option value="'+m+'" '+(val===m?"selected":"")+'>'+m+'</option>';}).join("")+'</select></div>';
+  }
+  html+='</div><div style="display:flex;flex-wrap:wrap;gap:.3rem;padding-top:.4rem;border-top:.5px solid var(--border2)">';
+  moods.forEach(function(m,i){html+='<span style="font-size:11px;color:var(--text3)">'+m+' '+moodLabels[i]+'</span>';});
+  html+='</div></div>';
+  el.innerHTML=html;
+}
+function saveMoodDay(k,v){var s=JSON.parse(localStorage.getItem("mood-tracker")||"{}");s[k]=v;localStorage.setItem("mood-tracker",JSON.stringify(s));}
+
+// ══════════════════════════════════════════════
+// SLEEP TRACKER
+// ══════════════════════════════════════════════
+
+function initSleep() {
+  var el = document.getElementById("sleep-content");
+  if (!el) return;
+  var saved = JSON.parse(localStorage.getItem("sleep-log")||"[]");
+  var grid = "";
+  for (var i=6;i>=0;i--) {
+    var d=new Date(); d.setDate(d.getDate()-i);
+    var key=d.toISOString().slice(0,10);
+    var entry=saved.find(function(s){return s.date===key;});
+    var hrs=entry?entry.hours:"—";
+    var bg=!entry?"var(--bg3)":entry.hours>=7?"#0a2e1e":entry.hours>=5?"#261d0a":"#2a1010";
+    grid+='<div class="sleep-cell" style="background:'+bg+'"><div>'+["Su","Mo","Tu","We","Th","Fr","Sa"][d.getDay()]+'</div><div class="sleep-val">'+hrs+'</div></div>';
+  }
+  el.innerHTML=
+    '<div class="card" style="margin-bottom:.6rem"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.5rem">Log last night</div>'+
+    '<div class="field-label">Hours slept</div><input type="number" class="field" id="sleep-hours" min="0" max="14" step="0.5" placeholder="7.5">'+
+    '<div class="field-label">Quality</div><div class="chip-wrap" id="chips-squal"></div>'+
+    '<div class="field-label">Woke during night?</div><div class="chip-wrap" id="chips-swoke"></div>'+
+    '<button class="btn" onclick="logSleep()">Log sleep</button></div>'+
+    '<div class="card"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.5rem">Last 7 nights</div>'+
+    '<div class="sleep-grid">'+grid+'</div>'+
+    '<div style="font-size:11px;color:var(--text3);margin-top:.4rem">Kidney Yin governs sleep between 11pm–3am. Every consistent night nourishes the root.</div></div>';
+  makeChips("chips-squal",["Deep","Light","Fragmented","Vivid dreams","Nightmares"]);
+  makeChips("chips-swoke",["No","1x","2–3x","Many"]);
+}
+function logSleep(){
+  var hrs=parseFloat((document.getElementById("sleep-hours")||{}).value||"0");
+  if(!hrs){alert("Enter hours slept.");return;}
+  var qual=(document.querySelector("#chips-squal .chip.sel")||{}).textContent||"";
+  var woke=(document.querySelector("#chips-swoke .chip.sel")||{}).textContent||"";
+  var saved=JSON.parse(localStorage.getItem("sleep-log")||"[]");
+  var today=new Date().toISOString().slice(0,10);
+  saved=saved.filter(function(s){return s.date!==today;});
+  saved.push({date:today,hours:hrs,quality:qual,woke:woke});
+  localStorage.setItem("sleep-log",JSON.stringify(saved));
+  initSleep();
+}
+
+// ══════════════════════════════════════════════
+// LABS
+// ══════════════════════════════════════════════
+
+function initLabs() {
+  var el = document.getElementById("labs-content");
+  if (!el) return;
+  var defaults = [
+    {date:"Aug '23",ast:181,platelets:143,bili:2.2,fib4:4.15,note:"Pre-sobriety baseline"},
+    {date:"Jan '26",ast:41, platelets:81, bili:2.6,fib4:null, note:"64 days sober — AST improved dramatically"},
+    {date:"Mar '26",ast:58, platelets:58, bili:2.7,fib4:null, note:"After slip — AST rising, platelets declining"}
+  ];
+  var saved = JSON.parse(localStorage.getItem("lab-results")||"[]");
+  var all = defaults.concat(saved);
+  el.innerHTML=
+    '<div class="card" style="margin-bottom:.6rem"><div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:.4rem">Add new result</div>'+
+    '<div class="field-label">Date</div><input class="field" id="lab-date" placeholder="e.g. Jun \'26">'+
+    '<div class="field-label">AST</div><input class="field" id="lab-ast" type="number" placeholder="normal <40">'+
+    '<div class="field-label">Platelets</div><input class="field" id="lab-plat" type="number" placeholder="normal 150–400">'+
+    '<div class="field-label">Bilirubin</div><input class="field" id="lab-bili" type="number" step="0.1" placeholder="normal <1.2">'+
+    '<div class="field-label">Notes</div><input class="field" id="lab-note" placeholder="context...">'+
+    '<button class="btn" onclick="addLab()">Save</button></div>'+
+    '<div class="card">'+
+    all.map(function(l){
+      var ac=l.ast>40?"#C0392B":"#0F6E56";
+      var pc=l.platelets<100?"#C0392B":l.platelets<150?"#BA7517":"var(--green)";
+      return '<div style="padding:.5rem 0;border-bottom:.5px solid var(--border2)">'+
+        '<div style="font-size:11px;font-weight:700;color:var(--text3)">'+l.date+(l.note?" · "+l.note:"")+'</div>'+
+        '<div style="display:flex;gap:1rem;margin-top:.2rem">'+
+        '<span style="font-size:12px">AST <b style="color:'+ac+'">'+(l.ast||"—")+'</b></span>'+
+        '<span style="font-size:12px">PLT <b style="color:'+pc+'">'+(l.platelets||"—")+'</b></span>'+
+        '<span style="font-size:12px">Bili <b style="color:var(--text)">'+(l.bili||"—")+'</b></span>'+
+        (l.fib4?'<span style="font-size:12px">FIB-4 <b style="color:#C0392B">'+l.fib4+'</b></span>':"")+
+        '</div></div>';
+    }).join("")+'</div>';
+}
+function addLab(){
+  var date=(document.getElementById("lab-date")||{}).value;
+  if(!date){alert("Enter a date.");return;}
+  var saved=JSON.parse(localStorage.getItem("lab-results")||"[]");
+  saved.push({date:date,ast:parseFloat((document.getElementById("lab-ast")||{}).value)||null,platelets:parseFloat((document.getElementById("lab-plat")||{}).value)||null,bili:parseFloat((document.getElementById("lab-bili")||{}).value)||null,note:(document.getElementById("lab-note")||{}).value||""});
+  localStorage.setItem("lab-results",JSON.stringify(saved));
+  initLabs();
+}
+
+// ══════════════════════════════════════════════
+// CONTACT PHOTOS (base64 stored in localStorage)
+// ══════════════════════════════════════════════
+
+function initContactPhotos() {
+  var el = document.getElementById("contact-photo-section");
+  if (!el) return;
+  var contacts = [
+    {key:"photo-mom",  name:"Mom",  color:"linear-gradient(135deg,#0F6E56,#1D9E75)", emoji:"👩"},
+    {key:"photo-tota", name:"Tota", color:"linear-gradient(135deg,#BA7517,#EF9F27)", emoji:"👵"},
+    {key:"photo-lily", name:"Lily", color:"linear-gradient(135deg,#D4537E,#993556)", emoji:"👧"}
+  ];
+  el.innerHTML = '<div class="card"><div class="card-title">Contact photos</div>' +
+    '<div style="font-size:12px;color:var(--text3);margin-bottom:.75rem">Photos save inside the app — no file needed on the server.</div>' +
+    contacts.map(function(c){
+      var stored = localStorage.getItem(c.key);
+      return '<div style="display:flex;align-items:center;gap:.75rem;padding:.5rem 0;border-bottom:.5px solid var(--border2)">' +
+        '<div id="prev-'+c.key+'" style="width:44px;height:44px;border-radius:50%;background:'+c.color+';display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden;flex-shrink:0">' +
+        (stored?'<img src="'+stored+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%">':c.emoji)+'</div>' +
+        '<div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--text)">'+c.name+'</div>' +
+        '<label style="font-size:11px;color:var(--green);cursor:pointer">📷 Tap to choose photo' +
+        '<input type="file" accept="image/*" style="display:none" onchange="saveContactPhoto(\''+c.key+'\',this)"></label></div>' +
+        (stored?'<button onclick="clearContactPhoto(\''+c.key+'\')" style="font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;font-family:inherit">Remove</button>':'')+
+        '</div>';
+    }).join("") + '</div>';
+  // also update the crisis modal photos
+  refreshCrisisPhotos();
+}
+
+function saveContactPhoto(key, input) {
+  var file = input.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    localStorage.setItem(key, e.target.result);
+    initContactPhotos();
+    refreshCrisisPhotos();
+    initContacts();
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearContactPhoto(key) {
+  localStorage.removeItem(key);
+  initContactPhotos();
+  refreshCrisisPhotos();
+  initContacts();
+}
+
+function refreshCrisisPhotos() {
+  var map = {
+    "photo-mom":  {id:"crisis-photo-mom",  emoji:"👩"},
+    "photo-tota": {id:"crisis-photo-tota", emoji:"👵"},
+    "photo-lily": {id:"crisis-photo-lily", emoji:"👧"}
+  };
+  Object.keys(map).forEach(function(key) {
+    var el = document.getElementById(map[key].id);
+    if (!el) return;
+    var stored = localStorage.getItem(key);
+    el.innerHTML = stored
+      ? '<img src="'+stored+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%">'
+      : map[key].emoji;
+  });
+}
+
+// ══════════════════════════════════════════════
 // INITIALIZE ALL
 // ══════════════════════════════════════════════
 
@@ -2279,6 +2352,7 @@ function showDance(id, btn) {
   initLiver();
   renderJournal();
   renderWins();
+  initHerbs();
   initDbt();
   initScan();
   initBuilder();
@@ -2287,6 +2361,7 @@ function showDance(id, btn) {
   initSleep();
   initLabs();
   initMoodChecks();
+  initContactPhotos();
   showDiagram("wrist");
 
   // Hide all sections except checkin on load
