@@ -345,7 +345,6 @@ input[type=range]{width:100%;accent-color:var(--green);margin:.4rem 0}
   <div class="section">
     <div class="sec-label">Hypomania & impulse early warning</div>
     <div id="mood-checks"></div>
-    <div id="mood-response"></div>
   </div>
 </div>
 
@@ -972,12 +971,43 @@ function initCheckin() {
 function selectElement(el, name) {
   document.querySelectorAll("#five-elements .halt-btn").forEach(function(b) {
     b.style.borderColor = "";
+    b.style.background = "";
   });
   el.style.borderColor = "var(--green)";
+  el.style.background = "var(--green-light)";
+
+  var protocols = {
+    "Wood": {color:"#0F6E56",bg:"#111a0d",steps:["LR3 — top of foot, groove between big toe and 2nd toe. Press firmly 30s each foot.","LI4 — web between thumb and index finger. Four Gates. Move it all.","Cha Cha or Mambo — Liver Qi needs movement, not stillness.","Exhale longer than inhale — 1 count in, 2 counts out minimum."]},
+    "Fire": {color:"#C0392B",bg:"#2a1010",steps:["PC6 — inner forearm, 3 widths above wrist crease, between tendons.","HT7 — wrist crease, pinky side. Gentle. This is a whisper.","Call Mom, Tota, or Lily — Heart Shen needs another Shen.","Rumba prescription — slow, connected, Heart nourishing."]},
+    "Earth": {color:"#BA7517",bg:"#261d0a",steps:["ST36 — 4 finger-widths below kneecap, one finger outside shin. Ground.","Eat something warm and cooked first — Spleen hates cold and raw.","East Coast Swing — triple step rhythm re-establishes Earth rhythm.","5 things you can see, touch, smell — Earth is the present moment."]},
+    "Metal": {color:"#7a8499",bg:"#1a1c20",steps:["LU7 — just above inner wrist on thumb side. Lung opens grief.","4-7-8 breath — 4 in through nose, 7 hold, 8 out through mouth.","Bolero prescription — slow, sustained, lets Metal descend.","Allow grief to exist. Metal transforms when it can move."]},
+    "Water": {color:"#2471A3",bg:"#0e1a26",steps:["KD1 — press ball of foot into the floor. Ground the Water.","KD6 — 1 thumb-width below inner ankle bone. Kidney Yin.","You do not have to decide anything right now.","Mambo if fear is rising — KD1 into the floor, movement over freeze."]}
+  };
+  var p = protocols[name];
+  if (!p) return;
+  var existing = document.getElementById("element-protocol-card");
+  if (existing) existing.remove();
+  var card = document.createElement("div");
+  card.id = "element-protocol-card";
+  card.style.cssText = "background:" + p.bg + ";border:1.5px solid " + p.color + "55;border-radius:12px;padding:1rem;margin-top:.5rem";
+  card.innerHTML = '<div style="font-size:12px;font-weight:700;color:' + p.color + ';margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">' + name + ' element protocol</div>' +
+    p.steps.map(function(s, i) {
+      return '<div style="display:flex;gap:8px;margin-bottom:.4rem;font-size:13px;color:var(--text2)">' +
+        '<span style="color:' + p.color + ';font-weight:700;flex-shrink:0">' + (i+1) + '.</span>' + s + '</div>';
+    }).join("");
+  var grid = document.getElementById("five-elements");
+  if (grid && grid.parentNode) grid.parentNode.insertBefore(card, grid.nextSibling);
 }
 
 function showProtocol(text) {
-  alert(text);
+  var area = document.getElementById("craving-protocols");
+  var existing = document.getElementById("craving-detail-card");
+  if (existing) existing.remove();
+  var card = document.createElement("div");
+  card.id = "craving-detail-card";
+  card.style.cssText = "background:var(--bg3);border:1.5px solid var(--green);border-radius:10px;padding:.75rem;margin-top:.5rem;font-size:13px;color:var(--text2);line-height:1.6";
+  card.innerHTML = "→ " + text;
+  if (area) area.parentNode.appendChild(card);
 }
 
 // ══════════════════════════════════════════════
@@ -986,21 +1016,45 @@ function showProtocol(text) {
 
 function initNow() {
   var protocols = [
-    {title:"I have a craving right now",sub:"Ear Shen Men \u2192 Craving point \u2192 PC6 \u2014 starts immediately",color:"#C0392B",bg:"#2a1510"},
-    {title:"I feel hypomanic or too fast",sub:"HT7 \u2192 KD1 into the floor \u2192 Waltz breath",color:"#7F77DD",bg:"#181620"},
-    {title:"I am spiraling or dissociating",sub:"KD1 feet on floor \u2192 Ear Shen Men \u2192 name 5 things you can see",color:"#2471A3",bg:"#0e1a26"},
-    {title:"I am angry and it is building",sub:"LR3 + LI4 Four Gates \u2192 Cha Cha chass\u00e9 \u2192 breathe out longer than in",color:"#0F6E56",bg:"#111a0d"},
-    {title:"3am / can't sleep / existential pull",sub:"KD6 \u2192 HT7 \u2192 Ear Shen Men \u2192 you do not have to decide anything right now",color:"#BA7517",bg:"#261d0a"}
+    {title:"I have a craving right now",sub:"Ear Shen Men → Craving point → PC6",color:"#C0392B",bg:"#2a1510",
+     steps:["Ear Shen Men — pinch the triangular fossa (upper hollow of both ears). Hard. 20 seconds.","Craving Point — pinch the tragus (front ear flap) firmly. 20 seconds.","PC6 — press inner wrist between the two tendons, both sides. 20 seconds.","KD1 — press both feet into the floor. You are still here."]},
+    {title:"I feel hypomanic or too fast",sub:"HT7 → KD1 → Waltz breath",color:"#7F77DD",bg:"#181620",
+     steps:["HT7 — wrist crease, pinky side, small notch. Gentle sustained pressure.","KD1 — feet into the floor. Feel the weight of your body.","Waltz breath — 1 count in, 2 count hold, 3 count out. Repeat 6x.","No big decisions for the next hour. Journal instead."]},
+    {title:"I am spiraling or dissociating",sub:"KD1 → Ear Shen Men → 5 things",color:"#2471A3",bg:"#0e1a26",
+     steps:["KD1 — press both feet hard into the floor. Say out loud: I am here.","Ear Shen Men — both ears simultaneously. Hold.","5 things you can see — name them out loud. This is Earth grounding.","Slow breath — exhale is twice as long as inhale."]},
+    {title:"I am angry and it is building",sub:"LR3 + LI4 → Cha Cha → long exhale",color:"#0F6E56",bg:"#111a0d",
+     steps:["LR3 — top of foot, groove between big toe and 2nd toe. Press hard, 30s each.","LI4 — web between thumb and index finger. Four Gates open.","Cha Cha or Mambo — put music on and move. Liver Qi needs an exit.","Exhale longer than inhale. Anger is trapped Liver Qi — let it move."]},
+    {title:"3am / can't sleep / existential pull",sub:"KD6 → HT7 → Ear Shen Men",color:"#BA7517",bg:"#261d0a",
+     steps:["KD6 — 1 thumb-width below inner ankle bone. Both feet. Kidney Yin calls the Shen home.","HT7 — wrist crease, pinky side. Gentle. This is bedtime pressure.","Ear Shen Men — both ears. Hold 1 minute. Shen is returning.","You do not have to decide anything right now. Nothing needs solving at 3am."]}
   ];
 
   var el = document.getElementById("now-protocols");
-  if (el) {
-    el.innerHTML = protocols.map(function(p) {
-      return "<div style=\"background:" + p.bg + ";border:1.5px solid " + p.color + "55;border-radius:12px;padding:1rem;margin-bottom:.5rem\">" +
-        "<div style=\"font-size:14px;font-weight:600;color:" + p.color + "\">" + p.title + "</div>" +
-        "<div style=\"font-size:12px;color:var(--text3);margin-top:4px;line-height:1.5\">" + p.sub + "</div>" +
-        "</div>";
+  if (!el) return;
+  el.innerHTML = protocols.map(function(p, i) {
+    var stepsHtml = p.steps.map(function(s, si) {
+      return '<div style="display:flex;gap:8px;margin-bottom:.35rem;font-size:13px;color:var(--text2)">' +
+        '<span style="color:' + p.color + ';font-weight:700;flex-shrink:0;font-size:14px">' + (si+1) + '.</span>' + s + '</div>';
     }).join("");
+    return '<div style="background:' + p.bg + ';border:1.5px solid ' + p.color + '55;border-radius:12px;padding:1rem;margin-bottom:.5rem;cursor:pointer" onclick="toggleNowCard(this)">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center">' +
+      '<div><div style="font-size:14px;font-weight:600;color:' + p.color + '">' + p.title + '</div>' +
+      '<div style="font-size:12px;color:var(--text3);margin-top:3px">' + p.sub + '</div></div>' +
+      '<div style="color:' + p.color + ';font-size:18px;transition:transform .2s" class="now-arrow">▸</div></div>' +
+      '<div class="now-steps" style="display:none;margin-top:.75rem;border-top:1px solid ' + p.color + '33;padding-top:.75rem">' + stepsHtml + '</div>' +
+      '</div>';
+  }).join("");
+}
+
+function toggleNowCard(el) {
+  var steps = el.querySelector(".now-steps");
+  var arrow = el.querySelector(".now-arrow");
+  var isOpen = steps.style.display !== "none";
+  // close all others
+  document.querySelectorAll(".now-steps").forEach(function(s) { s.style.display = "none"; });
+  document.querySelectorAll(".now-arrow").forEach(function(a) { a.style.transform = ""; });
+  if (!isOpen) {
+    steps.style.display = "block";
+    arrow.style.transform = "rotate(90deg)";
   }
 }
 
@@ -1748,53 +1802,52 @@ function initHerbs() {
   var el = document.getElementById("herbs-list");
   if (!el) return;
   var herbs = [
-    {name:"Ge Gen (Kudzu Root)",pinyin:"Gé Gēn",hangul:"갈근",cat:"AUD — primary herb",color:"#0F6E56",
-     use:"Reduces alcohol craving at receptor level. Isoflavones inhibit alcohol dehydrogenase.",
-     dose:"9–15g decoction or 500mg standardized extract",caution:"Generally safe. Monitor with liver compromise."},
-    {name:"Huang Qi (Astragalus)",pinyin:"Huáng Qí",hangul:"황기",cat:"Liver / Immune",color:"#1D9E75",
-     use:"Tonifies Wei Qi. Supports liver regeneration. Immune modulation.",
-     dose:"15–30g decoction daily",caution:"Avoid in acute infection or fever."},
-    {name:"Dang Gui (Angelica sinensis)",pinyin:"Dāng Guī",hangul:"당귀",cat:"Blood / Liver",color:"#D4537E",
-     use:"Nourishes Blood, moves Blood stasis. Liver Blood deficiency pattern.",
-     dose:"6–12g decoction",caution:"⚠️ Blood-moving — caution with platelets 58. Monitor closely."},
-    {name:"Bai Shao (White Peony)",pinyin:"Bái Sháo",hangul:"백작약",cat:"Liver / Yin",color:"#7F77DD",
-     use:"Nourishes Liver Yin, softens Liver, calms irritability and spasm.",
-     dose:"6–15g decoction",caution:"Caution with Cold-Damp Spleen pattern."},
-    {name:"Chai Hu (Bupleurum)",pinyin:"Chái Hú",hangul:"시호",cat:"Liver Qi",color:"#0F6E56",
-     use:"Spreads Liver Qi. Primary herb for Liver Qi stagnation — irritability, craving surge.",
-     dose:"3–9g decoction. Use in formula context.",caution:"Long-term solo use caution. Liver-protective context preferred."},
-    {name:"Fu Ling (Poria)",pinyin:"Fú Líng",hangul:"복령",cat:"Spleen / Heart",color:"#BA7517",
-     use:"Calms Shen, tonifies Spleen, resolves Dampness. Core in most formulas.",
-     dose:"9–15g decoction",caution:"Generally very safe."},
-    {name:"Suan Zao Ren (Jujube Seed)",pinyin:"Suān Zǎo Rén",hangul:"산조인",cat:"Heart / Sleep",color:"#2471A3",
-     use:"Nourishes Heart Yin, calms Shen. Primary herb for insomnia and anxiety.",
-     dose:"9–18g decoction. Toast for deficiency, raw for excess.",caution:"May cause mild drowsiness."},
-    {name:"Gou Qi Zi (Wolfberry)",pinyin:"Gǒu Qǐ Zǐ",hangul:"구기자",cat:"Liver / Kidney Yin",color:"#C0392B",
-     use:"Nourishes Liver and Kidney Yin. Supports visual health, liver function.",
-     dose:"Daily tea: 10–15 berries steeped 5 min",caution:"Generally safe. Daily use ok."},
-    {name:"TUDCA",pinyin:"(supplement)",hangul:"—",cat:"Liver — bile acid",color:"#1D9E75",
-     use:"Tauroursodeoxycholic acid. Protects hepatocytes from bile acid toxicity. Your primary liver support supplement.",
-     dose:"500mg AM + 500mg PM with meals (your current dose)",caution:"⚠️ Liver annotation flag in your records. Continue as directed."},
-    {name:"AugNAC (NAC + Glycine)",pinyin:"(supplement)",hangul:"—",cat:"Glutathione / Liver",color:"#0F6E56",
-     use:"N-acetylcysteine + glycine = GlyNAC. Raises glutathione, mitochondrial support, liver detox.",
-     dose:"1 cap AM + 1 cap PM (your current dose)",caution:"Generally very well tolerated."},
-    {name:"Milk Thistle (Silymarin)",pinyin:"(supplement)",hangul:"—",cat:"Liver — phospholipid bound",color:"#7F77DD",
-     use:"Silymarin protects hepatocytes. Phospholipid-bound form (Advanced Milk Thistle) has better absorption.",
-     dose:"1 cap evening with food (your current)",caution:"Mild CYP3A4 interaction — minor at standard doses."},
-    {name:"BodyBio PC",pinyin:"(supplement)",hangul:"—",cat:"Liver — phospholipids",color:"#BA7517",
-     use:"Phosphatidylcholine. Repairs liver cell membranes. Essential phospholipid therapy for ALD.",
-     dose:"1 cap AM (your current)",caution:"Generally safe. Take with food."}
+    {name:"Ge Gen (Kudzu Root)", pinyin:"Gé Gēn", hangul:"갈근", cat:"AUD — primary", color:"#0F6E56",
+     use:"Reduces alcohol craving. Isoflavones interact with alcohol metabolism pathways. Most studied TCM herb for AUD.",
+     dose:"9–15g decoction or 500mg standardized extract daily", caution:"Generally safe. Monitor with significant liver compromise."},
+    {name:"Huang Qi (Astragalus Root)", pinyin:"Huáng Qí", hangul:"황기", cat:"Spleen / Wei Qi", color:"#1D9E75",
+     use:"Tonifies Spleen and Lung Qi, stabilizes Wei Qi. Supports liver regeneration. Counters ADHD fatigue pattern.",
+     dose:"15–30g decoction or 4–6g powdered", caution:"Avoid in acute exterior conditions or fever."},
+    {name:"Dang Gui (Angelica sinensis)", pinyin:"Dāng Guī", hangul:"당귀", cat:"Blood / Liver", color:"#D4537E",
+     use:"Nourishes and moves Blood. Liver Blood deficiency — dry eyes, restless sleep, emotional volatility.",
+     dose:"6–12g decoction", caution:"⚠️ Blood-moving — use cautiously with platelets at 58. Discuss with supervising practitioner."},
+    {name:"Bai Shao (White Peony Root)", pinyin:"Bái Sháo", hangul:"백작약", cat:"Liver Yin / Blood", color:"#7F77DD",
+     use:"Nourishes Liver Yin and Blood, softens Liver, calms irritability and muscle tension. Pairs with Chai Hu.",
+     dose:"6–15g decoction", caution:"Caution in Cold-Damp Spleen pattern. Contraindicated with Li Lu."},
+    {name:"Chai Hu (Bupleurum Root)", pinyin:"Chái Hú", hangul:"시호", cat:"Liver Qi stagnation", color:"#0F6E56",
+     use:"Primary herb for spreading Liver Qi. Craving surge, irritability, flank tension. Use in formula context.",
+     dose:"3–9g decoction — always in formula", caution:"Avoid long-term solo use. Not for Liver Yin deficiency without Bai Shao."},
+    {name:"Fu Ling (Poria)", pinyin:"Fú Líng", hangul:"복령", cat:"Spleen / Heart / Shen", color:"#BA7517",
+     use:"Calms Shen, tonifies Spleen Qi, resolves Dampness. Core harmonizing herb — in almost every relevant formula.",
+     dose:"9–15g decoction", caution:"Generally very safe. Mild diuretic effect."},
+    {name:"Suan Zao Ren (Jujube Seed)", pinyin:"Suān Zǎo Rén", hangul:"산조인", cat:"Heart / Liver — sleep", color:"#2471A3",
+     use:"Nourishes Heart Yin and Blood, calms Shen. Primary herb for insomnia, anxiety, emotional reactivity.",
+     dose:"9–18g decoction. Toast for deficiency, raw for excess heat.", caution:"May cause mild drowsiness. Start low."},
+    {name:"Yuan Zhi (Polygala Root)", pinyin:"Yuǎn Zhì", hangul:"원지", cat:"Heart / Kidney — Shen", color:"#7F77DD",
+     use:"Opens the orifices, calms Shen, resolves Phlegm misting the Heart. ADHD foggy focus pattern.",
+     dose:"3–9g decoction", caution:"Avoid in gastric ulcer. Small doses to start."},
+    {name:"Gou Qi Zi (Wolfberry)", pinyin:"Gǒu Qǐ Zǐ", hangul:"구기자", cat:"Liver / Kidney Yin", color:"#C0392B",
+     use:"Nourishes Liver and Kidney Yin. Supports visual health, liver function. Gentle tonic safe for daily use.",
+     dose:"10–15 berries steeped as tea, 5 min. Daily use ok.", caution:"Generally very safe. Mild Blood sugar effect."},
+    {name:"He Huan Pi (Mimosa Bark)", pinyin:"Hé Huān Pí", hangul:"합환피", cat:"Heart / Liver — emotion", color:"#D4537E",
+     use:"Calms Shen, moves Liver Qi stagnation due to emotional constraint. Grief, depression, restlessness.",
+     dose:"6–12g decoction or 3–6g flower (He Huan Hua) as tea", caution:"Avoid in pregnancy."},
+    {name:"Dan Shen (Salvia Root)", pinyin:"Dān Shēn", hangul:"단삼", cat:"Heart / Blood stasis", color:"#C0392B",
+     use:"Moves Blood, calms Shen. Palpitations, chest constriction, insomnia from Blood stasis.",
+     dose:"9–15g decoction", caution:"⚠️ Blood-moving — caution with platelets 58. Avoid with Warfarin."},
+    {name:"Gan Cao (Licorice Root)", pinyin:"Gān Cǎo", hangul:"감초", cat:"All channels — harmonizer", color:"#BA7517",
+     use:"Harmonizes all formulas, tonifies Spleen Qi, moderates harsh herbs. Appears in most formulas you will study.",
+     dose:"3–6g in formula or 2–3x/week as tea", caution:"⚠️ 2–3x/week max with Lithium — licorice affects potassium/sodium balance."}
   ];
   el.innerHTML = herbs.map(function(h) {
     return '<div class="card" style="margin-bottom:.6rem;border-left:3px solid ' + h.color + '">' +
-      '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.25rem">' +
+      '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.2rem">' +
       '<div style="font-size:14px;font-weight:700;color:var(--text)">' + h.name + '</div>' +
-      '<span style="font-size:10px;padding:2px 8px;border-radius:10px;background:' + h.color + '22;color:' + h.color + ';font-weight:600;white-space:nowrap;margin-left:.5rem">' + h.cat + '</span></div>' +
-      '<div style="font-size:11px;color:var(--text3);margin-bottom:.35rem">' + h.pinyin + (h.hangul !== '—' ? ' · <span style="font-size:13px">' + h.hangul + '</span>' : '') + '</div>' +
+      '<span style="font-size:10px;padding:2px 8px;border-radius:10px;background:' + h.color + '22;color:' + h.color + ';font-weight:600;margin-left:.4rem;white-space:nowrap">' + h.cat + '</span></div>' +
+      '<div style="font-size:11px;color:var(--text3);margin-bottom:.3rem">' + h.pinyin + ' · <span style="font-size:13px">' + h.hangul + '</span></div>' +
       '<div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:.3rem">' + h.use + '</div>' +
       '<div style="font-size:11px;color:var(--green);margin-bottom:.2rem">💊 ' + h.dose + '</div>' +
-      '<div style="font-size:11px;color:#BA7517">⚠️ ' + h.caution + '</div>' +
-      '</div>';
+      '<div style="font-size:11px;color:#BA7517">⚠️ ' + h.caution + '</div></div>';
   }).join("");
 }
 
@@ -2051,26 +2104,177 @@ function initDbt() {
 function initScan() {
   var el = document.getElementById("scan-content");
   if (!el) return;
+
+  // SVG diagrams: simple human silhouette with highlighted zone
+  function bodySvg(highlight) {
+    // head=top, shoulders, chest, belly, back, hips, feet
+    var colors = {head:"var(--bg3)",shoulders:"var(--bg3)",chest:"var(--bg3)",belly:"var(--bg3)",back:"var(--bg3)",hips:"var(--bg3)",feet:"var(--bg3)"};
+    colors[highlight] = "var(--green)";
+    var op = {head:"0.15",shoulders:"0.15",chest:"0.15",belly:"0.15",back:"0.15",hips:"0.15",feet:"0.15"};
+    op[highlight] = "0.55";
+    return '<svg viewBox="0 0 80 160" xmlns="http://www.w3.org/2000/svg" style="width:70px;flex-shrink:0">' +
+      // head
+      '<ellipse cx="40" cy="16" rx="12" ry="14" fill="' + colors.head + '" opacity="' + op.head + '" stroke="var(--border)" stroke-width="1"/>' +
+      // neck
+      '<rect x="35" y="28" width="10" height="8" fill="var(--skin)" opacity="0.3"/>' +
+      // shoulders bar
+      '<rect x="12" y="34" width="56" height="10" rx="5" fill="' + colors.shoulders + '" opacity="' + op.shoulders + '" stroke="var(--border)" stroke-width="0.8"/>' +
+      // torso chest
+      '<rect x="24" y="42" width="32" height="28" rx="3" fill="' + colors.chest + '" opacity="' + op.chest + '" stroke="var(--border)" stroke-width="0.8"/>' +
+      // belly
+      '<rect x="24" y="68" width="32" height="24" rx="3" fill="' + colors.belly + '" opacity="' + op.belly + '" stroke="var(--border)" stroke-width="0.8"/>' +
+      // hips
+      '<rect x="20" y="90" width="40" height="18" rx="5" fill="' + colors.hips + '" opacity="' + op.hips + '" stroke="var(--border)" stroke-width="0.8"/>' +
+      // left leg
+      '<rect x="21" y="106" width="16" height="36" rx="5" fill="var(--skin)" opacity="0.25"/>' +
+      // right leg
+      '<rect x="43" y="106" width="16" height="36" rx="5" fill="var(--skin)" opacity="0.25"/>' +
+      // feet
+      '<ellipse cx="29" cy="145" rx="10" ry="7" fill="' + colors.feet + '" opacity="' + op.feet + '" stroke="var(--border)" stroke-width="0.8"/>' +
+      '<ellipse cx="51" cy="145" rx="10" ry="7" fill="' + colors.feet + '" opacity="' + op.feet + '" stroke="var(--border)" stroke-width="0.8"/>' +
+      // left arm
+      '<rect x="8" y="36" width="14" height="44" rx="6" fill="var(--skin)" opacity="0.2"/>' +
+      // right arm
+      '<rect x="58" y="36" width="14" height="44" rx="6" fill="var(--skin)" opacity="0.2"/>' +
+      '</svg>';
+  }
+
+  // Point location diagrams per zone
+  function pointSvg(zone) {
+    var svgs = {
+      head: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
+        '<ellipse cx="40" cy="38" rx="26" ry="30" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
+        '<circle cx="40" cy="14" r="5" fill="var(--green)" opacity="0.85"/>' +
+        '<text x="47" y="17" font-size="7" fill="var(--green)" font-weight="700">GV20</text>' +
+        '<ellipse cx="40" cy="25" rx="8" ry="6" fill="var(--skin-dark)" opacity="0.15"/>' +
+        '</svg>',
+      jaw: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
+        '<ellipse cx="40" cy="36" rx="24" ry="28" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
+        '<path d="M16 52 Q40 70 64 52" fill="none" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
+        '<circle cx="24" cy="55" r="5" fill="var(--green)" opacity="0.85"/>' +
+        '<text x="4" y="68" font-size="7" fill="var(--green)" font-weight="700">ST6</text>' +
+        '<circle cx="56" cy="55" r="5" fill="var(--green)" opacity="0.85"/>' +
+        '</svg>',
+      shoulders: '<svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg" style="width:70px">' +
+        '<rect x="5" y="20" width="70" height="14" rx="7" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
+        '<ellipse cx="16" cy="16" rx="10" ry="12" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1" opacity="0.5"/>' +
+        '<ellipse cx="64" cy="16" rx="10" ry="12" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1" opacity="0.5"/>' +
+        '<circle cx="19" cy="22" r="5" fill="var(--green)" opacity="0.85"/>' +
+        '<circle cx="61" cy="22" r="5" fill="var(--green)" opacity="0.85"/>' +
+        '<text x="26" y="42" font-size="7" fill="var(--green)" font-weight="700">GB21 both sides</text>' +
+        '</svg>',
+      chest: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
+        '<rect x="18" y="5" width="44" height="65" rx="8" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
+        '<line x1="40" y1="5" x2="40" y2="70" stroke="var(--skin-dark)" stroke-width="0.5" opacity="0.3"/>' +
+        '<rect x="18" y="68" width="18" height="8" rx="3" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1"/>' +
+        '<rect x="44" y="68" width="18" height="8" rx="3" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1"/>' +
+        '<circle cx="30" cy="50" r="5" fill="var(--green)" opacity="0.85"/>' +
+        '<text x="6" y="65" font-size="7" fill="var(--green)" font-weight="700">PC6 inner wrist</text>' +
+        '</svg>',
+      belly: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
+        '<rect x="18" y="5" width="44" height="65" rx="6" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
+        '<ellipse cx="40" cy="30" rx="5" ry="5" fill="var(--skin-dark)" opacity="0.3"/>' +
+        '<circle cx="26" cy="30" r="5" fill="var(--green)" opacity="0.85"/>' +
+        '<circle cx="54" cy="30" r="5" fill="var(--green)" opacity="0.85"/>' +
+        '<text x="14" y="70" font-size="7" fill="var(--green)" font-weight="700">ST25 both sides</text>' +
+        '</svg>',
+      back: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
+        '<rect x="18" y="5" width="44" height="65" rx="6" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
+        '<line x1="40" y1="5" x2="40" y2="70" stroke="var(--skin-dark)" stroke-width="0.5" opacity="0.3"/>' +
+        '<ellipse cx="30" cy="48" rx="5" ry="4" fill="var(--green)" opacity="0.75"/>' +
+        '<ellipse cx="50" cy="48" rx="5" ry="4" fill="var(--green)" opacity="0.75"/>' +
+        '<circle cx="22" cy="72" r="5" fill="#2471A3" opacity="0.85"/>' +
+        '<circle cx="58" cy="72" r="5" fill="#2471A3" opacity="0.85"/>' +
+        '<text x="8" y="62" font-size="6" fill="var(--green)" font-weight="700">Lumbar BL points</text>' +
+        '<text x="12" y="78" font-size="6" fill="#2471A3" font-weight="700">KD1 on soles</text>' +
+        '</svg>',
+      hips: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
+        '<ellipse cx="40" cy="30" rx="32" ry="18" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
+        '<rect x="18" y="28" width="20" height="40" rx="8" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.2"/>' +
+        '<rect x="42" y="28" width="20" height="40" rx="8" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.2"/>' +
+        '<circle cx="18" cy="70" r="5" fill="var(--green)" opacity="0.85"/>' +
+        '<circle cx="62" cy="70" r="5" fill="var(--green)" opacity="0.85"/>' +
+        '<text x="10" y="82" font-size="6.5" fill="var(--green)" font-weight="700">LR3 · both feet</text>' +
+        '</svg>',
+      feet: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
+        '<ellipse cx="28" cy="45" rx="22" ry="28" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5" transform="rotate(-15 28 45)"/>' +
+        '<ellipse cx="52" cy="45" rx="22" ry="28" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5" transform="rotate(15 52 45)"/>' +
+        '<circle cx="25" cy="38" r="6" fill="#2471A3" opacity="0.85"/>' +
+        '<circle cx="55" cy="38" r="6" fill="#2471A3" opacity="0.85"/>' +
+        '<text x="8" y="78" font-size="7" fill="#2471A3" font-weight="700">KD1 · ball of foot</text>' +
+        '</svg>'
+    };
+    return svgs[zone] || "";
+  }
+
   var zones = [
-    {area:"Crown & Forehead",channel:"Governing Vessel / Bladder",q:"Pressure, heaviness, heat?",action:"GV20 (top of head) — gentle circular pressure"},
-    {area:"Jaw & Neck",channel:"Stomach / San Jiao",q:"Grinding, clenching, tightness?",action:"ST6 (jaw muscle) — press and breathe out"},
-    {area:"Shoulders",channel:"Gallbladder / Small Intestine",q:"Lifted, braced, held?",action:"GB21 (shoulder top) — press down firmly, exhale"},
-    {area:"Chest & Heart",channel:"Heart / Pericardium",q:"Constricted, racing, hollow?",action:"PC6 (inner wrist) — press. One hand on chest."},
-    {area:"Belly & Diaphragm",channel:"Spleen / Stomach",q:"Tight, bloated, butterflies?",action:"ST25 (2 cun beside navel) — press gently both sides"},
-    {area:"Lower Back",channel:"Kidney / Bladder",q:"Dull ache, weakness, fear holding here?",action:"KD1 (feet) + press lumbar — Kidney houses the root"},
-    {area:"Hips & Groin",channel:"Liver / Gallbladder",q:"Holding, bracing, clenching?",action:"LR3 (foot web) — press. Liver controls tendons."},
-    {area:"Feet — KD1",channel:"Kidney",q:"Connected to ground? Floating?",action:"Press feet into floor. Feel KD1 — ball of foot into earth. You are here."}
+    {area:"Crown & Forehead", channel:"Governing Vessel · Bladder", highlight:"head", pointZone:"head",
+     q:"Any pressure, heaviness, heat at the top?",
+     point:"GV20 — top of the skull, midpoint between the ears. Find it by running finger up from ear tip to the crown.",
+     action:"Gentle clockwise circular pressure. 30 seconds. On exhale, visualize the tension releasing upward."},
+    {area:"Jaw & Neck", channel:"Stomach · San Jiao · GB", highlight:"head", pointZone:"jaw",
+     q:"Grinding, clenching, jaw tightness?",
+     point:"ST6 — the large muscle that bulges when you clench your back teeth. On the jaw, one finger-width above the angle of the mandible.",
+     action:"Press firmly, then release slowly on exhale. Both sides simultaneously if possible."},
+    {area:"Shoulders", channel:"Gallbladder · Small Intestine", highlight:"shoulders", pointZone:"shoulders",
+     q:"Lifted, braced, up around the ears?",
+     point:"GB21 — on the top of the trapezius, midpoint between the neck and the shoulder tip. The most tender spot.",
+     action:"Press down firmly and exhale — let the shoulders drop with the breath. Caution: avoid in pregnancy."},
+    {area:"Chest & Heart", channel:"Heart · Pericardium · Ren", highlight:"chest", pointZone:"chest",
+     q:"Constricted, racing, hollow, heavy?",
+     point:"PC6 — inner forearm, 3 finger-widths above wrist crease, between the two tendons.",
+     action:"Press firmly while placing other hand on the chest. One full breath — inhale into the tension, exhale to release."},
+    {area:"Belly & Diaphragm", channel:"Spleen · Stomach", highlight:"belly", pointZone:"belly",
+     q:"Tight, bloated, butterflies, held?",
+     point:"ST25 — 2 cun (finger-widths) beside the navel on both sides.",
+     action:"Gentle circular pressure both sides. Breathe into the belly — Spleen Qi descends when you give it room."},
+    {area:"Lower Back", channel:"Kidney · Bladder", highlight:"back", pointZone:"back",
+     q:"Dull ache, weakness, cold, fear sitting here?",
+     point:"BL23 — 1.5 cun beside the spine at the L2 level (waist level). Kidney Back-Shu point.",
+     action:"Press or place warm hands. KD1 feet into the floor simultaneously — ground the Kidney from root to spine."},
+    {area:"Hips & Groin", channel:"Liver · Gallbladder", highlight:"hips", pointZone:"hips",
+     q:"Bracing, gripping, clenching here?",
+     point:"LR3 — top of foot, groove between big toe and 2nd toe, 2 cun up from the web.",
+     action:"Liver controls sinew — press LR3 firmly, breathe out, and consciously release the hip. Movement is the medicine."},
+    {area:"Feet — KD1", channel:"Kidney · Earth connection", highlight:"feet", pointZone:"feet",
+     q:"Floating, ungrounded, disconnected?",
+     point:"KD1 — ball of the foot, between the 2nd and 3rd metatarsals on the plantar surface, upper 1/3 of the sole.",
+     action:"Press both feet into the floor. Feel the weight. Say out loud: I am here. Kidney 1 is the root of the root."}
   ];
-  el.innerHTML = zones.map(function(z) {
-    return '<div class="card" style="margin-bottom:.4rem;cursor:pointer" onclick="var d=this.querySelector(\'.sd\');d.style.display=d.style.display===\'none\'?\'block\':\'none\'">' +
-      '<div style="display:flex;justify-content:space-between;align-items:center">' +
-      '<div><div style="font-size:13px;font-weight:600;color:var(--text)">' + z.area + '</div>' +
-      '<div style="font-size:11px;color:var(--text3)">' + z.channel + '</div></div>' +
-      '<div style="color:var(--text3)">▸</div></div>' +
-      '<div class="sd" style="display:none;margin-top:.5rem">' +
-      '<div style="font-size:12px;color:var(--green);font-style:italic;margin-bottom:.25rem">' + z.q + '</div>' +
-      '<div style="font-size:12px;color:var(--text2);line-height:1.5">→ ' + z.action + '</div></div></div>';
+
+  el.innerHTML = zones.map(function(z, i) {
+    return '<div class="card" style="margin-bottom:.5rem">' +
+      '<div style="display:flex;gap:.75rem;align-items:center;cursor:pointer" onclick="toggleScanZone(' + i + ')">' +
+      bodySvg(z.highlight) +
+      '<div style="flex:1">' +
+      '<div style="font-size:13px;font-weight:700;color:var(--text)">' + z.area + '</div>' +
+      '<div style="font-size:11px;color:var(--text3);margin-top:1px">' + z.channel + '</div>' +
+      '<div style="font-size:12px;color:var(--green);margin-top:3px;font-style:italic">' + z.q + '</div>' +
+      '</div>' +
+      '<div style="color:var(--text3);font-size:18px" id="scan-arrow-' + i + '">▸</div></div>' +
+      '<div id="scan-detail-' + i + '" style="display:none;margin-top:.75rem;border-top:.5px solid var(--border2);padding-top:.75rem">' +
+      '<div style="display:flex;gap:1rem;align-items:flex-start">' +
+      pointSvg(z.pointZone) +
+      '<div>' +
+      '<div style="font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Point location</div>' +
+      '<div style="font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:.5rem">' + z.point + '</div>' +
+      '<div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">What to do</div>' +
+      '<div style="font-size:12px;color:var(--text2);line-height:1.6">' + z.action + '</div>' +
+      '</div></div></div></div>';
   }).join("");
+}
+
+function toggleScanZone(i) {
+  var detail = document.getElementById("scan-detail-" + i);
+  var arrow = document.getElementById("scan-arrow-" + i);
+  if (!detail) return;
+  var isOpen = detail.style.display !== "none";
+  document.querySelectorAll('[id^="scan-detail-"]').forEach(function(d) { d.style.display = "none"; });
+  document.querySelectorAll('[id^="scan-arrow-"]').forEach(function(a) { a.style.transform = ""; });
+  if (!isOpen) {
+    detail.style.display = "block";
+    if (arrow) arrow.style.transform = "rotate(90deg)";
+  }
 }
 
 // ══════════════════════════════════════════════
@@ -2313,18 +2517,18 @@ function clearContactPhoto(key) {
 }
 
 function refreshCrisisPhotos() {
-  var map = {
-    "photo-mom":  {id:"crisis-photo-mom",  emoji:"👩"},
-    "photo-tota": {id:"crisis-photo-tota", emoji:"👵"},
-    "photo-lily": {id:"crisis-photo-lily", emoji:"👧"}
-  };
-  Object.keys(map).forEach(function(key) {
-    var el = document.getElementById(map[key].id);
+  var map = [
+    {key:"photo-mom",  id:"crisis-photo-mom",  emoji:"👩"},
+    {key:"photo-tota", id:"crisis-photo-tota", emoji:"👵"},
+    {key:"photo-lily", id:"crisis-photo-lily", emoji:"👧"}
+  ];
+  map.forEach(function(m) {
+    var el = document.getElementById(m.id);
     if (!el) return;
-    var stored = localStorage.getItem(key);
+    var stored = localStorage.getItem(m.key);
     el.innerHTML = stored
       ? '<img src="'+stored+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%">'
-      : map[key].emoji;
+      : m.emoji;
   });
 }
 
