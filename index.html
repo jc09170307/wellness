@@ -1857,117 +1857,88 @@ function initHerbs() {
 
 var currentDiagram = "wrist";
 
+// SVG skin colors as actual hex — CSS vars don't work in SVG presentation attributes
+var SK = "#D4956A";   // skin fill
+var SKD = "#9B6240";  // skin dark (stroke, shadows)
+var SKS = "#E8B48A";  // skin light shadow
+
 var POINT_DATA = {
   wrist: {
-    label: "Wrist, Forearm & Hand",
-    viewBox: "0 0 200 260",
+    label: "Wrist, Forearm & Hand (inner surface)",
+    viewBox: "0 0 200 270",
     pts: [
-      {id:"PC6", cx:100, cy:90,  label:"PC6",  full:"Pericardium 6 · Nèi Guān",  hangul:"내관", color:"#1D9E75",
-       tip:"3 finger-widths above wrist crease · between the two tendons on inner forearm. Calms Heart, relieves craving, settles nausea. Public point."},
-      {id:"HT7", cx:140, cy:128, label:"HT7",  full:"Heart 7 · Shén Mén · Spirit Gate", hangul:"신문", color:"#7F77DD",
-       tip:"Wrist crease · pinky side · small notch beside the pisiform bone. Calms Shen, anxiety, insomnia. Whisper pressure at night."},
-      {id:"LU7", cx:62,  cy:108, label:"LU7",  full:"Lung 7 · Liè Quē",          hangul:"열결", color:"#5aafd4",
-       tip:"1.5 cun above wrist crease · thumb side · just above the styloid process. Opens Lung, grief release, Bolero point."},
-      {id:"LI4", cx:148, cy:205, label:"LI4",  full:"Large Intestine 4 · Hé Gǔ", hangul:"합곡", color:"#E09D3A",
-       tip:"Web between thumb and index finger · fleshy mound on back of hand. Moves Qi and Blood everywhere. Four Gates point with LR3. ⚠️ Avoid in pregnancy."}
+      {id:"PC6", cx:100, cy:85,  label:"PC6",  full:"Pericardium 6 · Nèi Guān",  hangul:"내관", color:"#1D9E75",
+       tip:"Inner forearm · 3 finger-widths above wrist crease · between the two visible tendons. Calms Heart, relieves craving, nausea. 🟢 Public point — discreet anywhere."},
+      {id:"HT7", cx:142, cy:126, label:"HT7",  full:"Heart 7 · Shén Mén",        hangul:"신문", color:"#7F77DD",
+       tip:"Wrist crease · pinky (ulnar) side · small notch beside pisiform bone. Calms Shen, anxiety, insomnia. Whisper pressure at bedtime."},
+      {id:"LU7", cx:60,  cy:106, label:"LU7",  full:"Lung 7 · Liè Quē",          hangul:"열결", color:"#5aafd4",
+       tip:"Thumb side of wrist · 1.5 cun above wrist crease · just proximal to styloid process. Opens Lung, releases grief. Bolero dance point."},
+      {id:"LI4", cx:150, cy:208, label:"LI4",  full:"Large Intestine 4 · Hé Gǔ", hangul:"합곡", color:"#E09D3A",
+       tip:"Dorsal hand · fleshy mound in web between thumb and index finger. Four Gates with LR3. ⚠️ Contraindicated in pregnancy."}
     ],
-    body: `
-      <!-- forearm -->
-      <rect x="72" y="8" width="56" height="105" rx="28" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- two tendons -->
-      <line x1="92" y1="8" x2="92" y2="110" stroke="var(--skin-dark)" stroke-width="0.7" opacity="0.35"/>
-      <line x1="108" y1="8" x2="108" y2="110" stroke="var(--skin-dark)" stroke-width="0.7" opacity="0.35"/>
-      <!-- wrist crease -->
-      <line x1="68" y1="113" x2="132" y2="113" stroke="var(--skin-dark)" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
-      <text x="136" y="117" font-size="8" fill="var(--text3)" font-family="inherit">crease</text>
-      <!-- palm -->
-      <rect x="68" y="110" width="66" height="50" rx="4" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- thumb -->
-      <ellipse cx="56" cy="145" rx="14" ry="24" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5" transform="rotate(-20 56 145)"/>
-      <!-- index finger -->
-      <rect x="72" y="157" width="14" height="52" rx="7" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- middle finger -->
-      <rect x="89" y="153" width="14" height="58" rx="7" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- ring finger -->
-      <rect x="106" y="156" width="13" height="54" rx="6" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- pinky -->
-      <rect x="122" y="160" width="11" height="44" rx="5" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-    `
+    body:
+      '<rect x="74" y="5" width="52" height="108" rx="26" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<line x1="93" y1="5" x2="93" y2="112" stroke="' + SKD + '" stroke-width="0.8" opacity="0.3"/>' +
+      '<line x1="107" y1="5" x2="107" y2="112" stroke="' + SKD + '" stroke-width="0.8" opacity="0.3"/>' +
+      '<line x1="68" y1="115" x2="132" y2="115" stroke="' + SKD + '" stroke-width="1.2" stroke-dasharray="5,3" opacity="0.7"/>' +
+      '<text x="135" y="119" font-size="8" fill="' + SKD + '" opacity="0.8">crease</text>' +
+      '<rect x="68" y="112" width="64" height="48" rx="5" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<ellipse cx="54" cy="148" rx="13" ry="22" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5" transform="rotate(-22 54 148)"/>' +
+      '<rect x="70" y="158" width="13" height="50" rx="6" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<rect x="86" y="154" width="13" height="56" rx="6" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<rect x="102" y="157" width="12" height="52" rx="6" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<rect x="117" y="162" width="11" height="42" rx="5" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>'
   },
   foot: {
-    label: "Foot, Ankle & Lower Leg",
-    viewBox: "0 0 200 260",
+    label: "Foot, Ankle & Lower Leg (medial/inner view)",
+    viewBox: "0 0 200 270",
     pts: [
-      {id:"SP6", cx:60,  cy:52,  label:"SP6",  full:"Spleen 6 · Sān Yīn Jiāo",  hangul:"삼음교", color:"#D4537E",
-       tip:"3 cun above the tip of the inner ankle bone · just behind the tibia. Three Yin meeting point. ⚠️ Avoid in pregnancy."},
-      {id:"KD6", cx:58,  cy:120, label:"KD6",  full:"Kidney 6 · Zhào Hǎi",     hangul:"조해", color:"#2471A3",
+      {id:"SP6", cx:68,  cy:48,  label:"SP6",  full:"Spleen 6 · Sān Yīn Jiāo",  hangul:"삼음교", color:"#D4537E",
+       tip:"Inner leg · 3 cun (4 finger-widths) above tip of inner ankle bone · just behind (posterior to) the tibia. Three Yin meeting point. ⚠️ Avoid in pregnancy."},
+      {id:"KD6", cx:65,  cy:118, label:"KD6",  full:"Kidney 6 · Zhào Hǎi",      hangul:"조해", color:"#2471A3",
        tip:"1 thumb-width directly BELOW the inner ankle bone · into the soft hollow. Nourishes Kidney Yin, calls Shen home for sleep. Wind-down point."},
-      {id:"LR3", cx:88,  cy:185, label:"LR3",  full:"Liver 3 · Tài Chōng",     hangul:"태충", color:"#0F6E56",
-       tip:"Top of foot · groove between big toe and 2nd toe · 2 cun up from the web. Moves Liver Qi. Four Gates with LI4. Dance prep point."},
-      {id:"KD1", cx:108, cy:220, label:"KD1",  full:"Kidney 1 · Yǒng Quán",    hangul:"용천", color:"#5aafd4",
-       tip:"Ball of foot · between 2nd & 3rd metatarsals on the sole · upper 1/3. Grounds fear, emergency grounding. Press into the floor."}
+      {id:"LR3", cx:90,  cy:190, label:"LR3",  full:"Liver 3 · Tài Chōng",      hangul:"태충", color:"#0F6E56",
+       tip:"Top (dorsal) of foot · groove between big toe and 2nd toe · 2 cun proximal from web. Moves Liver Qi. Four Gates with LI4. Dance prep point."},
+      {id:"KD1", cx:110, cy:230, label:"KD1",  full:"Kidney 1 · Yǒng Quán",     hangul:"용천", color:"#5aafd4",
+       tip:"Plantar (sole) surface · upper 1/3 · between 2nd and 3rd metatarsals. Grounds fear. Emergency reset — press into the floor."}
     ],
-    body: `
-      <!-- lower leg -->
-      <rect x="72" y="5" width="48" height="90" rx="22" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- tibia line -->
-      <line x1="96" y1="5" x2="96" y2="92" stroke="var(--skin-dark)" stroke-width="0.6" opacity="0.3"/>
-      <!-- inner ankle bone bump -->
-      <ellipse cx="62" cy="112" rx="13" ry="10" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- outer ankle -->
-      <ellipse cx="130" cy="115" rx="11" ry="9" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- heel -->
-      <ellipse cx="96" cy="130" rx="32" ry="22" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- foot body -->
-      <path d="M64 130 Q60 155 65 175 Q70 195 85 205 Q100 215 118 210 Q135 205 140 185 Q145 165 140 145 Q135 125 128 118 L64 118 Z" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- big toe -->
-      <ellipse cx="72" cy="222" rx="12" ry="16" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- 2nd toe -->
-      <ellipse cx="88" cy="228" rx="9" ry="14" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- 3rd toe -->
-      <ellipse cx="102" cy="230" rx="9" ry="13" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- 4th toe -->
-      <ellipse cx="116" cy="227" rx="8" ry="12" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- pinky toe -->
-      <ellipse cx="128" cy="222" rx="7" ry="10" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- toe groove big/2nd -->
-      <line x1="80" y1="210" x2="80" y2="195" stroke="var(--skin-dark)" stroke-width="0.8" opacity="0.45"/>
-      <!-- sole line -->
-      <ellipse cx="108" cy="222" rx="20" ry="8" fill="var(--skin-dark)" opacity="0.1"/>
-    `
+    body:
+      '<rect x="76" y="4" width="44" height="92" rx="20" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<line x1="98" y1="4" x2="98" y2="94" stroke="' + SKD + '" stroke-width="0.6" opacity="0.25"/>' +
+      '<ellipse cx="66" cy="115" rx="14" ry="11" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<ellipse cx="132" cy="118" rx="12" ry="9" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<ellipse cx="98" cy="132" rx="30" ry="20" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<path d="M68 130 Q64 158 70 178 Q76 198 92 208 Q106 218 122 213 Q138 207 142 188 Q147 168 142 147 Q136 126 130 120 L68 120 Z" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<ellipse cx="76" cy="228" rx="11" ry="15" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<ellipse cx="92" cy="233" rx="9" ry="13" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<ellipse cx="106" cy="235" rx="8" ry="12" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<ellipse cx="119" cy="232" rx="8" ry="11" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<ellipse cx="130" cy="228" rx="7" ry="9" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<line x1="82" y1="215" x2="82" y2="200" stroke="' + SKD + '" stroke-width="0.8" opacity="0.4"/>'
   },
   ear: {
-    label: "Ear — Auricular Points",
+    label: "Ear — Auricular Points (right ear)",
     viewBox: "0 0 200 260",
     pts: [
-      {id:"SM",  cx:96,  cy:68,  label:"Shen Men", full:"Ear Shen Men · 神門",       hangul:"신문", color:"#7F77DD",
-       tip:"Triangular fossa — the Y-shaped upper hollow at the top of the ear. NOT the canal, NOT the tragus. Master calming point. Emergency craving step 1."},
-      {id:"CR",  cx:68,  cy:118, label:"Craving",  full:"Craving Point · Lung Area",  hangul:"갈망점", color:"#C0392B",
-       tip:"Tragus — the small flap at the front of the ear canal opening. Pinch it firmly. Step 2 in the 60-second protocol (20–40s)."},
-      {id:"HRT", cx:118, cy:130, label:"Heart",    full:"Heart Point · 心",           hangul:"심", color:"#D4537E",
-       tip:"Center of the concha (bowl of the ear). Heart Shen, palpitations, anxiety, hypomania calming."},
-      {id:"KD",  cx:110, cy:155, label:"Kidney",   full:"Kidney Point · 腎",          hangul:"신", color:"#2471A3",
-       tip:"Lower concha. Kidney fear, root deficiency, tinnitus, bone health, midnight waking (1–3am Kidney time)."}
+      {id:"SM",  cx:96,  cy:68,  label:"Shen Men", full:"Ear Shen Men · 神門",        hangul:"신문", color:"#7F77DD",
+       tip:"Triangular fossa — the Y-shaped upper hollow. NOT the canal. NOT the tragus. The upper curved hollow. Master calming point. Emergency protocol step 1."},
+      {id:"CR",  cx:70,  cy:120, label:"Craving",  full:"Craving Point · Lung Area",  hangul:"갈망점", color:"#C0392B",
+       tip:"Tragus — the small flat flap covering the canal entrance. Pinch it firmly between thumb and index. Step 2 in 60-second protocol (20–40s)."},
+      {id:"HRT", cx:118, cy:132, label:"Heart",    full:"Heart Point · 心",            hangul:"심", color:"#D4537E",
+       tip:"Center of the concha bowl. Heart Shen, palpitations, anxiety, hypomania calming. Press gently inward."},
+      {id:"KD",  cx:112, cy:157, label:"Kidney",   full:"Kidney Point · 腎",           hangul:"신", color:"#2471A3",
+       tip:"Lower concha. Kidney fear, root deficiency, tinnitus, midnight waking (1–3am Kidney time)."}
     ],
-    body: `
-      <!-- outer helix -->
-      <path d="M100 18 C138 18 162 48 162 95 C162 142 138 178 100 182 C78 184 56 174 47 158 C36 138 43 118 54 110 C62 104 70 107 70 114 C70 126 62 138 67 150 C74 166 88 173 100 171 C128 169 148 144 148 100 C148 58 130 34 104 28 C92 25 83 30 80 38 C75 47 79 59 84 64 C89 69 96 67 98 60 C100 52 97 32 100 18 Z" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="2"/>
-      <!-- anti-helix fork -->
-      <path d="M83 64 C90 72 92 84 88 98 C84 110 77 117 77 130 C77 142 84 150 91 153" fill="none" stroke="var(--skin-dark)" stroke-width="1.8" opacity="0.5" stroke-linecap="round"/>
-      <path d="M83 64 C88 58 96 56 100 60" fill="none" stroke="var(--skin-dark)" stroke-width="1.4" opacity="0.4" stroke-linecap="round"/>
-      <!-- triangular fossa shaded -->
-      <path d="M82 46 C88 40 100 44 104 54 C108 62 102 68 94 66 C86 64 80 56 82 46 Z" fill="var(--skin-dark)" opacity="0.18"/>
-      <!-- concha bowl -->
-      <ellipse cx="114" cy="128" rx="26" ry="34" fill="var(--skin-dark)" opacity="0.12"/>
-      <!-- ear canal -->
-      <ellipse cx="124" cy="124" rx="12" ry="15" fill="var(--skin-dark)" opacity="0.32"/>
-      <!-- tragus -->
-      <path d="M72 105 C63 97 61 110 65 118 C69 126 76 122 76 114 Z" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-      <!-- anti-tragus -->
-      <ellipse cx="90" cy="152" rx="8" ry="5" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1" opacity="0.6"/>
-      <!-- lobe -->
-      <ellipse cx="82" cy="172" rx="18" ry="14" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>
-    `
+    body:
+      '<path d="M100 18 C138 18 162 48 162 95 C162 142 138 178 100 182 C78 184 56 174 47 158 C36 138 43 118 54 110 C62 104 70 107 70 114 C70 126 62 138 67 150 C74 166 88 173 100 171 C128 169 148 144 148 100 C148 58 130 34 104 28 C92 25 83 30 80 38 C75 47 79 59 84 64 C89 69 96 67 98 60 C100 52 97 32 100 18 Z" fill="' + SK + '" stroke="' + SKD + '" stroke-width="2"/>' +
+      '<path d="M83 64 C90 72 92 84 88 98 C84 110 77 117 77 130 C77 142 84 150 91 153" fill="none" stroke="' + SKD + '" stroke-width="1.8" opacity="0.55" stroke-linecap="round"/>' +
+      '<path d="M83 64 C88 58 96 56 100 60" fill="none" stroke="' + SKD + '" stroke-width="1.4" opacity="0.4" stroke-linecap="round"/>' +
+      '<path d="M82 46 C88 40 100 44 104 54 C108 62 102 68 94 66 C86 64 80 56 82 46 Z" fill="' + SKD + '" opacity="0.2"/>' +
+      '<ellipse cx="114" cy="128" rx="26" ry="34" fill="' + SKD + '" opacity="0.13"/>' +
+      '<ellipse cx="124" cy="124" rx="12" ry="15" fill="' + SKD + '" opacity="0.35"/>' +
+      '<path d="M72 105 C63 97 61 110 65 118 C69 126 76 122 76 114 Z" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>' +
+      '<ellipse cx="90" cy="153" rx="8" ry="5" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1" opacity="0.7"/>' +
+      '<ellipse cx="82" cy="172" rx="18" ry="13" fill="' + SK + '" stroke="' + SKD + '" stroke-width="1.5"/>'
   }
 };
 
@@ -2054,7 +2025,12 @@ function initMoodChecks() {
 function scoreMood() {
   var boxes = document.querySelectorAll("#mood-checks input[type=checkbox]");
   var high = 0, total = 0;
-  boxes.forEach(function(b) { if (b.checked) { total++; if (b.dataset.risk==="high") high++; } });
+  boxes.forEach(function(b) {
+    if (b.checked) {
+      total++;
+      if (b.getAttribute("data-risk") === "high") high++;
+    }
+  });
   var resp = document.getElementById("mood-response");
   if (!resp) return;
   if (total === 0) { resp.innerHTML = ""; return; }
@@ -2069,7 +2045,7 @@ function scoreMood() {
     msg = "🟡 Mild activation noticed. Stay with your wind-down routine tonight.";
     color = "#BA7517"; bg = "#261d0a";
   }
-  resp.innerHTML = '<div style="background:' + bg + ';border:1.5px solid ' + color + ';border-radius:10px;padding:.75rem;font-size:13px;color:' + color + '">' + msg + '</div>';
+  resp.innerHTML = '<div style="background:' + bg + ';border:1.5px solid ' + color + ';border-radius:10px;padding:.75rem;font-size:13px;color:' + color + ';line-height:1.5">' + msg + '</div>';
 }
 
 // ══════════════════════════════════════════════
@@ -2105,103 +2081,99 @@ function initScan() {
   var el = document.getElementById("scan-content");
   if (!el) return;
 
-  // SVG diagrams: simple human silhouette with highlighted zone
+  // Body silhouette — all hex colors, no CSS vars in fill attributes
   function bodySvg(highlight) {
-    // head=top, shoulders, chest, belly, back, hips, feet
-    var colors = {head:"var(--bg3)",shoulders:"var(--bg3)",chest:"var(--bg3)",belly:"var(--bg3)",back:"var(--bg3)",hips:"var(--bg3)",feet:"var(--bg3)"};
-    colors[highlight] = "var(--green)";
-    var op = {head:"0.15",shoulders:"0.15",chest:"0.15",belly:"0.15",back:"0.15",hips:"0.15",feet:"0.15"};
-    op[highlight] = "0.55";
-    return '<svg viewBox="0 0 80 160" xmlns="http://www.w3.org/2000/svg" style="width:70px;flex-shrink:0">' +
-      // head
-      '<ellipse cx="40" cy="16" rx="12" ry="14" fill="' + colors.head + '" opacity="' + op.head + '" stroke="var(--border)" stroke-width="1"/>' +
-      // neck
-      '<rect x="35" y="28" width="10" height="8" fill="var(--skin)" opacity="0.3"/>' +
-      // shoulders bar
-      '<rect x="12" y="34" width="56" height="10" rx="5" fill="' + colors.shoulders + '" opacity="' + op.shoulders + '" stroke="var(--border)" stroke-width="0.8"/>' +
-      // torso chest
-      '<rect x="24" y="42" width="32" height="28" rx="3" fill="' + colors.chest + '" opacity="' + op.chest + '" stroke="var(--border)" stroke-width="0.8"/>' +
-      // belly
-      '<rect x="24" y="68" width="32" height="24" rx="3" fill="' + colors.belly + '" opacity="' + op.belly + '" stroke="var(--border)" stroke-width="0.8"/>' +
-      // hips
-      '<rect x="20" y="90" width="40" height="18" rx="5" fill="' + colors.hips + '" opacity="' + op.hips + '" stroke="var(--border)" stroke-width="0.8"/>' +
-      // left leg
-      '<rect x="21" y="106" width="16" height="36" rx="5" fill="var(--skin)" opacity="0.25"/>' +
-      // right leg
-      '<rect x="43" y="106" width="16" height="36" rx="5" fill="var(--skin)" opacity="0.25"/>' +
-      // feet
-      '<ellipse cx="29" cy="145" rx="10" ry="7" fill="' + colors.feet + '" opacity="' + op.feet + '" stroke="var(--border)" stroke-width="0.8"/>' +
-      '<ellipse cx="51" cy="145" rx="10" ry="7" fill="' + colors.feet + '" opacity="' + op.feet + '" stroke="var(--border)" stroke-width="0.8"/>' +
-      // left arm
-      '<rect x="8" y="36" width="14" height="44" rx="6" fill="var(--skin)" opacity="0.2"/>' +
-      // right arm
-      '<rect x="58" y="36" width="14" height="44" rx="6" fill="var(--skin)" opacity="0.2"/>' +
+    var GRN = "#1D9E75"; var BODY = "#D4956A"; var GREY = "#888";
+    var hl = function(zone) { return zone === highlight ? GRN : GREY; };
+    var op = function(zone) { return zone === highlight ? "0.6" : "0.18"; };
+    return '<svg viewBox="0 0 80 160" xmlns="http://www.w3.org/2000/svg" style="width:64px;flex-shrink:0">' +
+      '<ellipse cx="40" cy="16" rx="12" ry="14" fill="' + hl("head") + '" opacity="' + op("head") + '" stroke="#555" stroke-width="0.8"/>' +
+      '<rect x="35" y="28" width="10" height="8" fill="' + BODY + '" opacity="0.35"/>' +
+      '<rect x="12" y="34" width="56" height="10" rx="5" fill="' + hl("shoulders") + '" opacity="' + op("shoulders") + '" stroke="#555" stroke-width="0.6"/>' +
+      '<rect x="24" y="42" width="32" height="28" rx="3" fill="' + hl("chest") + '" opacity="' + op("chest") + '" stroke="#555" stroke-width="0.6"/>' +
+      '<rect x="24" y="68" width="32" height="24" rx="3" fill="' + hl("belly") + '" opacity="' + op("belly") + '" stroke="#555" stroke-width="0.6"/>' +
+      '<rect x="20" y="90" width="40" height="18" rx="5" fill="' + hl("hips") + '" opacity="' + op("hips") + '" stroke="#555" stroke-width="0.6"/>' +
+      '<rect x="8"  y="36" width="14" height="44" rx="6" fill="' + BODY + '" opacity="0.25"/>' +
+      '<rect x="58" y="36" width="14" height="44" rx="6" fill="' + BODY + '" opacity="0.25"/>' +
+      '<rect x="21" y="106" width="16" height="36" rx="5" fill="' + BODY + '" opacity="0.25"/>' +
+      '<rect x="43" y="106" width="16" height="36" rx="5" fill="' + BODY + '" opacity="0.25"/>' +
+      '<ellipse cx="29" cy="145" rx="10" ry="7" fill="' + hl("feet") + '" opacity="' + op("feet") + '" stroke="#555" stroke-width="0.6"/>' +
+      '<ellipse cx="51" cy="145" rx="10" ry="7" fill="' + hl("feet") + '" opacity="' + op("feet") + '" stroke="#555" stroke-width="0.6"/>' +
       '</svg>';
   }
 
-  // Point location diagrams per zone
+  // Point close-up diagrams — hex only
   function pointSvg(zone) {
+    var G = "#1D9E75"; var B = "#2471A3"; var S = "#D4956A"; var SD = "#9B6240";
     var svgs = {
-      head: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
-        '<ellipse cx="40" cy="38" rx="26" ry="30" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
-        '<circle cx="40" cy="14" r="5" fill="var(--green)" opacity="0.85"/>' +
-        '<text x="47" y="17" font-size="7" fill="var(--green)" font-weight="700">GV20</text>' +
-        '<ellipse cx="40" cy="25" rx="8" ry="6" fill="var(--skin-dark)" opacity="0.15"/>' +
+      head:
+        '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:62px;flex-shrink:0">' +
+        '<ellipse cx="40" cy="42" rx="26" ry="32" fill="' + S + '" stroke="' + SD + '" stroke-width="1.5"/>' +
+        '<ellipse cx="40" cy="28" rx="8" ry="6" fill="' + SD + '" opacity="0.2"/>' +
+        '<circle cx="40" cy="12" r="6" fill="' + G + '" opacity="0.9"/>' +
+        '<text x="48" y="15" font-size="8" fill="' + G + '" font-weight="700">GV20</text>' +
         '</svg>',
-      jaw: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
-        '<ellipse cx="40" cy="36" rx="24" ry="28" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
-        '<path d="M16 52 Q40 70 64 52" fill="none" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
-        '<circle cx="24" cy="55" r="5" fill="var(--green)" opacity="0.85"/>' +
-        '<text x="4" y="68" font-size="7" fill="var(--green)" font-weight="700">ST6</text>' +
-        '<circle cx="56" cy="55" r="5" fill="var(--green)" opacity="0.85"/>' +
+      jaw:
+        '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:62px;flex-shrink:0">' +
+        '<ellipse cx="40" cy="36" rx="24" ry="28" fill="' + S + '" stroke="' + SD + '" stroke-width="1.5"/>' +
+        '<path d="M18 52 Q40 68 62 52" fill="none" stroke="' + SD + '" stroke-width="1.5"/>' +
+        '<circle cx="22" cy="52" r="5" fill="' + G + '" opacity="0.9"/>' +
+        '<circle cx="58" cy="52" r="5" fill="' + G + '" opacity="0.9"/>' +
+        '<text x="16" y="72" font-size="7" fill="' + G + '" font-weight="700">ST6 both sides</text>' +
         '</svg>',
-      shoulders: '<svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg" style="width:70px">' +
-        '<rect x="5" y="20" width="70" height="14" rx="7" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
-        '<ellipse cx="16" cy="16" rx="10" ry="12" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1" opacity="0.5"/>' +
-        '<ellipse cx="64" cy="16" rx="10" ry="12" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1" opacity="0.5"/>' +
-        '<circle cx="19" cy="22" r="5" fill="var(--green)" opacity="0.85"/>' +
-        '<circle cx="61" cy="22" r="5" fill="var(--green)" opacity="0.85"/>' +
-        '<text x="26" y="42" font-size="7" fill="var(--green)" font-weight="700">GB21 both sides</text>' +
+      shoulders:
+        '<svg viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg" style="width:70px;flex-shrink:0">' +
+        '<rect x="4" y="18" width="72" height="14" rx="7" fill="' + S + '" stroke="' + SD + '" stroke-width="1.5"/>' +
+        '<ellipse cx="14" cy="14" rx="10" ry="12" fill="' + S + '" stroke="' + SD + '" stroke-width="1" opacity="0.6"/>' +
+        '<ellipse cx="66" cy="14" rx="10" ry="12" fill="' + S + '" stroke="' + SD + '" stroke-width="1" opacity="0.6"/>' +
+        '<circle cx="17" cy="20" r="5" fill="' + G + '" opacity="0.9"/>' +
+        '<circle cx="63" cy="20" r="5" fill="' + G + '" opacity="0.9"/>' +
+        '<text x="22" y="42" font-size="7" fill="' + G + '" font-weight="700">GB21 — both sides</text>' +
         '</svg>',
-      chest: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
-        '<rect x="18" y="5" width="44" height="65" rx="8" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
-        '<line x1="40" y1="5" x2="40" y2="70" stroke="var(--skin-dark)" stroke-width="0.5" opacity="0.3"/>' +
-        '<rect x="18" y="68" width="18" height="8" rx="3" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1"/>' +
-        '<rect x="44" y="68" width="18" height="8" rx="3" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1"/>' +
-        '<circle cx="30" cy="50" r="5" fill="var(--green)" opacity="0.85"/>' +
-        '<text x="6" y="65" font-size="7" fill="var(--green)" font-weight="700">PC6 inner wrist</text>' +
+      chest:
+        '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:62px;flex-shrink:0">' +
+        '<rect x="18" y="4" width="44" height="66" rx="8" fill="' + S + '" stroke="' + SD + '" stroke-width="1.5"/>' +
+        '<line x1="40" y1="4" x2="40" y2="70" stroke="' + SD + '" stroke-width="0.5" opacity="0.25"/>' +
+        '<rect x="18" y="68" width="18" height="8" rx="3" fill="' + S + '" stroke="' + SD + '" stroke-width="1"/>' +
+        '<rect x="44" y="68" width="18" height="8" rx="3" fill="' + S + '" stroke="' + SD + '" stroke-width="1"/>' +
+        '<circle cx="29" cy="52" r="5" fill="' + G + '" opacity="0.9"/>' +
+        '<text x="4" y="70" font-size="7" fill="' + G + '" font-weight="700">PC6 inner wrist</text>' +
         '</svg>',
-      belly: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
-        '<rect x="18" y="5" width="44" height="65" rx="6" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
-        '<ellipse cx="40" cy="30" rx="5" ry="5" fill="var(--skin-dark)" opacity="0.3"/>' +
-        '<circle cx="26" cy="30" r="5" fill="var(--green)" opacity="0.85"/>' +
-        '<circle cx="54" cy="30" r="5" fill="var(--green)" opacity="0.85"/>' +
-        '<text x="14" y="70" font-size="7" fill="var(--green)" font-weight="700">ST25 both sides</text>' +
+      belly:
+        '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:62px;flex-shrink:0">' +
+        '<rect x="18" y="4" width="44" height="66" rx="6" fill="' + S + '" stroke="' + SD + '" stroke-width="1.5"/>' +
+        '<ellipse cx="40" cy="28" rx="5" ry="5" fill="' + SD + '" opacity="0.3"/>' +
+        '<circle cx="26" cy="28" r="5" fill="' + G + '" opacity="0.9"/>' +
+        '<circle cx="54" cy="28" r="5" fill="' + G + '" opacity="0.9"/>' +
+        '<text x="12" y="70" font-size="7" fill="' + G + '" font-weight="700">ST25 — 2 cun each side</text>' +
         '</svg>',
-      back: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
-        '<rect x="18" y="5" width="44" height="65" rx="6" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
-        '<line x1="40" y1="5" x2="40" y2="70" stroke="var(--skin-dark)" stroke-width="0.5" opacity="0.3"/>' +
-        '<ellipse cx="30" cy="48" rx="5" ry="4" fill="var(--green)" opacity="0.75"/>' +
-        '<ellipse cx="50" cy="48" rx="5" ry="4" fill="var(--green)" opacity="0.75"/>' +
-        '<circle cx="22" cy="72" r="5" fill="#2471A3" opacity="0.85"/>' +
-        '<circle cx="58" cy="72" r="5" fill="#2471A3" opacity="0.85"/>' +
-        '<text x="8" y="62" font-size="6" fill="var(--green)" font-weight="700">Lumbar BL points</text>' +
-        '<text x="12" y="78" font-size="6" fill="#2471A3" font-weight="700">KD1 on soles</text>' +
+      back:
+        '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:62px;flex-shrink:0">' +
+        '<rect x="18" y="4" width="44" height="66" rx="6" fill="' + S + '" stroke="' + SD + '" stroke-width="1.5"/>' +
+        '<line x1="40" y1="4" x2="40" y2="70" stroke="' + SD + '" stroke-width="0.7" opacity="0.3"/>' +
+        '<circle cx="30" cy="46" r="5" fill="' + G + '" opacity="0.85"/>' +
+        '<circle cx="50" cy="46" r="5" fill="' + G + '" opacity="0.85"/>' +
+        '<text x="6" y="62" font-size="6.5" fill="' + G + '" font-weight="700">BL23 lumbar</text>' +
+        '<circle cx="22" cy="73" r="4" fill="' + B + '" opacity="0.85"/>' +
+        '<circle cx="58" cy="73" r="4" fill="' + B + '" opacity="0.85"/>' +
+        '<text x="10" y="80" font-size="6" fill="' + B + '" font-weight="700">KD1 soles</text>' +
         '</svg>',
-      hips: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
-        '<ellipse cx="40" cy="30" rx="32" ry="18" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5"/>' +
-        '<rect x="18" y="28" width="20" height="40" rx="8" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.2"/>' +
-        '<rect x="42" y="28" width="20" height="40" rx="8" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.2"/>' +
-        '<circle cx="18" cy="70" r="5" fill="var(--green)" opacity="0.85"/>' +
-        '<circle cx="62" cy="70" r="5" fill="var(--green)" opacity="0.85"/>' +
-        '<text x="10" y="82" font-size="6.5" fill="var(--green)" font-weight="700">LR3 · both feet</text>' +
+      hips:
+        '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:62px;flex-shrink:0">' +
+        '<ellipse cx="40" cy="26" rx="34" ry="18" fill="' + S + '" stroke="' + SD + '" stroke-width="1.5"/>' +
+        '<rect x="16" y="24" width="20" height="42" rx="9" fill="' + S + '" stroke="' + SD + '" stroke-width="1.2"/>' +
+        '<rect x="44" y="24" width="20" height="42" rx="9" fill="' + S + '" stroke="' + SD + '" stroke-width="1.2"/>' +
+        '<circle cx="16" cy="68" r="5" fill="' + G + '" opacity="0.9"/>' +
+        '<circle cx="64" cy="68" r="5" fill="' + G + '" opacity="0.9"/>' +
+        '<text x="8" y="80" font-size="6.5" fill="' + G + '" font-weight="700">LR3 — both feet</text>' +
         '</svg>',
-      feet: '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:60px">' +
-        '<ellipse cx="28" cy="45" rx="22" ry="28" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5" transform="rotate(-15 28 45)"/>' +
-        '<ellipse cx="52" cy="45" rx="22" ry="28" fill="var(--skin)" stroke="var(--skin-dark)" stroke-width="1.5" transform="rotate(15 52 45)"/>' +
-        '<circle cx="25" cy="38" r="6" fill="#2471A3" opacity="0.85"/>' +
-        '<circle cx="55" cy="38" r="6" fill="#2471A3" opacity="0.85"/>' +
-        '<text x="8" y="78" font-size="7" fill="#2471A3" font-weight="700">KD1 · ball of foot</text>' +
+      feet:
+        '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" style="width:62px;flex-shrink:0">' +
+        '<ellipse cx="26" cy="44" rx="20" ry="28" fill="' + S + '" stroke="' + SD + '" stroke-width="1.5" transform="rotate(-12 26 44)"/>' +
+        '<ellipse cx="54" cy="44" rx="20" ry="28" fill="' + S + '" stroke="' + SD + '" stroke-width="1.5" transform="rotate(12 54 44)"/>' +
+        '<circle cx="24" cy="36" r="6" fill="' + B + '" opacity="0.9"/>' +
+        '<circle cx="56" cy="36" r="6" fill="' + B + '" opacity="0.9"/>' +
+        '<text x="6" y="76" font-size="7" fill="' + B + '" font-weight="700">KD1 ball of foot</text>' +
         '</svg>'
     };
     return svgs[zone] || "";
@@ -2479,41 +2451,55 @@ function initContactPhotos() {
     {key:"photo-tota", name:"Tota", color:"linear-gradient(135deg,#BA7517,#EF9F27)", emoji:"👵"},
     {key:"photo-lily", name:"Lily", color:"linear-gradient(135deg,#D4537E,#993556)", emoji:"👧"}
   ];
-  el.innerHTML = '<div class="card"><div class="card-title">Contact photos</div>' +
-    '<div style="font-size:12px;color:var(--text3);margin-bottom:.75rem">Photos save inside the app — no file needed on the server.</div>' +
-    contacts.map(function(c){
-      var stored = localStorage.getItem(c.key);
-      return '<div style="display:flex;align-items:center;gap:.75rem;padding:.5rem 0;border-bottom:.5px solid var(--border2)">' +
-        '<div id="prev-'+c.key+'" style="width:44px;height:44px;border-radius:50%;background:'+c.color+';display:flex;align-items:center;justify-content:center;font-size:20px;overflow:hidden;flex-shrink:0">' +
-        (stored?'<img src="'+stored+'" style="width:100%;height:100%;object-fit:cover;border-radius:50%">':c.emoji)+'</div>' +
-        '<div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--text)">'+c.name+'</div>' +
-        '<label style="font-size:11px;color:var(--green);cursor:pointer">📷 Tap to choose photo' +
-        '<input type="file" accept="image/*" style="display:none" onchange="saveContactPhoto(\''+c.key+'\',this)"></label></div>' +
-        (stored?'<button onclick="clearContactPhoto(\''+c.key+'\')" style="font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;font-family:inherit">Remove</button>':'')+
-        '</div>';
-    }).join("") + '</div>';
-  // also update the crisis modal photos
-  refreshCrisisPhotos();
-}
+  var html = '<div class="card"><div class="card-title">Contact photos</div>' +
+    '<div style="font-size:12px;color:var(--text3);margin-bottom:.75rem">Photos save inside the app — no server needed.</div>';
+  contacts.forEach(function(c) {
+    var stored = localStorage.getItem(c.key);
+    html += '<div style="display:flex;align-items:center;gap:.75rem;padding:.6rem 0;border-bottom:.5px solid var(--border2)">' +
+      '<div id="prev-' + c.key + '" style="width:48px;height:48px;border-radius:50%;background:' + c.color + ';display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden;flex-shrink:0">' +
+      (stored ? '<img src="' + stored + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%">' : c.emoji) +
+      '</div>' +
+      '<div style="flex:1">' +
+        '<div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px">' + c.name + '</div>' +
+        '<label style="display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--green);cursor:pointer;background:var(--green-light);padding:4px 10px;border-radius:20px;border:1px solid var(--green)">' +
+          '📷 Choose photo' +
+          '<input type="file" accept="image/*" data-key="' + c.key + '" style="display:none" class="contact-photo-input">' +
+        '</label>' +
+      '</div>' +
+      (stored ? '<button data-key="' + c.key + '" class="contact-photo-clear" style="font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;padding:4px 8px">✕</button>' : '') +
+      '</div>';
+  });
+  html += '</div>';
+  el.innerHTML = html;
 
-function saveContactPhoto(key, input) {
-  var file = input.files[0];
-  if (!file) return;
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    localStorage.setItem(key, e.target.result);
-    initContactPhotos();
-    refreshCrisisPhotos();
-    initContacts();
-  };
-  reader.readAsDataURL(file);
-}
+  // Attach events fresh each time (no escaped-quote issues)
+  el.querySelectorAll(".contact-photo-input").forEach(function(input) {
+    input.addEventListener("change", function() {
+      var key = this.dataset.key;
+      var file = this.files[0];
+      if (!file || !key) return;
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        localStorage.setItem(key, e.target.result);
+        initContactPhotos();
+        refreshCrisisPhotos();
+        initContacts();
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+  el.querySelectorAll(".contact-photo-clear").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      var key = this.dataset.key;
+      if (!key) return;
+      localStorage.removeItem(key);
+      initContactPhotos();
+      refreshCrisisPhotos();
+      initContacts();
+    });
+  });
 
-function clearContactPhoto(key) {
-  localStorage.removeItem(key);
-  initContactPhotos();
   refreshCrisisPhotos();
-  initContacts();
 }
 
 function refreshCrisisPhotos() {
