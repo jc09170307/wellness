@@ -708,15 +708,15 @@ var SK = "#D4956A", SKD = "#9B6240";
 var POINT_DATA = {
   wrist:{
     label:"Inner forearm — palm facing up",
-    vb:"0 0 200 300",
+    vb:"0 0 200 295",
     pts:[
       {id:"PC6",cx:100,cy:100,label:"PC6",full:"Pericardium 6 · Nèi Guān",kor:"내관",c:"#12a37a",
        tip:"🟢 Public — use anywhere. Inner forearm, between the two tendons, 3 finger-widths above the wrist crease. Press firmly toward the bone."},
-      {id:"HT7",cx:130,cy:151,label:"HT7",full:"Heart 7 · Shén Mén",kor:"신문",c:"#6c5fc7",
+      {id:"HT7",cx:130,cy:150,label:"HT7",full:"Heart 7 · Shén Mén",kor:"신문",c:"#6c5fc7",
        tip:"🟡 Private. Wrist crease, pinky (ulnar) side — small notch just inside the bony bump. Gentle whisper pressure. Calms Shen, anxiety, insomnia."},
       {id:"LU7",cx:70,cy:132,label:"LU7",full:"Lung 7 · Liè Quē",kor:"열결",c:"#4a9fd4",
        tip:"🟡 Private. Thumb side of inner wrist, 1.5 cun above crease, proximal to the radial styloid bump. Opens Lung, releases grief."},
-      {id:"LI4",cx:80,cy:170,label:"LI4",full:"Large Intestine 4 · Hé Gǔ",kor:"합곡",c:"#c47a1a",
+      {id:"LI4",cx:82,cy:172,label:"LI4",full:"Large Intestine 4 · Hé Gǔ",kor:"합곡",c:"#c47a1a",
        tip:"🟡 Private. Fleshy mound in web between thumb and index finger — press toward the 2nd metacarpal. Four Gates with LR3. ⚠️ Avoid in pregnancy."}
     ],
     body:
@@ -724,99 +724,97 @@ var POINT_DATA = {
      +'<line x1="93" y1="10" x2="92" y2="148" stroke="#9B6240" stroke-width="1" opacity="0.35"/>'
      +'<line x1="107" y1="10" x2="108" y2="148" stroke="#9B6240" stroke-width="1" opacity="0.35"/>'
      +'<line x1="64" y1="152" x2="136" y2="152" stroke="#9B6240" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.6"/>'
-     +'<text x="139" y="156" font-size="8.5" fill="#9B6240" opacity="0.75" font-family="sans-serif">crease</text>'
+     +'<text x="139" y="156" font-size="8" fill="#9B6240" opacity="0.75" font-family="sans-serif">crease</text>'
      +'<rect x="64" y="150" width="72" height="52" rx="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<ellipse cx="51" cy="185" rx="17" ry="26" fill="#D4956A" stroke="#9B6240" stroke-width="1.5" transform="rotate(-22 51 185)"/>'
+     +'<ellipse cx="51" cy="184" rx="17" ry="26" fill="#D4956A" stroke="#9B6240" stroke-width="1.5" transform="rotate(-22 51 184)"/>'
      +'<rect x="66" y="200" width="14" height="52" rx="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
      +'<rect x="83" y="196" width="14" height="58" rx="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
      +'<rect x="100" y="198" width="13" height="55" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
      +'<rect x="116" y="202" width="12" height="48" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
      +'<line x1="54" y1="152" x2="54" y2="100" stroke="#12a37a" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.5"/>'
-     +'<text x="8" y="130" font-size="7.5" fill="#12a37a" opacity="0.8" font-family="sans-serif">3 widths</text>'
-     +'<text x="8" y="140" font-size="7.5" fill="#12a37a" opacity="0.8" font-family="sans-serif">above</text>'
+     +'<text x="6" y="128" font-size="7.5" fill="#12a37a" opacity="0.8" font-family="sans-serif">3 widths</text>'
+     +'<text x="6" y="138" font-size="7.5" fill="#12a37a" opacity="0.8" font-family="sans-serif">above</text>'
   },
   foot:{
-    label:"Left foot — inner side (medial view)",
-    vb:"0 0 200 300",
+    label:"Left foot — inner (medial) side",
+    vb:"0 0 200 200",
     pts:[
-      {id:"SP6",cx:100,cy:68,label:"SP6",full:"Spleen 6 · Sān Yīn Jiāo",kor:"삼음교",c:"#c04474",
+      {id:"SP6",cx:100,cy:38,label:"SP6",full:"Spleen 6 · Sān Yīn Jiāo",kor:"삼음교",c:"#c04474",
        tip:"🟡 Private. 4 finger-widths up the inner shin above the ankle bone, behind the tibia. Three Yin meeting. ⚠️ Avoid in pregnancy."},
-      {id:"KD6",cx:65,cy:148,label:"KD6",full:"Kidney 6 · Zhào Hǎi",kor:"조해",c:"#1a6fa8",
-       tip:"🟡 Private. 1 thumb-width directly below the inner ankle bone in the soft hollow. Nourishes Kidney Yin. Wind-down and sleep point."},
-      {id:"LR3",cx:74,cy:218,label:"LR3",full:"Liver 3 · Tài Chōng",kor:"태충",c:"#0a7a58",
-       tip:"🟡 Private. Top of foot — groove between big toe and 2nd toe, 2 cun back from the web. Moves Liver Qi. Your most important daily point."},
-      {id:"KD1",cx:108,cy:232,label:"KD1",full:"Kidney 1 · Yǒng Quán",kor:"용천",c:"#4a9fd4",
-       tip:"🟡 Private. SOLE (bottom) of foot, upper 1/3. Press feet INTO the floor right now. Grounds fear. Emergency reset point."}
+      {id:"KD6",cx:56,cy:90,label:"KD6",full:"Kidney 6 · Zhào Hǎi",kor:"조해",c:"#1a6fa8",
+       tip:"🟡 Private. 1 thumb-width directly below inner ankle bone in the soft hollow. Nourishes Kidney Yin. Wind-down and sleep point."},
+      {id:"LR3",cx:72,cy:138,label:"LR3",full:"Liver 3 · Tài Chōng",kor:"태충",c:"#0a7a58",
+       tip:"🟡 Private. Top of foot — groove between big toe and 2nd toe, 2 cun back from the web. Your most important daily point."},
+      {id:"KD1",cx:105,cy:148,label:"KD1",full:"Kidney 1 · Yǒng Quán",kor:"용천",c:"#4a9fd4",
+       tip:"🟡 Private. SOLE (bottom) of foot, upper 1/3. Press feet INTO the floor right now. Grounds fear. Emergency reset."}
     ],
     body:
-      '<rect x="82" y="4" width="38" height="106" rx="19" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<path d="M82 108 Q68 110 62 122 Q56 134 60 146 Q64 160 74 168 Q60 172 50 182 Q40 194 44 210 Q48 226 66 236 Q80 244 96 244 Q114 244 128 238 Q146 230 152 214 Q158 198 152 182 Q146 166 134 158 Q148 150 150 136 Q152 120 140 110 Q130 102 118 108 L82 108 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<ellipse cx="62" cy="130" rx="16" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<text x="6" y="124" font-size="7.5" fill="#9B6240" opacity="0.8" font-family="sans-serif">ankle</text>'
-     +'<text x="8" y="134" font-size="7.5" fill="#9B6240" opacity="0.8" font-family="sans-serif">bone</text>'
-     +'<ellipse cx="66" cy="258" rx="14" ry="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-     +'<ellipse cx="82" cy="264" rx="11" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-     +'<ellipse cx="96" cy="266" rx="9" ry="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-     +'<ellipse cx="110" cy="265" rx="8" ry="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
-     +'<ellipse cx="122" cy="260" rx="7" ry="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
-     +'<line x1="50" y1="130" x2="50" y2="68" stroke="#c04474" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.45"/>'
-     +'<text x="4" y="102" font-size="7.5" fill="#c04474" opacity="0.8" font-family="sans-serif">4×</text>'
-     +'<text x="116" y="250" font-size="7.5" fill="#4a9fd4" opacity="0.8" font-family="sans-serif">← sole</text>'
+      '<rect x="80" y="4" width="40" height="72" rx="20" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+     +'<rect x="45" y="68" width="110" height="82" rx="24" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+     +'<ellipse cx="45" cy="90" rx="18" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+     +'<text x="4" y="84" font-size="7.5" fill="#9B6240" opacity="0.8" font-family="sans-serif">ankle</text>'
+     +'<text x="6" y="94" font-size="7.5" fill="#9B6240" opacity="0.8" font-family="sans-serif">bone</text>'
+     +'<ellipse cx="58" cy="158" rx="13" ry="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+     +'<ellipse cx="74" cy="163" rx="11" ry="9" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
+     +'<ellipse cx="89" cy="165" rx="10" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
+     +'<ellipse cx="103" cy="165" rx="9" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+     +'<ellipse cx="116" cy="162" rx="8" ry="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+     +'<line x1="50" y1="90" x2="50" y2="38" stroke="#c04474" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.45"/>'
+     +'<text x="4" y="66" font-size="7.5" fill="#c04474" opacity="0.8" font-family="sans-serif">4×</text>'
+     +'<text x="110" y="154" font-size="7" fill="#4a9fd4" opacity="0.8" font-family="sans-serif">← sole</text>'
   },
   ear:{
     label:"Right ear — facing forward",
-    vb:"0 0 180 230",
+    vb:"0 0 180 220",
     pts:[
-      {id:"SM",cx:90,cy:62,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#6c5fc7",
-       tip:"🟢 Public. TRIANGULAR FOSSA — the curved hollow at the very top of the ear where the inner ridge forks into a Y. Pinch hard. Step 1 of emergency protocol."},
-      {id:"CR",cx:50,cy:114,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
-       tip:"🟢 Public. TRAGUS — the small thick flap covering the canal on the face side of the ear. Pinch firmly. Step 2 (20–40s)."},
-      {id:"HRT",cx:108,cy:128,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
-       tip:"🟡 Private. CENTER of the main concha bowl — the deepest hollow of the ear. Press gently inward. Calms Shen, palpitations, anxiety."},
-      {id:"KD",cx:108,cy:150,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
+      {id:"SM",cx:86,cy:52,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#6c5fc7",
+       tip:"🟢 Public. TRIANGULAR FOSSA — Y-shaped hollow at top of ear where the inner ridge forks. NOT the canal, NOT the lobe. Pinch hard. Step 1."},
+      {id:"CR",cx:50,cy:110,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
+       tip:"🟢 Public. TRAGUS — small thick flap covering the canal on the face side. Pinch firmly between thumb and index. Step 2 (20–40s)."},
+      {id:"HRT",cx:106,cy:118,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
+       tip:"🟡 Private. CENTER of the concha bowl — the deepest hollow of the ear. Press gently inward. Calms Shen, palpitations, anxiety."},
+      {id:"KD",cx:106,cy:140,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
        tip:"🟡 Private. LOWER CONCHA — below Heart point in the lower bowl. Root fear, tinnitus, midnight waking."}
     ],
     body:
-      '<path d="M92 16 C112 16 132 28 140 50 C148 72 146 102 138 126 C130 150 116 170 100 178 C84 186 66 182 56 170 C46 158 48 140 54 130 C60 120 68 118 68 128 C68 140 62 152 66 162 C72 174 84 180 96 178 C118 172 136 148 140 118 C144 88 138 56 124 36 C114 22 102 16 92 16 Z" fill="#D4956A" stroke="#9B6240" stroke-width="2.2"/>'
-     +'<path d="M92 16 C86 20 82 30 82 42 C82 54 88 62 92 64 C98 64 104 56 102 44 C100 32 94 22 92 16 Z" fill="#C07848" stroke="#9B6240" stroke-width="1.5"/>'
-     +'<path d="M82 64 C76 76 72 92 72 108 C72 122 78 130 78 142 C78 154 72 162 74 172" fill="none" stroke="#9B6240" stroke-width="2.4" opacity="0.5" stroke-linecap="round"/>'
-     +'<path d="M82 64 C86 58 92 58 96 64" fill="none" stroke="#9B6240" stroke-width="2" stroke-linecap="round" opacity="0.4"/>'
-     +'<path d="M84 58 C86 48 94 46 98 52 C100 58 96 66 90 66 C86 66 84 62 84 58 Z" fill="#B86A38" opacity="0.38"/>'
-     +'<ellipse cx="108" cy="138" rx="26" ry="34" fill="#C07848" opacity="0.28"/>'
-     +'<ellipse cx="112" cy="132" rx="15" ry="19" fill="#B86A38" opacity="0.38"/>'
-     +'<circle cx="118" cy="118" r="10" fill="#8B5030" opacity="0.58"/>'
-     +'<text x="128" y="106" font-size="7.5" fill="#9B6240" opacity="0.8" font-family="sans-serif">canal</text>'
-     +'<line x1="128" y1="108" x2="122" y2="114" stroke="#9B6240" stroke-width="1" opacity="0.5"/>'
-     +'<path d="M54 126 C44 118 42 130 46 140 C50 150 58 146 58 138 C58 130 54 126 54 126 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<line x1="54" y1="128" x2="56" y2="116" stroke="#9B6240" stroke-width="1" opacity="0.4"/>'
-     +'<text x="6" y="118" font-size="7.5" fill="#9B6240" opacity="0.75" font-family="sans-serif">tragus</text>'
-     +'<line x1="36" y1="120" x2="46" y2="126" stroke="#9B6240" stroke-width="1" opacity="0.5"/>'
-     +'<ellipse cx="80" cy="188" rx="22" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="2"/>'
-     +'<text x="66" y="210" font-size="8" fill="#9B6240" opacity="0.7" font-family="sans-serif">lobe</text>'
-     +'<text x="56" y="30" font-size="7.5" fill="#9B6240" opacity="0.7" font-family="sans-serif">← fossa</text>'
-     +'<line x1="80" y1="32" x2="88" y2="48" stroke="#9B6240" stroke-width="0.8" opacity="0.4"/>'
+      '<ellipse cx="95" cy="96" rx="74" ry="90" fill="#D4956A" stroke="#9B6240" stroke-width="2.2"/>'
+     +'<ellipse cx="99" cy="100" rx="54" ry="70" fill="#C8844A" stroke="none"/>'
+     +'<ellipse cx="103" cy="106" rx="36" ry="46" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
+     +'<ellipse cx="106" cy="104" rx="20" ry="26" fill="#B87040" stroke="#9B6240" stroke-width="1"/>'
+     +'<circle cx="108" cy="98" r="11" fill="#8B5030" opacity="0.75"/>'
+     +'<text x="122" y="90" font-size="7.5" fill="#9B6240" opacity="0.8" font-family="sans-serif">canal</text>'
+     +'<line x1="122" y1="92" x2="114" y2="97" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
+     +'<ellipse cx="86" cy="46" rx="18" ry="12" fill="#B87040" stroke="#9B6240" stroke-width="1.2" opacity="0.9"/>'
+     +'<text x="48" y="26" font-size="7.5" fill="#9B6240" opacity="0.75" font-family="sans-serif">← fossa</text>'
+     +'<line x1="76" y1="28" x2="82" y2="40" stroke="#9B6240" stroke-width="0.8" opacity="0.45"/>'
+     +'<path d="M22 98 C14 90 12 102 14 114 C16 124 22 122 24 114 C26 106 24 100 22 98 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+     +'<text x="2" y="98" font-size="7.5" fill="#9B6240" opacity="0.75" font-family="sans-serif">tragus</text>'
+     +'<line x1="30" y1="100" x2="20" y2="106" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
+     +'<ellipse cx="82" cy="180" rx="24" ry="15" fill="#D4956A" stroke="#9B6240" stroke-width="2"/>'
+     +'<text x="68" y="202" font-size="8" fill="#9B6240" opacity="0.7" font-family="sans-serif">lobe</text>'
+     +'<path d="M21 108 C16 108 16 112 20 112" fill="none" stroke="#D4956A" stroke-width="6" stroke-linecap="round"/>'
   }
 };
 
 var MINI_PT = {
-  "PC6":{l:"PC6 · inner forearm, between tendons, 3 widths above wrist crease",s:'<svg viewBox="0 0 70 95" style="width:56px;flex-shrink:0"><rect x="22" y="3" width="26" height="60" rx="13" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><line x1="33" y1="5" x2="33" y2="61" stroke="#9B6240" stroke-width="0.9" opacity="0.4"/><line x1="39" y1="5" x2="39" y2="61" stroke="#9B6240" stroke-width="0.9" opacity="0.4"/><line x1="18" y1="63" x2="52" y2="63" stroke="#9B6240" stroke-width="1.1" stroke-dasharray="4,2" opacity="0.6"/><rect x="18" y="62" width="34" height="18" rx="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/><circle cx="35" cy="45" r="6" fill="#12a37a" opacity="0.9"/><line x1="13" y1="63" x2="13" y2="45" stroke="#12a37a" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/><text x="1" y="56" font-size="6.5" fill="#12a37a" font-family="sans-serif">3×</text><text x="12" y="90" font-size="7.5" fill="#12a37a" font-weight="700" font-family="sans-serif">PC6</text></svg>'},
-  "HT7":{l:"HT7 · wrist crease, pinky side — tiny notch beside bony bump",s:'<svg viewBox="0 0 70 75" style="width:56px;flex-shrink:0"><rect x="22" y="3" width="26" height="42" rx="13" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><line x1="18" y1="45" x2="52" y2="45" stroke="#9B6240" stroke-width="1.1" stroke-dasharray="4,2" opacity="0.6"/><rect x="18" y="44" width="34" height="16" rx="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/><ellipse cx="22" cy="52" rx="9" ry="13" fill="#D4956A" stroke="#9B6240" stroke-width="1.1" transform="rotate(-20 22 52)"/><rect x="22" y="58" width="8" height="9" rx="4" fill="#D4956A" stroke="#9B6240" stroke-width="0.9"/><rect x="32" y="58" width="8" height="11" rx="4" fill="#D4956A" stroke="#9B6240" stroke-width="0.9"/><circle cx="50" cy="45" r="6" fill="#6c5fc7" opacity="0.9"/><text x="4" y="73" font-size="7.5" fill="#6c5fc7" font-weight="700" font-family="sans-serif">HT7 pinky side</text></svg>'},
-  "LR3":{l:"LR3 · top of foot, groove between big toe and 2nd toe, 2 cun back from web",s:'<svg viewBox="0 0 70 75" style="width:56px;flex-shrink:0"><path d="M10 26 Q7 38 9 50 Q13 62 24 66 Q35 70 46 66 Q55 61 57 50 Q59 38 55 28 Q49 16 38 13 L26 12 L14 16 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><ellipse cx="14" cy="66" rx="8" ry="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/><ellipse cx="23" cy="70" rx="7" ry="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/><ellipse cx="32" cy="71" rx="6" ry="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/><circle cx="24" cy="42" r="6" fill="#0a7a58" opacity="0.9"/><text x="4" y="9" font-size="7" fill="#0a7a58" font-family="sans-serif">top of foot</text><text x="8" y="73" font-size="7.5" fill="#0a7a58" font-weight="700" font-family="sans-serif">LR3</text></svg>'},
-  "KD1":{l:"KD1 · SOLE (bottom) of foot, upper 1/3 — press feet into the floor",s:'<svg viewBox="0 0 70 75" style="width:56px;flex-shrink:0"><path d="M12 16 Q8 28 10 42 Q14 56 26 62 Q36 68 46 62 Q56 56 58 42 Q60 28 54 18 Q46 8 34 6 L22 8 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><text x="4" y="8" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.8">SOLE ↓</text><circle cx="34" cy="28" r="7" fill="#4a9fd4" opacity="0.9"/><text x="8" y="73" font-size="7.5" fill="#4a9fd4" font-weight="700" font-family="sans-serif">KD1 (sole)</text></svg>'},
-  "SP6":{l:"SP6 · 4 finger-widths above inner ankle bone, behind shin",s:'<svg viewBox="0 0 70 105" style="width:56px;flex-shrink:0"><rect x="26" y="3" width="22" height="68" rx="11" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><ellipse cx="20" cy="80" rx="12" ry="9" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><text x="1" y="78" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.75">ankle</text><circle cx="26" cy="48" r="6" fill="#c04474" opacity="0.9"/><line x1="13" y1="80" x2="13" y2="48" stroke="#c04474" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/><text x="1" y="66" font-size="6.5" fill="#c04474" font-family="sans-serif">4×</text><text x="10" y="102" font-size="7.5" fill="#c04474" font-weight="700" font-family="sans-serif">SP6</text></svg>'},
-  "KD6":{l:"KD6 · 1 thumb-width directly below inner ankle bone",s:'<svg viewBox="0 0 70 85" style="width:56px;flex-shrink:0"><rect x="26" y="3" width="22" height="44" rx="11" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><ellipse cx="21" cy="56" rx="12" ry="9" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><text x="1" y="54" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.75">ankle</text><circle cx="21" cy="70" r="6" fill="#1a6fa8" opacity="0.9"/><text x="4" y="83" font-size="7.5" fill="#1a6fa8" font-weight="700" font-family="sans-serif">KD6 (below)</text></svg>'},
-  "LI4":{l:"LI4 · fleshy web between thumb and index finger",s:'<svg viewBox="0 0 70 75" style="width:56px;flex-shrink:0"><rect x="16" y="30" width="44" height="26" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><ellipse cx="12" cy="36" rx="12" ry="17" fill="#D4956A" stroke="#9B6240" stroke-width="1.2" transform="rotate(-20 12 36)"/><rect x="18" y="54" width="9" height="15" rx="4" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/><rect x="29" y="54" width="9" height="18" rx="4" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/><rect x="40" y="54" width="8" height="16" rx="4" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/><circle cx="26" cy="38" r="6" fill="#c47a1a" opacity="0.9"/><text x="6" y="73" font-size="7.5" fill="#c47a1a" font-weight="700" font-family="sans-serif">LI4 web</text></svg>'},
-  "ST36":{l:"ST36 · 4 finger-widths below kneecap, one width outside shin",s:'<svg viewBox="0 0 70 105" style="width:56px;flex-shrink:0"><rect x="24" y="3" width="26" height="80" rx="13" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><line x1="20" y1="22" x2="54" y2="22" stroke="#9B6240" stroke-width="1" stroke-dasharray="4,2" opacity="0.5"/><text x="56" y="25" font-size="6" fill="#9B6240" font-family="sans-serif" opacity="0.7">knee</text><circle cx="48" cy="48" r="6" fill="#c47a1a" opacity="0.9"/><line x1="13" y1="22" x2="13" y2="48" stroke="#c47a1a" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/><text x="1" y="37" font-size="6.5" fill="#c47a1a" font-family="sans-serif">4×</text><text x="10" y="102" font-size="7.5" fill="#c47a1a" font-weight="700" font-family="sans-serif">ST36</text></svg>'},
-  "LU7":{l:"LU7 · thumb side of inner wrist, 1.5 cun above crease",s:'<svg viewBox="0 0 70 85" style="width:56px;flex-shrink:0"><rect x="22" y="3" width="26" height="54" rx="13" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><line x1="18" y1="57" x2="52" y2="57" stroke="#9B6240" stroke-width="1.1" stroke-dasharray="4,2" opacity="0.6"/><rect x="18" y="56" width="34" height="16" rx="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/><ellipse cx="20" cy="64" rx="10" ry="15" fill="#D4956A" stroke="#9B6240" stroke-width="1.1" transform="rotate(-25 20 64)"/><circle cx="24" cy="42" r="6" fill="#4a9fd4" opacity="0.9"/><text x="4" y="83" font-size="7.5" fill="#4a9fd4" font-weight="700" font-family="sans-serif">LU7 thumb side</text></svg>'},
-  "EarSM":{l:"Ear Shen Men · triangular fossa — Y-shaped hollow at top of ear",s:'<svg viewBox="0 0 70 85" style="width:56px;flex-shrink:0"><path d="M35 6 C48 6 58 16 56 34 C54 50 46 62 35 63 C25 64 16 57 13 48 C9 36 13 28 18 22 C22 18 25 19 25 24 C25 31 20 39 22 46 C25 54 30 57 35 55 C44 52 50 40 50 30 C50 20 45 12 38 9 C34 7 30 9 29 14 C27 19 29 25 33 27 C37 29 39 25 38 20 C37 15 34 8 35 6 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/><path d="M29 27 C30 22 33 21 37 24 C37 27 35 29 32 28 Z" fill="#B86A38" opacity="0.4"/><circle cx="33" cy="22" r="6" fill="#6c5fc7" opacity="0.9"/><text x="2" y="83" font-size="7" fill="#6c5fc7" font-weight="700" font-family="sans-serif">Shen Men (fossa)</text></svg>'},
-  "EarCR":{l:"Ear Craving · tragus — small flap over canal on face side of ear",s:'<svg viewBox="0 0 70 85" style="width:56px;flex-shrink:0"><path d="M35 6 C48 6 58 16 56 34 C54 50 46 62 35 63 C25 64 16 57 13 48 C9 36 13 28 18 22 C22 18 25 19 25 24 C25 31 20 39 22 46 C25 54 30 57 35 55 C44 52 50 40 50 30 C50 20 45 12 38 9 C34 7 30 9 29 14 C27 19 29 25 33 27 C37 29 39 25 38 20 C37 15 34 8 35 6 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/><path d="M14 28 C8 22 7 30 9 36 C11 42 17 40 17 34 C17 28 14 28 14 28 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/><circle cx="14" cy="34" r="6" fill="#c0392b" opacity="0.9"/><text x="2" y="83" font-size="7" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving (tragus)</text></svg>'}
+  "PC6":{l:"PC6 — inner forearm, between two tendons, 3 widths above wrist crease",s:'<svg viewBox="0 0 60 88" style="width:52px;flex-shrink:0"><rect x="18" y="3" width="24" height="56" rx="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><line x1="28" y1="5" x2="28" y2="57" stroke="#9B6240" stroke-width="0.9" opacity="0.4"/><line x1="34" y1="5" x2="34" y2="57" stroke="#9B6240" stroke-width="0.9" opacity="0.4"/><line x1="14" y1="59" x2="46" y2="59" stroke="#9B6240" stroke-width="1.1" stroke-dasharray="4,2" opacity="0.6"/><rect x="14" y="58" width="32" height="16" rx="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/><circle cx="30" cy="41" r="6" fill="#12a37a" opacity="0.9"/><line x1="9" y1="59" x2="9" y2="41" stroke="#12a37a" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/><text x="0" y="51" font-size="6" fill="#12a37a" font-family="sans-serif">3×</text><text x="8" y="84" font-size="7" fill="#12a37a" font-weight="700" font-family="sans-serif">PC6</text></svg>'},
+  "HT7":{l:"HT7 — wrist crease, pinky side — tiny notch beside bony bump",s:'<svg viewBox="0 0 60 72" style="width:52px;flex-shrink:0"><rect x="18" y="3" width="24" height="38" rx="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><line x1="14" y1="41" x2="46" y2="41" stroke="#9B6240" stroke-width="1.1" stroke-dasharray="4,2" opacity="0.6"/><rect x="14" y="40" width="32" height="14" rx="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/><ellipse cx="17" cy="48" rx="8" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.1" transform="rotate(-20 17 48)"/><rect x="17" y="52" width="7" height="8" rx="3" fill="#D4956A" stroke="#9B6240" stroke-width="0.9"/><rect x="26" y="52" width="7" height="10" rx="3" fill="#D4956A" stroke="#9B6240" stroke-width="0.9"/><circle cx="44" cy="41" r="6" fill="#6c5fc7" opacity="0.9"/><text x="2" y="70" font-size="7" fill="#6c5fc7" font-weight="700" font-family="sans-serif">HT7 pinky side</text></svg>'},
+  "LR3":{l:"LR3 — top of foot, groove between big toe and 2nd toe, 2 cun from web",s:'<svg viewBox="0 0 60 70" style="width:52px;flex-shrink:0"><path d="M8 24 Q5 34 7 44 Q11 54 20 58 Q29 62 38 58 Q46 53 47 44 Q49 34 45 24 Q40 14 30 12 L20 12 L10 16 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><ellipse cx="11" cy="58" rx="7" ry="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/><ellipse cx="19" cy="62" rx="6" ry="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/><ellipse cx="27" cy="63" rx="5" ry="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/><circle cx="20" cy="38" r="6" fill="#0a7a58" opacity="0.9"/><text x="2" y="9" font-size="6.5" fill="#0a7a58" font-family="sans-serif">top of foot</text><text x="6" y="68" font-size="7" fill="#0a7a58" font-weight="700" font-family="sans-serif">LR3</text></svg>'},
+  "KD1":{l:"KD1 — SOLE (bottom) of foot, upper 1/3 — press feet into the floor",s:'<svg viewBox="0 0 60 70" style="width:52px;flex-shrink:0"><path d="M10 14 Q6 24 8 36 Q12 48 22 54 Q30 60 40 54 Q48 48 50 36 Q52 24 46 16 Q38 8 28 6 L18 8 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><text x="3" y="7" font-size="6" fill="#9B6240" font-family="sans-serif" opacity="0.8">SOLE ↓</text><circle cx="28" cy="26" r="7" fill="#4a9fd4" opacity="0.9"/><text x="5" y="68" font-size="7" fill="#4a9fd4" font-weight="700" font-family="sans-serif">KD1 (sole)</text></svg>'},
+  "SP6":{l:"SP6 — 4 widths above inner ankle bone, just behind shin",s:'<svg viewBox="0 0 60 98" style="width:52px;flex-shrink:0"><rect x="22" y="3" width="20" height="62" rx="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><ellipse cx="16" cy="74" rx="11" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><text x="0" y="72" font-size="6" fill="#9B6240" font-family="sans-serif" opacity="0.75">ankle</text><circle cx="22" cy="44" r="6" fill="#c04474" opacity="0.9"/><line x1="10" y1="74" x2="10" y2="44" stroke="#c04474" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/><text x="0" y="61" font-size="6" fill="#c04474" font-family="sans-serif">4×</text><text x="6" y="95" font-size="7" fill="#c04474" font-weight="700" font-family="sans-serif">SP6</text></svg>'},
+  "KD6":{l:"KD6 — 1 thumb-width directly below inner ankle bone",s:'<svg viewBox="0 0 60 80" style="width:52px;flex-shrink:0"><rect x="22" y="3" width="20" height="40" rx="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><ellipse cx="17" cy="52" rx="11" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><text x="0" y="50" font-size="6" fill="#9B6240" font-family="sans-serif" opacity="0.75">ankle</text><circle cx="17" cy="66" r="6" fill="#1a6fa8" opacity="0.9"/><text x="2" y="78" font-size="7" fill="#1a6fa8" font-weight="700" font-family="sans-serif">KD6 (below)</text></svg>'},
+  "LI4":{l:"LI4 — web between thumb and index finger",s:'<svg viewBox="0 0 60 68" style="width:52px;flex-shrink:0"><rect x="12" y="26" width="40" height="24" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><ellipse cx="8" cy="31" rx="10" ry="16" fill="#D4956A" stroke="#9B6240" stroke-width="1.2" transform="rotate(-20 8 31)"/><rect x="14" y="48" width="8" height="14" rx="4" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/><rect x="24" y="48" width="8" height="17" rx="4" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/><rect x="34" y="48" width="7" height="15" rx="4" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/><circle cx="20" cy="33" r="6" fill="#c47a1a" opacity="0.9"/><text x="4" y="66" font-size="7" fill="#c47a1a" font-weight="700" font-family="sans-serif">LI4 web</text></svg>'},
+  "ST36":{l:"ST36 — 4 widths below kneecap, one width outside shin",s:'<svg viewBox="0 0 60 98" style="width:52px;flex-shrink:0"><rect x="20" y="3" width="24" height="76" rx="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><line x1="16" y1="20" x2="48" y2="20" stroke="#9B6240" stroke-width="1" stroke-dasharray="4,2" opacity="0.5"/><text x="50" y="23" font-size="5.5" fill="#9B6240" font-family="sans-serif" opacity="0.7">knee</text><circle cx="42" cy="44" r="6" fill="#c47a1a" opacity="0.9"/><line x1="10" y1="20" x2="10" y2="44" stroke="#c47a1a" stroke-width="1" stroke-dasharray="2,2" opacity="0.5"/><text x="0" y="34" font-size="6" fill="#c47a1a" font-family="sans-serif">4×</text><text x="6" y="95" font-size="7" fill="#c47a1a" font-weight="700" font-family="sans-serif">ST36</text></svg>'},
+  "LU7":{l:"LU7 — thumb side of inner wrist, 1.5 cun above crease",s:'<svg viewBox="0 0 60 80" style="width:52px;flex-shrink:0"><rect x="18" y="3" width="24" height="50" rx="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/><line x1="14" y1="53" x2="46" y2="53" stroke="#9B6240" stroke-width="1.1" stroke-dasharray="4,2" opacity="0.6"/><rect x="14" y="52" width="32" height="14" rx="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/><ellipse cx="16" cy="60" rx="9" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1.1" transform="rotate(-25 16 60)"/><circle cx="20" cy="38" r="6" fill="#4a9fd4" opacity="0.9"/><text x="2" y="78" font-size="7" fill="#4a9fd4" font-weight="700" font-family="sans-serif">LU7 thumb side</text></svg>'},
+  "EarSM":{l:"Ear Shen Men — triangular fossa, Y-shaped hollow at top of ear",s:'<svg viewBox="0 0 60 80" style="width:52px;flex-shrink:0"><ellipse cx="30" cy="36" rx="26" ry="32" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/><ellipse cx="32" cy="38" rx="18" ry="22" fill="#C8844A" stroke="none"/><ellipse cx="34" cy="42" rx="11" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1"/><ellipse cx="29" cy="18" rx="9" ry="6" fill="#B87040" stroke="#9B6240" stroke-width="1" opacity="0.9"/><circle cx="29" cy="18" r="6" fill="#6c5fc7" opacity="0.9"/><text x="0" y="9" font-size="6.5" fill="#9B6240" opacity="0.7" font-family="sans-serif">← fossa</text><text x="2" y="77" font-size="7" fill="#6c5fc7" font-weight="700" font-family="sans-serif">Shen Men (fossa)</text></svg>'},
+  "EarCR":{l:"Ear Craving — tragus, small flap over canal on face side of ear",s:'<svg viewBox="0 0 60 80" style="width:52px;flex-shrink:0"><ellipse cx="32" cy="36" rx="26" ry="32" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/><ellipse cx="34" cy="38" rx="18" ry="22" fill="#C8844A" stroke="none"/><ellipse cx="36" cy="42" rx="11" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1"/><path d="M8 32 C3 26 2 34 4 40 C6 46 11 44 11 38 C11 32 8 32 8 32 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/><circle cx="8" cy="38" r="6" fill="#c0392b" opacity="0.9"/><text x="2" y="77" font-size="7" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving (tragus)</text></svg>'}
 };
 
 function ptDiagram(key){
   var d=MINI_PT[key];
   if(!d) return "";
-  return '<div style="display:flex;align-items:flex-start;gap:8px;background:var(--bg3);border-radius:10px;padding:.5rem .65rem;margin:.3rem 0">'
-    +d.s+'<div style="flex:1;font-size:11px;color:var(--tx3);line-height:1.5;padding-top:2px">'+d.l+'</div></div>';
+  return '<div style="display:flex;align-items:center;gap:8px;background:var(--bg3);border-radius:10px;padding:.45rem .6rem;margin:.28rem 0">'
+    +d.s+'<div style="flex:1;font-size:11px;color:var(--tx3);line-height:1.45">'+d.l+'</div></div>';
 }
 
 
@@ -892,21 +890,21 @@ var DANCES = [
 ];
 
 var MORNING_STEPS = [
-  {title:"KD1 + slow breath",where:"In bed, before standing",text:"Press both feet firmly into the mattress or floor. Feel KD1. 4 counts in, 8 counts out — three cycles. Kidney Qi rises to meet the day.",timer:90},
-  {title:"PC6 — Heart Protector check-in",where:"Lying down, left hand on chest",text:"Press right thumb into PC6 (inner left forearm, 3 widths above wrist crease, between tendons). One question: what am I carrying this morning?",timer:60},
-  {title:"Ear Shen Men — set the Shen",where:"Hands free to reach ears",text:"Pinch both triangular fossae (upper ear hollow). Not the canal — the Y-shaped hollow above it. 30 seconds. This sets the tone for every decision today.",timer:30},
-  {title:"Meds check",where:"Standing at med station",text:"Methylphenidate ER before 8am. TUDCA with food. AugNAC now. Lithium with a full glass of water. Check off each one.",timer:120},
-  {title:"LR3 — liver greeting",where:"Seated on edge of bed",text:"Press the groove between big toe and 2nd toe on both feet, 2 cun up from the web. 30 seconds each. Tell your liver: I see you. I am working with you today.",timer:60},
-  {title:"Intention",where:"Still seated, feet on floor",text:"One sentence out loud: what am I doing today that matters? Not the to-do list. The one thing that means something. This engages the prefrontal cortex before ADHD scatter begins.",timer:60}
+  {title:"KD1 + slow breath",where:"In bed, before standing",text:"Press both feet firmly into the mattress or floor. Feel KD1. 4 counts in, 8 counts out — three cycles. Kidney Qi rises to meet the day.",timer:90,pts:["KD1"]},
+  {title:"PC6 — Heart Protector check-in",where:"Lying down, left hand on chest",text:"Press right thumb into PC6 (inner left forearm, 3 widths above wrist crease, between tendons). One question: what am I carrying this morning?",timer:60,pts:["PC6"]},
+  {title:"Ear Shen Men — set the Shen",where:"Hands free to reach ears",text:"Pinch both triangular fossae (upper ear hollow). Not the canal — the Y-shaped hollow above it. 30 seconds. This sets the tone for every decision today.",timer:30,pts:["EarSM"]},
+  {title:"Meds check",where:"Standing at med station",text:"Methylphenidate ER before 8am. TUDCA with food. AugNAC now. Lithium with a full glass of water. Check off each one.",timer:120,pts:[]},
+  {title:"LR3 — liver greeting",where:"Seated on edge of bed",text:"Press the groove between big toe and 2nd toe on both feet, 2 cun up from the web. 30 seconds each. Tell your liver: I see you. I am working with you today.",timer:60,pts:["LR3"]},
+  {title:"Intention",where:"Still seated, feet on floor",text:"One sentence out loud: what am I doing today that matters? Not the to-do list. The one thing that means something. This engages the prefrontal cortex before ADHD scatter begins.",timer:60,pts:[]}
 ];
 
 var WINDDOWN_STEPS = [
-  {title:"Dim the screen",where:"Wherever you are",text:"Blue light suppresses melatonin for up to 3 hours. Reduce brightness now. This is the signal to your Liver that Yang is descending.",timer:0},
-  {title:"KD6 — call the Shen home",where:"Seated, shoes off",text:"Press 1 thumb-width below each inner ankle bone. KD6 nourishes Kidney Yin and calls the Shen back from the day's activity.",timer:90},
-  {title:"HT7 — Spirit Gate",where:"Still seated",text:"Wrist crease, pinky side, small notch beside the pisiform. Gentle sustained pressure. Bedtime pressure is lighter than daytime. 60 seconds each side.",timer:120},
-  {title:"Ear Shen Men",where:"Hands free",text:"Both ears simultaneously. Pinch the triangular fossa gently — the Y-shaped hollow. 60 seconds.",timer:60},
-  {title:"4-7-8 breath",where:"Lying down or in bed",text:"4 counts in through the nose. 7 counts hold. 8 counts out through the mouth. Lung descends. Shen settles. Repeat 4 cycles.",timer:120},
-  {title:"Journal one sentence",where:"Notebook beside bed",text:"Not a to-do list. One sentence: what happened today worth remembering? Then close the notebook. Pattern recognition is your clinical tool.",timer:0}
+  {title:"Dim the screen",where:"Wherever you are",text:"Blue light suppresses melatonin for up to 3 hours. Reduce brightness now. This is the signal to your Liver that Yang is descending.",timer:0,pts:[]},
+  {title:"KD6 — call the Shen home",where:"Seated, shoes off",text:"Press 1 thumb-width below each inner ankle bone. KD6 nourishes Kidney Yin and calls the Shen back from the day's activity.",timer:90,pts:["KD6"]},
+  {title:"HT7 — Spirit Gate",where:"Still seated",text:"Wrist crease, pinky side, small notch beside the pisiform. Gentle sustained pressure. Bedtime pressure is lighter than daytime. 60 seconds each side.",timer:120,pts:["HT7"]},
+  {title:"Ear Shen Men",where:"Hands free",text:"Both ears simultaneously. Pinch the triangular fossa gently — the Y-shaped hollow. 60 seconds.",timer:60,pts:["EarSM"]},
+  {title:"4-7-8 breath",where:"Lying down or in bed",text:"4 counts in through the nose. 7 counts hold. 8 counts out through the mouth. Lung descends. Shen settles. Repeat 4 cycles.",timer:120,pts:[]},
+  {title:"Journal one sentence",where:"Notebook beside bed",text:"Not a to-do list. One sentence: what happened today worth remembering? Then close the notebook. Pattern recognition is your clinical tool.",timer:0,pts:[]}
 ];
 
 var HALT_DATA = [
@@ -951,11 +949,12 @@ var NOW_PROTOCOLS = [
 ];
 
 var BUY = [
-  {name:"Mayway / Plum Flower",url:"https://www.mayway.com",note:"Premium quality bulk herbs and granules. Gold standard for practitioners. Lab-tested."},
-  {name:"Kamwo Meridian Herbs",url:"https://www.kamwo.com",note:"NYC-based pharmacy. Individual herbs and classical formulas. Practitioner-grade."},
-  {name:"Crane Herb",url:"https://www.craneherb.com",note:"Practitioner accounts. Good for bulk ordering of formula herbs."},
-  {name:"Pacific Botanicals",url:"https://www.pacificbotanicals.com",note:"Organic focus. Excellent for Huang Qi, Dang Gui, Ge Gen individually."},
-  {name:"Amazon (food-grade only)",url:"https://www.amazon.com",note:"For Gou Qi Zi, Chrysanthemum tea — food-grade only. Never for clinical herbs."}
+  {name:"Mayway / Plum Flower",url:"https://www.mayway.com",note:"🎓 VUIM STUDENT DISCOUNT — register with your VUIM email at mayway.com/student for practitioner pricing. Gold standard bulk herbs and granules. Lab-tested."},
+  {name:"Kamwo Meridian Herbs",url:"https://www.kamwo.com",note:"🎓 VUIM STUDENT ACCESS — contact Kamwo directly with your VUIM enrollment verification to open a student/practitioner account. NYC-based pharmacy. Classical formulas."},
+  {name:"Crane Herb",url:"https://www.craneherb.com",note:"Practitioner accounts available. Good for bulk formula herb ordering. Contact them about VUIM student access."},
+  {name:"Pacific Botanicals",url:"https://www.pacificbotanicals.com",note:"Organic focus. Excellent for single herbs: Huang Qi, Dang Gui, Ge Gen. Open ordering."},
+  {name:"Amazon (food-grade only)",url:"https://www.amazon.com",note:"For Gou Qi Zi berries, Chrysanthemum flowers — food-grade only. Never for clinical herbs."},
+  {name:"VUIM Library Resources",url:"https://www.vuim.edu",note:"📚 Your VUIM student account gives access to: Point Location software via school license, EBSCO health databases, and clinical herb formulary references. Ask your program coordinator."}
 ];
 
 var HANGUL_DATA = {
@@ -2152,7 +2151,7 @@ function renderMrStep(){
     +'<div class="step-lbl">Step '+(mrStep+1)+' of '+MORNING_STEPS.length+'</div>'
     +'<div class="step-title">'+s.title+'</div>'
     +'<div style="font-size:11px;color:#4dba8a;margin-bottom:.45rem">📍 '+s.where+'</div>'
-    +'<div style="font-size:13px;color:#8b949e;line-height:1.6;margin-bottom:.65rem">'+s.text+'</div>'
+    +'<div style="font-size:13px;color:#8b949e;line-height:1.6;margin-bottom:.35rem">'+s.text+'</div>'+(s.pts&&s.pts.length?s.pts.map(function(k){return ptDiagram(k);}).join('')+"<div style='margin-bottom:.35rem'></div>":'')
     +(s.timer?'<div class="step-timer" id="mr-timer">'+fmt(mrSecs)+'</div><div style="font-size:11px;color:var(--tx3);text-align:center;margin-bottom:.55rem">tap Start to begin timer</div>':'<div style="font-size:13px;color:#4dba8a;text-align:center;margin:.45rem 0">When done, tap Next</div>')
     +'<div class="step-btns">'+(s.timer?'<button class="step-start" id="mr-start">Start</button>':'')
     +'<button class="step-skip" id="mr-next">'+(mrStep===MORNING_STEPS.length-1?"Finish":"Next →")+'</button></div></div>';
@@ -2213,7 +2212,7 @@ function renderWdStep(){
     +'<div class="step-lbl">Step '+(wdStep+1)+' of '+WINDDOWN_STEPS.length+'</div>'
     +'<div class="step-title" style="color:var(--G)">'+s.title+'</div>'
     +'<div style="font-size:11px;color:var(--G2);margin-bottom:.45rem">📍 '+s.where+'</div>'
-    +'<div style="font-size:13px;color:var(--tx2);line-height:1.6;margin-bottom:.65rem">'+s.text+'</div>'
+    +'<div style="font-size:13px;color:var(--tx2);line-height:1.6;margin-bottom:.35rem">'+s.text+'</div>'+(s.pts&&s.pts.length?s.pts.map(function(k){return ptDiagram(k);}).join('')+"<div style='margin-bottom:.35rem'></div>":'')
     +(s.timer?'<div class="step-timer" id="wd-timer" style="color:var(--G2)">'+fmt(wdSecs)+'</div>':'<div style="font-size:13px;color:var(--G2);text-align:center;margin:.45rem 0">When done, tap Next</div>')
     +'<div class="step-btns">'+(s.timer?'<button class="step-start" id="wd-start">Start</button>':'')
     +'<button class="step-skip" id="wd-next">'+(wdStep===WINDDOWN_STEPS.length-1?"Finish":"Next →")+'</button></div></div>';
