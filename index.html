@@ -501,8 +501,11 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   </div>
 
   <!-- SUPPLEMENTS -->
-  <div class="sec-lbl">Dr. Lawson supplements — starting Jun 8</div>
-  <div id="health-supp-list"></div>
+  <div class="sec-lbl">Dr. Lawson supplements</div>
+  <div class="card" style="margin-bottom:.65rem;background:var(--GL);border-color:var(--G)">
+    <div style="font-size:13px;font-weight:600;color:var(--G2);margin-bottom:.25rem">Already in your Meds tab ✅</div>
+    <div style="font-size:11px;color:var(--tx3);line-height:1.5">BodyBio PC · TUDCA Plus · ALAmax CR · AugNAC · Tongkat Ali · Vitamin D3/K2 — all tracked there with daily checkboxes. Tap 💊 Meds to check them off.</div>
+  </div>
 
   <!-- LAB TRENDS -->
   <div class="sec-lbl">Lab trends</div>
@@ -915,20 +918,19 @@ var POINT_DATA = {
     ],
     body:
       '<ellipse cx="75" cy="88" rx="60" ry="75" fill="#D4956A" stroke="#9B6240" stroke-width="2.2"/>'
-     +'<rect x="57" y="28" width="16" height="106" rx="8" fill="#C07848" opacity="0.55" transform="rotate(-8 65 81)"/>'
-     +'<ellipse cx="104" cy="94" rx="20" ry="26" fill="#C07848" opacity="0.45"/>'
-     +'<ellipse cx="106" cy="88" rx="12" ry="16" fill="#B87040" opacity="0.6"/>'
-     +'<circle cx="108" cy="82" r="10" fill="#8B5030" opacity="0.75"/>'
-     +'<text x="116" y="74" font-size="7" fill="#9B6240" opacity="0.8" font-family="sans-serif">canal</text>'
-     +'<line x1="116" y1="76" x2="112" y2="80" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
-     +'<ellipse cx="72" cy="30" rx="14" ry="8" fill="#B87040" stroke="#9B6240" stroke-width="1.2" opacity="0.9"/>'
+     +'<ellipse cx="88" cy="100" rx="44" ry="58" fill="#CB8050" opacity="0.6"/>'
+     +'<ellipse cx="98" cy="96" rx="26" ry="34" fill="#B87040" opacity="0.7"/>'
+     +'<circle cx="102" cy="86" r="12" fill="#8B5030" opacity="0.8"/>'
+     +'<text x="114" y="76" font-size="7" fill="#9B6240" opacity="0.8" font-family="sans-serif">canal</text>'
+     +'<line x1="114" y1="78" x2="109" y2="84" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
+     +'<ellipse cx="68" cy="34" rx="15" ry="9" fill="#B87040" stroke="#9B6240" stroke-width="1" opacity="0.85"/>'
+     +'<line x1="54" y1="22" x2="62" y2="30" stroke="#9B6240" stroke-width="0.8" opacity="0.4"/>'
      +'<text x="16" y="20" font-size="7" fill="#9B6240" opacity="0.75" font-family="sans-serif">fossa ↓</text>'
-     +'<line x1="44" y1="22" x2="62" y2="28" stroke="#9B6240" stroke-width="0.8" opacity="0.4"/>'
-     +'<ellipse cx="22" cy="90" rx="14" ry="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<text x="2" y="78" font-size="7" fill="#9B6240" opacity="0.8" font-family="sans-serif">tragus</text>'
-     +'<line x1="12" y1="80" x2="16" y2="87" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
-     +'<ellipse cx="60" cy="164" rx="20" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<text x="46" y="182" font-size="8" fill="#9B6240" opacity="0.7" font-family="sans-serif">lobe</text>'
+     +'<path d="M20 78 C10 70 8 84 12 96 C16 108 26 104 26 96 C26 86 22 80 20 78 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+     +'<text x="2" y="74" font-size="7" fill="#9B6240" opacity="0.8" font-family="sans-serif">tragus</text>'
+     +'<line x1="14" y1="76" x2="18" y2="84" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
+     +'<ellipse cx="60" cy="162" rx="20" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+     +'<text x="46" y="180" font-size="8" fill="#9B6240" opacity="0.7" font-family="sans-serif">lobe</text>'
   }
 };
 
@@ -2464,15 +2466,15 @@ function initHealth(){
      link:"🔗 Eat daily — tea, smoothie, or as snack"}
   ];
   var hel=document.getElementById("health-herbs-list");
-  if(hel) hel.innerHTML=herbs.map(function(h){
-    return '<div class="card" style="margin-bottom:.45rem;border-left:3px solid '+h.c+'">'
+  if(hel) hel.innerHTML=herbs.map(function(herb){
+    return '<div class="card" style="margin-bottom:.45rem;border-left:3px solid '+herb.c+'">'
       +'<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.2rem">'
-      +'<div style="font-size:14px;font-weight:700;color:var(--tx)">'+h.n+'</div>'
-      +'<span style="font-size:10px;padding:2px 8px;border-radius:10px;background:'+h.c+'1a;color:'+h.c+';font-weight:600;flex-shrink:0;margin-left:.35rem">'+h.tag+'</span>'
+      +'<div style="font-size:14px;font-weight:700;color:var(--tx)">'+herb.n+'</div>'
+      +'<span style="font-size:10px;padding:2px 8px;border-radius:10px;background:'+herb.c+'1a;color:'+herb.c+';font-weight:600;flex-shrink:0;margin-left:.35rem">'+herb.tag+'</span>'
       +'</div>'
-      +'<div style="font-size:11px;color:var(--G2);font-weight:500;margin-bottom:.25rem">'+h.e+'</div>'
-      +'<div style="font-size:12px;color:var(--tx2);line-height:1.55;margin-bottom:.3rem">'+h.a+'</div>'
-      +'<div style="font-size:11px;color:'+h.c+';background:'+h.c+'12;border-radius:7px;padding:4px 9px">'+h.link+'</div>'
+      +'<div style="font-size:11px;color:var(--G2);font-weight:500;margin-bottom:.25rem">'+herb.e+'</div>'
+      +'<div style="font-size:12px;color:var(--tx2);line-height:1.55;margin-bottom:.3rem">'+herb.a+'</div>'
+      +'<div style="font-size:11px;color:'+herb.c+';background:'+herb.c+'12;border-radius:7px;padding:4px 9px">'+herb.link+'</div>'
       +'</div>';
   }).join("");
 
