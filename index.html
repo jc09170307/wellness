@@ -994,46 +994,39 @@ var POINT_DATA = {
   },
   ear:{
     label:"Right ear — facing forward",
-    vb:"0 0 220 260",
+    vb:"0 0 200 240",
     pts:[
-      {id:"SM",cx:78,cy:52,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#0a7a58",
+      {id:"SM",cx:90,cy:55,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#0a7a58",
        tip:"🟢 Public. TRIANGULAR FOSSA — Y-shaped hollow at very top of ear, where the inner ridge forks. NOT the canal. Pinch hard. Step 1."},
-      {id:"CR",cx:28,cy:118,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
+      {id:"CR",cx:36,cy:112,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
        tip:"🟢 Public. TRAGUS — small thick flap on the face side, covering the canal opening. Pinch firmly between thumb and finger. Step 2."},
-      {id:"HRT",cx:110,cy:120,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
+      {id:"HRT",cx:106,cy:118,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
        tip:"🟡 Private. CENTER of the concha bowl — the main hollow of the ear. Press gently inward. Calms Shen."},
-      {id:"KD",cx:110,cy:148,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
+      {id:"KD",cx:106,cy:142,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
        tip:"🟡 Private. LOWER CONCHA — below the Heart point. Root fear, tinnitus, midnight waking."}
     ],
     body:
-      // Outer ear shape
-      '<path d="M95 18 C120 18 148 35 150 70 C153 105 145 145 135 165 C125 185 110 198 95 200 C78 202 62 192 52 175 C40 155 36 128 38 105 C40 85 48 72 55 65 C62 58 68 62 68 72 C68 85 60 100 62 118 C65 136 74 148 85 150 C100 152 118 138 122 115 C128 88 124 58 112 40 C104 27 97 22 90 24 C84 26 82 34 82 42 C82 50 85 56 84 58 C83 58 80 44 95 18 Z" fill="#EDCFA8" stroke="#C8956A" stroke-width="2"/>'
-      // Anti-helix / inner ridge
-      + '<path d="M82 42 C86 35 96 30 106 36 C116 44 120 62 118 82 C116 102 108 118 100 126 C92 134 80 136 72 128 C62 118 60 100 62 82" fill="none" stroke="#C8956A" stroke-width="1.4" opacity="0.55"/>'
-      // Concha bowl
-      + '<ellipse cx="104" cy="118" rx="28" ry="36" fill="#D4A070" opacity="0.45"/>'
-      // Canal opening
-      + '<ellipse cx="112" cy="100" rx="14" ry="18" fill="#B87848" opacity="0.65"/>'
-      + '<text x="128" y="96" font-size="7.5" fill="#9B6240" opacity="0.9" font-family="sans-serif">canal</text>'
-      + '<line x1="126" y1="98" x2="120" y2="104" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
-      // Triangular fossa highlight
-      + '<ellipse cx="80" cy="52" rx="14" ry="9" fill="#C8956A" opacity="0.5" transform="rotate(-15 80 52)"/>'
-      + '<text x="28" y="30" font-size="7.5" fill="#9B6240" opacity="0.85" font-family="sans-serif">tri. fossa</text>'
-      + '<line x1="55" y1="33" x2="68" y2="46" stroke="#9B6240" stroke-width="0.8" opacity="0.45"/>'
-      // Tragus
-      + '<path d="M34 105 C20 98 16 112 18 126 C21 140 34 136 34 126 C34 116 34 110 34 105 Z" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
-      + '<text x="2" y="100" font-size="7.5" fill="#9B6240" opacity="0.85" font-family="sans-serif">tragus</text>'
-      + '<line x1="20" y1="103" x2="28" y2="112" stroke="#9B6240" stroke-width="0.8" opacity="0.45"/>'
-      // Callout lines — dashed, Image 1 style
-      + '<line x1="78" y1="52" x2="155" y2="52" stroke="#0a7a58" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.7"/>'
-      + '<rect x="156" y="40" width="58" height="26" rx="6" fill="#071a10" stroke="#0a7a58" stroke-width="1.2"/>'
-      + '<text x="162" y="52" font-size="8.5" fill="#0a7a58" font-weight="700" font-family="sans-serif">Shen Men</text>'
-      + '<text x="162" y="63" font-size="7" fill="#4dba8a" font-family="sans-serif">press in hard</text>'
-      + '<line x1="28" y1="118" x2="2" y2="118" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.7"/>'
-      + '<rect x="-62" y="106" width="62" height="26" rx="6" fill="#160404" stroke="#c0392b" stroke-width="1.2"/>'
-      // tragus callout goes right since it's on left edge — just label below
-      + '<text x="2" y="148" font-size="8" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving</text>'
-      + '<text x="2" y="158" font-size="7" fill="#e05555" font-family="sans-serif">pinch tragus</text>'
+      '<ellipse cx="100" cy="115" rx="62" ry="88" fill="#EDCFA8" stroke="#C8956A" stroke-width="2.2"/>'
+      +'<ellipse cx="108" cy="118" rx="44" ry="62" fill="#E0B888" stroke="#C8956A" stroke-width="1.4"/>'
+      +'<ellipse cx="112" cy="122" rx="28" ry="38" fill="#D4A070" stroke="#C8956A" stroke-width="1"/>'
+      +'<ellipse cx="116" cy="108" rx="13" ry="16" fill="#B07040" stroke="#9B6240" stroke-width="1"/>'
+      +'<text x="132" y="104" font-size="7.5" fill="#9B6240" font-family="sans-serif" opacity="0.9">canal</text>'
+      +'<ellipse cx="90" cy="58" rx="16" ry="10" fill="#D4A878" stroke="#C8956A" stroke-width="1" transform="rotate(-20 90 58)"/>'
+      +'<text x="55" y="38" font-size="7.5" fill="#9B6240" font-family="sans-serif" opacity="0.85">tri. fossa</text>'
+      +'<line x1="70" y1="42" x2="80" y2="52" stroke="#9B6240" stroke-width="1" opacity="0.5"/>'
+      +'<ellipse cx="42" cy="112" rx="11" ry="15" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
+      +'<text x="2" y="92" font-size="7.5" fill="#9B6240" font-family="sans-serif" opacity="0.85">tragus</text>'
+      +'<line x1="22" y1="95" x2="34" y2="106" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
+      +'<ellipse cx="88" cy="200" rx="24" ry="13" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
+      +'<text x="76" y="222" font-size="7.5" fill="#9B6240" font-family="sans-serif" opacity="0.7">lobe</text>'
+      +'<line x1="98" y1="55" x2="145" y2="55" stroke="#0a7a58" stroke-width="1.2" stroke-dasharray="4,3"/>'
+      +'<rect x="147" y="44" width="50" height="24" rx="5" fill="#071a10" stroke="#0a7a58" stroke-width="1.2"/>'
+      +'<text x="152" y="55" font-size="7.5" fill="#0a7a58" font-weight="700" font-family="sans-serif">Shen Men</text>'
+      +'<text x="152" y="64" font-size="6.5" fill="#4dba8a" font-family="sans-serif">pinch hard</text>'
+      +'<line x1="47" y1="112" x2="72" y2="112" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="4,3"/>'
+      +'<rect x="73" y="102" width="50" height="22" rx="5" fill="#160404" stroke="#c0392b" stroke-width="1.2"/>'
+      +'<text x="78" y="112" font-size="7.5" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving pt</text>'
+      +'<text x="78" y="120" font-size="6.5" fill="#e05555" font-family="sans-serif">pinch tragus</text>'
   }
 };
 
