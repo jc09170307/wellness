@@ -715,8 +715,17 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 // ════════════════════════════════════════
 // DATA
 // ════════════════════════════════════════
+// All time anchored to America/New_York (ET)
+function etNow() {
+  return new Date(new Date().toLocaleString("en-US", {timeZone:"America/New_York"}));
+}
+function etDateStr() {
+  var d = etNow();
+  return d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+}
 var START = new Date("2025-11-23T00:00:00");
-var DAYS  = Math.floor((new Date() - START) / 86400000);
+var _now  = etNow();
+var DAYS  = Math.floor((_now - START) / 86400000);
 
 var PL = {
   chill:"PLB3qQUxqNGYhQdAANbJEgUlOZaJ-6QDdg",
@@ -1220,7 +1229,7 @@ function toggleTheme(){
   applyTheme(n);
 }
 function autoTheme(){
-  var h=new Date().getHours()+new Date().getMinutes()/60;
+  var _et=etNow(); var h=_et.getHours()+_et.getMinutes()/60;
   var ov=localStorage.getItem("theme-override");
   var ovt=parseInt(localStorage.getItem("theme-override-time")||"0");
   var ovOk=ov&&(Date.now()-ovt<30*60*1000);
@@ -2608,83 +2617,97 @@ function initHealth(){
 // WAVE TIMER (Craving Countdown)
 // ════════════════════════════════════════
 function initWaveTimer(){
-  var TOTAL = 15 * 60; // 15 minutes in seconds
+  var TOTAL = 15 * 60;
   var remaining = TOTAL;
   var running = false;
   var interval = null;
 
+  // at = seconds REMAINING when message should show
   var MESSAGES = [
-    { at: 900, text: "The wave is just starting to build. Press your feet into the floor. You're grounded." },
-    { at: 780, text: "2 minutes in. Pinch your ear Shen Men — the triangular fossa. Hold for 20 seconds." },
-    { at: 660, text: "3 minutes. Press PC6 on both wrists. The craving hasn't won yet — it can't." },
-    { at: 540, text: "5 minutes in. The wave is building toward its peak. This is the hardest part. Keep going." },
-    { at: 480, text: "Halfway to the peak. Most cravings top out around 8–10 minutes. You're almost there." },
-    { at: 360, text: "9 minutes. You are past the peak. The wave is breaking. It's going down from here." },
-    { at: 240, text: "11 minutes. The craving has less power than it did 5 minutes ago. Notice that." },
-    { at: 120, text: "Almost through. 2 minutes left. This is what surfing a wave looks like — you rode it." },
-    { at: 30,  text: "30 seconds. You did it. You chose yourself again. That's what " + DAYS + " days looks like." },
+    { at: 840, text: "The wave is starting to build. Press your feet into the floor. You're grounded." },
+    { at: 720, text: "2 minutes in. Pinch your ear Shen Men — the triangular fossa. Hold for 20 seconds." },
+    { at: 600, text: "4 minutes. Press PC6 on both wrists. The craving hasn't won yet — it can't." },
+    { at: 480, text: "6 minutes in. The wave is building toward its peak. This is the hardest part. Keep going." },
+    { at: 360, text: "Past the halfway point. Most cravings peak around 8–10 min. You're almost there." },
+    { at: 240, text: "10 minutes. You are past the peak. The wave is breaking. It only goes down from here." },
+    { at: 150, text: "12 minutes. The craving has less power than it did 5 minutes ago. Notice that." },
+    { at: 60,  text: "Almost through. 1 minute left. This is what surfing a wave looks like — you rode it." },
     { at: 0,   text: "✅ You made it through. The wave passed. It always does. " + DAYS + " days and counting." }
   ];
 
-  var circum = 2 * Math.PI * 52; // ~327
-  var circle = document.getElementById("wave-circle");
+  var FIXED_R = 52;
+  var circum = 2 * Math.PI * FIXED_R;
+
+  var circle   = document.getElementById("wave-circle");
   var progress = document.getElementById("wave-progress");
   var timeText = document.getElementById("wave-time-text");
-  var phaseText = document.getElementById("wave-phase-text");
-  var msgText = document.getElementById("wave-msg-text");
+  var phaseText= document.getElementById("wave-phase-text");
+  var msgText  = document.getElementById("wave-msg-text");
   var startBtn = document.getElementById("wave-start-btn");
   var resetBtn = document.getElementById("wave-reset-btn");
   if (!startBtn) return;
 
+  // Keep progress arc at fixed radius always
+  progress.setAttribute("r", FIXED_R);
+  progress.setAttribute("stroke-dasharray", circum.toFixed(1));
+
   var lastMsgIdx = -1;
 
   function fmtTime(s) {
-    var m = Math.floor(s / 60);
-    var sec = s % 60;
+    var m = Math.floor(s / 60), sec = s % 60;
     return m + ":" + (sec < 10 ? "0" : "") + sec;
   }
 
   function getPhase(s) {
-    if (s > 660) return "building…";
+    if (s > 720) return "building…";
     if (s > 420) return "near the peak";
-    if (s > 240) return "past the peak ↓";
-    if (s > 60)  return "fading out…";
+    if (s > 180) return "past the peak ↓";
+    if (s > 30)  return "fading out…";
     return "almost gone";
   }
 
+  // Fill circle: starts small (r=32), grows to r=58 at peak (s=360), shrinks back to r=28
   function getWaveRadius(s) {
-    // Wave builds 900→480, peaks 480→360, fades 360→0
-    var pct = 1 - (s / TOTAL);
-    if (pct < 0.47) return 38 + (pct / 0.47) * 20; // build
-    if (pct < 0.6)  return 58 + ((pct - 0.47) / 0.13) * 6; // peak
-    return 64 - ((pct - 0.6) / 0.4) * 26; // fade
+    if (s > 360) {
+      // Building phase: 900→360, r goes 32→58
+      var t = (TOTAL - s) / (TOTAL - 360);
+      return 32 + t * 26;
+    } else {
+      // Fading phase: 360→0, r goes 58→28
+      var t2 = s / 360;
+      return 28 + t2 * 30;
+    }
+  }
+
+  function showMessage(i) {
+    msgText.textContent = MESSAGES[i].text;
+    lastMsgIdx = i;
+    var card = document.getElementById("wave-message");
+    if (card) {
+      card.style.transition = "border-color .3s";
+      card.style.borderColor = "#12a37a99";
+      setTimeout(function(){ card.style.borderColor = "#12a37a22"; }, 1000);
+    }
   }
 
   function updateDisplay() {
     timeText.textContent = fmtTime(remaining);
     phaseText.textContent = running ? getPhase(remaining) : (remaining === TOTAL ? "tap to begin" : "paused");
 
-    // Progress arc
+    // Progress arc drain (full at start, empty at end)
     var pct = remaining / TOTAL;
-    progress.setAttribute("stroke-dashoffset", circum * pct);
+    progress.setAttribute("stroke-dashoffset", (circum * pct).toFixed(1));
 
-    // Wave circle size
-    if (running) {
+    // Fill circle wave shape
+    if (running || remaining < TOTAL) {
       var r = getWaveRadius(remaining);
-      circle.setAttribute("r", r);
-      progress.setAttribute("r", r);
-      progress.setAttribute("stroke-dasharray", (2 * Math.PI * r).toFixed(1));
-      progress.setAttribute("stroke-dashoffset", ((2 * Math.PI * r) * (remaining / TOTAL)).toFixed(1));
+      circle.setAttribute("r", r.toFixed(1));
     }
 
-    // Messages
+    // Messages — scan all, find the right one for current remaining
     for (var i = 0; i < MESSAGES.length; i++) {
       if (remaining <= MESSAGES[i].at && lastMsgIdx < i) {
-        msgText.textContent = MESSAGES[i].text;
-        lastMsgIdx = i;
-        // Pulse the message card
-        var card = document.getElementById("wave-message");
-        if (card) { card.style.borderColor = "#12a37a88"; setTimeout(function(){ card.style.borderColor = "#12a37a22"; }, 800); }
+        showMessage(i);
         break;
       }
     }
@@ -2709,10 +2732,12 @@ function initWaveTimer(){
       clearInterval(interval);
       running = false;
       startBtn.textContent = "▶ Resume";
+      phaseText.textContent = "paused";
     } else {
       running = true;
       startBtn.textContent = "⏸ Pause";
       interval = setInterval(tick, 1000);
+      updateDisplay();
     }
   });
 
@@ -2723,11 +2748,11 @@ function initWaveTimer(){
     lastMsgIdx = -1;
     startBtn.textContent = "▶ Start";
     startBtn.disabled = false;
-    circle.setAttribute("r", "52");
-    progress.setAttribute("r", "52");
-    progress.setAttribute("stroke-dasharray", "327");
+    circle.setAttribute("r", "32");
+    progress.setAttribute("stroke-dashoffset", circum.toFixed(1));
     msgText.textContent = "Press start when the craving hits. You only have to get through the next 15 minutes.";
-    updateDisplay();
+    timeText.textContent = "15:00";
+    phaseText.textContent = "tap to begin";
   });
 
   updateDisplay();
@@ -2746,7 +2771,7 @@ function initIntention(){
 
   var KEY = "daily-intention";
   var DATE_KEY = "daily-intention-date";
-  var today = new Date().toDateString();
+  var today = etDateStr();
 
   function load() {
     var saved = localStorage.getItem(KEY);
