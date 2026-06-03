@@ -158,7 +158,7 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 <!-- NAV -->
 <div class="nav-wrap"><div class="nav-inner" id="nav-inner">
   <button class="pill red" data-nav="crisis">🆘 Crisis</button>
-  <button class="pill red" data-nav="sec-wave">🌊 Wave</button>
+  <button class="pill red" data-nav="sec-wave">📜 Wisdom</button>
   <button class="pill red" data-nav="sec-now">⚡ Now</button>
   <button class="pill red" data-nav="sec-contacts">📞 Call</button>
   <button class="pill teal" data-nav="sec-morning">🌄 Morning</button>
@@ -240,52 +240,63 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   </div>
 </div>
 
-<!-- WAVE TIMER -->
-<div id="sec-wave" style="display:none"><div class="sec">
-  <div class="sec-lbl">Surf the wave — cravings pass</div>
-  <div style="font-size:12px;color:var(--tx3);margin-bottom:.75rem;line-height:1.6">A craving is a wave. It builds, peaks around 8–10 minutes, then fades. You don't have to fight it — just ride it out.</div>
+<!-- ANCIENT WISDOM / DO IT NOW -->
+<div id="sec-wave" style="display:none"><div class="sec" style="padding-top:.75rem">
 
-  <!-- Timer display -->
-  <div style="text-align:center;padding:1rem 0 .5rem;position:relative">
-    <!-- Outer glow ring -->
-    <div id="wave-ring" style="width:200px;height:200px;border-radius:50%;border:2px solid #12a37a22;display:flex;align-items:center;justify-content:center;margin:0 auto;position:relative;transition:border-color .5s">
-      <!-- Progress ring (SVG fixed size) -->
-      <svg width="200" height="200" style="position:absolute;inset:0;transform:rotate(-90deg)">
-        <circle cx="100" cy="100" r="90" fill="none" stroke="#0a2218" stroke-width="6"/>
-        <circle id="wave-arc" cx="100" cy="100" r="90" fill="none" stroke="#12a37a" stroke-width="6"
-          stroke-dasharray="565" stroke-dashoffset="0" stroke-linecap="round"
-          style="transition:stroke-dashoffset .9s linear"/>
-      </svg>
-      <!-- Animated fill blob -->
-      <div id="wave-blob" style="width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#12a37a,#071a10);transition:width .9s ease,height .9s ease;opacity:.85"></div>
-      <!-- Center text overlay -->
-      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
-        <div id="wave-time-text" style="font-size:30px;font-weight:800;color:#12a37a;letter-spacing:-1px;line-height:1">15:00</div>
-        <div id="wave-phase-text" style="font-size:11px;color:#4dba8a;margin-top:4px">tap to begin</div>
+  <!-- Tab bar -->
+  <div style="display:flex;gap:.4rem;margin-bottom:1rem">
+    <button class="wisdom-tab active" data-wtab="do" style="flex:1;padding:8px;border-radius:12px;border:1.5px solid #12a37a;background:#071a10;color:#12a37a;font-size:13px;font-weight:700;cursor:pointer">🎲 Do It</button>
+    <button class="wisdom-tab" data-wtab="dongui" style="flex:1;padding:8px;border-radius:12px;border:1.5px solid var(--bd);background:var(--card);color:var(--tx3);font-size:13px;font-weight:600;cursor:pointer">동의보감</button>
+    <button class="wisdom-tab" data-wtab="myeong" style="flex:1;padding:8px;border-radius:12px;border:1.5px solid var(--bd);background:var(--card);color:var(--tx3);font-size:13px;font-weight:600;cursor:pointer">명심보감</button>
+  </div>
+
+  <!-- DO IT NOW tab -->
+  <div id="wtab-do">
+    <div style="font-size:12px;color:var(--tx3);margin-bottom:.75rem;text-align:center">Tap the card. Do the thing. That's it.</div>
+    <div id="do-it-card" style="background:linear-gradient(145deg,#071a10,#0d2518);border:1.5px solid #12a37a44;border-radius:20px;padding:2rem 1.5rem;text-align:center;cursor:pointer;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;transition:transform .12s,border-color .2s;-webkit-tap-highlight-color:transparent">
+      <div id="do-it-emoji" style="font-size:52px;line-height:1">🌿</div>
+      <div id="do-it-text" style="font-size:18px;font-weight:700;color:#e6edf3;line-height:1.4;letter-spacing:-.3px">Tap for your next move</div>
+      <div id="do-it-sub" style="font-size:13px;color:#4dba8a;line-height:1.5"></div>
+    </div>
+    <div style="text-align:center;margin-top:.65rem;font-size:11px;color:var(--tx3)">tap card to shuffle</div>
+  </div>
+
+  <!-- DONGUI BOGAM tab -->
+  <div id="wtab-dongui" style="display:none">
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.85rem;line-height:1.55;text-align:center">동의보감 · Dongui Bogam · 1613<br><span style="color:#4dba8a">Royal Korean Medical Encyclopedia — Heo Jun</span></div>
+    <div id="dongui-card" style="cursor:pointer;-webkit-tap-highlight-color:transparent">
+      <div style="background:linear-gradient(145deg,#0a0f0d,#0d1f16);border:1.5px solid #12a37a33;border-radius:20px;padding:1.5rem 1.4rem;margin-bottom:.5rem">
+        <div id="dongui-hanja" style="font-size:22px;color:#2d6b4a;letter-spacing:.15em;margin-bottom:.5rem;line-height:1.6;font-weight:300"></div>
+        <div id="dongui-korean" style="font-size:16px;font-weight:600;color:#4dba8a;margin-bottom:.65rem;line-height:1.5;letter-spacing:-.1px"></div>
+        <div style="height:1px;background:linear-gradient(90deg,transparent,#12a37a33,transparent);margin-bottom:.65rem"></div>
+        <div id="dongui-english" style="font-size:14px;color:#c8d8c8;line-height:1.7;margin-bottom:.75rem"></div>
+        <div style="background:#071a10;border-radius:10px;padding:.65rem .85rem;border-left:3px solid #12a37a">
+          <div style="font-size:10px;font-weight:700;color:#12a37a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Right now</div>
+          <div id="dongui-action" style="font-size:13px;color:#e6edf3;line-height:1.55"></div>
+        </div>
       </div>
     </div>
+    <div style="text-align:center;font-size:11px;color:var(--tx3)">tap card for next passage</div>
   </div>
 
-  <!-- Message display -->
-  <div id="wave-message" style="background:linear-gradient(135deg,#071a10,#0a2218);border:1.5px solid #12a37a22;border-radius:14px;padding:1rem 1.1rem;margin:.75rem 0;min-height:64px;display:flex;align-items:center;transition:border-color .4s">
-    <div style="font-size:14px;color:#4dba8a;line-height:1.6;text-align:center;width:100%" id="wave-msg-text">Press start when the craving hits. You only have to get through the next 15 minutes.</div>
-  </div>
-
-  <!-- Controls -->
-  <div style="display:flex;gap:.5rem;margin-bottom:.65rem">
-    <button id="wave-start-btn" class="btn" style="flex:2">▶ Start</button>
-    <button id="wave-reset-btn" class="btn sec" style="flex:1">↺ Reset</button>
-  </div>
-
-  <!-- Acupressure reminder -->
-  <div style="background:var(--bg3);border-radius:12px;padding:.75rem 1rem;border:.5px solid var(--bd)">
-    <div style="font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">While you wait — press these</div>
-    <div style="font-size:13px;color:var(--tx2);line-height:1.8">
-      👂 <b style="color:#6c5fc7">Ear Shen Men</b> — triangular fossa, pinch hard<br>
-      🤚 <b style="color:#12a37a">PC6</b> — inner wrist, between tendons<br>
-      🦶 <b style="color:#4a9fd4">KD1</b> — press feet into the floor right now
+  <!-- MYEONGSHIM tab -->
+  <div id="wtab-myeong" style="display:none">
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.85rem;line-height:1.55;text-align:center">명심보감 · Myeongshim Bogam · 1393<br><span style="color:#c47a1a">Mirror of the Clear Mind — Ch'u Hui</span></div>
+    <div id="myeong-card" style="cursor:pointer;-webkit-tap-highlight-color:transparent">
+      <div style="background:linear-gradient(145deg,#120d04,#1a1005);border:1.5px solid #c47a1a33;border-radius:20px;padding:1.5rem 1.4rem;margin-bottom:.5rem">
+        <div id="myeong-hanja" style="font-size:22px;color:#6b4a0a;letter-spacing:.15em;margin-bottom:.5rem;line-height:1.6;font-weight:300"></div>
+        <div id="myeong-korean" style="font-size:16px;font-weight:600;color:#c47a1a;margin-bottom:.65rem;line-height:1.5;letter-spacing:-.1px"></div>
+        <div style="height:1px;background:linear-gradient(90deg,transparent,#c47a1a33,transparent);margin-bottom:.65rem"></div>
+        <div id="myeong-english" style="font-size:14px;color:#d8c8a8;line-height:1.7;margin-bottom:.75rem"></div>
+        <div style="background:#120d04;border-radius:10px;padding:.65rem .85rem;border-left:3px solid #c47a1a">
+          <div style="font-size:10px;font-weight:700;color:#c47a1a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Sit with this</div>
+          <div id="myeong-reflection" style="font-size:13px;color:#e6dfc8;line-height:1.55"></div>
+        </div>
+      </div>
     </div>
+    <div style="text-align:center;font-size:11px;color:var(--tx3)">tap card for next passage</div>
   </div>
+
 </div></div>
 
 <!-- NOW -->
@@ -2612,135 +2623,197 @@ function initHealth(){
 // ════════════════════════════════════════
 // WAVE TIMER (Craving Countdown)
 // ════════════════════════════════════════
+// ════════════════════════════════════════
+// ANCIENT WISDOM SECTION
+// ════════════════════════════════════════
 function initWaveTimer(){
-  var TOTAL = 15 * 60;
-  var remaining = TOTAL;
-  var running = false;
-  var interval = null;
-  var lastMsgIdx = -1;
+  // Tab switching
+  var tabs = document.querySelectorAll(".wisdom-tab");
+  var panels = { do: document.getElementById("wtab-do"), dongui: document.getElementById("wtab-dongui"), myeong: document.getElementById("wtab-myeong") };
+  if (!tabs.length) return;
 
-  var MESSAGES = [
-    { at: 840, text: "The wave is starting to build. Press your feet into the floor. You're grounded." },
-    { at: 720, text: "2 minutes in. Pinch your ear Shen Men — the triangular fossa. Hold for 20 seconds." },
-    { at: 600, text: "4 minutes. Press PC6 on both wrists. The craving hasn't won yet — it can't." },
-    { at: 480, text: "6 minutes in. The wave is building toward its peak. This is the hardest part. Keep going." },
-    { at: 360, text: "Past halfway. Most cravings peak around 8–10 min. You're almost there." },
-    { at: 240, text: "10 minutes. You are past the peak. The wave is breaking. It only goes down from here." },
-    { at: 150, text: "12 minutes. The craving has less power than it did 5 minutes ago. Notice that." },
-    { at: 60,  text: "Almost through. 1 minute left. This is what surfing a wave looks like — you rode it." },
-    { at: 0,   text: "✅ You made it through. The wave passed. It always does. " + DAYS + " days and counting." }
+  function switchTab(id) {
+    tabs.forEach(function(t) {
+      var active = t.dataset.wtab === id;
+      t.classList.toggle("active", active);
+      t.style.background = active ? (id === "myeong" ? "#1a0d04" : "#071a10") : "var(--card)";
+      t.style.color = active ? (id === "myeong" ? "#c47a1a" : "#12a37a") : "var(--tx3)";
+      t.style.borderColor = active ? (id === "myeong" ? "#c47a1a" : "#12a37a") : "var(--bd)";
+    });
+    Object.keys(panels).forEach(function(k) { if (panels[k]) panels[k].style.display = k === id ? "block" : "none"; });
+  }
+
+  tabs.forEach(function(t) {
+    t.addEventListener("click", function() { switchTab(t.dataset.wtab); });
+  });
+
+  // ── DO IT NOW ──────────────────────────
+  var DO_ACTIONS = [
+    { emoji:"🦶", text:"Press your feet into the floor", sub:"Feel KD1 — the bubbling spring. Both feet, full weight. 30 seconds." },
+    { emoji:"🤚", text:"PC6 on both wrists — right now", sub:"Three fingers from the wrist crease, between the tendons. Press firmly toward the bone. 60 seconds." },
+    { emoji:"👂", text:"Pinch your ear Shen Men", sub:"The triangular fossa — Y-shaped hollow at the top of your ear. Hard pressure. 20 seconds each side." },
+    { emoji:"💧", text:"Drink a full glass of water", sub:"Slowly. Feel it cold. Your liver needs this. Your body is asking." },
+    { emoji:"🚶", text:"Walk outside for 3 minutes", sub:"Don't think about it. Just move. Liver Qi moves when you move." },
+    { emoji:"📱", text:"Text Mom, Tota, or Lily right now", sub:"Just say hi. Connection is the opposite of addiction." },
+    { emoji:"🌬️", text:"4 counts in — 8 counts out", sub:"The long exhale activates your parasympathetic system. Do it 4 times right now." },
+    { emoji:"💃", text:"Put on Cha Cha and move for 2 minutes", sub:"This is Liver Qi medicine. Your body knows what to do." },
+    { emoji:"🪴", text:"Go outside and look at something green", sub:"Trees, grass, sky. Wood element. Your Liver is asking for its element." },
+    { emoji:"🌿", text:"Use your tincture — this is your medicine", sub:"Cannabis is part of your wellness protocol. It calms the Shen and settles the Hun. Use it with intention." },
+    { emoji:"✍️", text:"Write one sentence in your journal", sub:"What is happening in your body right now? Just one sentence is enough." },
+    { emoji:"🧊", text:"Splash cold water on your face", sub:"Activates the diving reflex — instant nervous system reset. Do it now." },
+    { emoji:"💪", text:"10 squats — right where you are", sub:"Move the Qi. Physical movement breaks the craving loop every time." },
+    { emoji:"🌙", text:"Lie down and feel your breath", sub:"One hand on your belly. Watch it rise and fall. You don't have to do anything else." },
+    { emoji:"☎️", text:"Call Pro Active Wellness", sub:"703-822-5003. They know you. That's what they're there for." }
   ];
 
-  var arc    = document.getElementById("wave-arc");
-  var blob   = document.getElementById("wave-blob");
-  var timeEl = document.getElementById("wave-time-text");
-  var phaseEl= document.getElementById("wave-phase-text");
-  var msgEl  = document.getElementById("wave-msg-text");
-  var msgCard= document.getElementById("wave-message");
-  var startBtn = document.getElementById("wave-start-btn");
-  var resetBtn = document.getElementById("wave-reset-btn");
-  if (!startBtn) return;
+  var doCard = document.getElementById("do-it-card");
+  var doEmoji = document.getElementById("do-it-emoji");
+  var doText = document.getElementById("do-it-text");
+  var doSub = document.getElementById("do-it-sub");
+  var lastDoIdx = -1;
 
-  var ARC_FULL = 565; // 2*PI*90
-
-  // Blob size: small at start (80px), grows to 160px at peak (s=360), shrinks to 50px at end
-  function getBlobSize(s) {
-    if (s > 360) {
-      var t = (TOTAL - s) / (TOTAL - 360); // 0→1 as time goes 900→360
-      return Math.round(80 + t * 80);       // 80→160
-    } else {
-      var t2 = s / 360;                     // 1→0 as time goes 360→0
-      return Math.round(50 + t2 * 110);     // 50→160
-    }
+  function shuffleDo() {
+    var idx;
+    do { idx = Math.floor(Math.random() * DO_ACTIONS.length); } while (idx === lastDoIdx);
+    lastDoIdx = idx;
+    var a = DO_ACTIONS[idx];
+    doCard.style.transform = "scale(.97)";
+    doCard.style.borderColor = "#12a37a88";
+    setTimeout(function() {
+      doEmoji.textContent = a.emoji;
+      doText.textContent = a.text;
+      doSub.textContent = a.sub;
+      doCard.style.transform = "";
+      doCard.style.borderColor = "#12a37a44";
+    }, 120);
   }
 
-  function fmtTime(s) {
-    var m = Math.floor(s / 60), sec = s % 60;
-    return m + ":" + (sec < 10 ? "0" : "") + sec;
+  if (doCard) {
+    shuffleDo();
+    doCard.addEventListener("click", shuffleDo);
   }
 
-  function getPhase(s) {
-    if (s > 720) return "building…";
-    if (s > 420) return "near the peak";
-    if (s > 180) return "past the peak ↓";
-    if (s > 30)  return "fading out…";
-    return "almost gone ✓";
+  // ── DONGUI BOGAM ───────────────────────
+  var DONGUI = [
+    {
+      hanja:"心者一身之主 神明之舍也",
+      korean:"심자일신지주 신명지사야",
+      english:"The Heart is the sovereign of the entire body — the dwelling place of the Shen, the spirit-mind. When the Heart is disturbed, the Shen has no home, and all cravings arise from this homelessness.",
+      action:"Press HT7 — the wrist crease on the pinky side, small notch inside the bony bump. Gentle pressure. This is the front door of the Heart channel. Breathe and let your Shen come home."
+    },
+    {
+      hanja:"肝者將軍之官 謀慮出焉",
+      korean:"간자장군지관 모려출언",
+      english:"The Liver is the General of the body — all planning and strategy arise from it. When the Liver is constrained and cannot spread its Qi, frustration turns inward and seeks release through craving.",
+      action:"Press LR3 — top of the foot, groove between the big toe and second toe. This is where the General breathes. Press it and feel the Liver Qi begin to move."
+    },
+    {
+      hanja:"酒毒이 蘊結하야 肝脾를 傷하나니",
+      korean:"주독이 온결하야 간비를 상하나니",
+      english:"Alcohol toxin accumulates and constricts, damaging the Liver and Spleen. But the body's wisdom is this: it begins healing the moment the toxin stops entering. Your AST fell from 181 to 58. That is your body healing itself.",
+      action:"Place one hand over your right side, below the ribs. Your liver is there. Breathe into it slowly. Every sober hour, every intentional choice — including cannabis over alcohol — is medicine landing here."
+    },
+    {
+      hanja:"志意者 所以御精神하며 收魂魄하나니",
+      korean:"지의자 소이어정신하며 수혼백하나니",
+      english:"The will and intention are what govern the spirit, and gather the Hun and Po — the ethereal and corporeal souls. When the will is clear, the scattered soul-aspects return to their root.",
+      action:"Say your intention for today out loud. One sentence. The Dongui Bogam teaches that speaking with intention is itself a form of medicine — it gathers what has scattered."
+    },
+    {
+      hanja:"精神內守 病安從來",
+      korean:"정신내수 병안종래",
+      english:"When the essential spirit is kept within — guarded, anchored, rooted — from where can disease enter? The craving is a signal that the spirit has been pulled outward. Call it back inward.",
+      action:"Close your eyes for 30 seconds. Don't try to stop thoughts. Just notice: there is a quiet place beneath the craving. The Dongui Bogam calls this your root. It has never left you."
+    },
+    {
+      hanja:"恐則精却 驚則心無所倚",
+      korean:"공즉정각 경즉심무소의",
+      english:"Fear causes the Jing-essence to retreat downward. Shock causes the Heart to lose its anchor. Craving often rides on top of fear — fear of feeling, fear of the night, fear of what is underneath the quiet.",
+      action:"Name the fear under the craving right now. You don't have to solve it — just name it. The Dongui Bogam teaches that naming what disturbs the Shen is already half the cure."
+    }
+  ];
+
+  var dongIdx = 0;
+  var dongCard = document.getElementById("dongui-card");
+
+  function renderDongui() {
+    var d = DONGUI[dongIdx];
+    document.getElementById("dongui-hanja").textContent = d.hanja;
+    document.getElementById("dongui-korean").textContent = d.korean;
+    document.getElementById("dongui-english").textContent = d.english;
+    document.getElementById("dongui-action").textContent = d.action;
   }
 
-  function updateDisplay() {
-    // Time text
-    timeEl.textContent = fmtTime(remaining);
-    phaseEl.textContent = running ? getPhase(remaining) : (remaining === TOTAL ? "tap to begin" : "paused");
-
-    // Arc drain: full at start, empty at end
-    var arcOffset = ARC_FULL * (1 - remaining / TOTAL);
-    arc.style.strokeDashoffset = arcOffset;
-
-    // Blob size via inline style (CSS transition handles smoothness)
-    if (running || remaining < TOTAL) {
-      var sz = getBlobSize(remaining);
-      blob.style.width  = sz + "px";
-      blob.style.height = sz + "px";
-    }
-
-    // Messages
-    for (var i = 0; i < MESSAGES.length; i++) {
-      if (remaining <= MESSAGES[i].at && lastMsgIdx < i) {
-        msgEl.textContent = MESSAGES[i].text;
-        lastMsgIdx = i;
-        if (msgCard) {
-          msgCard.style.borderColor = "#12a37a99";
-          setTimeout(function(){ msgCard.style.borderColor = "#12a37a22"; }, 1200);
-        }
-        break;
-      }
-    }
+  if (dongCard) {
+    renderDongui();
+    dongCard.addEventListener("click", function() {
+      dongIdx = (dongIdx + 1) % DONGUI.length;
+      dongCard.style.opacity = ".4";
+      setTimeout(function() { renderDongui(); dongCard.style.opacity = "1"; }, 150);
+    });
+    dongCard.style.transition = "opacity .15s";
   }
 
-  function tick() {
-    if (remaining <= 0) {
-      clearInterval(interval);
-      running = false;
-      startBtn.textContent = "▶ Done";
-      startBtn.disabled = true;
-      updateDisplay();
-      return;
+  // ── MYEONGSHIM BOGAM ──────────────────
+  var MYEONG = [
+    {
+      hanja:"克己復禮 爲仁",
+      korean:"극기복례 위인",
+      english:"To overcome oneself and return to what is right — this is what it means to be fully human. Not perfection. Not the absence of struggle. The return. Every time you return, you are practicing the deepest form of humanity.",
+      reflection:"You returned on November 23. You returned again after April. Returning is not weakness — it is the whole practice."
+    },
+    {
+      hanja:"一日三省吾身",
+      korean:"일일삼성오신",
+      english:"Each day, examine yourself in three ways: Have I been faithful in what I took on? Have I been sincere with those close to me? Have I practiced what I was taught? Not as self-punishment — as honest tending of the self.",
+      reflection:"Not 'did I fail today' — but 'where was I present, and where did I drift?' Those are different questions."
+    },
+    {
+      hanja:"忍一時之忿 免百日之憂",
+      korean:"인일시지분 면백일지우",
+      english:"Endure the anger of one moment, and you spare yourself a hundred days of regret. The craving, the irritability, the Liver fire rising — it is one moment. One moment that passes.",
+      reflection:"What would the next hour look like if you let this moment pass without acting on it?"
+    },
+    {
+      hanja:"勿以善小而不爲 勿以惡小而爲之",
+      korean:"물이선소이불위 물이악소이위지",
+      english:"Do not neglect a good act because it seems too small. Do not commit a harmful act because it seems too small. Every sober hour is a small good act. Every glass of water. Every foot pressed into the floor.",
+      reflection:"The Myeongshim Bogam is telling you: the small things are not small. They are everything."
+    },
+    {
+      hanja:"過而不改 是謂過矣",
+      korean:"과이불개 시위과의",
+      english:"To err and not correct — that is the real error. The slip is not the problem. Staying in the slip is the problem. You already know the difference — you wrote it into this app yourself.",
+      reflection:"April 10 was noted. Not erased. Not weaponized. Just noted. What does correction look like today, not perfectly, but honestly?"
+    },
+    {
+      hanja:"身有疾病 方知健康之可貴",
+      korean:"신유질병 방지건강지가귀",
+      english:"Only when the body carries illness does one truly understand the preciousness of health. Your liver numbers, your labs, your journey — they are not shameful. They are the teacher that showed you what matters.",
+      reflection:"Your AST went from 181 to 58 when you were sober. Your body is trying to show you something precious."
     }
-    remaining--;
-    updateDisplay();
+  ];
+
+  var myeongIdx = 0;
+  var myeongCard = document.getElementById("myeong-card");
+
+  function renderMyeong() {
+    var m = MYEONG[myeongIdx];
+    document.getElementById("myeong-hanja").textContent = m.hanja;
+    document.getElementById("myeong-korean").textContent = m.korean;
+    document.getElementById("myeong-english").textContent = m.english;
+    document.getElementById("myeong-reflection").textContent = m.reflection;
   }
 
-  startBtn.addEventListener("click", function() {
-    if (remaining <= 0) return;
-    if (running) {
-      clearInterval(interval);
-      running = false;
-      startBtn.textContent = "▶ Resume";
-      phaseEl.textContent = "paused";
-    } else {
-      running = true;
-      startBtn.textContent = "⏸ Pause";
-      interval = setInterval(tick, 1000);
-      updateDisplay();
-    }
-  });
-
-  resetBtn.addEventListener("click", function() {
-    clearInterval(interval);
-    running = false;
-    remaining = TOTAL;
-    lastMsgIdx = -1;
-    startBtn.textContent = "▶ Start";
-    startBtn.disabled = false;
-    blob.style.width  = "80px";
-    blob.style.height = "80px";
-    arc.style.strokeDashoffset = "0";
-    msgEl.textContent = "Press start when the craving hits. You only have to get through the next 15 minutes.";
-    timeEl.textContent = "15:00";
-    phaseEl.textContent = "tap to begin";
-  });
-
-  updateDisplay();
+  if (myeongCard) {
+    renderMyeong();
+    myeongCard.addEventListener("click", function() {
+      myeongIdx = (myeongIdx + 1) % MYEONG.length;
+      myeongCard.style.opacity = ".4";
+      setTimeout(function() { renderMyeong(); myeongCard.style.opacity = "1"; }, 150);
+    });
+    myeongCard.style.transition = "opacity .15s";
+  }
 }
 
 // ════════════════════════════════════════
