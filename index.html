@@ -186,6 +186,7 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   <button class="pill" data-nav="sec-backup">💾 Backup</button>
   <button class="pill" data-nav="sec-sleep">🌙 Sleep</button>
   <button class="pill blue" data-nav="sec-winddown">🕯️ Wind-down</button>
+  <button class="pill" data-nav="sec-health">🏥 Health</button>
 </div></div>
 
 <div id="main-content">
@@ -437,6 +438,144 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   <div id="winddown-steps-preview"></div>
   <button class="btn" style="background:var(--blue)" id="winddown-start-btn">Begin wind-down</button>
   <div id="winddown-active" style="display:none"></div>
+</div></div>
+
+
+<!-- HEALTH MATRIX -->
+<div id="sec-health" style="display:none"><div class="sec">
+  <div class="sec-lbl">Clinical overview — Jon C</div>
+  <div style="font-size:11px;color:var(--tx2);margin-bottom:.65rem;line-height:1.6;">For educational reference only. Do not modify medications without Dr. Lawson and Dr. Lau.</div>
+
+  <!-- ROOT CAUSE -->
+  <div style="background:linear-gradient(135deg,#0d1117,#0a2218);border:1.5px solid #12a37a44;border-radius:16px;padding:1.1rem;margin-bottom:.6rem">
+    <div style="font-size:10px;font-weight:700;color:var(--G2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem">Root Cause Chain</div>
+    <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:.2rem">The SHBG Trap</div>
+    <div style="font-size:13px;color:#c47a1a;margin-bottom:.6rem">성호르몬결합글로불린 과다</div>
+    <div style="font-size:12px;color:#8b949e;line-height:1.7">Risperidone → Prolactin 60–69 ↑↑ → SHBG 167 ↑↑↑ → Free T 5.0 ↓ → ED + Hair Loss + Mood + Fatigue</div>
+    <div style="font-size:12px;color:var(--G2);margin-top:.5rem;font-weight:600">✅ Largely reversible: Abilify switch → Prolactin normalizes → SHBG drops → Free T rises</div>
+  </div>
+
+  <!-- KEY NUMBERS -->
+  <div class="sec-lbl">Key numbers at a glance</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.65rem">
+    <div style="background:#1a0808;border:1px solid #c0392b55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:#e05555">1398</div><div style="font-size:9px;font-weight:700;color:#e05555">Total T ng/dL ↑ HIGH</div><div style="font-size:8px;color:var(--tx3)">Ref: 264–916</div></div>
+    <div style="background:#1a1005;border:1px solid #c47a1a55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:#c47a1a">5.0</div><div style="font-size:9px;font-weight:700;color:#c47a1a">Free T pg/mL ↓ LOW</div><div style="font-size:8px;color:var(--tx3)">Ref: 8.7–25.1</div></div>
+    <div style="background:#1a0808;border:1px solid #c0392b55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:#e05555">167</div><div style="font-size:9px;font-weight:700;color:#e05555">SHBG nmol/L ↑ HIGH</div><div style="font-size:8px;color:var(--tx3)">Ref: 16.5–55.9</div></div>
+    <div style="background:#1a0808;border:1px solid #c0392b55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:#e05555">60</div><div style="font-size:9px;font-weight:700;color:#e05555">Prolactin ↑ HIGH</div><div style="font-size:8px;color:var(--tx3)">Ref: 3.9–22.7</div></div>
+    <div style="background:#1a0f04;border:1px solid #d4622d55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:#d4622d">58</div><div style="font-size:9px;font-weight:700;color:#d4622d">Platelets 🚨 ALERT</div><div style="font-size:8px;color:var(--tx3)">Ref: 150–450</div></div>
+    <div style="background:#071a10;border:1px solid #12a37a55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--G2)">12.6</div><div style="font-size:9px;font-weight:700;color:var(--G2)">Hemoglobin ↑ Better</div><div style="font-size:8px;color:var(--tx3)">Was 8.7 in Jan</div></div>
+  </div>
+
+  <!-- TCM PATTERNS -->
+  <div class="sec-lbl">TCM pattern diagnosis</div>
+  <div class="card" style="margin-bottom:.45rem"><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:.2rem">🔥 Blood Heat (血热) — Psoriasis</div><div style="font-size:11px;color:var(--tx3);line-height:1.5">Red facial plaques · greasy food triggers · Cool Blood, Clear Heat</div></div>
+  <div class="card" style="margin-bottom:.45rem"><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:.2rem">🔵 Liver Qi Stagnation (肝气郁结) — Hormones</div><div style="font-size:11px;color:var(--tx3);line-height:1.5">High SHBG · elevated bilirubin · mood instability · Move Liver Qi</div></div>
+  <div class="card" style="margin-bottom:.45rem"><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:.2rem">⚡ Kidney Yang Deficiency (肾阳虚) — ED/Fatigue</div><div style="font-size:11px;color:var(--tx3);line-height:1.5">Low free T · ED · low DHEA · low IGF-1 · Warm and Tonify Kidney Yang</div></div>
+  <div class="card" style="margin-bottom:.65rem"><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:.2rem">💛 Liver Blood Deficiency (肝血虚) — Anemia</div><div style="font-size:11px;color:var(--tx3);line-height:1.5">Previously severe anemia · low ferritin · hair loss · Nourish Liver Blood</div></div>
+
+  <!-- MEDICATIONS -->
+  <div class="sec-lbl">Current medications</div>
+
+  <div class="card" style="margin-bottom:.45rem;border-left:3px solid #c0392b">
+    <div style="font-size:12px;font-weight:700;color:#e05555;margin-bottom:.5rem">🧠 Psychiatric</div>
+    <div style="font-size:13px;font-weight:600;color:var(--tx)">Lithium Carbonate 150mg</div>
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Twice daily · Level 0.2 (sub-therapeutic — discuss with psychiatrist) · NEVER mix with alcohol</div>
+    <div style="font-size:13px;font-weight:600;color:var(--tx)">Risperidone 0.25mg (tapering)</div>
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Tapering from 0.5mg · PRIMARY cause of high prolactin → low Free T → ED</div>
+    <div style="font-size:13px;font-weight:600;color:var(--G2)">Aripiprazole (Abilify) — COMING SOON</div>
+    <div style="font-size:11px;color:var(--tx3)">Prolactin-sparing · will NOT suppress Free T like Risperidone does</div>
+  </div>
+
+  <div class="card" style="margin-bottom:.45rem;border-left:3px solid #1a6fa8">
+    <div style="font-size:12px;font-weight:700;color:#4a9fd4;margin-bottom:.5rem">⚡ ADHD</div>
+    <div style="font-size:13px;font-weight:600;color:var(--tx)">Methylphenidate ER 18mg</div>
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Morning · Monitor BP with Tadalafil</div>
+    <div style="font-size:13px;font-weight:600;color:var(--tx)">Methylphenidate IR 10mg</div>
+    <div style="font-size:11px;color:var(--tx3)">Afternoon · stimulants create Heat/Yin deficiency — Mai Men Dong helps</div>
+  </div>
+
+  <div class="card" style="margin-bottom:.65rem;border-left:3px solid #c47a1a">
+    <div style="font-size:12px;font-weight:700;color:#c47a1a;margin-bottom:.5rem">💊 Hormonal</div>
+    <div style="font-size:13px;font-weight:600;color:var(--tx)">Tadalafil (Cialis) 5mg</div>
+    <div style="font-size:11px;color:var(--tx3)">Once daily · Dr. Lawson · treats ED + improves blood flow to liver and kidneys</div>
+  </div>
+
+  <!-- SUPPLEMENTS -->
+  <div class="sec-lbl">Dr. Lawson supplements — starting Jun 8</div>
+  <div id="health-supp-list"></div>
+
+  <!-- LAB TRENDS -->
+  <div class="sec-lbl">Lab trends</div>
+
+  <div class="card" style="margin-bottom:.45rem;border-left:3px solid #c0392b">
+    <div style="font-size:11px;font-weight:700;color:#e05555;margin-bottom:.45rem">🚨 Critical / Alert</div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Platelets</span><span style="font-size:12px;font-weight:700;color:#d4622d">58 🚨 (was 143→93→58)</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Prolactin</span><span style="font-size:12px;font-weight:700;color:#e05555">60 ↑ (ref 3.9–22.7)</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">SHBG</span><span style="font-size:12px;font-weight:700;color:#e05555">167 ↑ (ref 16.5–55.9)</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">FIB-4 Index</span><span style="font-size:12px;font-weight:700;color:#e05555">4.15 ↑ (high risk)</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0"><span style="font-size:12px;color:var(--tx)">Free Testosterone</span><span style="font-size:12px;font-weight:700;color:#c47a1a">5.0 ↓ (ref 8.7–25.1)</span></div>
+  </div>
+
+  <div class="card" style="margin-bottom:.45rem;border-left:3px solid var(--G)">
+    <div style="font-size:11px;font-weight:700;color:var(--G2);margin-bottom:.45rem">✅ Improving</div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Hemoglobin</span><span style="font-size:12px;font-weight:700;color:var(--G2)">8.7 → 12.6 ✅</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Iron</span><span style="font-size:12px;font-weight:700;color:var(--G2)">20 → 131 ✅</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Ferritin</span><span style="font-size:12px;font-weight:700;color:var(--G2)">15 → 120 ✅</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">ALT</span><span style="font-size:12px;font-weight:700;color:var(--G2)">143 → 27 ✅</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0"><span style="font-size:12px;color:var(--tx)">AST</span><span style="font-size:12px;font-weight:700;color:#c47a1a">181 → 58 ⚠️ watch</span></div>
+  </div>
+
+  <div class="card" style="margin-bottom:.65rem;border-left:3px solid #c47a1a">
+    <div style="font-size:11px;font-weight:700;color:#c47a1a;margin-bottom:.45rem">⚠️ Other flags</div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">DHEA-Sulfate</span><span style="font-size:12px;font-weight:700;color:#c47a1a">74.7 ↓</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">IGF-1</span><span style="font-size:12px;font-weight:700;color:#c47a1a">36 ↓</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Reverse T3</span><span style="font-size:12px;font-weight:700;color:#e05555">35.0 ↑</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Vitamin D</span><span style="font-size:12px;font-weight:700;color:#c47a1a">29.3 ↓</span></div>
+    <div style="display:flex;justify-content:space-between;padding:.3rem 0"><span style="font-size:12px;color:var(--tx)">Bilirubin Total</span><span style="font-size:12px;font-weight:700;color:#e05555">2.7 ↑</span></div>
+  </div>
+
+  <!-- ALL CLEAR -->
+  <div class="card" style="margin-bottom:.65rem;background:var(--GL);border-color:var(--G)">
+    <div style="font-size:11px;font-weight:700;color:var(--G2);margin-bottom:.45rem">✅ All clear — good news</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem">
+      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ Hepatitis B — Neg</div>
+      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ Hepatitis C — Neg</div>
+      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ Candida — Neg</div>
+      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ Cardiac CRP — Low</div>
+      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ Glucose — 76 ✨</div>
+      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ HDL — Good 61</div>
+    </div>
+  </div>
+
+  <!-- TCM HERBS -->
+  <div class="sec-lbl">TCM herbs — discuss with Dr. Lau first</div>
+  <div id="health-herbs-list"></div>
+
+  <!-- SUPPLIERS -->
+  <div class="sec-lbl">Suppliers — student accounts</div>
+  <div id="health-suppliers-list"></div>
+
+  <!-- TIMELINE -->
+  <div class="sec-lbl">Treatment timeline</div>
+  <div id="health-timeline-list"></div>
+
+  <!-- CONTACTS -->
+  <div class="sec-lbl">Your care team</div>
+  <div class="card" style="margin-bottom:.45rem">
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:.2rem">Dr. Lawson — Pro Active Wellness</div>
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">703-822-5003 · Supplements + hormone protocol + Tadalafil · myemedfusion.com portal</div>
+    <a href="tel:7038225003" style="font-size:12px;color:var(--G2)">📞 Call</a>
+  </div>
+  <div class="card" style="margin-bottom:.45rem">
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:.2rem">Dr. Lau — TCM Consultation</div>
+    <div style="font-size:11px;color:var(--tx3)">Bring this app · Discuss Blood Heat psoriasis, Liver Qi stagnation, Kidney Yang deficiency</div>
+  </div>
+  <div class="card" style="margin-bottom:.65rem">
+    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:.2rem">Dr. Kohn — Advanced Dermatology</div>
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">4660 Kenmore Ave, Alexandria · 703-370-0073 · Psoriasis + spider angioma + hair loss</div>
+    <a href="tel:7033700073" style="font-size:12px;color:var(--G2)">📞 Call</a>
+  </div>
+
 </div></div>
 
 </div><!-- end main-content -->
@@ -776,19 +915,20 @@ var POINT_DATA = {
     ],
     body:
       '<ellipse cx="75" cy="88" rx="60" ry="75" fill="#D4956A" stroke="#9B6240" stroke-width="2.2"/>'
-     +'<ellipse cx="95" cy="94" rx="36" ry="46" fill="#C07848" opacity="0.5"/>'
-     +'<ellipse cx="98" cy="90" rx="21" ry="26" fill="#B87040" opacity="0.6"/>'
-     +'<circle cx="100" cy="82" r="13" fill="#8B5030" opacity="0.7"/>'
-     +'<text x="112" y="74" font-size="7" fill="#9B6240" opacity="0.8" font-family="sans-serif">canal</text>'
-     +'<line x1="112" y1="76" x2="107" y2="81" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
-     +'<ellipse cx="70" cy="34" rx="16" ry="10" fill="#B87040" stroke="#9B6240" stroke-width="1.2" opacity="0.9"/>'
+     +'<rect x="57" y="28" width="16" height="106" rx="8" fill="#C07848" opacity="0.55" transform="rotate(-8 65 81)"/>'
+     +'<ellipse cx="104" cy="94" rx="20" ry="26" fill="#C07848" opacity="0.45"/>'
+     +'<ellipse cx="106" cy="88" rx="12" ry="16" fill="#B87040" opacity="0.6"/>'
+     +'<circle cx="108" cy="82" r="10" fill="#8B5030" opacity="0.75"/>'
+     +'<text x="116" y="74" font-size="7" fill="#9B6240" opacity="0.8" font-family="sans-serif">canal</text>'
+     +'<line x1="116" y1="76" x2="112" y2="80" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
+     +'<ellipse cx="72" cy="30" rx="14" ry="8" fill="#B87040" stroke="#9B6240" stroke-width="1.2" opacity="0.9"/>'
      +'<text x="16" y="20" font-size="7" fill="#9B6240" opacity="0.75" font-family="sans-serif">fossa ↓</text>'
-     +'<line x1="44" y1="22" x2="60" y2="32" stroke="#9B6240" stroke-width="0.8" opacity="0.45"/>'
-     +'<path d="M20 76 C10 68 8 82 12 92 C16 102 26 98 26 90 C26 80 20 76 20 76 Z" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<text x="2" y="74" font-size="7" fill="#9B6240" opacity="0.8" font-family="sans-serif">tragus</text>'
-     +'<line x1="14" y1="76" x2="16" y2="84" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
-     +'<ellipse cx="60" cy="162" rx="20" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<text x="46" y="180" font-size="8" fill="#9B6240" opacity="0.7" font-family="sans-serif">lobe</text>'
+     +'<line x1="44" y1="22" x2="62" y2="28" stroke="#9B6240" stroke-width="0.8" opacity="0.4"/>'
+     +'<ellipse cx="22" cy="90" rx="14" ry="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+     +'<text x="2" y="78" font-size="7" fill="#9B6240" opacity="0.8" font-family="sans-serif">tragus</text>'
+     +'<line x1="12" y1="80" x2="16" y2="87" stroke="#9B6240" stroke-width="0.8" opacity="0.5"/>'
+     +'<ellipse cx="60" cy="164" rx="20" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+     +'<text x="46" y="182" font-size="8" fill="#9B6240" opacity="0.7" font-family="sans-serif">lobe</text>'
   }
 };
 
@@ -1490,7 +1630,7 @@ function showDiagram(type){
     html+='<circle cx="'+p.cx+'" cy="'+p.cy+'" r="14" fill="'+p.c+'" opacity="0.14" class="pt-ring" style="pointer-events:none"/>';
     // tapable circle — data attrs only, NO onclick
     html+='<circle cx="'+p.cx+'" cy="'+p.cy+'" r="8" fill="'+p.c+'" class="acupt" data-pid="'+p.id+'" data-ptype="'+type+'" style="cursor:pointer"/>';
-    var tx=p.cx+(p.cx>100?-50:13),ty=p.cy+4;
+    var vbw=parseInt(d.vb.split(' ')[2]);var tx,ty=p.cy+4;if(p.cx>vbw*0.7){tx=p.cx-52;}else{tx=p.cx+13;}
     html+='<text x="'+tx+'" y="'+ty+'" font-size="9" fill="'+p.c+'" font-weight="700" font-family="sans-serif" style="pointer-events:none">'+p.label+'</text>';
   });
   html+='</svg>';
@@ -2251,6 +2391,134 @@ document.getElementById("restore-file").addEventListener("change",function(e){
   r.readAsText(file);
 });
 
+
+// ════════════════════════════════════════
+// HEALTH MATRIX
+// ════════════════════════════════════════
+function initHealth(){
+  // Supplements checklist
+  var supps = [
+    {t:"🌅 AM — BodyBio PC",n:"2 caps with food · $85.99/90 · liver cell membrane repair · targets FIB-4 4.15"},
+    {t:"🌅 AM — TUDCA Plus",n:"1 cap AM · $84/60 · liver protection · reduces bilirubin · bile acid support"},
+    {t:"🌅 AM — ALAmax CR",n:"1 tablet 30 min BEFORE breakfast · antioxidant · liver + insulin support"},
+    {t:"🌅 AM — Augmented NAC",n:"1 cap · $94/90 · glutathione precursor · primary liver detoxifier"},
+    {t:"🌅 AM — Tongkat Ali",n:"2 caps · directly lowers SHBG → frees trapped testosterone"},
+    {t:"🌅 AM — Vitamin D3 + K2",n:"1 cap · addresses 29.3 ng/mL level · K2 directs calcium to bones"},
+    {t:"🌙 PM — TUDCA Plus",n:"1 cap PM · liver support overnight when repair is most active"},
+    {t:"🌙 PM — ALAmax CR",n:"1 tablet 30 min BEFORE dinner · steady antioxidant levels"},
+    {t:"🌙 PM — Augmented NAC",n:"1 cap evening · maintains glutathione around the clock"}
+  ];
+  var skey="health-supps";
+  var saved=JSON.parse(localStorage.getItem(skey)||"{}");
+  var el=document.getElementById("health-supp-list");
+  if(!el) return;
+  el.innerHTML=supps.map(function(s,i){
+    var chk=saved[i]||false;
+    return '<div style="display:flex;gap:.5rem;align-items:flex-start;padding:.55rem;background:'+(chk?"var(--GL)":"var(--bg3)")+';border-radius:10px;margin-bottom:.35rem;border:1.5px solid '+(chk?"var(--G)":"transparent")+'" data-hsi="'+i+'">'
+      +'<div style="width:22px;height:22px;border-radius:6px;border:2px solid '+(chk?"var(--G)":"var(--bd)")+';background:'+(chk?"var(--G)":"transparent")+';display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;margin-top:1px;transition:all .12s">'
+      +(chk?'<svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>':'')
+      +'</div>'
+      +'<div><div style="font-size:12.5px;font-weight:600;color:var(--tx);text-decoration:'+(chk?"line-through":"none")+';opacity:'+(chk?".5":"1")+'">'+s.t+'</div>'
+      +'<div style="font-size:10.5px;color:var(--tx3);margin-top:1px;line-height:1.5">'+s.n+'</div></div></div>';
+  }).join("")+'<button class="btn sec" id="health-supp-reset" style="margin-top:.35rem">Reset checklist</button>';
+  el.addEventListener("click",function(ev){
+    var row=ev.target.closest("[data-hsi]");
+    if(row){
+      var i=parseInt(row.dataset.hsi);
+      var s=JSON.parse(localStorage.getItem(skey)||"{}");
+      s[i]=!s[i];
+      localStorage.setItem(skey,JSON.stringify(s));
+      initHealth();return;
+    }
+    if(ev.target.id==="health-supp-reset"){localStorage.removeItem(skey);initHealth();}
+  });
+
+  // TCM Herbs
+  var herbs = [
+    {n:"茵陈蒿 Yīn Chén Hāo",e:"Artemisia Capillaris",tag:"Liver",c:"#0a7a58",
+     a:"Clears Liver/GB Damp Heat · most important herb for elevated bilirubin in TCM · promotes bile flow",
+     link:"🔗 Directly targets Bilirubin 2.7 ↑"},
+    {n:"丹参 Dān Shēn",e:"Salvia Miltiorrhiza",tag:"Liver",c:"#0a7a58",
+     a:"Activates Blood · reduces liver fibrosis · anti-inflammatory · used for liver disease in modern TCM",
+     link:"🔗 Addresses FIB-4 4.15 + psoriasis Blood Stasis"},
+    {n:"五味子 Wǔ Wèi Zǐ",e:"Schisandra Berry",tag:"Liver",c:"#0a7a58",
+     a:"Astringes Liver Yin · reduces AST/ALT clinically · hepatoprotective · calms Shen",
+     link:"🔗 Targets AST 58 ↑ · helps focus alongside Concerta"},
+    {n:"柴胡 Chái Hú",e:"Bupleurum Root",tag:"Hormone",c:"#c47a1a",
+     a:"Spreads Liver Qi stagnation · regulates hormone metabolism · studied for prolactin normalization",
+     link:"🔗 Prolactin 60 ↑ + Liver Qi stagnation · key during Risperidone taper"},
+    {n:"巴戟天 Bā Jǐ Tiān",e:"Morinda Root",tag:"Hormone",c:"#c47a1a",
+     a:"Tonifies Kidney Yang · impotence and low libido · warms lower burner · reduces fatigue",
+     link:"🔗 Kidney Yang deficiency → ED + low Free T + fatigue"},
+    {n:"酸枣仁 Suān Zǎo Rén",e:"Ziziphus Seed",tag:"Mood",c:"#6c5fc7",
+     a:"Nourishes Heart Blood · calms Shen · treats anxiety, insomnia, palpitations",
+     link:"🔗 Complements Lithium · addresses OCD and anxiety"},
+    {n:"麦门冬 Mài Mén Dōng",e:"Ophiopogon Root",tag:"Mood",c:"#6c5fc7",
+     a:"Nourishes Heart + Lung Yin · counteracts dryness and Heat from stimulants",
+     link:"🔗 Specifically counters Yin deficiency Heat from Concerta + Ritalin"},
+    {n:"土茯苓 Tǔ Fú Líng",e:"Smilax Rhizome",tag:"Psoriasis",c:"#c0392b",
+     a:"Most-used herb for psoriasis in TCM · clears Damp Heat from Blood · detoxifies",
+     link:"🔗 Primary psoriasis herb · nose and jaw plaques"},
+    {n:"枸杞子 Gǒu Qǐ Zǐ",e:"Goji Berry",tag:"Energy",c:"#1a6fa8",
+     a:"Nourishes Liver and Kidney Yin and Blood · antioxidant · safe for daily use",
+     link:"🔗 Eat daily — tea, smoothie, or as snack"}
+  ];
+  var hel=document.getElementById("health-herbs-list");
+  if(hel) hel.innerHTML=herbs.map(function(h){
+    return '<div class="card" style="margin-bottom:.45rem;border-left:3px solid '+h.c+'">'
+      +'<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.2rem">'
+      +'<div style="font-size:14px;font-weight:700;color:var(--tx)">'+h.n+'</div>'
+      +'<span style="font-size:10px;padding:2px 8px;border-radius:10px;background:'+h.c+'1a;color:'+h.c+';font-weight:600;flex-shrink:0;margin-left:.35rem">'+h.tag+'</span>'
+      +'</div>'
+      +'<div style="font-size:11px;color:var(--G2);font-weight:500;margin-bottom:.25rem">'+h.e+'</div>'
+      +'<div style="font-size:12px;color:var(--tx2);line-height:1.55;margin-bottom:.3rem">'+h.a+'</div>'
+      +'<div style="font-size:11px;color:'+h.c+';background:'+h.c+'12;border-radius:7px;padding:4px 9px">'+h.link+'</div>'
+      +'</div>';
+  }).join("");
+
+  // Suppliers
+  var suppliers = [
+    {icon:"🌿",n:"Mayway Herbs",disc:"Student wholesale + 10% school discount",note:"Plum Flower brand · GMP certified · most comprehensive student program · request free welcome pack",url:"https://www.mayway.com/student-benefits",label:"Create Student Account"},
+    {icon:"🌱",n:"Evergreen Herbs",disc:"Practitioner/student pricing · collection formulas",note:"Pre-made formulas, granules, capsules · popular among DAOM students",url:"https://www.evherbs.com",label:"Shop Evergreen"},
+    {icon:"🏮",n:"Best Chinese Medicines",disc:"CCAOM student scholarships — $1,000 awards",note:"Scholarship essay contest · VUIM is CCAOM-accredited",url:"https://bestchinesemedicines.com/scholarship/",label:"Scholarship Info"},
+    {icon:"⚗️",n:"Lhasa OMS",disc:"Student/practitioner pricing · herbs + needles",note:"Combined acupuncture supplies AND herbs · Subscribe & Save",url:"https://www.lhasaoms.com",label:"Shop Lhasa OMS"},
+    {icon:"🔬",n:"Pro Active Wellness — Dr. Lawson",disc:"Order via myemedfusion.com portal",note:"BodyBio PC · TUDCA · ALAmax · NAC · Tongkat Ali · D3K2 · ship to 5422 Camrose Pl, Springfield VA",url:"https://myemedfusion.com",label:"Patient Portal"}
+  ];
+  var sel=document.getElementById("health-suppliers-list");
+  if(sel) sel.innerHTML=suppliers.map(function(s){
+    return '<div class="card" style="margin-bottom:.45rem;display:flex;align-items:flex-start;gap:.75rem">'
+      +'<div style="font-size:22px;flex-shrink:0">'+s.icon+'</div>'
+      +'<div><div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:.15rem">'+s.n+'</div>'
+      +'<div style="font-size:11px;font-weight:600;color:var(--G2);margin-bottom:.2rem">'+s.disc+'</div>'
+      +'<div style="font-size:11px;color:var(--tx3);line-height:1.5;margin-bottom:.35rem">'+s.note+'</div>'
+      +'<a href="'+s.url+'" target="_blank" style="font-size:11px;color:var(--G2)">'+s.label+' →</a>'
+      +'</div></div>';
+  }).join("");
+
+  // Timeline
+  var tl = [
+    {d:"Aug 2023",t:"Baseline — Before Treatment",n:"Hemoglobin 15.7 (normal) · AST 181 ↑ · ALT 143 ↑ · Liver severely stressed",e:"🔴"},
+    {d:"Jan 23, 2026",t:"Crisis Point",n:"Hemoglobin 8.7 ↓ · Platelets 81 ↓ · Iron 20 ↓ · Ferritin 15 ↓ · Lithium 0.2 sub-therapeutic",e:"⚠️"},
+    {d:"Mar 27, 2026",t:"Dr. Lawson Comprehensive Panel",n:"Hgb 12.6 ↑ · Iron 131 ✅ · Total T 1347 ↑ · Free T 5.5 ↓ · Prolactin 69.7 ↑ · Supplement protocol designed",e:"💊"},
+    {d:"Apr 7, 2026",t:"Prescriptions Issued",n:"Tadalafil 5mg · BodyBio PC · TUDCA · ALAmax · NAC · Tongkat Ali · D3K2 · Risperidone taper begins",e:"🔬"},
+    {d:"Apr 8, 2026",t:"SHBG Confirmed",n:"SHBG 167 ↑ confirmed · Prolactin 60 ↑ · Abilify switch plan confirmed",e:"📊"},
+    {d:"Jun 8, 2026",t:"Supplement Protocol Starts",n:"All Dr. Lawson supplements begin · Liver repair protocol fully active",e:"🚀"},
+    {d:"~Jun–Jul 2026",t:"Abilify Switch — Key Milestone",n:"Expected: Prolactin normalizes → SHBG drops → Free T rises → ED improves → mood more stable",e:"⭐"},
+    {d:"Upcoming",t:"Dr. Kohn — Advanced Dermatology",n:"4660 Kenmore Ave, Alexandria · Psoriasis Protopic/Elidel · spider angioma · hair loss evaluation",e:"🏥"},
+    {d:"Upcoming",t:"Dr. Lau — TCM Consultation",n:"Bring this app · Blood Heat psoriasis · Liver Qi stagnation · Kidney Yang deficiency herb formula",e:"🌿"},
+    {d:"2030",t:"D.AcOM Graduation — VUIM",n:"Doctor of Acupuncture and Oriental Medicine · Started Winter 2026 · You'll understand every part of this clinically 💪",e:"🎓"}
+  ];
+  var tel=document.getElementById("health-timeline-list");
+  if(tel) tel.innerHTML=tl.map(function(t){
+    return '<div style="display:flex;gap:.65rem;padding-bottom:.75rem">'
+      +'<div style="font-size:18px;flex-shrink:0;margin-top:2px">'+t.e+'</div>'
+      +'<div><div style="font-size:10px;font-weight:700;color:var(--tx3);letter-spacing:.04em">'+t.d+'</div>'
+      +'<div style="font-size:13px;font-weight:600;color:var(--tx);margin-top:1px">'+t.t+'</div>'
+      +'<div style="font-size:11px;color:var(--tx3);margin-top:2px;line-height:1.5">'+t.n+'</div>'
+      +'</div></div>';
+  }).join("");
+}
+
 // ════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════
@@ -2273,6 +2541,7 @@ document.getElementById("restore-file").addEventListener("change",function(e){
   showDiagram("wrist");
   initScan();
   initDance();
+  initHealth();
   initFormulas();
   initTeas();
   initHerbs();
