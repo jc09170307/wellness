@@ -246,32 +246,28 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   <div style="font-size:12px;color:var(--tx3);margin-bottom:.75rem;line-height:1.6">A craving is a wave. It builds, peaks around 8–10 minutes, then fades. You don't have to fight it — just ride it out.</div>
 
   <!-- Timer display -->
-  <div id="wave-container" style="text-align:center;padding:1rem 0 .5rem">
-    <svg id="wave-svg" viewBox="0 0 160 160" width="200" height="200" style="display:block;margin:0 auto">
-      <defs>
-        <radialGradient id="waveGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#12a37a" stop-opacity="0.25"/>
-          <stop offset="100%" stop-color="#0a7a58" stop-opacity="0.05"/>
-        </radialGradient>
-      </defs>
-      <!-- Outer pulse rings -->
-      <circle id="wave-ring3" cx="80" cy="80" r="75" fill="none" stroke="#12a37a" stroke-width=".5" opacity="0.08"/>
-      <circle id="wave-ring2" cx="80" cy="80" r="68" fill="none" stroke="#12a37a" stroke-width=".8" opacity="0.12"/>
-      <circle id="wave-ring1" cx="80" cy="80" r="60" fill="none" stroke="#12a37a" stroke-width="1" opacity="0.18"/>
-      <!-- Main circle -->
-      <circle id="wave-circle" cx="80" cy="80" r="52" fill="url(#waveGrad)" stroke="#12a37a" stroke-width="2" opacity="0.9"/>
-      <!-- Progress arc -->
-      <circle id="wave-progress" cx="80" cy="80" r="52" fill="none" stroke="#12a37a" stroke-width="3"
-        stroke-dasharray="327" stroke-dashoffset="0" stroke-linecap="round"
-        transform="rotate(-90 80 80)" opacity="0.85"/>
-      <!-- Timer text -->
-      <text id="wave-time-text" x="80" y="74" text-anchor="middle" font-size="28" font-weight="800" fill="#12a37a" font-family="-apple-system,sans-serif">15:00</text>
-      <text id="wave-phase-text" x="80" y="94" text-anchor="middle" font-size="10" fill="#4dba8a" font-family="-apple-system,sans-serif">tap to begin</text>
-    </svg>
+  <div style="text-align:center;padding:1rem 0 .5rem;position:relative">
+    <!-- Outer glow ring -->
+    <div id="wave-ring" style="width:200px;height:200px;border-radius:50%;border:2px solid #12a37a22;display:flex;align-items:center;justify-content:center;margin:0 auto;position:relative;transition:border-color .5s">
+      <!-- Progress ring (SVG fixed size) -->
+      <svg width="200" height="200" style="position:absolute;inset:0;transform:rotate(-90deg)">
+        <circle cx="100" cy="100" r="90" fill="none" stroke="#0a2218" stroke-width="6"/>
+        <circle id="wave-arc" cx="100" cy="100" r="90" fill="none" stroke="#12a37a" stroke-width="6"
+          stroke-dasharray="565" stroke-dashoffset="0" stroke-linecap="round"
+          style="transition:stroke-dashoffset .9s linear"/>
+      </svg>
+      <!-- Animated fill blob -->
+      <div id="wave-blob" style="width:80px;height:80px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#12a37a,#071a10);transition:width .9s ease,height .9s ease;opacity:.85"></div>
+      <!-- Center text overlay -->
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
+        <div id="wave-time-text" style="font-size:30px;font-weight:800;color:#12a37a;letter-spacing:-1px;line-height:1">15:00</div>
+        <div id="wave-phase-text" style="font-size:11px;color:#4dba8a;margin-top:4px">tap to begin</div>
+      </div>
+    </div>
   </div>
 
   <!-- Message display -->
-  <div id="wave-message" style="background:linear-gradient(135deg,#071a10,#0a2218);border:1.5px solid #12a37a22;border-radius:14px;padding:1rem 1.1rem;margin:.5rem 0 .75rem;min-height:64px;display:flex;align-items:center">
+  <div id="wave-message" style="background:linear-gradient(135deg,#071a10,#0a2218);border:1.5px solid #12a37a22;border-radius:14px;padding:1rem 1.1rem;margin:.75rem 0;min-height:64px;display:flex;align-items:center;transition:border-color .4s">
     <div style="font-size:14px;color:#4dba8a;line-height:1.6;text-align:center;width:100%" id="wave-msg-text">Press start when the craving hits. You only have to get through the next 15 minutes.</div>
   </div>
 
@@ -2621,37 +2617,42 @@ function initWaveTimer(){
   var remaining = TOTAL;
   var running = false;
   var interval = null;
+  var lastMsgIdx = -1;
 
-  // at = seconds REMAINING when message should show
   var MESSAGES = [
     { at: 840, text: "The wave is starting to build. Press your feet into the floor. You're grounded." },
     { at: 720, text: "2 minutes in. Pinch your ear Shen Men — the triangular fossa. Hold for 20 seconds." },
     { at: 600, text: "4 minutes. Press PC6 on both wrists. The craving hasn't won yet — it can't." },
     { at: 480, text: "6 minutes in. The wave is building toward its peak. This is the hardest part. Keep going." },
-    { at: 360, text: "Past the halfway point. Most cravings peak around 8–10 min. You're almost there." },
+    { at: 360, text: "Past halfway. Most cravings peak around 8–10 min. You're almost there." },
     { at: 240, text: "10 minutes. You are past the peak. The wave is breaking. It only goes down from here." },
     { at: 150, text: "12 minutes. The craving has less power than it did 5 minutes ago. Notice that." },
     { at: 60,  text: "Almost through. 1 minute left. This is what surfing a wave looks like — you rode it." },
     { at: 0,   text: "✅ You made it through. The wave passed. It always does. " + DAYS + " days and counting." }
   ];
 
-  var FIXED_R = 52;
-  var circum = 2 * Math.PI * FIXED_R;
-
-  var circle   = document.getElementById("wave-circle");
-  var progress = document.getElementById("wave-progress");
-  var timeText = document.getElementById("wave-time-text");
-  var phaseText= document.getElementById("wave-phase-text");
-  var msgText  = document.getElementById("wave-msg-text");
+  var arc    = document.getElementById("wave-arc");
+  var blob   = document.getElementById("wave-blob");
+  var timeEl = document.getElementById("wave-time-text");
+  var phaseEl= document.getElementById("wave-phase-text");
+  var msgEl  = document.getElementById("wave-msg-text");
+  var msgCard= document.getElementById("wave-message");
   var startBtn = document.getElementById("wave-start-btn");
   var resetBtn = document.getElementById("wave-reset-btn");
   if (!startBtn) return;
 
-  // Keep progress arc at fixed radius always
-  progress.setAttribute("r", FIXED_R);
-  progress.setAttribute("stroke-dasharray", circum.toFixed(1));
+  var ARC_FULL = 565; // 2*PI*90
 
-  var lastMsgIdx = -1;
+  // Blob size: small at start (80px), grows to 160px at peak (s=360), shrinks to 50px at end
+  function getBlobSize(s) {
+    if (s > 360) {
+      var t = (TOTAL - s) / (TOTAL - 360); // 0→1 as time goes 900→360
+      return Math.round(80 + t * 80);       // 80→160
+    } else {
+      var t2 = s / 360;                     // 1→0 as time goes 360→0
+      return Math.round(50 + t2 * 110);     // 50→160
+    }
+  }
 
   function fmtTime(s) {
     var m = Math.floor(s / 60), sec = s % 60;
@@ -2663,51 +2664,34 @@ function initWaveTimer(){
     if (s > 420) return "near the peak";
     if (s > 180) return "past the peak ↓";
     if (s > 30)  return "fading out…";
-    return "almost gone";
-  }
-
-  // Fill circle: starts small (r=32), grows to r=58 at peak (s=360), shrinks back to r=28
-  function getWaveRadius(s) {
-    if (s > 360) {
-      // Building phase: 900→360, r goes 32→58
-      var t = (TOTAL - s) / (TOTAL - 360);
-      return 32 + t * 26;
-    } else {
-      // Fading phase: 360→0, r goes 58→28
-      var t2 = s / 360;
-      return 28 + t2 * 30;
-    }
-  }
-
-  function showMessage(i) {
-    msgText.textContent = MESSAGES[i].text;
-    lastMsgIdx = i;
-    var card = document.getElementById("wave-message");
-    if (card) {
-      card.style.transition = "border-color .3s";
-      card.style.borderColor = "#12a37a99";
-      setTimeout(function(){ card.style.borderColor = "#12a37a22"; }, 1000);
-    }
+    return "almost gone ✓";
   }
 
   function updateDisplay() {
-    timeText.textContent = fmtTime(remaining);
-    phaseText.textContent = running ? getPhase(remaining) : (remaining === TOTAL ? "tap to begin" : "paused");
+    // Time text
+    timeEl.textContent = fmtTime(remaining);
+    phaseEl.textContent = running ? getPhase(remaining) : (remaining === TOTAL ? "tap to begin" : "paused");
 
-    // Progress arc drain (full at start, empty at end)
-    var pct = remaining / TOTAL;
-    progress.setAttribute("stroke-dashoffset", (circum * pct).toFixed(1));
+    // Arc drain: full at start, empty at end
+    var arcOffset = ARC_FULL * (1 - remaining / TOTAL);
+    arc.style.strokeDashoffset = arcOffset;
 
-    // Fill circle wave shape
+    // Blob size via inline style (CSS transition handles smoothness)
     if (running || remaining < TOTAL) {
-      var r = getWaveRadius(remaining);
-      circle.setAttribute("r", r.toFixed(1));
+      var sz = getBlobSize(remaining);
+      blob.style.width  = sz + "px";
+      blob.style.height = sz + "px";
     }
 
-    // Messages — scan all, find the right one for current remaining
+    // Messages
     for (var i = 0; i < MESSAGES.length; i++) {
       if (remaining <= MESSAGES[i].at && lastMsgIdx < i) {
-        showMessage(i);
+        msgEl.textContent = MESSAGES[i].text;
+        lastMsgIdx = i;
+        if (msgCard) {
+          msgCard.style.borderColor = "#12a37a99";
+          setTimeout(function(){ msgCard.style.borderColor = "#12a37a22"; }, 1200);
+        }
         break;
       }
     }
@@ -2732,7 +2716,7 @@ function initWaveTimer(){
       clearInterval(interval);
       running = false;
       startBtn.textContent = "▶ Resume";
-      phaseText.textContent = "paused";
+      phaseEl.textContent = "paused";
     } else {
       running = true;
       startBtn.textContent = "⏸ Pause";
@@ -2748,11 +2732,12 @@ function initWaveTimer(){
     lastMsgIdx = -1;
     startBtn.textContent = "▶ Start";
     startBtn.disabled = false;
-    circle.setAttribute("r", "32");
-    progress.setAttribute("stroke-dashoffset", circum.toFixed(1));
-    msgText.textContent = "Press start when the craving hits. You only have to get through the next 15 minutes.";
-    timeText.textContent = "15:00";
-    phaseText.textContent = "tap to begin";
+    blob.style.width  = "80px";
+    blob.style.height = "80px";
+    arc.style.strokeDashoffset = "0";
+    msgEl.textContent = "Press start when the craving hits. You only have to get through the next 15 minutes.";
+    timeEl.textContent = "15:00";
+    phaseEl.textContent = "tap to begin";
   });
 
   updateDisplay();
