@@ -828,7 +828,7 @@ var FORMULAS = [
   {name:"Chai Hu Shu Gan San",use:"Liver Qi stagnation — irritability, craving surge",
    pat:"Hypochondriac distension and pain, sighing, irritability, craving with emotional trigger, PMS.",
    herbs:"Chai Hu 6g, Bai Shao 9g, Zhi Ke 6g, Chen Pi 6g, Chuan Xiong 4.5g, Xiang Fu 4.5g, Zhi Gan Cao 3g",
-   note:"Your primary pattern formula. 4–6 week course. Pair with LR3 + PC6 acupressure between doses. Cha Cha is this formula's movement equivalent."},
+   note:"QualiHerb capsules available. Your primary pattern formula. 4–6 week course. Pair with LR3 + PC6 acupressure between doses. Cha Cha is this formula's movement equivalent."},
   {name:"Zhu Ling Tang",use:"Damp-heat in Bladder — edema, liver fluid retention",
    pat:"Urinary difficulty, edema, thirst with desire to drink but uncomfortable after, possible diarrhea.",
    herbs:"Zhu Ling 9g, Fu Ling 9g, Ze Xie 9g, E Jiao 9g, Hua Shi 9g",
@@ -840,7 +840,19 @@ var FORMULAS = [
   {name:"Kong Xian Dan",use:"ADHD — phlegm misting the Heart",
    pat:"Poor concentration, forgetfulness, foggy thinking, possible visible sputum, muzzy head.",
    herbs:"Bai Fan, Chen Sha (substitute for Zhu Sha — avoid Zhu Sha due to mercury)",
-   note:"Short-term use only. Specifically for phlegm-misting-Heart presentation of ADHD, not deficiency presentation."}
+   note:"Short-term use only. Specifically for phlegm-misting-Heart presentation of ADHD, not deficiency presentation."},
+  {name:"Liu Wei Di Huang Wan",use:"Kidney Yin deficiency — erectile dysfunction, fatigue, low testosterone",
+   pat:"Low Free T (5.0, ref 8.7–25.1). Afternoon energy crash, lower back ache, tinnitus, night sweats or dry heat in palms/soles, SHBG elevation from Risperidone. Kidney Yin is the root moisture and hormonal substrate.",
+   herbs:"Shu Di Huang (Rehmannia), Shan Zhu Yu, Shan Yao, Ze Xie, Mu Dan Pi, Fu Ling",
+   note:"QualiHerb 500mg · 100 caps. Core Kidney Yin formula. Addresses the root of low Free T and SHBG elevation. Safe long-term. Sobriety amplifies this formula — alcohol depletes Kidney Jing directly. Allow 6–8 weeks to assess effect."},
+  {name:"Zeng Ye Cheng Qi Tang",use:"Constipation — Yin deficiency with dry intestines, accumulated heat",
+   pat:"Dry, difficult stools. Thirst. Lithium can dry fluids — this formula directly counters that. Also addresses heat accumulation (often seen with Liver Qi stagnation and alcohol history).",
+   herbs:"Xuan Shen (Rehmannia), Da Huang (Rhubarb), Mang Xiao (Mirabilite), Mai Men Dong, Sheng Di Huang",
+   note:"QualiHerb 520mg · 100 caps. 增液承氣湯 — 'Increase the Fluids and Order the Qi.' Use short-term (5–7 days) for acute constipation. Da Huang is a strong purgative — do not use daily. ⚠️ Monitor with Lithium — any major fluid shifts need attention."},
+  {name:"Xiao Feng San",use:"Skin — psoriasis, eczema, wind-heat or wind-damp skin disorders",
+   pat:"Red plaques, itching, weeping or dry rashes. Blood Heat driving wind to the skin surface. Psoriasis pattern. Worse with stress, heat, or alcohol.",
+   herbs:"Dang Gui, Sheng Di Huang, Fang Feng, Chan Tui, Ku Shen, Cang Zhu, Niu Bang Zi, Zhi Mu, Jing Jie, Shi Gao, Mu Tong, Gan Cao",
+   note:"QualiHerb 500mg · 100 caps. 消風散 — 'Eliminate Wind Powder.' DangGui & Arctium Formula. Sobriety strongly supports this formula — alcohol is one of the biggest Blood Heat triggers for psoriasis. Allow 4–8 weeks. Avoid spicy food, shellfish, alcohol while using."}
 ];
 
 var TEAS = [
@@ -1877,7 +1889,9 @@ function initFormulas(){
   var el=document.getElementById("formulas-list");
   if(!el) return;
   el.innerHTML=FORMULAS.map(function(f){
-    return '<div class="card" style="margin-bottom:.45rem">'
+    var isQH = f.note && f.note.startsWith("QualiHerb");
+    return '<div class="card" style="margin-bottom:.45rem;border-left:3px solid '+(isQH?"#4a9fd4":"var(--bd)")+'">'
+      +(isQH?'<div style="font-size:10px;font-weight:700;color:#4a9fd4;letter-spacing:.06em;margin-bottom:.3rem">✦ QUALIHERB CAPSULES — IN YOUR CABINET</div>':'')
       +'<div style="font-size:14px;font-weight:700;color:var(--tx);margin-bottom:.2rem">'+f.name+'</div>'
       +'<div style="font-size:11px;font-weight:600;color:var(--G2);margin-bottom:.3rem">'+f.use+'</div>'
       +'<div style="font-size:12px;color:var(--tx3);font-style:italic;margin-bottom:.35rem;line-height:1.55">'+f.pat+'</div>'
@@ -2577,8 +2591,9 @@ function initHealth(){
 
   // Suppliers
   var suppliers = [
-    {icon:"🌿",n:"Mayway Herbs",disc:"Student wholesale + 10% school discount",note:"Plum Flower brand · GMP certified · most comprehensive student program · request free welcome pack",url:"https://www.mayway.com/student-benefits",label:"Create Student Account"},
-    {icon:"🌱",n:"Evergreen Herbs",disc:"Practitioner/student pricing · collection formulas",note:"Pre-made formulas, granules, capsules · popular among DAOM students",url:"https://www.evherbs.com",label:"Shop Evergreen"},
+    {icon:"🌿",n:"Mayway Herbs",disc:"🎓 Student wholesale — account not yet created",note:"Plum Flower brand · GMP certified · register at mayway.com with your VUIM email for practitioner pricing · request free welcome pack · most comprehensive student program",url:"https://www.mayway.com/student-benefits",label:"Create Student Account"},
+    {icon:"💊",n:"QualiHerb",disc:"✅ Currently using — capsule formulas in your cabinet",note:"Liu Wei Di Huang Wan · Zeng Ye Cheng Qi Tang · Xiao Feng San · 'Tranquility of Nature and Science' · GMP certified · 100 caps per bottle",url:"https://www.qualiherb.com",label:"Shop QualiHerb"},
+    {icon:"🌱",n:"Evergreen Herbs",disc:"🎓 Student pricing — account not yet created",note:"Pre-made formulas, granules, capsules · popular among DAOM students · register with VUIM email",url:"https://www.evherbs.com",label:"Create Student Account"},
     {icon:"🏮",n:"Best Chinese Medicines",disc:"CCAOM student scholarships — $1,000 awards",note:"Scholarship essay contest · VUIM is CCAOM-accredited",url:"https://bestchinesemedicines.com/scholarship/",label:"Scholarship Info"},
     {icon:"⚗️",n:"Lhasa OMS",disc:"Student/practitioner pricing · herbs + needles",note:"Combined acupuncture supplies AND herbs · Subscribe & Save",url:"https://www.lhasaoms.com",label:"Shop Lhasa OMS"},
     {icon:"🔬",n:"Pro Active Wellness — Dr. Lawson",disc:"Order via myemedfusion.com portal",note:"BodyBio PC · TUDCA · ALAmax · NAC · Tongkat Ali · D3K2 · ship to 5422 Camrose Pl, Springfield VA",url:"https://myemedfusion.com",label:"Patient Portal"}
