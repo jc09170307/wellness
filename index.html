@@ -982,7 +982,7 @@ var CRISIS_QUOTES = [
 
 var MEDS = {
   morning:[
-    {type:"supp",name:"① ALAmax CR",                   dose:"1 tab — FIRST, empty stomach",color:"#0a7a58", note:"⏱ Take immediately on waking, 30 MIN before eating anything · controlled-release ALA · liver antioxidant — must be fasted"},
+    {type:"supp",name:"① ALAmax CR",                   dose:"1 tab — FIRST, empty stomach",color:"#0a7a58", note:"⏱ Take immediately on waking, 30 MIN before eating · controlled-release ALA · liver antioxidant — must be fasted"},
     {type:"rx",  name:"② Concerta (Methylphenidate ER)", dose:"18mg",      color:"#1a6fa8", note:"Take right after ALAmax, before breakfast · ADHD extended-release · early timing = full afternoon coverage"},
     {type:"rx",  name:"③ Tadalafil (Cialis)",            dose:"5mg",        color:"#c47a1a", note:"With first few bites of breakfast · daily dose maintains steady levels · ED + liver/kidney blood flow"},
     {type:"rx",  name:"③ Bupropion (Wellbutrin)",        dose:"150mg",      color:"#c0392b", note:"With breakfast · mood anchor · dopamine/norepinephrine · food reduces nausea"},
@@ -992,10 +992,14 @@ var MEDS = {
     {type:"supp",name:"③ BodyBio PC",                    dose:"2 caps",     color:"#0a7a58", note:"With breakfast · phosphatidylcholine · rebuilds liver cell membranes · FIB-4 target"},
     {type:"supp",name:"③ Tongkat Ali (Momentus)",        dose:"1 cap",      color:"#0a7a58", note:"With breakfast · AM dose aligns with natural testosterone peak · reduces SHBG → frees T"},
     {type:"supp",name:"③ Vitamin D3 + K2 (Life Extension)", dose:"1 cap",  color:"#0a7a58", note:"With fatty breakfast · D3 29.3 → goal 50–80 · fat-soluble — must have fat to absorb"},
-    {type:"supp",name:"③ Ubiquinol (Momentus)",          dose:"1 softgel",  color:"#0a7a58", note:"With breakfast · CoQ10 active form · mitochondrial + liver energy · fat-soluble"}
+    {type:"supp",name:"③ Ubiquinol (Momentus)",          dose:"1 softgel",  color:"#0a7a58", note:"With breakfast · CoQ10 active form · mitochondrial + liver energy · fat-soluble"},
+    {type:"herb",name:"③ Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps",     color:"#4a9fd4", note:"With breakfast · Kidney Yin tonic · ED + low Free T + SHBG · take consistently for 6–8 weeks"},
+    {type:"herb",name:"③ Xiao Feng San 消风散",           dose:"3 caps",     color:"#4a9fd4", note:"With breakfast · psoriasis / Blood Heat · avoid alcohol, spicy, shellfish while using"}
   ],
   afternoon:[
-    {type:"rx",  name:"Ritalin (Methylphenidate IR)", dose:"10mg",       color:"#1a6fa8", note:"Before 3pm · bridges Concerta fade · protects sleep if taken too late"}
+    {type:"rx",  name:"Ritalin (Methylphenidate IR)",    dose:"10mg",       color:"#1a6fa8", note:"Before 3pm · bridges Concerta fade · protects sleep if taken too late"},
+    {type:"herb",name:"Liu Wei Di Huang Wan 六味地黄丸",  dose:"3 caps",     color:"#4a9fd4", note:"With lunch · 2nd of 3 daily doses · with food"},
+    {type:"herb",name:"Xiao Feng San 消风散",             dose:"3 caps",     color:"#4a9fd4", note:"With lunch · 2nd of 3 daily doses · with food"}
   ],
   evening:[
     {type:"supp",name:"① ALAmax CR (2nd dose)",          dose:"1 tab — BEFORE dinner, empty stomach", color:"#12a37a", note:"⏱ Take 30 MIN before eating dinner · same as morning — must be fasted · overnight liver antioxidant"},
@@ -1004,21 +1008,30 @@ var MEDS = {
     {type:"supp",name:"② Tongkat Ali (Momentus) 2nd",    dose:"1 cap",      color:"#12a37a", note:"With dinner · maintains SHBG reduction around the clock"},
     {type:"rx",  name:"② Lithium Carbonate (2nd dose)",  dose:"150mg",      color:"#c0392b", note:"With dinner · consistent evening time · anchors overnight mood · never with alcohol"},
     {type:"rx",  name:"② Risperidone → tapering to Abilify", dose:"0.25mg", color:"#c0392b", note:"With dinner · tapering now · PRIMARY prolactin driver → low Free T → ED · Abilify switch soon"},
+    {type:"herb",name:"② Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps",     color:"#4a9fd4", note:"With dinner · 3rd of 3 daily doses · complete the day's protocol"},
+    {type:"herb",name:"② Xiao Feng San 消风散",           dose:"3 caps",     color:"#4a9fd4", note:"With dinner · 3rd of 3 daily doses · complete the day's protocol"},
+    {type:"herb",name:"② Zeng Ye Cheng Qi Tang 增液承气汤",dose:"3 caps — AS NEEDED only", color:"#4a9fd4", note:"Evening only when needed · bowel support · 5–7 day course max · not daily · monitor with Lithium"},
     {type:"supp",name:"③ Advanced Milk Thistle",          dose:"1 softgel",  color:"#12a37a", note:"🥜 After dinner with fat snack (nuts/PB) · fat-soluble silymarin · anti-fibrotic · take AFTER eating"},
     {type:"supp",name:"③ FLORASSIST Liver Restore",       dose:"1 cap",      color:"#12a37a", note:"With fat snack after dinner · probiotic for hepatic support · overnight colonization · gut-liver axis"}
   ],
   herbs:[
-    {type:"herb",name:"Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps · 3× daily with meals",color:"#4a9fd4",note:"Kidney Yin tonic · addresses low Free T (5.0) + SHBG + ED · Rehmannia Six · 6–8 weeks to assess"},
-    {type:"herb",name:"Xiao Feng San 消风散",          dose:"3 caps · 3× daily with meals",color:"#4a9fd4",note:"Psoriasis / Blood Heat · DangGui & Arctium · avoid alcohol, spicy, shellfish · 4–8 weeks"},
-    {type:"herb",name:"Zeng Ye Cheng Qi Tang 增液承气汤",dose:"3 caps · as needed (not daily)",color:"#4a9fd4",note:"Bowel support · short-term 5–7 days only · Da Huang is strong purgative · monitor with Lithium"}
+    {type:"herb",name:"Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps · 3× daily with meals — see schedule above",color:"#4a9fd4",note:"Kidney Yin tonic · ED + low Free T (5.0) + SHBG · Rehmannia Six · 6–8 weeks to assess"},
+    {type:"herb",name:"Xiao Feng San 消风散",          dose:"3 caps · 3× daily with meals — see schedule above",color:"#4a9fd4",note:"Psoriasis / Blood Heat · DangGui & Arctium · avoid alcohol, spicy, shellfish · 4–8 weeks"},
+    {type:"herb",name:"Zeng Ye Cheng Qi Tang 增液承气汤",dose:"3 caps · evening only · as needed",color:"#4a9fd4",note:"Bowel support · 5–7 day course max · not for daily use · Da Huang is strong purgative · monitor with Lithium"}
   ],
   topicals:[
-    {type:"rx",name:"Calcipotriene + Betamethasone Dipropionate Ointment",dose:"0.005%/0.064% · apply thin layer 1× daily",color:"#c0392b",note:"Body + genital psoriasis · vitamin D analog + mid-strength steroid combo · apply to plaques only · max 4 weeks continuous then rest · ⚠️ avoid face"},
-    {type:"rx",name:"Clobetasol Propionate Solution",dose:"0.05% · scalp · apply 1× daily",color:"#c0392b",note:"Scalp psoriasis · ultra-potent steroid in liquid form · part into sections and apply directly · max 2 weeks continuous · ⚠️ do not use on face or genitals"},
-    {type:"rx",name:"Desonide Ointment",dose:"0.05% · face/nose · apply 1–2× daily",color:"#c0392b",note:"Nose + facial psoriasis · mild steroid safe for sensitive areas · Dr. Kohn (4660 Kenmore Ave, Alexandria · 703-370-0073)"},
-    {type:"supp",name:"VUIM HerbalMint Scalp Shampoo",dose:"Use each wash · massage 2 min · rinse",color:"#12a37a",note:"Hair loss + scalp psoriasis · 6 TCM herbs + Persian spearmint + salicylic acid · from VUIM Clinic · vuimclinic.com"},
-    {type:"supp",name:"VUIM HerbalMint Scalp Tonic",dose:"Post-shampoo · fingertips or cotton pad · circular massage",color:"#c47a1a",note:"⚠️ EXPIRED May 23, 2026 — do not use until refilled · reorder at vuimclinic.com · TCM herbs + copper tripeptide + peptides for hair regrowth"}
+    {type:"rx",  name:"🌅 AM — Calcipotriene + Betamethasone Ointment",dose:"0.005%/0.064% · thin layer · 1× daily AM",color:"#c0392b",note:"Body + genital psoriasis · apply to plaques after morning shower · max 4 weeks continuous then rest · ⚠️ avoid face · Dr. Kohn"},
+    {type:"rx",  name:"🌅 AM — Desonide Ointment",dose:"0.05% · face/nose · 1–2× daily",color:"#c0392b",note:"Nose + facial psoriasis · mild steroid safe for sensitive skin · AM + PM if needed · Dr. Kohn (703-370-0073)"},
+    {type:"supp",name:"🚿 AM — VUIM HerbalMint Scalp Shampoo",dose:"Each wash · massage 2 min · rinse",color:"#12a37a",note:"Hair loss + scalp psoriasis · 6 TCM herbs + Persian spearmint + salicylic acid · vuimclinic.com"},
+    {type:"supp",name:"🚿 AM — VUIM HerbalMint Scalp Tonic",dose:"Post-shampoo · fingertips · circular massage · leave in",color:"#c47a1a",note:"⚠️ EXPIRED May 23, 2026 — do not use · reorder at vuimclinic.com · copper tripeptide + TCM herbs"},
+    {type:"rx",  name:"🌙 PM — Clobetasol Propionate Solution",dose:"0.05% · scalp · 1× nightly before bed",color:"#c0392b",note:"Scalp psoriasis · apply to partings at night · works overnight · wash out in AM with VUIM shampoo · max 2 weeks continuous · Dr. Kohn"},
+    {type:"supp",name:"🌙 PM — Rosemary Oil (topical)",dose:"Few drops · massage into scalp after Clobetasol dries",color:"#12a37a",note:"Matches minoxidil for hair density in clinical studies · purely topical — zero liver involvement · anti-inflammatory for scalp · safe with all your meds"},
+    {type:"supp",name:"🚿 Alternate — Ketoconazole Shampoo (Nizoral)",dose:"Alternate days with VUIM shampoo",color:"#6c5fc7",note:"Topical only — not absorbed systemically · reduces scalp DHT locally + anti-inflammatory · helps psoriasis flares · liver-safe"},
+    {type:"herb",name:"🌿 Er Zhi Wan — 女貞子 Nǚ Zhēn Zǐ + 墨旱蓮 Mò Hàn Lián",dose:"3 caps each · 2× daily with meals",color:"#4a9fd4",note:"Classical formula for Blood Heat + Liver/Kidney Yin hair loss — your exact pattern · cools Blood + nourishes Yin · no hepatotoxicity · pairs with Liu Wei Di Huang Wan already in your stack"},
+    {type:"herb",name:"🌿 側柏葉 Cè Bǎi Yè (Biota Leaves)",dose:"9–15g tea · 2× daily · also use as scalp rinse",color:"#4a9fd4",note:"#1 classical herb for Blood Heat hair loss · cools Blood + stops shedding · brew strong tea and pour over scalp as final rinse · no hepatotoxicity · direct pattern match"},
+    {type:"herb",name:"🌿 桑椹 Sāng Shèn (Mulberry Fruit)",dose:"15–30g daily · eat as food or brew as tea",color:"#4a9fd4",note:"Nourishes Liver/Kidney Blood and Jing · food-grade safe · gentle enough daily long-term · your liver handles this easily · addresses Blood deficiency hair loss angle"}
   ]
+};
 };
 
 var MILESTONES = [
