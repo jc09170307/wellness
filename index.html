@@ -338,6 +338,7 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
     <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(192,57,43,.12);color:#e05555;border:1px solid rgba(192,57,43,.3)">💊 Rx</span>
     <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(18,163,122,.12);color:var(--G2);border:1px solid rgba(18,163,122,.35)">🌿 Supplement</span>
     <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(74,159,212,.12);color:#4a9fd4;border:1px solid rgba(74,159,212,.3)">🌱 Herb formula</span>
+    <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(192,68,116,.12);color:#c04474;border:1px solid rgba(192,68,116,.3)">🧴 Topical</span>
   </div>
 
   <!-- MORNING -->
@@ -368,6 +369,14 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   </div>
   <div style="font-size:10px;color:var(--tx3);margin-bottom:.5rem;line-height:1.5">3 capsules · 3× daily · with meals · unless noted</div>
   <div id="meds-herbs" style="margin-bottom:1rem"></div>
+
+  <!-- TOPICALS -->
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
+    <div style="background:linear-gradient(135deg,#8b0a50,#c04474);border-radius:8px;padding:4px 12px;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.04em">🧴 TOPICALS & HAIR</div>
+    <div style="flex:1;height:1px;background:linear-gradient(90deg,#c0447488,transparent)"></div>
+  </div>
+  <div style="font-size:10px;color:var(--tx3);margin-bottom:.5rem;line-height:1.5">Rx topicals — Dr. Kohn · Hair products — VUIM Clinic</div>
+  <div id="meds-topicals" style="margin-bottom:1rem"></div>
 
   <button class="btn sec" id="meds-reset-btn" style="margin-top:.25rem;font-size:12px">↺ Reset all for tomorrow</button>
 </div></div>
@@ -973,35 +982,42 @@ var CRISIS_QUOTES = [
 
 var MEDS = {
   morning:[
-    {type:"rx",  name:"Bupropion (Wellbutrin)",    dose:"150mg",        color:"#c0392b", note:"Mood anchor · dopamine/norepinephrine support · take with food"},
-    {type:"rx",  name:"Lithium Carbonate",          dose:"150mg",        color:"#c0392b", note:"Bipolar 2 stabilizer · consistent timing · never with alcohol"},
-    {type:"rx",  name:"Concerta (Methylphenidate ER)", dose:"18mg",      color:"#1a6fa8", note:"ADHD extended-release · take first thing · TCM: creates Heat/Yin deficiency"},
-    {type:"rx",  name:"Tadalafil (Cialis)",          dose:"5mg",         color:"#c47a1a", note:"Daily AM · treats ED + improves liver & kidney blood flow · steady levels"},
-    {type:"supp",name:"ALAmax CR",                   dose:"1 tab",       color:"#0a7a58", note:"⏱ 30 MIN BEFORE breakfast on empty stomach · alpha lipoic acid · liver antioxidant"},
-    {type:"supp",name:"CellCore Advanced TUDCA",     dose:"1 cap",       color:"#0a7a58", note:"AM dose · bile acid protection · targets FIB-4 4.15 + bilirubin"},
-    {type:"supp",name:"Augmented NAC",               dose:"1 cap",       color:"#0a7a58", note:"AM dose · glutathione precursor · liver detox primed before meds metabolize"},
-    {type:"supp",name:"BodyBio PC",                  dose:"2 caps",      color:"#0a7a58", note:"Once daily with breakfast · phosphatidylcholine · rebuilds liver cell membranes"},
-    {type:"supp",name:"Tongkat Ali (Momentus)",      dose:"1 cap AM",    color:"#0a7a58", note:"AM dose · reduces SHBG → frees testosterone · aligns with natural T peak"},
-    {type:"supp",name:"Vitamin D3 + K2 (Life Extension)", dose:"1 cap", color:"#0a7a58", note:"Once daily with fatty food · D3 was 29.3 ng/mL (goal 50–80) · K2 directs calcium to bones"},
-    {type:"supp",name:"Ubiquinol (Momentus)",        dose:"1 softgel",   color:"#0a7a58", note:"AM with food · CoQ10 active form · mitochondrial + liver energy support"}
+    {type:"supp",name:"① ALAmax CR",                   dose:"1 tab — FIRST, empty stomach",color:"#0a7a58", note:"⏱ Take immediately on waking, 30 MIN before eating anything · controlled-release ALA · liver antioxidant — must be fasted"},
+    {type:"rx",  name:"② Concerta (Methylphenidate ER)", dose:"18mg",      color:"#1a6fa8", note:"Take right after ALAmax, before breakfast · ADHD extended-release · early timing = full afternoon coverage"},
+    {type:"rx",  name:"③ Tadalafil (Cialis)",            dose:"5mg",        color:"#c47a1a", note:"With first few bites of breakfast · daily dose maintains steady levels · ED + liver/kidney blood flow"},
+    {type:"rx",  name:"③ Bupropion (Wellbutrin)",        dose:"150mg",      color:"#c0392b", note:"With breakfast · mood anchor · dopamine/norepinephrine · food reduces nausea"},
+    {type:"rx",  name:"③ Lithium Carbonate",             dose:"150mg",      color:"#c0392b", note:"With breakfast · Bipolar 2 stabilizer · same time daily · never with alcohol · full glass of water"},
+    {type:"supp",name:"③ CellCore Advanced TUDCA",       dose:"1 cap",      color:"#0a7a58", note:"With breakfast · bile acid liver protection · targets FIB-4 4.15 + bilirubin"},
+    {type:"supp",name:"③ Augmented NAC",                 dose:"1 cap",      color:"#0a7a58", note:"With breakfast · glutathione precursor · liver detox primed before meds metabolize"},
+    {type:"supp",name:"③ BodyBio PC",                    dose:"2 caps",     color:"#0a7a58", note:"With breakfast · phosphatidylcholine · rebuilds liver cell membranes · FIB-4 target"},
+    {type:"supp",name:"③ Tongkat Ali (Momentus)",        dose:"1 cap",      color:"#0a7a58", note:"With breakfast · AM dose aligns with natural testosterone peak · reduces SHBG → frees T"},
+    {type:"supp",name:"③ Vitamin D3 + K2 (Life Extension)", dose:"1 cap",  color:"#0a7a58", note:"With fatty breakfast · D3 29.3 → goal 50–80 · fat-soluble — must have fat to absorb"},
+    {type:"supp",name:"③ Ubiquinol (Momentus)",          dose:"1 softgel",  color:"#0a7a58", note:"With breakfast · CoQ10 active form · mitochondrial + liver energy · fat-soluble"}
   ],
   afternoon:[
     {type:"rx",  name:"Ritalin (Methylphenidate IR)", dose:"10mg",       color:"#1a6fa8", note:"Before 3pm · bridges Concerta fade · protects sleep if taken too late"}
   ],
   evening:[
-    {type:"supp",name:"ALAmax CR (2nd dose)",         dose:"1 tab",      color:"#12a37a", note:"⏱ 30 MIN BEFORE dinner on empty stomach · overnight liver antioxidant coverage"},
-    {type:"supp",name:"CellCore Advanced TUDCA (2nd)",dose:"1 cap",      color:"#12a37a", note:"PM dose · liver does deepest repair overnight · sustains bile acid protection"},
-    {type:"supp",name:"Augmented NAC (2nd dose)",     dose:"1 cap",      color:"#12a37a", note:"PM dose · keeps glutathione up overnight · evening Rx meds are all liver-processed"},
-    {type:"supp",name:"Tongkat Ali (Momentus) 2nd",   dose:"1 cap PM",   color:"#12a37a", note:"PM dose · maintains SHBG reduction around the clock"},
-    {type:"supp",name:"Advanced Milk Thistle (Life Extension)", dose:"1 softgel", color:"#12a37a", note:"🥜 Take with fat snack (nuts/PB) · phospholipid silymarin · anti-fibrotic · fat-soluble"},
-    {type:"supp",name:"FLORASSIST Liver Restore",     dose:"1 cap",      color:"#12a37a", note:"With fat snack · probiotic for hepatic support · overnight colonization · gut-liver axis"},
-    {type:"rx",  name:"Lithium Carbonate (2nd dose)", dose:"150mg",      color:"#c0392b", note:"Consistent evening time · anchors overnight mood · never with alcohol"},
-    {type:"rx",  name:"Risperidone → tapering to Abilify", dose:"0.25mg", color:"#c0392b", note:"PRIMARY cause: high prolactin → low Free T → ED · tapering now · Abilify switch soon"}
+    {type:"supp",name:"① ALAmax CR (2nd dose)",          dose:"1 tab — BEFORE dinner, empty stomach", color:"#12a37a", note:"⏱ Take 30 MIN before eating dinner · same as morning — must be fasted · overnight liver antioxidant"},
+    {type:"supp",name:"② CellCore Advanced TUDCA (2nd)", dose:"1 cap",      color:"#12a37a", note:"With dinner · liver does deepest repair overnight · sustains bile acid protection"},
+    {type:"supp",name:"② Augmented NAC (2nd dose)",      dose:"1 cap",      color:"#12a37a", note:"With dinner · keeps glutathione up overnight · evening Rx meds are all liver-processed"},
+    {type:"supp",name:"② Tongkat Ali (Momentus) 2nd",    dose:"1 cap",      color:"#12a37a", note:"With dinner · maintains SHBG reduction around the clock"},
+    {type:"rx",  name:"② Lithium Carbonate (2nd dose)",  dose:"150mg",      color:"#c0392b", note:"With dinner · consistent evening time · anchors overnight mood · never with alcohol"},
+    {type:"rx",  name:"② Risperidone → tapering to Abilify", dose:"0.25mg", color:"#c0392b", note:"With dinner · tapering now · PRIMARY prolactin driver → low Free T → ED · Abilify switch soon"},
+    {type:"supp",name:"③ Advanced Milk Thistle",          dose:"1 softgel",  color:"#12a37a", note:"🥜 After dinner with fat snack (nuts/PB) · fat-soluble silymarin · anti-fibrotic · take AFTER eating"},
+    {type:"supp",name:"③ FLORASSIST Liver Restore",       dose:"1 cap",      color:"#12a37a", note:"With fat snack after dinner · probiotic for hepatic support · overnight colonization · gut-liver axis"}
   ],
   herbs:[
     {type:"herb",name:"Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps · 3× daily with meals",color:"#4a9fd4",note:"Kidney Yin tonic · addresses low Free T (5.0) + SHBG + ED · Rehmannia Six · 6–8 weeks to assess"},
     {type:"herb",name:"Xiao Feng San 消风散",          dose:"3 caps · 3× daily with meals",color:"#4a9fd4",note:"Psoriasis / Blood Heat · DangGui & Arctium · avoid alcohol, spicy, shellfish · 4–8 weeks"},
     {type:"herb",name:"Zeng Ye Cheng Qi Tang 增液承气汤",dose:"3 caps · as needed (not daily)",color:"#4a9fd4",note:"Bowel support · short-term 5–7 days only · Da Huang is strong purgative · monitor with Lithium"}
+  ],
+  topicals:[
+    {type:"rx",name:"Calcipotriene + Betamethasone Dipropionate Ointment",dose:"0.005%/0.064% · apply thin layer 1× daily",color:"#c0392b",note:"Body + genital psoriasis · vitamin D analog + mid-strength steroid combo · apply to plaques only · max 4 weeks continuous then rest · ⚠️ avoid face"},
+    {type:"rx",name:"Clobetasol Propionate Solution",dose:"0.05% · scalp · apply 1× daily",color:"#c0392b",note:"Scalp psoriasis · ultra-potent steroid in liquid form · part into sections and apply directly · max 2 weeks continuous · ⚠️ do not use on face or genitals"},
+    {type:"rx",name:"Desonide Ointment",dose:"0.05% · face/nose · apply 1–2× daily",color:"#c0392b",note:"Nose + facial psoriasis · mild steroid safe for sensitive areas · Dr. Kohn (4660 Kenmore Ave, Alexandria · 703-370-0073)"},
+    {type:"supp",name:"VUIM HerbalMint Scalp Shampoo",dose:"Use each wash · massage 2 min · rinse",color:"#12a37a",note:"Hair loss + scalp psoriasis · 6 TCM herbs + Persian spearmint + salicylic acid · from VUIM Clinic · vuimclinic.com"},
+    {type:"supp",name:"VUIM HerbalMint Scalp Tonic",dose:"Post-shampoo · fingertips or cotton pad · circular massage",color:"#c47a1a",note:"⚠️ EXPIRED May 23, 2026 — do not use until refilled · reorder at vuimclinic.com · TCM herbs + copper tripeptide + peptides for hair regrowth"}
   ]
 };
 
@@ -1172,109 +1188,138 @@ var SK = "#D4956A", SKD = "#9B6240";
 
 var POINT_DATA = {
   wrist:{
-    label:"Right inner forearm — palm up · thumb on LEFT · pinky on RIGHT",
-    vb:"0 0 240 300",
+    label:"Right inner forearm — palm facing UP",
+    vb:"0 0 200 280",
     pts:[
-      {id:"PC6",cx:118,cy:95,label:"PC6",full:"Pericardium 6 · Nèi Guān",kor:"내관",c:"#12a37a",
-       tip:"🟢 Public. Center of inner forearm, between the two visible tendons, 3 finger-widths above the wrist crease. Press firmly toward the bone."},
-      {id:"HT7",cx:148,cy:150,label:"HT7",full:"Heart 7 · Shén Mén",kor:"신문",c:"#6c5fc7",
-       tip:"🟡 Private. Wrist crease, pinky (ulnar) side — small notch just inside the pisiform bone. Gentle sustained pressure. Calms Shen, anxiety, insomnia."},
-      {id:"LU7",cx:88,cy:132,label:"LU7",full:"Lung 7 · Liè Quē",kor:"열결",c:"#4a9fd4",
-       tip:"🟡 Private. Radial (thumb) side, 1.5 cun above wrist crease, just above the styloid process. Opens Lung, releases grief."},
-      {id:"LI4",cx:68,cy:198,label:"LI4",full:"Large Intestine 4 · Hé Gǔ",kor:"합곡",c:"#c47a1a",
-       tip:"🟡 Private. Fleshy mound between thumb and index finger — highest point when squeezed. Four Gates with LR3. ⚠️ Avoid in pregnancy."}
+      {id:"PC6",cx:100,cy:88,label:"PC6",full:"Pericardium 6 · Nèi Guān",kor:"내관",c:"#12a37a",
+       tip:"🟢 Public. Inner forearm, center between the two tendons, 3 finger-widths above wrist crease. Press firmly toward the bone. Your #1 craving + anxiety interrupt."},
+      {id:"HT7",cx:126,cy:140,label:"HT7",full:"Heart 7 · Shén Mén",kor:"신문",c:"#6c5fc7",
+       tip:"🟡 Private. Wrist crease, pinky side — small notch just inside the pisiform bone. Gentle sustained pressure. Calms Shen, anxiety, insomnia."},
+      {id:"LU7",cx:74,cy:128,label:"LU7",full:"Lung 7 · Liè Quē",kor:"열결",c:"#4a9fd4",
+       tip:"🟡 Private. Thumb (radial) side, 1.5 cun above wrist crease, just above the styloid process. Opens Lung, releases grief."},
+      {id:"LI4",cx:50,cy:185,label:"LI4",full:"Large Intestine 4 · Hé Gǔ",kor:"합곡",c:"#c47a1a",
+       tip:"🟡 Private. Fleshy web between thumb and index finger on the BACK of the hand — highest point when pinched. Four Gates with LR3. ⚠️ Avoid in pregnancy."}
     ],
     body:
-      '<rect x="88" y="6" width="64" height="144" rx="32" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-      +'<line x1="112" y1="12" x2="111" y2="148" stroke="#9B6240" stroke-width="1.2" opacity="0.4"/>'
-      +'<line x1="128" y1="12" x2="129" y2="148" stroke="#9B6240" stroke-width="1.2" opacity="0.4"/>'
-      +'<line x1="80" y1="150" x2="160" y2="150" stroke="#9B6240" stroke-width="1.8" stroke-dasharray="5,3" opacity="0.7"/>'
-      +'<text x="163" y="154" font-size="8" fill="#9B6240" opacity="0.8" font-family="sans-serif">crease</text>'
-      +'<rect x="78" y="148" width="84" height="56" rx="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-      +'<ellipse cx="62" cy="186" rx="19" ry="30" fill="#D4956A" stroke="#9B6240" stroke-width="1.5" transform="rotate(-28 62 186)"/>'
-      +'<text x="2" y="172" font-size="7" fill="#c47a1a" font-family="sans-serif" opacity="0.85">← thumb</text>'
-      +'<rect x="162" y="198" width="14" height="54" rx="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-      +'<rect x="148" y="194" width="14" height="60" rx="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-      +'<rect x="134" y="196" width="13" height="57" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-      +'<rect x="121" y="200" width="12" height="50" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-      +'<text x="168" y="206" font-size="7" fill="#6c5fc7" font-family="sans-serif" opacity="0.85">pinky</text>'
-      +'<line x1="76" y1="150" x2="76" y2="95" stroke="#12a37a" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.55"/>'
-      +'<text x="4" y="118" font-size="7.5" fill="#12a37a" opacity="0.85" font-family="sans-serif">3 finger</text>'
-      +'<text x="8" y="128" font-size="7.5" fill="#12a37a" opacity="0.85" font-family="sans-serif">widths ↑</text>'
+      /* forearm — centered */
+      '<rect x="70" y="4" width="60" height="136" rx="30" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+      /* two tendons (palmaris longus + flexor carpi radialis) */
+      +'<line x1="94" y1="10" x2="93" y2="140" stroke="#9B6240" stroke-width="1.1" opacity="0.38"/>'
+      +'<line x1="106" y1="10" x2="107" y2="140" stroke="#9B6240" stroke-width="1.1" opacity="0.38"/>'
+      /* wrist crease */
+      +'<line x1="62" y1="142" x2="138" y2="142" stroke="#9B6240" stroke-width="1.8" stroke-dasharray="4,3" opacity="0.7"/>'
+      +'<text x="140" y="146" font-size="7.5" fill="#9B6240" opacity="0.8" font-family="sans-serif">crease</text>'
+      /* palm / hand */
+      +'<rect x="62" y="140" width="76" height="50" rx="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+      /* thumb — LEFT side (radial, inner forearm palm-up) */
+      +'<ellipse cx="48" cy="172" rx="18" ry="28" fill="#D4956A" stroke="#9B6240" stroke-width="1.5" transform="rotate(-25 48 172)"/>'
+      +'<text x="2" y="158" font-size="7" fill="#c47a1a" font-family="sans-serif" opacity="0.9">thumb ←</text>'
+      /* LI4 label on thumb side */
+      +'<text x="2" y="200" font-size="6.5" fill="#c47a1a" font-family="sans-serif" opacity="0.8">LI4 web</text>'
+      /* 4 fingers — RIGHT side */
+      +'<rect x="138" y="190" width="13" height="50" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
+      +'<rect x="126" y="187" width="13" height="56" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
+      +'<rect x="113" y="189" width="12" height="53" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
+      +'<rect x="101" y="193" width="11" height="46" rx="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
+      +'<text x="148" y="196" font-size="7" fill="#6c5fc7" font-family="sans-serif" opacity="0.8">↑ pinky</text>'
+      /* HT7 side label */
+      +'<text x="148" y="148" font-size="6.5" fill="#6c5fc7" font-family="sans-serif" opacity="0.8">← HT7</text>'
+      /* PC6 measurement guide */
+      +'<line x1="58" y1="142" x2="58" y2="88" stroke="#12a37a" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.55"/>'
+      +'<text x="2" y="108" font-size="7" fill="#12a37a" opacity="0.85" font-family="sans-serif">3 finger</text>'
+      +'<text x="5" y="118" font-size="7" fill="#12a37a" opacity="0.85" font-family="sans-serif">widths ↑</text>'
   },
   foot:{
-    label:"Right foot — top view · big toe top-left · heel at bottom",
-    vb:"0 0 200 240",
+    label:"Right foot — inner side view · ankle top-right · toes bottom-left",
+    vb:"0 0 200 200",
     pts:[
-      {id:"SP6",cx:155,cy:30,label:"SP6",full:"Spleen 6 · Sān Yīn Jiāo",kor:"삼음교",c:"#c04474",
-       tip:"🟡 Private. Shin, 4 finger-widths above inner ankle bone, just behind the tibia. ⚠️ Avoid in pregnancy."},
-      {id:"KD6",cx:158,cy:112,label:"KD6",full:"Kidney 6 · Zhào Hǎi",kor:"조해",c:"#1a6fa8",
-       tip:"🟡 Private. Hollow 1 thumb-width directly below the inner ankle bone. Nourishes Kidney Yin. Best wind-down point."},
-      {id:"LR3",cx:55,cy:52,label:"LR3",full:"Liver 3 · Tài Chōng",kor:"태충",c:"#0a7a58",
-       tip:"🟡 Private. Top of foot — depression in groove between 1st and 2nd metatarsal bones, 2 cun from the web. Your most important daily point."},
-      {id:"KD1",cx:95,cy:158,label:"KD1",full:"Kidney 1 · Yǒng Quán",kor:"용천",c:"#4a9fd4",
-       tip:"🟡 Private. SOLE (plantar) of foot — upper 1/3, between 2nd and 3rd metatarsal heads. Press feet INTO floor for instant grounding."}
+      {id:"SP6",cx:148,cy:38,label:"SP6",full:"Spleen 6 · Sān Yīn Jiāo",kor:"삼음교",c:"#c04474",
+       tip:"🟡 Private. On the shin, 4 finger-widths ABOVE the inner ankle bone, just behind the tibia edge. Not on the foot — on the leg. ⚠️ Avoid in pregnancy."},
+      {id:"KD6",cx:148,cy:98,label:"KD6",full:"Kidney 6 · Zhào Hǎi",kor:"조해",c:"#1a6fa8",
+       tip:"🟡 Private. In the soft hollow 1 thumb-width directly BELOW the inner ankle bone. Nourishes Kidney Yin. Best wind-down point."},
+      {id:"LR3",cx:42,cy:80,label:"LR3",full:"Liver 3 · Tài Chōng",kor:"태충",c:"#0a7a58",
+       tip:"🟡 Private. TOP of foot — the groove between 1st and 2nd metatarsal bones, about 2 cun back from the web between big toe and 2nd toe."},
+      {id:"KD1",cx:72,cy:148,label:"KD1",full:"Kidney 1 · Yǒng Quán",kor:"용천",c:"#4a9fd4",
+       tip:"🟡 Private. SOLE (bottom) of foot, upper third. Press feet hard into the floor right now. Emergency grounding reset."}
     ],
     body:
-      '<rect x="130" y="4" width="40" height="92" rx="20" fill="#D4956A" stroke="#9B6240" stroke-width="1.6"/>'
-      +'<ellipse cx="148" cy="100" rx="14" ry="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-      +'<ellipse cx="95" cy="162" rx="65" ry="68" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-      +'<ellipse cx="95" cy="162" rx="40" ry="44" fill="#C8906A" stroke="none" opacity="0.22"/>'
-      +'<ellipse cx="36" cy="94" rx="16" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-      +'<ellipse cx="57" cy="79" rx="13" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-      +'<ellipse cx="77" cy="73" rx="12" ry="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
-      +'<ellipse cx="96" cy="75" rx="11" ry="9" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
-      +'<ellipse cx="113" cy="81" rx="9" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
-      +'<text x="18" y="116" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.75">big toe</text>'
-      +'<text x="130" y="232" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.75">heel ↓</text>'
-      +'<text x="4" y="186" font-size="7" fill="#4a9fd4" font-family="sans-serif" opacity="0.8">KD1=sole</text>'
-      +'<line x1="148" y1="100" x2="148" y2="30" stroke="#c04474" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.55"/>'
-      +'<text x="160" y="68" font-size="7" fill="#c04474" font-family="sans-serif" opacity="0.8">4×↑</text>'
+      /* shin/ankle column — top-right */
+      '<rect x="125" y="4" width="36" height="78" rx="18" fill="#D4956A" stroke="#9B6240" stroke-width="1.6"/>'
+      /* inner ankle bone bump */
+      +'<ellipse cx="140" cy="86" rx="16" ry="11" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      /* ankle bone label */
+      +'<text x="155" y="92" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.8">← ankle</text>'
+      /* foot body — sole view from inner side */
+      +'<ellipse cx="80" cy="134" rx="72" ry="52" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+      /* sole darkening hint */
+      +'<ellipse cx="72" cy="148" rx="40" ry="30" fill="#C8906A" stroke="none" opacity="0.22"/>'
+      /* big toe (top-left area) */
+      +'<ellipse cx="14" cy="94" rx="15" ry="13" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      +'<ellipse cx="22" cy="78" rx="12" ry="11" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
+      +'<ellipse cx="34" cy="68" rx="11" ry="9" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+      +'<ellipse cx="48" cy="64" rx="10" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+      +'<ellipse cx="62" cy="66" rx="9" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
+      /* labels */
+      +'<text x="2" y="110" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.75">big toe</text>'
+      +'<text x="90" y="192" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.75">heel →</text>'
+      +'<text x="2" y="165" font-size="7" fill="#4a9fd4" font-family="sans-serif" opacity="0.8">KD1=sole</text>'
+      /* SP6 measurement line from ankle up the shin */
+      +'<line x1="122" y1="86" x2="122" y2="38" stroke="#c04474" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.6"/>'
+      +'<text x="100" y="58" font-size="7" fill="#c04474" font-family="sans-serif" opacity="0.8">4×↑</text>'
   },
   ear:{
-    label:"Right ear — facing forward · tap a point",
-    vb:"0 0 220 260",
+    label:"Right ear — facing you · tap a point",
+    vb:"0 0 200 240",
     pts:[
-      {id:"SM",cx:95,cy:80,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#0a7a58",
-       tip:"🟢 Public. TRIANGULAR FOSSA — the Y-shaped hollow inside the upper ear where the antihelix forks into two crura. Press into the hollow firmly. Step 1 of the craving protocol."},
-      {id:"CR",cx:44,cy:128,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
-       tip:"🟢 Public. TRAGUS — the small cartilage flap on the face side covering the canal. Pinch firmly. Step 2."},
-      {id:"HRT",cx:118,cy:148,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
-       tip:"🟡 Private. INFERIOR CONCHA — lower bowl, below ear canal opening. Gentle inward pressure. Calms Shen, anxiety, palpitations."},
-      {id:"KD",cx:118,cy:168,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
-       tip:"🟡 Private. INFERIOR CONCHA, slightly lower than Heart — above the lobe. Addresses fear, tinnitus, midnight waking."}
+      {id:"SM",cx:88,cy:74,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#0a7a58",
+       tip:"🟢 Public. TRIANGULAR FOSSA — Y-shaped hollow where the inner ridge (antihelix) forks. Press firmly into the fork. Step 1 of the craving protocol."},
+      {id:"CR",cx:38,cy:120,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
+       tip:"🟢 Public. TRAGUS — the small tab of cartilage on the face side covering the ear canal. Pinch it firmly. Step 2."},
+      {id:"HRT",cx:108,cy:138,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
+       tip:"🟡 Private. INFERIOR CONCHA — lower part of the main bowl, below the canal opening. Gentle inward pressure. Calms Shen, anxiety, palpitations."},
+      {id:"KD",cx:108,cy:158,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
+       tip:"🟡 Private. INFERIOR CONCHA, slightly lower than Heart — above the lobe. Fear, tinnitus, 3am waking, adrenal fatigue."}
     ],
     body:
-      '<ellipse cx="108" cy="125" rx="68" ry="98" fill="#EDCFA8" stroke="#C8956A" stroke-width="2.2"/>'
-      +'<ellipse cx="112" cy="118" rx="46" ry="68" fill="#E2BC90" stroke="#C8956A" stroke-width="1.3"/>'
-      +'<ellipse cx="118" cy="138" rx="30" ry="42" fill="#D4A070" stroke="#C8956A" stroke-width="1.1"/>'
-      +'<ellipse cx="124" cy="122" rx="12" ry="15" fill="#A0703A" stroke="#8B5A28" stroke-width="1.2"/>'
-      +'<text x="138" y="118" font-size="7" fill="#8B5A28" font-family="sans-serif" opacity="0.9">canal</text>'
-      +'<ellipse cx="96" cy="80" rx="18" ry="11" fill="#C89060" stroke="#9B6240" stroke-width="1.1" transform="rotate(-15 96 80)"/>'
-      +'<text x="48" y="60" font-size="7" fill="#6B4020" font-family="sans-serif" opacity="0.85">triangular</text>'
-      +'<text x="52" y="69" font-size="7" fill="#6B4020" font-family="sans-serif" opacity="0.85">fossa ↓</text>'
-      +'<line x1="92" y1="72" x2="80" y2="50" stroke="#9B6240" stroke-width="1.2" opacity="0.45"/>'
-      +'<line x1="100" y1="90" x2="130" y2="100" stroke="#9B6240" stroke-width="1.2" opacity="0.35"/>'
-      +'<ellipse cx="46" cy="128" rx="14" ry="18" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
-      +'<text x="2" y="108" font-size="7" fill="#6B4020" font-family="sans-serif" opacity="0.85">tragus →</text>'
-      +'<ellipse cx="96" cy="218" rx="26" ry="14" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
-      +'<text x="82" y="240" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.65">lobe</text>'
-      +'<line x1="103" y1="80" x2="152" y2="72" stroke="#0a7a58" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.85"/>'
-      +'<rect x="153" y="61" width="60" height="24" rx="5" fill="#071a10" stroke="#0a7a58" stroke-width="1.2"/>'
-      +'<text x="158" y="72" font-size="7.5" fill="#0a7a58" font-weight="700" font-family="sans-serif">Shen Men</text>'
-      +'<text x="158" y="80" font-size="6.5" fill="#4dba8a" font-family="sans-serif">tri. fossa fork</text>'
-      +'<line x1="58" y1="128" x2="80" y2="135" stroke="#c0392b" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.85"/>'
-      +'<rect x="80" y="126" width="56" height="22" rx="5" fill="#160404" stroke="#c0392b" stroke-width="1.2"/>'
-      +'<text x="85" y="136" font-size="7.5" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving pt</text>'
-      +'<text x="85" y="144" font-size="6.5" fill="#e05555" font-family="sans-serif">pinch tragus</text>'
-      +'<line x1="126" y1="148" x2="152" y2="148" stroke="#c04474" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.8"/>'
-      +'<rect x="153" y="140" width="56" height="22" rx="5" fill="#180810" stroke="#c04474" stroke-width="1.2"/>'
-      +'<text x="158" y="150" font-size="7.5" fill="#c04474" font-weight="700" font-family="sans-serif">Heart 心</text>'
-      +'<text x="158" y="158" font-size="6.5" fill="#d4779a" font-family="sans-serif">inf. concha</text>'
-      +'<line x1="126" y1="168" x2="152" y2="175" stroke="#1a6fa8" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.8"/>'
-      +'<rect x="153" y="168" width="56" height="22" rx="5" fill="#050e1a" stroke="#1a6fa8" stroke-width="1.2"/>'
-      +'<text x="158" y="178" font-size="7.5" fill="#1a6fa8" font-weight="700" font-family="sans-serif">Kidney 腎</text>'
-      +'<text x="158" y="186" font-size="6.5" fill="#4a9fd4" font-family="sans-serif">inf. concha ↓</text>'
+      /* outer helix */
+      '<ellipse cx="96" cy="118" rx="66" ry="96" fill="#EDCFA8" stroke="#C8956A" stroke-width="2.2"/>'
+      /* antihelix (inner raised ridge) */
+      +'<ellipse cx="100" cy="112" rx="44" ry="66" fill="#E2BC90" stroke="#C8956A" stroke-width="1.3"/>'
+      /* concha bowl */
+      +'<ellipse cx="106" cy="130" rx="28" ry="40" fill="#D4A070" stroke="#C8956A" stroke-width="1.1"/>'
+      /* ear canal */
+      +'<ellipse cx="112" cy="116" rx="11" ry="14" fill="#A0703A" stroke="#8B5A28" stroke-width="1.2"/>'
+      +'<text x="3" y="116" font-size="6.5" fill="#8B5A28" font-family="sans-serif" opacity="0.75">canal →</text>'
+      /* triangular fossa */
+      +'<ellipse cx="88" cy="74" rx="16" ry="10" fill="#C89060" stroke="#9B6240" stroke-width="1.1" transform="rotate(-15 88 74)"/>'
+      /* fossa fork lines */
+      +'<line x1="82" y1="66" x2="72" y2="46" stroke="#9B6240" stroke-width="1.1" opacity="0.4"/>'
+      +'<line x1="96" y1="82" x2="120" y2="92" stroke="#9B6240" stroke-width="1.1" opacity="0.3"/>'
+      /* fossa label — LEFT of ear, no overlap */
+      +'<text x="2" y="60" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">fossa</text>'
+      +'<text x="2" y="70" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">fork ↓</text>'
+      /* tragus */
+      +'<ellipse cx="38" cy="120" rx="13" ry="17" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
+      +'<text x="2" y="106" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">tragus</text>'
+      /* lobe */
+      +'<ellipse cx="84" cy="210" rx="24" ry="13" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
+      +'<text x="72" y="230" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.6">lobe</text>'
+      /* Shen Men callout — right side */
+      +'<line x1="96" y1="74" x2="134" y2="58" stroke="#0a7a58" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
+      +'<text x="136" y="56" font-size="7.5" fill="#0a7a58" font-weight="700" font-family="sans-serif">Shen Men</text>'
+      +'<text x="136" y="65" font-size="6" fill="#4dba8a" font-family="sans-serif">tri. fossa</text>'
+      /* Craving callout — left/below tragus */
+      +'<line x1="50" y1="120" x2="70" y2="128" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
+      +'<text x="2" y="138" font-size="7.5" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving</text>'
+      +'<text x="2" y="148" font-size="6" fill="#e05555" font-family="sans-serif">tragus</text>'
+      /* Heart callout — right */
+      +'<line x1="116" y1="138" x2="140" y2="134" stroke="#c04474" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
+      +'<text x="142" y="132" font-size="7.5" fill="#c04474" font-weight="700" font-family="sans-serif">Heart 心</text>'
+      +'<text x="142" y="140" font-size="6" fill="#d4779a" font-family="sans-serif">inf. concha</text>'
+      /* Kidney callout — right */
+      +'<line x1="116" y1="158" x2="140" y2="158" stroke="#1a6fa8" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
+      +'<text x="142" y="156" font-size="7.5" fill="#1a6fa8" font-weight="700" font-family="sans-serif">Kidney 腎</text>'
+      +'<text x="142" y="164" font-size="6" fill="#4a9fd4" font-family="sans-serif">inf. concha ↓</text>'
   }
 };
 
@@ -1816,8 +1861,9 @@ function initMeds(){
   renderMeds("meds-afternoon",MEDS.afternoon);
   renderMeds("meds-evening",MEDS.evening);
   renderMeds("meds-herbs",MEDS.herbs);
+  renderMeds("meds-topicals",MEDS.topicals);
 }
-["meds-morning","meds-afternoon","meds-evening","meds-herbs"].forEach(function(cid){
+["meds-morning","meds-afternoon","meds-evening","meds-herbs","meds-topicals"].forEach(function(cid){
   var el=document.getElementById(cid);
   if(!el) return;
   el.addEventListener("click",function(ev){
@@ -1834,7 +1880,7 @@ function initMeds(){
   });
 });
 document.getElementById("meds-reset-btn").addEventListener("click",function(){
-  ["meds-morning","meds-afternoon","meds-evening","meds-herbs"].forEach(function(k){localStorage.removeItem("meds-"+k);});
+  ["meds-morning","meds-afternoon","meds-evening","meds-herbs","meds-topicals"].forEach(function(k){localStorage.removeItem("meds-"+k);});
   initMeds();
 });
 
