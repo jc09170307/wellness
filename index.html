@@ -944,8 +944,10 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 // DATA
 // ════════════════════════════════════════
 // All time anchored to America/New_York (ET)
+// Nov 23 2025 midnight ET = Nov 23 2025 05:00 UTC
+var START_MS = 1763874000000;
+var DAYS = Math.floor((Date.now() - START_MS) / 86400000);
 function etNow() {
-  // Use Intl.DateTimeFormat to get ET parts reliably, avoiding toLocaleString NaN bug
   try {
     var fmt = new Intl.DateTimeFormat("en-US", {
       timeZone: "America/New_York",
@@ -956,17 +958,13 @@ function etNow() {
     fmt.formatToParts(new Date()).forEach(function(p){ parts[p.type] = p.value; });
     return new Date(parts.year+"-"+parts.month+"-"+parts.day+"T"+
       (parts.hour==="24"?"00":parts.hour)+":"+parts.minute+":"+parts.second);
-  } catch(e) {
-    return new Date();
-  }
+  } catch(e) { return new Date(); }
 }
 function etDateStr() {
   var d = etNow();
   return d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
 }
-var START = new Date("2025-11-23T00:00:00");
-var _now  = etNow();
-var DAYS  = Math.floor((_now - START) / 86400000);
+var _now = etNow();
 
 var PL = {
   chill:"PLB3qQUxqNGYhQdAANbJEgUlOZaJ-6QDdg",
@@ -1044,7 +1042,6 @@ var MEDS = {
     {type:"herb",name:"🌿 側柏葉 Cè Bǎi Yè (Biota Leaves)",dose:"9–15g tea · 2× daily · also use as scalp rinse",color:"#4a9fd4",note:"#1 classical herb for Blood Heat hair loss · cools Blood + stops shedding · brew strong tea and pour over scalp as final rinse · no hepatotoxicity · direct pattern match"},
     {type:"herb",name:"🌿 桑椹 Sāng Shèn (Mulberry Fruit)",dose:"15–30g daily · eat as food or brew as tea",color:"#4a9fd4",note:"Nourishes Liver/Kidney Blood and Jing · food-grade safe · gentle enough daily long-term · your liver handles this easily · addresses Blood deficiency hair loss angle"}
   ]
-};
 };
 
 var MILESTONES = [
