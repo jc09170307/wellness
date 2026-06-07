@@ -330,10 +330,10 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 
 <!-- MEDS -->
 <div id="sec-meds" style="display:none"><div class="sec">
-  <div class="sec-lbl">Morning stack</div><div id="meds-morning"></div>
-  <div class="sec-lbl">Afternoon</div><div id="meds-afternoon"></div>
-  <div class="sec-lbl">Evening</div><div id="meds-evening"></div>
-  <div class="sec-lbl">Timed</div><div id="meds-timed"></div>
+  <div class="sec-lbl">🌅 Morning stack</div><div id="meds-morning"></div>
+  <div class="sec-lbl">☀️ Afternoon</div><div id="meds-afternoon"></div>
+  <div class="sec-lbl">🌙 Evening</div><div id="meds-evening"></div>
+  <div style="font-size:10px;color:var(--tx3);margin-top:.5rem;line-height:1.6;padding:.5rem .2rem">💊 = Prescription &nbsp;·&nbsp; 🌿 = Supplement &nbsp;·&nbsp; Tap any item to check it off</div>
   <button class="btn sec" id="meds-reset-btn" style="margin-top:.45rem">Reset all for tomorrow</button>
 </div></div>
 
@@ -562,20 +562,22 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 
   <div class="card" style="margin-bottom:.45rem;border-left:3px solid #c0392b">
     <div style="font-size:12px;font-weight:700;color:#e05555;margin-bottom:.5rem">🧠 Psychiatric</div>
+    <div style="font-size:13px;font-weight:600;color:var(--tx)">Bupropion (Wellbutrin) 150mg</div>
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Once daily AM · Mood anchor · dopamine/norepinephrine support</div>
     <div style="font-size:13px;font-weight:600;color:var(--tx)">Lithium Carbonate 150mg</div>
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Twice daily · Level 0.2 (sub-therapeutic — discuss with psychiatrist) · NEVER mix with alcohol</div>
-    <div style="font-size:13px;font-weight:600;color:var(--tx)">Risperidone 0.25mg (tapering)</div>
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Tapering from 0.5mg · PRIMARY cause of high prolactin → low Free T → ED</div>
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Twice daily · Level 0.2 (sub-therapeutic — discuss with psychiatrist) · Never with alcohol</div>
+    <div style="font-size:13px;font-weight:600;color:#c47a1a">Risperidone — TAPERING</div>
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">0.5mg weeks 1–4 → 0.25mg starting Monday → then Abilify · PRIMARY cause of high prolactin → low Free T → ED</div>
     <div style="font-size:13px;font-weight:600;color:var(--G2)">Aripiprazole (Abilify) — COMING SOON</div>
-    <div style="font-size:11px;color:var(--tx3)">Prolactin-sparing · will NOT suppress Free T like Risperidone does</div>
+    <div style="font-size:11px;color:var(--tx3)">Prolactin-sparing · will NOT suppress Free T like Risperidone · transformative for the hormonal cascade</div>
   </div>
 
   <div class="card" style="margin-bottom:.45rem;border-left:3px solid #1a6fa8">
     <div style="font-size:12px;font-weight:700;color:#4a9fd4;margin-bottom:.5rem">⚡ ADHD</div>
-    <div style="font-size:13px;font-weight:600;color:var(--tx)">Methylphenidate ER 18mg</div>
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Morning · Monitor BP with Tadalafil</div>
-    <div style="font-size:13px;font-weight:600;color:var(--tx)">Methylphenidate IR 10mg</div>
-    <div style="font-size:11px;color:var(--tx3)">Afternoon · stimulants create Heat/Yin deficiency — Mai Men Dong helps</div>
+    <div style="font-size:13px;font-weight:600;color:var(--tx)">Concerta (Methylphenidate ER) 18mg</div>
+    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Morning · Extended-release all-day coverage</div>
+    <div style="font-size:13px;font-weight:600;color:var(--tx)">Ritalin (Methylphenidate IR) 10mg</div>
+    <div style="font-size:11px;color:var(--tx3)">Afternoon · Before 3pm · bridges Concerta fade · TCM: stimulants create Heat/Yin deficiency — Mai Men Dong helps</div>
   </div>
 
   <div class="card" style="margin-bottom:.65rem;border-left:3px solid #c47a1a">
@@ -761,26 +763,31 @@ var CRISIS_QUOTES = [
 
 var MEDS = {
   morning:[
-    {name:"Wellbutrin",dose:"150mg",note:"Mood anchor. CYP2B6. Take with food."},
-    {name:"Lithium Carbonate",dose:"150mg",note:"Hydration critical. Check levels regularly."},
-    {name:"Methylphenidate ER",dose:"18mg",note:"ADHD. Before 8am ideally."},
-    {name:"Tongkat Ali",dose:"1 cap",note:"Testosterone support."},
-    {name:"Vitamin D3/K2",dose:"1 cap",note:"Bone and immune."},
-    {name:"BodyBio PC",dose:"1 cap",note:"Phospholipid liver support."},
-    {name:"TUDCA Plus",dose:"1 cap AM",note:"Liver bile acid support. Bile acid protection, reduces bilirubin."},
-    {name:"AugNAC",dose:"1 cap AM",note:"NAC + glycine. Glutathione support."},
-    {name:"Tadalafil",dose:"5mg",note:"Daily therapeutic. Morning per Dr. Lawson."}
+    {name:"Bupropion (Wellbutrin) 💊",dose:"150mg",note:"Why: Mood anchor + mild dopamine/norepinephrine boost. CYP2B6. Take with food to reduce nausea."},
+    {name:"Lithium Carbonate 💊",dose:"150mg",note:"Why: Bipolar 2 mood stabilizer — anchors baseline mood under the stimulants. Consistent timing matters. Never with alcohol."},
+    {name:"Concerta (Methylphenidate ER) 💊",dose:"18mg",note:"Why: Extended-release ADHD coverage all morning and afternoon. Take early so it kicks in before class/study. TCM note: creates Heat + Yin deficiency — Mai Men Dong counteracts."},
+    {name:"Tadalafil (Cialis) 💊",dose:"5mg",note:"Why: Treats ED directly + improves blood flow to liver and kidneys. Daily low dose maintains steady levels."},
+    {name:"ALAmax CR 🌿",dose:"1 tab — 30 MIN BEFORE BREAKFAST",note:"Why: Alpha Lipoic Acid reduces oxidative liver damage. Controlled-release keeps antioxidant levels steady. Take on empty stomach 30 min before eating."},
+    {name:"BodyBio PC 🌿",dose:"2 caps",note:"Why: Phosphatidylcholine rebuilds liver cell membranes damaged by inflammation. Directly targets FIB-4 4.15. Take with food."},
+    {name:"TUDCA Plus 🌿",dose:"1 cap",note:"Why: Strongest evidence-backed supplement for liver fibrosis. Reduces bile acid toxicity, directly addresses elevated bilirubin and FIB-4. AM dose protects liver during the day."},
+    {name:"Augmented NAC 🌿",dose:"1 cap",note:"Why: Precursor to glutathione — your liver's master detoxifier. AM dose primes antioxidant defense before the day's medication metabolism hits."},
+    {name:"Tongkat Ali (Momentus) 🌿",dose:"2 caps",note:"Why: Reduces SHBG → frees bound testosterone. Morning dose aligns with natural testosterone peak. Also helps lower prolactin naturally."},
+    {name:"Vitamin D3 + K2 🌿",dose:"1 cap",note:"Why: D3 was 29.3 ng/mL (goal 50–80). Supports immunity, mood, testosterone. K2 directs calcium to bones not arteries. Take with fatty food."}
   ],
-  afternoon:[{name:"Methylphenidate",dose:"10mg",note:"Afternoon focus. Before 3pm."}],
+  afternoon:[
+    {name:"Ritalin (Methylphenidate IR) 💊",dose:"10mg",note:"Why: Immediate-release booster when Concerta ER starts fading. Bridges the gap so you don't crash mid-study or mid-class. Take before 3pm to protect sleep."},
+    {name:"BodyBio PC 🌿 (2nd dose)",dose:"2 caps",note:"Why: Twice daily PC keeps phosphatidylcholine levels available for liver repair throughout the day. Take with lunch or a late snack — just needs something in your stomach."}
+  ],
   evening:[
-    {name:"Lithium Carbonate",dose:"150mg PM",note:"Evening dose. Hydrate."},
-    {name:"Risperidone",dose:"0.5mg",note:"2hrs apart from FLORASSIST."},
-    {name:"TUDCA Plus",dose:"1 cap PM",note:"Evening liver support."},
-    {name:"AugNAC",dose:"1 cap PM",note:"Evening glutathione."},
-    {name:"Advanced Milk Thistle",dose:"1 cap",note:"Phospholipid silymarin. With food."},
-    {name:"FLORASSIST",dose:"1 cap",note:"Probiotic. 2hrs from Risperidone."}
+    {name:"ALAmax CR 🌿 (2nd dose)",dose:"1 tab — 30 MIN BEFORE DINNER",note:"Why: Second ALA dose maintains antioxidant protection overnight when liver repair is most active. Empty stomach 30 min before eating."},
+    {name:"TUDCA Plus 🌿 (2nd dose)",dose:"1 cap",note:"Why: PM dose sustains bile acid protection overnight. Liver does its deepest repair work while you sleep."},
+    {name:"Augmented NAC 🌿 (2nd dose)",dose:"1 cap",note:"Why: Twice daily NAC keeps glutathione levels up around the clock. Evening meds (Lithium, Risperidone) are all liver-processed — NAC supports overnight detox."},
+    {name:"Milk Thistle (Life Extension) 🌿",dose:"1 cap WITH FAT SNACK",note:"Why: Phospholipid-bound silymarin has strongest botanical evidence for liver anti-fibrosis. Pairs with TUDCA + NAC. Fat-soluble — needs fat to absorb. A handful of nuts or peanut butter is enough, no full dinner needed."},
+    {name:"FLORASSIST Liver Restore 🌿",dose:"1 cap",note:"Why: Probiotic strains selected specifically for hepatic support. Evening gives strains overnight to colonize. Gut-liver axis directly affects liver inflammation and fibrosis."},
+    {name:"Lithium Carbonate 💊 (2nd dose)",dose:"150mg",note:"Why: Evening dose anchors mood cycling through the night. Take at consistent time each night. Never with alcohol."},
+    {name:"Risperidone 💊",dose:"0.5mg → 0.25mg Mon",note:"Why tapering: PRIMARY cause of high prolactin (60) → low free T → ED. Taper: 0.5mg (weeks 1–4) → 0.25mg starting this Monday (few weeks) → Abilify. Abilify is prolactin-sparing — the switch will be transformative. ⚠️ Schisandra (Wu Wei Zi) — flag for Dr. Lau before adding while on this."}
   ],
-  timed:[{name:"ALAmax CR",dose:"1 cap",note:"30 min BEFORE breakfast AND dinner."}]
+  timed:[]
 };
 
 var MILESTONES = [
@@ -873,7 +880,7 @@ var TEAS = [
    note:"Clears Lung heat, nourishes Heart Yin. For grief that lingers, sadness without clear cause. Lung governs grief — this herb opens the channel."},
   {name:"Wu Wei Zi (Schisandra)",cat:"Liver / Kidney / Lung",c:"#c0392b",
    prep:"6–9g, steep 10 min",
-   note:"⚠️ MAX 3×/week. CYP3A4 inhibitor — caution with Risperidone and Tadalafil. Astringes the five organs simultaneously. The five-flavor berry."},
+   note:"⚠️ CYP3A4 inhibitor — can raise blood levels of Risperidone, Abilify (aripiprazole), and Tadalafil unpredictably. Flag for Dr. Lau + Dr. Lawson before adding to your stack. MAX 3×/week if cleared. Astringes the five organs simultaneously. The five-flavor berry."},
   {name:"Gan Cao (Licorice root)",cat:"Spleen / All channels",c:"#c47a1a",
    prep:"3–6g, steep 5 min",
    note:"⚠️ MAX 2–3×/week with Lithium — alters Na/K balance with extended use (pseudohyperaldosteronism). Harmonizes formulas. Solo use limited."},
@@ -1563,9 +1570,8 @@ function initMeds(){
   renderMeds("meds-morning",MEDS.morning);
   renderMeds("meds-afternoon",MEDS.afternoon);
   renderMeds("meds-evening",MEDS.evening);
-  renderMeds("meds-timed",MEDS.timed);
 }
-["meds-morning","meds-afternoon","meds-evening","meds-timed"].forEach(function(cid){
+["meds-morning","meds-afternoon","meds-evening"].forEach(function(cid){
   var el=document.getElementById(cid);
   if(!el) return;
   el.addEventListener("click",function(ev){
@@ -1582,7 +1588,7 @@ function initMeds(){
   });
 });
 document.getElementById("meds-reset-btn").addEventListener("click",function(){
-  ["meds-morning","meds-afternoon","meds-evening","meds-timed"].forEach(function(k){localStorage.removeItem("meds-"+k);});
+  ["meds-morning","meds-afternoon","meds-evening"].forEach(function(k){localStorage.removeItem("meds-"+k);});
   initMeds();
 });
 
@@ -2511,15 +2517,25 @@ document.getElementById("restore-file").addEventListener("change",function(e){
 function initHealth(){
   // Supplements checklist
   var supps = [
-    {t:"🌅 AM — BodyBio PC",n:"2 caps with food · $85.99/90 · liver cell membrane repair · targets FIB-4 4.15"},
-    {t:"🌅 AM — TUDCA Plus",n:"1 cap AM · $84/60 · liver protection · reduces bilirubin · bile acid support"},
-    {t:"🌅 AM — ALAmax CR",n:"1 tablet 30 min BEFORE breakfast · antioxidant · liver + insulin support"},
-    {t:"🌅 AM — Augmented NAC",n:"1 cap · $94/90 · glutathione precursor · primary liver detoxifier"},
-    {t:"🌅 AM — Tongkat Ali",n:"2 caps · directly lowers SHBG → frees trapped testosterone"},
-    {t:"🌅 AM — Vitamin D3 + K2",n:"1 cap · addresses 29.3 ng/mL level · K2 directs calcium to bones"},
-    {t:"🌙 PM — TUDCA Plus",n:"1 cap PM · liver support overnight when repair is most active"},
-    {t:"🌙 PM — ALAmax CR",n:"1 tablet 30 min BEFORE dinner · steady antioxidant levels"},
-    {t:"🌙 PM — Augmented NAC",n:"1 cap evening · maintains glutathione around the clock"}
+    {t:"🌅 AM — Bupropion (Wellbutrin) 💊",n:"150mg · once daily with food · mood anchor"},
+    {t:"🌅 AM — Lithium Carbonate 💊",n:"150mg · Bipolar 2 stabilizer · consistent timing"},
+    {t:"🌅 AM — Concerta (MPH ER) 💊",n:"18mg · ADHD extended-release coverage"},
+    {t:"🌅 AM — Tadalafil 💊",n:"5mg · ED + liver/kidney blood flow"},
+    {t:"🌅 AM — ALAmax CR 🌿",n:"1 tab · 30 MIN BEFORE breakfast on empty stomach"},
+    {t:"🌅 AM — BodyBio PC 🌿",n:"2 caps with food · liver cell membrane repair · FIB-4 target"},
+    {t:"🌅 AM — TUDCA Plus 🌿",n:"1 cap · bile acid liver protection · reduces bilirubin"},
+    {t:"🌅 AM — Augmented NAC 🌿",n:"1 cap · glutathione precursor · liver detox support"},
+    {t:"🌅 AM — Tongkat Ali 🌿",n:"2 caps · lowers SHBG → frees testosterone"},
+    {t:"🌅 AM — Vitamin D3 + K2 🌿",n:"1 cap with fatty food · addresses 29.3 ng/mL level"},
+    {t:"☀️ PM — Ritalin (MPH IR) 💊",n:"10mg · afternoon focus · before 3pm"},
+    {t:"☀️ LUNCH — BodyBio PC 🌿 (2nd)",n:"2 caps with lunch or late snack"},
+    {t:"🌙 EVE — ALAmax CR 🌿 (2nd)",n:"1 tab · 30 MIN BEFORE dinner on empty stomach"},
+    {t:"🌙 EVE — TUDCA Plus 🌿 (2nd)",n:"1 cap · overnight liver repair support"},
+    {t:"🌙 EVE — Augmented NAC 🌿 (2nd)",n:"1 cap · maintains glutathione overnight"},
+    {t:"🌙 EVE — Milk Thistle 🌿",n:"1 cap · with fat snack (nuts/PB) · anti-fibrotic silymarin"},
+    {t:"🌙 EVE — FLORASSIST 🌿",n:"1 cap · with fat snack · gut-liver axis support"},
+    {t:"🌙 EVE — Lithium Carbonate 💊 (2nd)",n:"150mg · anchors overnight mood stability · never with alcohol"},
+    {t:"🌙 EVE — Risperidone 💊",n:"0.5mg→0.25mg Mon · tapering toward Abilify"}
   ];
   var skey="health-supps";
   var saved=JSON.parse(localStorage.getItem(skey)||"{}");
