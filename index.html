@@ -405,6 +405,23 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   </div>
   <div id="diagram-area"></div>
   <div id="point-detail" class="det-card" style="display:none"></div>
+  <!-- S Pen annotation -->
+  <div style="margin-top:.75rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Annotate with S Pen</div>
+      <div style="display:flex;gap:.3rem">
+        <button id="points-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+        <select id="points-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+          <option value="#12a37a">Green</option>
+          <option value="#e6edf3">White</option>
+          <option value="#4a9fd4">Blue</option>
+          <option value="#c0392b">Red</option>
+          <option value="#c47a1a">Amber</option>
+        </select>
+      </div>
+    </div>
+    <canvas id="points-canvas" style="width:100%;height:140px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
+  </div>
 </div></div>
 
 <!-- SCAN -->
@@ -412,6 +429,23 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   <div class="sec-lbl">Body scan — where is the tension?</div>
   <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Tap each zone. Diagram + point + action expands.</div>
   <div id="scan-content"></div>
+  <!-- S Pen body map notes -->
+  <div style="margin-top:.75rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Mark tension zones with S Pen</div>
+      <div style="display:flex;gap:.3rem">
+        <button id="scan-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+        <select id="scan-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+          <option value="#c0392b">Red</option>
+          <option value="#12a37a">Green</option>
+          <option value="#e6edf3">White</option>
+          <option value="#4a9fd4">Blue</option>
+          <option value="#c47a1a">Amber</option>
+        </select>
+      </div>
+    </div>
+    <canvas id="scan-canvas" style="width:100%;height:160px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
+  </div>
 </div></div>
 
 <!-- DANCE -->
@@ -459,6 +493,22 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 <div id="sec-tracker" style="display:none"><div class="sec">
   <div class="sec-lbl">Weekly mood tracker</div>
   <div id="tracker-content"></div>
+  <div style="margin-top:.75rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Mood notes — S Pen</div>
+      <div style="display:flex;gap:.3rem">
+        <button id="tracker-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+        <select id="tracker-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+          <option value="#12a37a">Green</option>
+          <option value="#e6edf3">White</option>
+          <option value="#4a9fd4">Blue</option>
+          <option value="#c0392b">Red</option>
+          <option value="#c47a1a">Amber</option>
+        </select>
+      </div>
+    </div>
+    <canvas id="tracker-canvas" style="width:100%;height:140px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
+  </div>
 </div></div>
 
 <!-- MILESTONES -->
@@ -479,6 +529,22 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 <div id="sec-journal" style="display:none"><div class="sec">
   <div class="sec-lbl">Journal</div>
   <textarea class="field" id="journal-input" placeholder="What is present right now?" rows="4"></textarea>
+  <div style="margin-bottom:.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ S Pen — sketch or write</div>
+      <div style="display:flex;gap:.3rem">
+        <button id="journal-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+        <select id="journal-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+          <option value="#12a37a">Green</option>
+          <option value="#e6edf3">White</option>
+          <option value="#4a9fd4">Blue</option>
+          <option value="#c0392b">Red</option>
+          <option value="#c47a1a">Amber</option>
+        </select>
+      </div>
+    </div>
+    <canvas id="journal-canvas" style="width:100%;height:160px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair;margin-bottom:.5rem"></canvas>
+  </div>
   <button class="btn" id="journal-btn">Save entry</button>
   <div id="journal-list" style="margin-top:.65rem"></div>
 </div></div>
@@ -706,9 +772,9 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   <div style="background:linear-gradient(145deg,#071a10,#0a2e1e);border:1.5px solid #12a37a44;border-radius:16px;padding:1.1rem;margin-bottom:.65rem">
     <div style="font-size:10px;font-weight:700;color:var(--G2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">Spring 2026 · Active</div>
     <div style="display:flex;flex-direction:column;gap:.4rem">
-      <div style="background:rgba(18,163,122,.08);border-radius:10px;padding:.6rem .8rem;border:.5px solid #12a37a22"><div style="font-size:13px;font-weight:700;color:#e6edf3">EAM303 — East Asian Medicine III</div><div style="font-size:11px;color:#4dba8a;margin-top:1px">A · building on EAM302 foundations</div></div>
+      <div style="background:rgba(18,163,122,.08);border-radius:10px;padding:.6rem .8rem;border:.5px solid #12a37a22"><div style="font-size:13px;font-weight:700;color:#e6edf3">EAM303 — Basic Theory 2</div><div style="font-size:11px;color:#4dba8a;margin-top:1px">A · East Asian Medicine foundations continuing</div></div>
       <div style="background:rgba(18,163,122,.08);border-radius:10px;padding:.6rem .8rem;border:.5px solid #12a37a22"><div style="font-size:13px;font-weight:700;color:#e6edf3">ME410 — Medical Ethics</div><div style="font-size:11px;color:#4dba8a;margin-top:1px">A · ethics and law in integrative medicine</div></div>
-      <div style="background:rgba(18,163,122,.08);border-radius:10px;padding:.6rem .8rem;border:.5px solid #12a37a22"><div style="font-size:13px;font-weight:700;color:#e6edf3">WM340 — A&amp;P III</div><div style="font-size:11px;color:#4dba8a;margin-top:1px">A · muscle tissue, systems physiology</div></div>
+      <div style="background:rgba(18,163,122,.08);border-radius:10px;padding:.6rem .8rem;border:.5px solid #12a37a22"><div style="font-size:13px;font-weight:700;color:#e6edf3">WM340 — Anatomy &amp; Physiology 1</div><div style="font-size:11px;color:#4dba8a;margin-top:1px">A · foundational anatomy and physiology</div></div>
       <div style="background:rgba(18,163,122,.08);border-radius:10px;padding:.6rem .8rem;border:.5px solid #12a37a22"><div style="font-size:13px;font-weight:700;color:#e6edf3">WM350 — A&amp;P IV</div><div style="font-size:11px;color:#4dba8a;margin-top:1px">A · fluid/electrolyte, acid-base balance</div></div>
     </div>
   </div>
@@ -778,6 +844,25 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
     <input type="text" id="advising-topic-input" class="field" placeholder="Topic" style="flex:2;margin-bottom:0">
   </div>
   <textarea class="field" id="advising-notes-input" placeholder="Notes / action items…" rows="3" style="margin-bottom:.5rem"></textarea>
+
+  <!-- S Pen drawing canvas for handwritten notes -->
+  <div style="margin-bottom:.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Handwrite with S Pen</div>
+      <div style="display:flex;gap:.3rem">
+        <button id="advising-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+        <select id="advising-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+          <option value="#12a37a">Green</option>
+          <option value="#e6edf3">White</option>
+          <option value="#4a9fd4">Blue</option>
+          <option value="#c0392b">Red</option>
+          <option value="#c47a1a">Amber</option>
+        </select>
+      </div>
+    </div>
+    <canvas id="advising-canvas" style="width:100%;height:180px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
+  </div>
+
   <button class="btn" id="advising-save-btn">Save notes</button>
 
   <div class="sec-lbl" style="margin-top:1rem">Email template</div>
@@ -1087,113 +1172,105 @@ var SK = "#D4956A", SKD = "#9B6240";
 
 var POINT_DATA = {
   wrist:{
-    label:"Inner forearm — palm facing up",
-    vb:"0 0 200 295",
+    label:"Right inner forearm — palm up · thumb on LEFT · pinky on RIGHT",
+    vb:"0 0 240 300",
     pts:[
-      {id:"PC6",cx:100,cy:100,label:"PC6",full:"Pericardium 6 · Nèi Guān",kor:"내관",c:"#12a37a",
-       tip:"🟢 Public. Inner forearm, between the two tendons, 3 finger-widths above the wrist crease. Press firmly toward the bone."},
-      {id:"HT7",cx:130,cy:150,label:"HT7",full:"Heart 7 · Shén Mén",kor:"신문",c:"#6c5fc7",
-       tip:"🟡 Private. Wrist crease, pinky side — small notch just inside the bony bump. Gentle whisper pressure. Calms Shen, anxiety, insomnia."},
-      {id:"LU7",cx:70,cy:132,label:"LU7",full:"Lung 7 · Liè Quē",kor:"열결",c:"#4a9fd4",
-       tip:"🟡 Private. Thumb side of inner wrist, 1.5 cun above crease. Opens Lung, releases grief."},
-      {id:"LI4",cx:82,cy:172,label:"LI4",full:"Large Intestine 4 · Hé Gǔ",kor:"합곡",c:"#c47a1a",
-       tip:"🟡 Private. Fleshy web between thumb and index finger. Four Gates with LR3. ⚠️ Avoid in pregnancy."}
+      {id:"PC6",cx:118,cy:95,label:"PC6",full:"Pericardium 6 · Nèi Guān",kor:"내관",c:"#12a37a",
+       tip:"🟢 Public. Center of inner forearm, between the two visible tendons, 3 finger-widths above the wrist crease. Press firmly toward the bone."},
+      {id:"HT7",cx:148,cy:150,label:"HT7",full:"Heart 7 · Shén Mén",kor:"신문",c:"#6c5fc7",
+       tip:"🟡 Private. Wrist crease, pinky (ulnar) side — small notch just inside the pisiform bone. Gentle sustained pressure. Calms Shen, anxiety, insomnia."},
+      {id:"LU7",cx:88,cy:132,label:"LU7",full:"Lung 7 · Liè Quē",kor:"열결",c:"#4a9fd4",
+       tip:"🟡 Private. Radial (thumb) side, 1.5 cun above wrist crease, just above the styloid process. Opens Lung, releases grief."},
+      {id:"LI4",cx:68,cy:198,label:"LI4",full:"Large Intestine 4 · Hé Gǔ",kor:"합곡",c:"#c47a1a",
+       tip:"🟡 Private. Fleshy mound between thumb and index finger — highest point when squeezed. Four Gates with LR3. ⚠️ Avoid in pregnancy."}
     ],
     body:
-      '<rect x="70" y="4" width="60" height="148" rx="30" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<line x1="93" y1="10" x2="92" y2="148" stroke="#9B6240" stroke-width="1" opacity="0.35"/>'
-     +'<line x1="107" y1="10" x2="108" y2="148" stroke="#9B6240" stroke-width="1" opacity="0.35"/>'
-     +'<line x1="64" y1="152" x2="136" y2="152" stroke="#9B6240" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.6"/>'
-     +'<text x="139" y="156" font-size="8" fill="#9B6240" opacity="0.75" font-family="sans-serif">crease</text>'
-     +'<rect x="64" y="150" width="72" height="52" rx="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<ellipse cx="51" cy="184" rx="17" ry="26" fill="#D4956A" stroke="#9B6240" stroke-width="1.5" transform="rotate(-22 51 184)"/>'
-     +'<rect x="66" y="200" width="14" height="52" rx="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-     +'<rect x="83" y="196" width="14" height="58" rx="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-     +'<rect x="100" y="198" width="13" height="55" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-     +'<rect x="116" y="202" width="12" height="48" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-     +'<line x1="54" y1="152" x2="54" y2="100" stroke="#12a37a" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.5"/>'
-     +'<text x="6" y="128" font-size="7.5" fill="#12a37a" opacity="0.8" font-family="sans-serif">3 widths</text>'
-     +'<text x="6" y="138" font-size="7.5" fill="#12a37a" opacity="0.8" font-family="sans-serif">above</text>'
+      '<rect x="88" y="6" width="64" height="144" rx="32" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+      +'<line x1="112" y1="12" x2="111" y2="148" stroke="#9B6240" stroke-width="1.2" opacity="0.4"/>'
+      +'<line x1="128" y1="12" x2="129" y2="148" stroke="#9B6240" stroke-width="1.2" opacity="0.4"/>'
+      +'<line x1="80" y1="150" x2="160" y2="150" stroke="#9B6240" stroke-width="1.8" stroke-dasharray="5,3" opacity="0.7"/>'
+      +'<text x="163" y="154" font-size="8" fill="#9B6240" opacity="0.8" font-family="sans-serif">crease</text>'
+      +'<rect x="78" y="148" width="84" height="56" rx="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+      +'<ellipse cx="62" cy="186" rx="19" ry="30" fill="#D4956A" stroke="#9B6240" stroke-width="1.5" transform="rotate(-28 62 186)"/>'
+      +'<text x="2" y="172" font-size="7" fill="#c47a1a" font-family="sans-serif" opacity="0.85">← thumb</text>'
+      +'<rect x="162" y="198" width="14" height="54" rx="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      +'<rect x="148" y="194" width="14" height="60" rx="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      +'<rect x="134" y="196" width="13" height="57" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      +'<rect x="121" y="200" width="12" height="50" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      +'<text x="168" y="206" font-size="7" fill="#6c5fc7" font-family="sans-serif" opacity="0.85">pinky</text>'
+      +'<line x1="76" y1="150" x2="76" y2="95" stroke="#12a37a" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.55"/>'
+      +'<text x="4" y="118" font-size="7.5" fill="#12a37a" opacity="0.85" font-family="sans-serif">3 finger</text>'
+      +'<text x="8" y="128" font-size="7.5" fill="#12a37a" opacity="0.85" font-family="sans-serif">widths ↑</text>'
   },
   foot:{
-    label:"Left foot — inner side (shin top-right, toes bottom-left)",
-    vb:"0 0 200 190",
+    label:"Right foot — top view · big toe top-left · heel at bottom",
+    vb:"0 0 200 240",
     pts:[
-      {id:"SP6",cx:152,cy:44,label:"SP6",full:"Spleen 6 · Sān Yīn Jiāo",kor:"삼음교",c:"#c04474",
-       tip:"🟡 Private. Shin, 4 widths above ankle bone, behind the tibia. ⚠️ Avoid in pregnancy."},
-      {id:"KD6",cx:158,cy:122,label:"KD6",full:"Kidney 6 · Zhào Hǎi",kor:"조해",c:"#1a6fa8",
-       tip:"🟡 Private. 1 thumb-width below inner ankle bone in the soft hollow. Nourishes Kidney Yin. Wind-down point."},
-      {id:"LR3",cx:50,cy:92,label:"LR3",full:"Liver 3 · Tài Chōng",kor:"태충",c:"#0a7a58",
-       tip:"🟡 Private. Top of foot — groove between big toe and 2nd toe, 2 cun from the web. Your most important daily point."},
-      {id:"KD1",cx:95,cy:148,label:"KD1",full:"Kidney 1 · Yǒng Quán",kor:"용천",c:"#4a9fd4",
-       tip:"🟡 Private. SOLE (bottom) of foot, upper 1/3. Press feet INTO the floor right now. Emergency reset."}
+      {id:"SP6",cx:155,cy:30,label:"SP6",full:"Spleen 6 · Sān Yīn Jiāo",kor:"삼음교",c:"#c04474",
+       tip:"🟡 Private. Shin, 4 finger-widths above inner ankle bone, just behind the tibia. ⚠️ Avoid in pregnancy."},
+      {id:"KD6",cx:158,cy:112,label:"KD6",full:"Kidney 6 · Zhào Hǎi",kor:"조해",c:"#1a6fa8",
+       tip:"🟡 Private. Hollow 1 thumb-width directly below the inner ankle bone. Nourishes Kidney Yin. Best wind-down point."},
+      {id:"LR3",cx:55,cy:52,label:"LR3",full:"Liver 3 · Tài Chōng",kor:"태충",c:"#0a7a58",
+       tip:"🟡 Private. Top of foot — depression in groove between 1st and 2nd metatarsal bones, 2 cun from the web. Your most important daily point."},
+      {id:"KD1",cx:95,cy:158,label:"KD1",full:"Kidney 1 · Yǒng Quán",kor:"용천",c:"#4a9fd4",
+       tip:"🟡 Private. SOLE (plantar) of foot — upper 1/3, between 2nd and 3rd metatarsal heads. Press feet INTO floor for instant grounding."}
     ],
     body:
-      '<rect x="130" y="8" width="44" height="82" rx="22" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<rect x="12" y="78" width="178" height="90" rx="28" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-     +'<text x="140" y="174" font-size="7" fill="#9B6240" opacity="0.8" font-family="sans-serif">← ankle/heel</text>'
-     +'<ellipse cx="18" cy="102" rx="14" ry="11" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-     +'<ellipse cx="32" cy="112" rx="12" ry="9" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-     +'<ellipse cx="45" cy="118" rx="10" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-     +'<ellipse cx="57" cy="120" rx="9" ry="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
-     +'<ellipse cx="68" cy="120" rx="8" ry="7" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
-     +'<line x1="138" y1="88" x2="138" y2="44" stroke="#c04474" stroke-width="1.2" stroke-dasharray="3,3" opacity="0.5"/>'
-     +'<text x="100" y="42" font-size="7" fill="#c04474" opacity="0.8" font-family="sans-serif">4× above</text>'
-     +'<text x="55" y="183" font-size="7" fill="#4a9fd4" opacity="0.8" font-family="sans-serif">↑ KD1 = sole (underside)</text>'
+      '<rect x="130" y="4" width="40" height="92" rx="20" fill="#D4956A" stroke="#9B6240" stroke-width="1.6"/>'
+      +'<ellipse cx="148" cy="100" rx="14" ry="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
+      +'<ellipse cx="95" cy="162" rx="65" ry="68" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+      +'<ellipse cx="95" cy="162" rx="40" ry="44" fill="#C8906A" stroke="none" opacity="0.22"/>'
+      +'<ellipse cx="36" cy="94" rx="16" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      +'<ellipse cx="57" cy="79" rx="13" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
+      +'<ellipse cx="77" cy="73" rx="12" ry="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+      +'<ellipse cx="96" cy="75" rx="11" ry="9" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+      +'<ellipse cx="113" cy="81" rx="9" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
+      +'<text x="18" y="116" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.75">big toe</text>'
+      +'<text x="130" y="232" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.75">heel ↓</text>'
+      +'<text x="4" y="186" font-size="7" fill="#4a9fd4" font-family="sans-serif" opacity="0.8">KD1=sole</text>'
+      +'<line x1="148" y1="100" x2="148" y2="30" stroke="#c04474" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.55"/>'
+      +'<text x="160" y="68" font-size="7" fill="#c04474" font-family="sans-serif" opacity="0.8">4×↑</text>'
   },
   ear:{
     label:"Right ear — facing forward · tap a point",
     vb:"0 0 220 260",
     pts:[
       {id:"SM",cx:95,cy:80,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#0a7a58",
-       tip:"🟢 Public. TRIANGULAR FOSSA — the Y-shaped hollow inside the upper ear where the antihelix forks into two crura. Find the fork, press into the hollow. Pinch or press hard. This is Step 1 of the craving protocol."},
+       tip:"🟢 Public. TRIANGULAR FOSSA — the Y-shaped hollow inside the upper ear where the antihelix forks into two crura. Press into the hollow firmly. Step 1 of the craving protocol."},
       {id:"CR",cx:44,cy:128,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
-       tip:"🟢 Public. TRAGUS — the small cartilage flap on the face side of the ear that partially covers the canal opening. Pinch it firmly between thumb and index finger. Step 2."},
+       tip:"🟢 Public. TRAGUS — the small cartilage flap on the face side covering the canal. Pinch firmly. Step 2."},
       {id:"HRT",cx:118,cy:148,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
-       tip:"🟡 Private. INFERIOR CONCHA — the lower portion of the main bowl, below the opening of the ear canal. Gentle inward pressure. Directly calms Shen, anxiety, palpitations."},
+       tip:"🟡 Private. INFERIOR CONCHA — lower bowl, below ear canal opening. Gentle inward pressure. Calms Shen, anxiety, palpitations."},
       {id:"KD",cx:118,cy:168,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
-       tip:"🟡 Private. INFERIOR CONCHA, slightly lower than Heart point — near the bottom of the bowl above the lobe. Addresses root fear, tinnitus, midnight waking, adrenal fatigue."}
+       tip:"🟡 Private. INFERIOR CONCHA, slightly lower than Heart — above the lobe. Addresses fear, tinnitus, midnight waking."}
     ],
     body:
-      /* outer ear (helix) */
       '<ellipse cx="108" cy="125" rx="68" ry="98" fill="#EDCFA8" stroke="#C8956A" stroke-width="2.2"/>'
-      /* antihelix body - inner raised ridge */
       +'<ellipse cx="112" cy="118" rx="46" ry="68" fill="#E2BC90" stroke="#C8956A" stroke-width="1.3"/>'
-      /* concha bowl */
       +'<ellipse cx="118" cy="138" rx="30" ry="42" fill="#D4A070" stroke="#C8956A" stroke-width="1.1"/>'
-      /* ear canal opening */
       +'<ellipse cx="124" cy="122" rx="12" ry="15" fill="#A0703A" stroke="#8B5A28" stroke-width="1.2"/>'
       +'<text x="138" y="118" font-size="7" fill="#8B5A28" font-family="sans-serif" opacity="0.9">canal</text>'
-      /* triangular fossa - the Y-fork hollow, upper antihelix */
       +'<ellipse cx="96" cy="80" rx="18" ry="11" fill="#C89060" stroke="#9B6240" stroke-width="1.1" transform="rotate(-15 96 80)"/>'
       +'<text x="48" y="60" font-size="7" fill="#6B4020" font-family="sans-serif" opacity="0.85">triangular</text>'
       +'<text x="52" y="69" font-size="7" fill="#6B4020" font-family="sans-serif" opacity="0.85">fossa ↓</text>'
-      /* antihelix superior crus line (upper fork) */
       +'<line x1="92" y1="72" x2="80" y2="50" stroke="#9B6240" stroke-width="1.2" opacity="0.45"/>'
-      /* antihelix inferior crus line */
       +'<line x1="100" y1="90" x2="130" y2="100" stroke="#9B6240" stroke-width="1.2" opacity="0.35"/>'
-      /* tragus */
       +'<ellipse cx="46" cy="128" rx="14" ry="18" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
       +'<text x="2" y="108" font-size="7" fill="#6B4020" font-family="sans-serif" opacity="0.85">tragus →</text>'
-      /* lobe */
       +'<ellipse cx="96" cy="218" rx="26" ry="14" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
       +'<text x="82" y="240" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.65">lobe</text>'
-      /* Shen Men callout line */
       +'<line x1="103" y1="80" x2="152" y2="72" stroke="#0a7a58" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.85"/>'
       +'<rect x="153" y="61" width="60" height="24" rx="5" fill="#071a10" stroke="#0a7a58" stroke-width="1.2"/>'
       +'<text x="158" y="72" font-size="7.5" fill="#0a7a58" font-weight="700" font-family="sans-serif">Shen Men</text>'
       +'<text x="158" y="80" font-size="6.5" fill="#4dba8a" font-family="sans-serif">tri. fossa fork</text>'
-      /* Craving / Tragus callout */
       +'<line x1="58" y1="128" x2="80" y2="135" stroke="#c0392b" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.85"/>'
       +'<rect x="80" y="126" width="56" height="22" rx="5" fill="#160404" stroke="#c0392b" stroke-width="1.2"/>'
       +'<text x="85" y="136" font-size="7.5" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving pt</text>'
       +'<text x="85" y="144" font-size="6.5" fill="#e05555" font-family="sans-serif">pinch tragus</text>'
-      /* Heart callout */
       +'<line x1="126" y1="148" x2="152" y2="148" stroke="#c04474" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.8"/>'
       +'<rect x="153" y="140" width="56" height="22" rx="5" fill="#180810" stroke="#c04474" stroke-width="1.2"/>'
       +'<text x="158" y="150" font-size="7.5" fill="#c04474" font-weight="700" font-family="sans-serif">Heart 心</text>'
       +'<text x="158" y="158" font-size="6.5" fill="#d4779a" font-family="sans-serif">inf. concha</text>'
-      /* Kidney callout */
       +'<line x1="126" y1="168" x2="152" y2="175" stroke="#1a6fa8" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.8"/>'
       +'<rect x="153" y="168" width="56" height="22" rx="5" fill="#050e1a" stroke="#1a6fa8" stroke-width="1.2"/>'
       +'<text x="158" y="178" font-size="7.5" fill="#1a6fa8" font-weight="700" font-family="sans-serif">Kidney 腎</text>'
@@ -3170,6 +3247,60 @@ function initSleepCalc(){
   initSleepCalc();
   initStudyQuiz();
   initAdvising();
+  initSPenCanvas("journal-canvas","journal-pen-color","journal-pen-clear");
+  initSPenCanvas("points-canvas","points-pen-color","points-pen-clear");
+  initSPenCanvas("scan-canvas","scan-pen-color","scan-pen-clear");
+  initSPenCanvas("tracker-canvas","tracker-pen-color","tracker-pen-clear");
+
+// ════════════════════════════════════════
+// S PEN CANVAS HELPER
+// ════════════════════════════════════════
+function initSPenCanvas(canvasId, colorPickerId, clearBtnId){
+  var canvas=document.getElementById(canvasId);
+  if(!canvas) return;
+  var ctx=canvas.getContext("2d");
+  function resizeCanvas(){
+    var rect=canvas.getBoundingClientRect();
+    if(!rect.width) return;
+    var dpr=window.devicePixelRatio||1;
+    canvas.width=rect.width*dpr;
+    canvas.height=rect.height*dpr;
+    ctx.scale(dpr,dpr);
+    ctx.lineCap="round";ctx.lineJoin="round";ctx.lineWidth=2.5;
+  }
+  setTimeout(resizeCanvas,100);
+  var drawing=false;
+  function getColor(){var el=document.getElementById(colorPickerId);return el?el.value:"#12a37a";}
+  function getPos(e){
+    var r=canvas.getBoundingClientRect();
+    var src=e.touches?e.touches[0]:e;
+    return{x:src.clientX-r.left,y:src.clientY-r.top};
+  }
+  // Pointer events — pen only, touch scrolls
+  canvas.addEventListener("pointerdown",function(e){
+    if(e.pointerType==="touch") return;
+    e.preventDefault();drawing=true;
+    var p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);
+  });
+  canvas.addEventListener("pointermove",function(e){
+    if(!drawing||e.pointerType==="touch") return;
+    e.preventDefault();
+    var p=getPos(e);
+    ctx.strokeStyle=getColor();ctx.lineTo(p.x,p.y);ctx.stroke();
+  });
+  canvas.addEventListener("pointerup",function(){drawing=false;});
+  canvas.addEventListener("pointercancel",function(){drawing=false;});
+  // Mouse fallback
+  canvas.addEventListener("mousedown",function(e){drawing=true;var p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);});
+  canvas.addEventListener("mousemove",function(e){if(!drawing)return;var p=getPos(e);ctx.strokeStyle=getColor();ctx.lineTo(p.x,p.y);ctx.stroke();});
+  canvas.addEventListener("mouseup",function(){drawing=false;});
+  // Clear button
+  var clr=document.getElementById(clearBtnId);
+  if(clr) clr.addEventListener("click",function(){
+    var dpr=window.devicePixelRatio||1;
+    ctx.clearRect(0,0,canvas.width/dpr,canvas.height/dpr);
+  });
+}
 
 // ════════════════════════════════════════
 // STUDY QUIZ
@@ -3210,6 +3341,55 @@ function initAdvising(){
   var copyBtn=document.getElementById("advising-email-copy-btn");
   var emailText=document.getElementById("advising-email-text");
   if(!saveBtn) return;
+
+  // S Pen canvas setup
+  var canvas=document.getElementById("advising-canvas");
+  if(canvas){
+    var ctx=canvas.getContext("2d");
+    // Set actual pixel dimensions
+    function resizeCanvas(){
+      var rect=canvas.getBoundingClientRect();
+      canvas.width=rect.width*window.devicePixelRatio;
+      canvas.height=rect.height*window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio,window.devicePixelRatio);
+      ctx.lineCap="round";ctx.lineJoin="round";ctx.lineWidth=2.5;
+      ctx.strokeStyle="#12a37a";
+    }
+    resizeCanvas();
+    var drawing=false,lx=0,ly=0;
+    function getPos(e){
+      var r=canvas.getBoundingClientRect();
+      var src=e.touches?e.touches[0]:e;
+      return{x:src.clientX-r.left,y:src.clientY-r.top};
+    }
+    function startDraw(e){
+      // S Pen: only draw if stylus (pointerType=pen) OR single touch, not fingers
+      if(e.pointerType==="touch") return; // fingers scroll, pen draws
+      e.preventDefault();drawing=true;
+      var p=getPos(e);lx=p.x;ly=p.y;
+      ctx.beginPath();ctx.moveTo(lx,ly);
+    }
+    function draw(e){
+      if(!drawing) return;
+      if(e.pointerType==="touch") return;
+      e.preventDefault();
+      var p=getPos(e);
+      ctx.strokeStyle=document.getElementById("advising-pen-color").value;
+      ctx.lineTo(p.x,p.y);ctx.stroke();
+      lx=p.x;ly=p.y;
+    }
+    function endDraw(){drawing=false;}
+    canvas.addEventListener("pointerdown",startDraw);
+    canvas.addEventListener("pointermove",draw);
+    canvas.addEventListener("pointerup",endDraw);
+    canvas.addEventListener("pointercancel",endDraw);
+    // Fallback mouse support
+    canvas.addEventListener("mousedown",function(e){drawing=true;var p=getPos(e);lx=p.x;ly=p.y;ctx.beginPath();ctx.moveTo(lx,ly);});
+    canvas.addEventListener("mousemove",function(e){if(!drawing)return;var p=getPos(e);ctx.strokeStyle=document.getElementById("advising-pen-color").value;ctx.lineTo(p.x,p.y);ctx.stroke();lx=p.x;ly=p.y;});
+    canvas.addEventListener("mouseup",endDraw);
+    var clrBtn=document.getElementById("advising-pen-clear");
+    if(clrBtn) clrBtn.addEventListener("click",function(){ctx.clearRect(0,0,canvas.width/window.devicePixelRatio,canvas.height/window.devicePixelRatio);});
+  }
   var KEY="advising-meetings";
   var meetings=JSON.parse(localStorage.getItem(KEY)||"[]");
   function renderMeetings(){
