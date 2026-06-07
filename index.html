@@ -331,12 +331,45 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 </div></div>
 
 <!-- MEDS -->
-<div id="sec-meds" style="display:none"><div class="sec">
-  <div class="sec-lbl">🌅 Morning stack</div><div id="meds-morning"></div>
-  <div class="sec-lbl">☀️ Afternoon</div><div id="meds-afternoon"></div>
-  <div class="sec-lbl">🌙 Evening</div><div id="meds-evening"></div>
-  <div style="font-size:10px;color:var(--tx3);margin-top:.5rem;line-height:1.6;padding:.5rem .2rem">💊 = Prescription &nbsp;·&nbsp; 🌿 = Supplement &nbsp;·&nbsp; Tap any item to check it off</div>
-  <button class="btn sec" id="meds-reset-btn" style="margin-top:.45rem">Reset all for tomorrow</button>
+<div id="sec-meds" style="display:none"><div class="sec" style="padding-top:.75rem">
+
+  <!-- legend -->
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.75rem">
+    <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(192,57,43,.12);color:#e05555;border:1px solid rgba(192,57,43,.3)">💊 Rx</span>
+    <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(18,163,122,.12);color:var(--G2);border:1px solid rgba(18,163,122,.35)">🌿 Supplement</span>
+    <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(74,159,212,.12);color:#4a9fd4;border:1px solid rgba(74,159,212,.3)">🌱 Herb formula</span>
+  </div>
+
+  <!-- MORNING -->
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
+    <div style="background:linear-gradient(135deg,#b8701a,#e89328);border-radius:8px;padding:4px 12px;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.04em">🌅 MORNING</div>
+    <div style="flex:1;height:1px;background:linear-gradient(90deg,#e8932888,transparent)"></div>
+  </div>
+  <div id="meds-morning" style="margin-bottom:1rem"></div>
+
+  <!-- AFTERNOON -->
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
+    <div style="background:linear-gradient(135deg,#1a6fa8,#4a9fd4);border-radius:8px;padding:4px 12px;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.04em">☀️ AFTERNOON</div>
+    <div style="flex:1;height:1px;background:linear-gradient(90deg,#4a9fd488,transparent)"></div>
+  </div>
+  <div id="meds-afternoon" style="margin-bottom:1rem"></div>
+
+  <!-- EVENING -->
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
+    <div style="background:linear-gradient(135deg,#3a2060,#6c5fc7);border-radius:8px;padding:4px 12px;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.04em">🌙 EVENING</div>
+    <div style="flex:1;height:1px;background:linear-gradient(90deg,#6c5fc788,transparent)"></div>
+  </div>
+  <div id="meds-evening" style="margin-bottom:1rem"></div>
+
+  <!-- CHINESE HERBS -->
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
+    <div style="background:linear-gradient(135deg,#2d5016,#4a8a28);border-radius:8px;padding:4px 12px;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.04em">🌱 HERB FORMULAS</div>
+    <div style="flex:1;height:1px;background:linear-gradient(90deg,#4a8a2888,transparent)"></div>
+  </div>
+  <div style="font-size:10px;color:var(--tx3);margin-bottom:.5rem;line-height:1.5">3 capsules · 3× daily · with meals · unless noted</div>
+  <div id="meds-herbs" style="margin-bottom:1rem"></div>
+
+  <button class="btn sec" id="meds-reset-btn" style="margin-top:.25rem;font-size:12px">↺ Reset all for tomorrow</button>
 </div></div>
 
 <!-- HALT -->
@@ -855,30 +888,36 @@ var CRISIS_QUOTES = [
 
 var MEDS = {
   morning:[
-    {name:"Bupropion (Wellbutrin) 💊",dose:"150mg",note:"Why: Mood anchor + mild dopamine/norepinephrine boost. CYP2B6. Take with food to reduce nausea."},
-    {name:"Lithium Carbonate 💊",dose:"150mg",note:"Why: Bipolar 2 mood stabilizer — anchors baseline mood under the stimulants. Consistent timing matters. Never with alcohol."},
-    {name:"Concerta (Methylphenidate ER) 💊",dose:"18mg",note:"Why: Extended-release ADHD coverage all morning and afternoon. Take early so it kicks in before class/study. TCM note: creates Heat + Yin deficiency — Mai Men Dong counteracts."},
-    {name:"Tadalafil (Cialis) 💊",dose:"5mg",note:"Why: Treats ED directly + improves blood flow to liver and kidneys. Daily low dose maintains steady levels."},
-    {name:"ALAmax CR 🌿",dose:"1 tab — 30 MIN BEFORE BREAKFAST",note:"Why: Alpha Lipoic Acid reduces oxidative liver damage. Controlled-release keeps antioxidant levels steady. Take on empty stomach 30 min before eating."},
-    {name:"BodyBio PC 🌿",dose:"2 caps",note:"Why: Phosphatidylcholine rebuilds liver cell membranes damaged by inflammation. Directly targets FIB-4 4.15. Take with food."},
-    {name:"TUDCA Plus 🌿",dose:"1 cap",note:"Why: Strongest evidence-backed supplement for liver fibrosis. Reduces bile acid toxicity, directly addresses elevated bilirubin and FIB-4. AM dose protects liver during the day."},
-    {name:"Augmented NAC 🌿",dose:"1 cap",note:"Why: Precursor to glutathione — your liver's master detoxifier. AM dose primes antioxidant defense before the day's medication metabolism hits."},
-    {name:"Tongkat Ali (Momentus) 🌿",dose:"2 caps",note:"Why: Reduces SHBG → frees bound testosterone. Morning dose aligns with natural testosterone peak. Also helps lower prolactin naturally."},
-    {name:"Vitamin D3 + K2 🌿",dose:"1 cap",note:"Why: D3 was 29.3 ng/mL (goal 50–80). Supports immunity, mood, testosterone. K2 directs calcium to bones not arteries. Take with fatty food."}
+    {type:"rx",  name:"Bupropion (Wellbutrin)",    dose:"150mg",        color:"#c0392b", note:"Mood anchor · dopamine/norepinephrine support · take with food"},
+    {type:"rx",  name:"Lithium Carbonate",          dose:"150mg",        color:"#c0392b", note:"Bipolar 2 stabilizer · consistent timing · never with alcohol"},
+    {type:"rx",  name:"Concerta (Methylphenidate ER)", dose:"18mg",      color:"#1a6fa8", note:"ADHD extended-release · take first thing · TCM: creates Heat/Yin deficiency"},
+    {type:"rx",  name:"Tadalafil (Cialis)",          dose:"5mg",         color:"#c47a1a", note:"Daily AM · treats ED + improves liver & kidney blood flow · steady levels"},
+    {type:"supp",name:"ALAmax CR",                   dose:"1 tab",       color:"#0a7a58", note:"⏱ 30 MIN BEFORE breakfast on empty stomach · alpha lipoic acid · liver antioxidant"},
+    {type:"supp",name:"CellCore Advanced TUDCA",     dose:"1 cap",       color:"#0a7a58", note:"AM dose · bile acid protection · targets FIB-4 4.15 + bilirubin"},
+    {type:"supp",name:"Augmented NAC",               dose:"1 cap",       color:"#0a7a58", note:"AM dose · glutathione precursor · liver detox primed before meds metabolize"},
+    {type:"supp",name:"BodyBio PC",                  dose:"2 caps",      color:"#0a7a58", note:"Once daily with breakfast · phosphatidylcholine · rebuilds liver cell membranes"},
+    {type:"supp",name:"Tongkat Ali (Momentus)",      dose:"1 cap AM",    color:"#0a7a58", note:"AM dose · reduces SHBG → frees testosterone · aligns with natural T peak"},
+    {type:"supp",name:"Vitamin D3 + K2 (Life Extension)", dose:"1 cap", color:"#0a7a58", note:"Once daily with fatty food · D3 was 29.3 ng/mL (goal 50–80) · K2 directs calcium to bones"},
+    {type:"supp",name:"Ubiquinol (Momentus)",        dose:"1 softgel",   color:"#0a7a58", note:"AM with food · CoQ10 active form · mitochondrial + liver energy support"}
   ],
   afternoon:[
-    {name:"Ritalin (Methylphenidate IR) 💊",dose:"10mg",note:"Why: Immediate-release booster when Concerta ER starts fading. Bridges the gap so you don't crash mid-study or mid-class. Take before 3pm to protect sleep."}
+    {type:"rx",  name:"Ritalin (Methylphenidate IR)", dose:"10mg",       color:"#1a6fa8", note:"Before 3pm · bridges Concerta fade · protects sleep if taken too late"}
   ],
   evening:[
-    {name:"ALAmax CR 🌿 (2nd dose)",dose:"1 tab — 30 MIN BEFORE DINNER",note:"Why: Second ALA dose maintains antioxidant protection overnight when liver repair is most active. Empty stomach 30 min before eating."},
-    {name:"TUDCA Plus 🌿 (2nd dose)",dose:"1 cap",note:"Why: PM dose sustains bile acid protection overnight. Liver does its deepest repair work while you sleep."},
-    {name:"Augmented NAC 🌿 (2nd dose)",dose:"1 cap",note:"Why: Twice daily NAC keeps glutathione levels up around the clock. Evening meds (Lithium, Risperidone) are all liver-processed — NAC supports overnight detox."},
-    {name:"Milk Thistle (Life Extension) 🌿",dose:"1 cap WITH FAT SNACK",note:"Why: Phospholipid-bound silymarin has strongest botanical evidence for liver anti-fibrosis. Pairs with TUDCA + NAC. Fat-soluble — needs fat to absorb. A handful of nuts or peanut butter is enough, no full dinner needed."},
-    {name:"FLORASSIST Liver Restore 🌿",dose:"1 cap",note:"Why: Probiotic strains selected specifically for hepatic support. Evening gives strains overnight to colonize. Gut-liver axis directly affects liver inflammation and fibrosis."},
-    {name:"Lithium Carbonate 💊 (2nd dose)",dose:"150mg",note:"Why: Evening dose anchors mood cycling through the night. Take at consistent time each night. Never with alcohol."},
-    {name:"Risperidone 💊",dose:"0.5mg → 0.25mg Mon",note:"Why tapering: PRIMARY cause of high prolactin (60) → low free T → ED. Taper: 0.5mg (weeks 1–4) → 0.25mg starting this Monday (few weeks) → Abilify. Abilify is prolactin-sparing — the switch will be transformative. ⚠️ Schisandra (Wu Wei Zi) — flag for Dr. Lau before adding while on this."}
+    {type:"supp",name:"ALAmax CR (2nd dose)",         dose:"1 tab",      color:"#12a37a", note:"⏱ 30 MIN BEFORE dinner on empty stomach · overnight liver antioxidant coverage"},
+    {type:"supp",name:"CellCore Advanced TUDCA (2nd)",dose:"1 cap",      color:"#12a37a", note:"PM dose · liver does deepest repair overnight · sustains bile acid protection"},
+    {type:"supp",name:"Augmented NAC (2nd dose)",     dose:"1 cap",      color:"#12a37a", note:"PM dose · keeps glutathione up overnight · evening Rx meds are all liver-processed"},
+    {type:"supp",name:"Tongkat Ali (Momentus) 2nd",   dose:"1 cap PM",   color:"#12a37a", note:"PM dose · maintains SHBG reduction around the clock"},
+    {type:"supp",name:"Advanced Milk Thistle (Life Extension)", dose:"1 softgel", color:"#12a37a", note:"🥜 Take with fat snack (nuts/PB) · phospholipid silymarin · anti-fibrotic · fat-soluble"},
+    {type:"supp",name:"FLORASSIST Liver Restore",     dose:"1 cap",      color:"#12a37a", note:"With fat snack · probiotic for hepatic support · overnight colonization · gut-liver axis"},
+    {type:"rx",  name:"Lithium Carbonate (2nd dose)", dose:"150mg",      color:"#c0392b", note:"Consistent evening time · anchors overnight mood · never with alcohol"},
+    {type:"rx",  name:"Risperidone → tapering to Abilify", dose:"0.25mg", color:"#c0392b", note:"PRIMARY cause: high prolactin → low Free T → ED · tapering now · Abilify switch soon"}
   ],
-  timed:[]
+  herbs:[
+    {type:"herb",name:"Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps · 3× daily with meals",color:"#4a9fd4",note:"Kidney Yin tonic · addresses low Free T (5.0) + SHBG + ED · Rehmannia Six · 6–8 weeks to assess"},
+    {type:"herb",name:"Xiao Feng San 消风散",          dose:"3 caps · 3× daily with meals",color:"#4a9fd4",note:"Psoriasis / Blood Heat · DangGui & Arctium · avoid alcohol, spicy, shellfish · 4–8 weeks"},
+    {type:"herb",name:"Zeng Ye Cheng Qi Tang 增液承气汤",dose:"3 caps · as needed (not daily)",color:"#4a9fd4",note:"Bowel support · short-term 5–7 days only · Da Huang is strong purgative · monitor with Lithium"}
+  ]
 };
 
 var MILESTONES = [
@@ -1667,24 +1706,41 @@ function renderMeds(cid,meds){
   if(!el) return;
   var skey="meds-"+cid;
   var saved=JSON.parse(localStorage.getItem(skey)||"{}");
+
+  var typeIcon={rx:"💊",supp:"🌿",herb:"🌱"};
+
   el.innerHTML=meds.map(function(m,i){
     var chk=saved[i]||false;
-    var gc=chk?"var(--G)":"var(--bd)";
-    return '<div style="display:flex;align-items:center;gap:.65rem;padding:.6rem .05rem;border-bottom:.5px solid var(--bd2)" data-msec="'+cid+'" data-mi="'+i+'">'
-      +'<div style="width:22px;height:22px;border-radius:6px;border:2px solid '+gc+';background:'+(chk?"var(--G)":"transparent")+';display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;transition:all .12s" class="med-cb">'
-      +(chk?'<svg width="11" height="11" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>':'')
+    var leftCol=chk?"var(--G2)":m.color||"var(--G2)";
+    // card bg: checked = subtle green tint, unchecked = standard card
+    var cardBg=chk?"var(--GL)":"var(--card)";
+    var cardBd=chk?"var(--G)":"var(--bd)";
+    return '<div style="display:flex;align-items:stretch;gap:0;border-radius:12px;border:1px solid '+cardBd+';background:'+cardBg+';margin-bottom:.4rem;overflow:hidden;cursor:pointer;transition:all .15s" data-msec="'+cid+'" data-mi="'+i+'">'
+      /* left color stripe */
+      +'<div style="width:3px;background:'+leftCol+';flex-shrink:0;transition:background .15s"></div>'
+      /* circle checkbox */
+      +'<div style="padding:.7rem .6rem;display:flex;align-items:center;flex-shrink:0">'
+      +'<div style="width:20px;height:20px;border-radius:50%;border:2px solid '+(chk?leftCol:"var(--bd)")+';background:'+(chk?leftCol:"transparent")+';display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0">'
+      +(chk?'<svg width="9" height="9" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>':'')
+      +'</div></div>'
+      /* text content */
+      +'<div style="flex:1;padding:.65rem .65rem .65rem 0">'
+      +'<div style="display:flex;align-items:baseline;gap:.3rem;margin-bottom:.15rem;flex-wrap:wrap">'
+      +'<span style="font-size:13px;font-weight:700;color:'+(chk?"var(--G2)":"var(--tx)")+';text-decoration:'+(chk?"line-through":"none")+';opacity:'+(chk?".6":"1")+'">'+m.name+'</span>'
+      +'<span style="font-size:9px;font-weight:800;color:'+leftCol+';opacity:.8">'+(typeIcon[m.type]||"")+'</span>'
       +'</div>'
-      +'<div style="flex:1"><div style="font-size:13px;font-weight:500;color:var(--tx);text-decoration:'+(chk?"line-through":"none")+';opacity:'+(chk?".45":"1")+'">'+m.name+' <span style="color:var(--tx3);font-weight:400">'+m.dose+'</span></div>'
-      +'<div style="font-size:11px;color:var(--tx3);margin-top:1px">'+m.note+'</div></div>'
-      +'</div>';
+      +'<div style="font-size:11px;font-weight:600;color:'+leftCol+';margin-bottom:.2rem;opacity:'+(chk?".5":"0.9")+'">'+m.dose+'</div>'
+      +'<div style="font-size:10.5px;color:var(--tx3);line-height:1.5">'+m.note+'</div>'
+      +'</div></div>';
   }).join("");
 }
 function initMeds(){
   renderMeds("meds-morning",MEDS.morning);
   renderMeds("meds-afternoon",MEDS.afternoon);
   renderMeds("meds-evening",MEDS.evening);
+  renderMeds("meds-herbs",MEDS.herbs);
 }
-["meds-morning","meds-afternoon","meds-evening"].forEach(function(cid){
+["meds-morning","meds-afternoon","meds-evening","meds-herbs"].forEach(function(cid){
   var el=document.getElementById(cid);
   if(!el) return;
   el.addEventListener("click",function(ev){
@@ -1701,7 +1757,7 @@ function initMeds(){
   });
 });
 document.getElementById("meds-reset-btn").addEventListener("click",function(){
-  ["meds-morning","meds-afternoon","meds-evening"].forEach(function(k){localStorage.removeItem("meds-"+k);});
+  ["meds-morning","meds-afternoon","meds-evening","meds-herbs"].forEach(function(k){localStorage.removeItem("meds-"+k);});
   initMeds();
 });
 
