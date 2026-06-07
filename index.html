@@ -945,7 +945,20 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 // ════════════════════════════════════════
 // All time anchored to America/New_York (ET)
 function etNow() {
-  return new Date(new Date().toLocaleString("en-US", {timeZone:"America/New_York"}));
+  // Use Intl.DateTimeFormat to get ET parts reliably, avoiding toLocaleString NaN bug
+  try {
+    var fmt = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/New_York",
+      year:"numeric", month:"2-digit", day:"2-digit",
+      hour:"2-digit", minute:"2-digit", second:"2-digit", hour12: false
+    });
+    var parts = {};
+    fmt.formatToParts(new Date()).forEach(function(p){ parts[p.type] = p.value; });
+    return new Date(parts.year+"-"+parts.month+"-"+parts.day+"T"+
+      (parts.hour==="24"?"00":parts.hour)+":"+parts.minute+":"+parts.second);
+  } catch(e) {
+    return new Date();
+  }
 }
 function etDateStr() {
   var d = etNow();
