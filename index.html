@@ -142,6 +142,73 @@ body{padding-bottom:3rem}
 .step-skip{flex:1;padding:10px;border:1px solid var(--bd);border-radius:10px;background:transparent;cursor:pointer;font-size:13px;color:var(--tx3)}
 
 input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
+
+/* ══ SKINCARE TAB ══ */
+.sk-card{background:var(--card);border:.5px solid var(--bd);border-radius:16px;padding:1rem 1.2rem;margin-bottom:.75rem}
+.sk-card.sk-teal{border-color:#3abf9e55;background:linear-gradient(145deg,#071a14,#0a2018)}
+.sk-card.sk-sky{border-color:#2d9cdb55;background:linear-gradient(145deg,#070f1a,#0a1a2e)}
+.sk-card.sk-yellow{border-color:#f5c84255;background:linear-gradient(145deg,#1a1505,#221c06)}
+.sk-card.sk-lavender{border-color:#9b7dd455;background:linear-gradient(145deg,#110e1e,#1a1530)}
+.sk-card.sk-coral{border-color:#ff8c7a55;background:linear-gradient(145deg,#1a0808,#2a0e0e)}
+.sk-hdr{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.sk-hdr h3{font-size:13px;font-weight:800;color:var(--tx)}
+.sk-hdr .sk-sub{font-size:9px;color:var(--tx3);font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:1px}
+.sk-step{display:flex;align-items:center;gap:.55rem;background:var(--bg3);border-radius:11px;padding:.6rem .75rem;margin-bottom:.4rem;cursor:pointer;border:1.5px solid transparent;transition:all .15s}
+.sk-step:hover{transform:translateX(3px)}
+.sk-step.sk-done{border-color:#3abf9e;background:#071a12}
+.sk-step.sk-done .sk-sname{text-decoration:line-through;color:#3abf9e}
+.sk-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:#fff;flex-shrink:0}
+.sk-num.am{background:#f5a623}.sk-num.pm{background:#5b7bdb}
+.sk-chk{width:20px;height:20px;border-radius:50%;border:2px solid #3abf9e;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:auto;color:#3abf9e;font-size:11px;transition:all .15s}
+.sk-step.sk-done .sk-chk{background:#3abf9e;color:#fff}
+.sk-sname{font-size:12px;font-weight:700;color:var(--tx);flex:1}
+.sk-snote{font-size:9px;color:var(--tx3);font-weight:600;margin-top:1px}
+.sk-prog-wrap{margin-bottom:.8rem}
+.sk-prog-lbl{font-size:10px;font-weight:800;color:var(--tx3);margin-bottom:.3rem;display:flex;justify-content:space-between;align-items:center}
+.sk-prog-track{height:6px;background:var(--bg3);border-radius:99px;overflow:hidden}
+.sk-prog-fill{height:100%;border-radius:99px;transition:width .4s;background:linear-gradient(90deg,#3abf9e,#2d9cdb)}
+.sk-reset{background:none;border:1px solid var(--tx3);border-radius:7px;padding:3px 9px;font-size:9px;color:var(--tx3);cursor:pointer;font-weight:700}
+.sk-reset:hover{border-color:#ff8c7a;color:#ff8c7a}
+.sk-product{background:var(--bg3);border-radius:13px;padding:.8rem .9rem;margin-bottom:.45rem;display:flex;align-items:flex-start;gap:.7rem;border-left:3px solid #3abf9e;cursor:pointer;transition:all .15s}
+.sk-product:hover{transform:translateY(-2px)}
+.sk-product-info h4{font-size:12px;font-weight:800;color:var(--tx);margin-bottom:.15rem}
+.sk-product-use{font-size:10px;font-weight:700;color:#3abf9e;margin-bottom:.2rem}
+.sk-product-note{font-size:10px;color:var(--tx3);line-height:1.5}
+.sk-product-expand{display:none;margin-top:.5rem;padding-top:.5rem;border-top:.5px solid var(--bd)}
+.sk-product-expand.open{display:block}
+.sk-product-expand p{font-size:10.5px;color:var(--tx2);line-height:1.6}
+.sk-week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.3rem;margin-bottom:.8rem}
+.sk-day{aspect-ratio:1;border-radius:9px;border:1.5px solid var(--bd);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:var(--bg3);font-size:8px;font-weight:700;color:var(--tx3);gap:2px;transition:all .15s}
+.sk-day.sk-done{background:#082d1c;border-color:#3abf9e;color:#4dba8a}
+.sk-day-chk{font-size:13px}
+.sk-tab-bar{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:.7rem}
+.sk-tab-btn{font-size:11px;padding:5px 12px;border:1px solid var(--bd);border-radius:20px;cursor:pointer;background:var(--chip);color:var(--tx3);font-weight:500;transition:all .12s;white-space:nowrap}
+.sk-tab-btn.active{background:#3abf9e;color:#fff;border-color:#3abf9e;font-weight:700}
+.sk-kr-card{background:var(--bg3);border-radius:13px;padding:.85rem;margin-bottom:.45rem;cursor:pointer;border:.5px solid var(--bd)}
+.sk-kr-card:hover{transform:translateY(-2px)}
+.sk-kr-card .sk-ctx{font-size:8px;font-weight:800;color:#3abf9e;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem}
+.sk-kr-card .sk-kr-big{font-size:19px;font-weight:900;color:var(--tx);margin-bottom:.2rem}
+.sk-kr-card .sk-ro{font-size:11px;color:var(--tx3);font-style:italic;margin-bottom:.15rem}
+.sk-kr-card .sk-en{font-size:12px;color:var(--tx2);font-weight:700}
+.sk-breakdown{display:none;margin-top:.65rem;padding-top:.65rem;border-top:.5px dashed var(--bd)}
+.sk-breakdown.open{display:block}
+.sk-bw{display:flex;align-items:center;gap:.55rem;margin-bottom:.4rem}
+.sk-bw-kr{font-size:13px;font-weight:800;color:var(--tx);min-width:80px}
+.sk-bw-info{font-size:10px;color:var(--tx3)}
+.sk-tip-box{background:linear-gradient(145deg,#1a1505,#221c06);border:1.5px solid #f5c84255;border-radius:13px;padding:.9rem;margin-bottom:.65rem}
+.sk-tip-box h4{font-size:12px;font-weight:900;color:#f5a623;margin-bottom:.45rem}
+.sk-tip-box p{font-size:11px;color:#a07030;line-height:1.6}
+.sk-tip-item{display:flex;gap:.5rem;margin-top:.4rem}
+.sk-tip-icon{font-size:15px;flex-shrink:0}
+.sk-weekly-step{display:flex;align-items:center;gap:.55rem;background:var(--bg3);border-radius:11px;padding:.6rem .75rem;margin-bottom:.4rem;cursor:pointer;border:1.5px solid transparent;transition:all .15s}
+.sk-weekly-step.sk-done{border-color:#3abf9e;background:#071a12}
+.sk-weekly-step:hover{transform:translateX(3px)}
+.sk-w-sname{font-size:12px;font-weight:700;color:var(--tx);flex:1}
+.sk-w-snote{font-size:9px;color:var(--tx3);font-weight:600;margin-top:1px}
+.sk-quote-box{background:var(--bg3);border-radius:11px;padding:.65rem .9rem;text-align:center;margin-top:.85rem;border:.5px solid var(--bd)}
+.sk-quote-box .sk-kr{font-size:14px;font-weight:800;color:var(--tx)}
+.sk-quote-box .sk-ro{font-size:9px;color:var(--tx3);font-style:italic;margin-top:.15rem}
+.sk-quote-box .sk-en{font-size:9px;color:var(--tx3);margin-top:.1rem}
 </style>
 </head>
 <body>
@@ -190,6 +257,7 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   <button class="pill" data-nav="sec-health">🏥 Health</button>
   <button class="pill" data-nav="sec-study">📚 Study</button>
   <button class="pill" data-nav="sec-advising">🎓 Advising</button>
+  <button class="pill" data-nav="sec-skincare" style="background:rgba(58,191,158,.12);border-color:rgba(58,191,158,.35);color:#3abf9e;font-weight:600;">💆 Skin</button>
 </div></div>
 
 <div id="main-content">
@@ -883,6 +951,411 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 </div></div>
 
 </div><!-- end main-content -->
+
+<!-- ══════════════════════════════════════════════════════════
+     SKINCARE SECTION — sec-skincare
+     CareCella × Korean Skincare Matrix
+     Dark-themed, adapted from skincare_interactive.html
+═══════════════════════════════════════════════════════════ -->
+<div id="sec-skincare" style="display:none">
+<div class="sec">
+
+<!-- Header Banner -->
+<div style="background:linear-gradient(135deg,#0a2018,#0a1a2e);border:1px solid #3abf9e44;border-radius:18px;padding:1.1rem 1.2rem;margin-bottom:.85rem;text-align:center">
+  <div style="font-size:17px;font-weight:900;color:#e6edf3;letter-spacing:-.3px;margin-bottom:.2rem">💧 Skincare Matrix ✨</div>
+  <div style="font-size:10px;color:#4dba8a;font-weight:700;">Jon C · 33 · Normal-Oily · GCoop CareCella × Korean</div>
+  <div style="margin-top:.65rem;background:rgba(58,191,158,.1);border-radius:9px;padding:.4rem .7rem;display:inline-block">
+    <div style="font-size:13px;font-weight:800;color:#e6edf3;">예쁜 피부는 최고의 선물</div>
+    <div style="font-size:9px;color:#4dba8a;font-style:italic;margin-top:2px;">Yeppeun pibu-neun choego-ui seonmul · "Beautiful skin is the greatest gift"</div>
+  </div>
+</div>
+
+<!-- Sub-nav -->
+<div class="sk-tab-bar" id="sk-nav">
+  <button class="sk-tab-btn active" data-sk="sk-am">🌅 AM</button>
+  <button class="sk-tab-btn" data-sk="sk-pm">🌙 PM</button>
+  <button class="sk-tab-btn" data-sk="sk-weekly">🧼 Weekly</button>
+  <button class="sk-tab-btn" data-sk="sk-products">⭐ Products</button>
+  <button class="sk-tab-btn" data-sk="sk-korean">🇰🇷 Korean</button>
+  <button class="sk-tab-btn" data-sk="sk-tips">☀️ Tips</button>
+  <button class="sk-tab-btn" data-sk="sk-emergency" style="color:#ff8c7a;border-color:#ff8c7a55;">🚨 SOS</button>
+  <button class="sk-tab-btn" data-sk="sk-psoriasis" style="color:#9b7dd4;border-color:#9b7dd455;">🔴 Psoriasis</button>
+  <button class="sk-tab-btn" data-sk="sk-tcm">🌿 TCM</button>
+  <button class="sk-tab-btn" data-sk="sk-playlist">🎵 Playlist</button>
+</div>
+
+<!-- ══ AM ROUTINE ══ -->
+<div id="sk-am" class="sk-panel">
+  <div class="sk-card sk-yellow">
+    <div class="sk-hdr">
+      <svg width="26" height="26" viewBox="0 0 28 28"><circle cx="14" cy="14" r="7" fill="#f5c842"/><line x1="14" y1="2" x2="14" y2="6" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/><line x1="14" y1="22" x2="14" y2="26" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/><line x1="2" y1="14" x2="6" y2="14" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/><line x1="22" y1="14" x2="26" y2="14" stroke="#f5c842" stroke-width="2" stroke-linecap="round"/></svg>
+      <div><h3>AM DAILY ROUTINE</h3><div class="sk-sub">Protection &amp; Lift</div></div>
+    </div>
+    <div class="sk-prog-wrap">
+      <div class="sk-prog-lbl"><span id="sk-am-lbl">0 of 7 steps done</span><button class="sk-reset" onclick="skReset('am')">Reset</button></div>
+      <div class="sk-prog-track"><div class="sk-prog-fill" id="sk-am-fill" style="width:0%"></div></div>
+    </div>
+    <div id="sk-am-steps">
+      <div class="sk-step" data-sk-routine="am" onclick="skToggle(this)"><div class="sk-num am">1</div><svg width="20" height="24" viewBox="0 0 22 26"><rect x="3" y="5" width="16" height="18" rx="4" fill="#c2e8f7" stroke="#2d9cdb" stroke-width="1.2"/><rect x="7" y="2" width="8" height="5" rx="2" fill="#2d9cdb"/></svg><div class="sk-sname">Foam Cleanser<div class="sk-snote">Low pH · gentle cleanse · morning reset</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="am" onclick="skToggle(this)"><div class="sk-num am">2</div><svg width="18" height="24" viewBox="0 0 20 26"><rect x="2" y="6" width="16" height="18" rx="3" fill="#e0faf3" stroke="#3abf9e" stroke-width="1.2"/><rect x="5" y="2" width="10" height="6" rx="2" fill="#3abf9e"/></svg><div class="sk-sname">Toner<div class="sk-snote">pH balance · prep skin for actives</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="am" onclick="skToggle(this)"><div class="sk-num am">3</div><svg width="17" height="24" viewBox="0 0 18 26"><path d="M9 3 L12 10 L12 22 Q12 26 9 26 Q6 26 6 22 L6 10Z" fill="#ffd6c2" stroke="#e07850" stroke-width="1.2"/><rect x="7" y="1" width="4" height="4" rx="1.5" fill="#e07850"/></svg><div class="sk-sname">Serum<div class="sk-snote">Hyaluronic acid · peptide complex</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="am" onclick="skToggle(this)" style="opacity:.72;border-style:dashed;border-color:#9b7dd466"><div class="sk-num am" style="background:#8b7dd4">4</div><svg width="26" height="16" viewBox="0 0 28 18"><rect x="1" y="4" width="26" height="12" rx="6" fill="#e2d9f3" stroke="#9b7dd4" stroke-width="1.2"/><rect x="1" y="3" width="26" height="4" rx="3" fill="#9b7dd4"/></svg><div class="sk-sname">Eye Puff Cream <span style="font-size:9px;background:#1e1a3a;color:#9b7dd4;border-radius:5px;padding:1px 6px;font-weight:800;margin-left:4px;">SKIP · PM ONLY</span><div class="sk-snote">AM only if severe puffiness visible · primary use is PM</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="am" onclick="skToggle(this)"><div class="sk-num am">5</div><svg width="26" height="16" viewBox="0 0 28 18"><rect x="1" y="4" width="26" height="12" rx="6" fill="#e0faf3" stroke="#3abf9e" stroke-width="1.2"/><rect x="1" y="3" width="26" height="4" rx="3" fill="#3abf9e"/></svg><div class="sk-sname">Deep Emulsion<div class="sk-snote">Lock in serum · lightweight moisture</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="am" onclick="skToggle(this)"><div class="sk-num am">6</div><svg width="20" height="22" viewBox="0 0 22 24"><rect x="3" y="7" width="13" height="15" rx="4" fill="#b8f0e0" stroke="#3abf9e" stroke-width="1.2"/><rect x="9" y="3" width="7" height="5" rx="2" fill="#3abf9e"/><circle cx="18" cy="7" r="3" fill="#7ddfc3"/></svg><div class="sk-sname">All In One Bio Mist<div class="sk-snote">Before SPF · peptide treatment · spray 20cm away</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="am" onclick="skToggle(this)"><div class="sk-num am">7</div><svg width="26" height="16" viewBox="0 0 28 18"><rect x="1" y="4" width="26" height="12" rx="5" fill="#fff3b0" stroke="#f5c842" stroke-width="1.2"/><rect x="1" y="3" width="26" height="4" rx="3" fill="#f5c842"/></svg><div class="sk-sname">Then I Met You Sunscreen ☀️<div class="sk-snote">ABSOLUTE final step · min half teaspoon · reapply outdoors</div></div><div class="sk-chk">✓</div></div>
+    </div>
+    <div class="sk-quote-box"><div class="sk-kr">하루의 시작은 아름다움으로</div><div class="sk-ro">Haru-ui sijak-eun areumdaum-euro</div><div class="sk-en">"Start your day with beauty"</div></div>
+  </div>
+</div>
+
+<!-- ══ PM ROUTINE ══ -->
+<div id="sk-pm" class="sk-panel" style="display:none">
+  <div class="sk-card sk-sky">
+    <div class="sk-hdr">
+      <svg width="26" height="26" viewBox="0 0 28 28"><path d="M18 4 A12 12 0 1 0 18 26 A8 8 0 1 1 18 4Z" fill="#5b7bdb" stroke="#3a5abf" stroke-width="1.2"/></svg>
+      <div><h3>PM DAILY ROUTINE</h3><div class="sk-sub">Recovery &amp; Hydration</div></div>
+    </div>
+    <div class="sk-prog-wrap">
+      <div class="sk-prog-lbl"><span id="sk-pm-lbl">0 of 10 steps done</span><button class="sk-reset" onclick="skReset('pm')">Reset</button></div>
+      <div class="sk-prog-track"><div class="sk-prog-fill" id="sk-pm-fill" style="width:0%"></div></div>
+    </div>
+    <div id="sk-pm-steps">
+      <div class="sk-step" data-sk-routine="pm" onclick="skToggle(this)"><div class="sk-num pm">1</div><svg width="20" height="24" viewBox="0 0 22 26"><rect x="3" y="5" width="16" height="18" rx="4" fill="#c2e8f7" stroke="#2d9cdb" stroke-width="1.2"/><rect x="7" y="2" width="8" height="5" rx="2" fill="#2d9cdb"/></svg><div class="sk-sname">Foam Cleanser<div class="sk-snote">Remove SPF &amp; daily grime thoroughly</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="pm" onclick="skToggle(this)"><div class="sk-num pm">2</div><svg width="18" height="24" viewBox="0 0 20 26"><rect x="2" y="6" width="16" height="18" rx="3" fill="#e0faf3" stroke="#3abf9e" stroke-width="1.2"/><rect x="5" y="2" width="10" height="6" rx="2" fill="#3abf9e"/></svg><div class="sk-sname">Toner<div class="sk-snote">Rebalance · prepping for recovery actives</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="pm" onclick="skToggle(this)"><div class="sk-num pm">3</div><svg width="18" height="26" viewBox="0 0 20 28"><path d="M10 3 L13 11 L13 23 Q13 27 10 27 Q7 27 7 23 L7 11Z" fill="#c2e8f7" stroke="#2d9cdb" stroke-width="1.2"/><rect x="8" y="1" width="4" height="4" rx="1.5" fill="#2d9cdb"/></svg><div class="sk-sname">Bubble TocToc Serum ✨<div class="sk-snote">After toner · activate 1-2 min · oil control hero</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="pm" onclick="skToggle(this)"><div class="sk-num pm">4</div><svg width="16" height="26" viewBox="0 0 18 28"><path d="M9 3 L12 10 L12 22 Q12 26 9 26 Q6 26 6 22 L6 10Z" fill="#fff3b0" stroke="#f5c842" stroke-width="1.2"/><rect x="7" y="1" width="4" height="4" rx="1.5" fill="#f5a623"/></svg><div class="sk-sname">Bio K AppleTamin C 🍎 <span style="font-size:9px;background:#221c06;color:#f5a623;border-radius:5px;padding:1px 6px;font-weight:800;margin-left:2px;">SPOT ONLY</span><div class="sk-snote">Cheek blood spot &amp; PIH marks · Vitamin C fades hyperpigmentation</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="pm" onclick="skToggle(this)"><div class="sk-num pm">5</div><svg width="16" height="24" viewBox="0 0 18 26"><path d="M9 3 L12 10 L12 22 Q12 26 9 26 Q6 26 6 22 L6 10Z" fill="#ffd6c2" stroke="#e07850" stroke-width="1.2"/><rect x="7" y="1" width="4" height="4" rx="1.5" fill="#e07850"/></svg><div class="sk-sname">Serum<div class="sk-snote">Repair mode · active overnight absorption</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="pm" onclick="skToggle(this)"><div class="sk-num pm">6</div><svg width="26" height="16" viewBox="0 0 28 18"><rect x="1" y="4" width="26" height="12" rx="6" fill="#e2d9f3" stroke="#9b7dd4" stroke-width="1.2"/><rect x="1" y="3" width="26" height="4" rx="3" fill="#9b7dd4"/></svg><div class="sk-sname">Eye Puff Cream <span style="font-size:9px;background:#1e1a3a;color:#9b7dd4;border-radius:5px;padding:1px 6px;font-weight:800;margin-left:4px;">PRIMARY USE</span><div class="sk-snote">Overnight depuffing · CareCella recommends PM</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="pm" onclick="skToggle(this)"><div class="sk-num pm">7</div><svg width="26" height="16" viewBox="0 0 28 18"><rect x="1" y="4" width="26" height="12" rx="6" fill="#e0faf3" stroke="#3abf9e" stroke-width="1.2"/><rect x="1" y="3" width="26" height="4" rx="3" fill="#3abf9e"/></svg><div class="sk-sname">Emulsion / Deep Cream<div class="sk-snote">Seal in serum · overnight nourishment</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="pm" onclick="skToggle(this)"><div class="sk-num pm">8</div><svg width="26" height="16" viewBox="0 0 28 18"><rect x="1" y="4" width="26" height="12" rx="5" fill="#b8f0e0" stroke="#3abf9e" stroke-width="1.2"/><rect x="1" y="3" width="26" height="4" rx="3" fill="#2d9cdb"/></svg><div class="sk-sname">Aqua Cream<div class="sk-snote">Before Bio Mist · intense overnight hydration</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="pm" onclick="skToggle(this)"><div class="sk-num pm">9</div><svg width="20" height="22" viewBox="0 0 22 24"><rect x="3" y="7" width="13" height="15" rx="4" fill="#b8f0e0" stroke="#3abf9e" stroke-width="1.2"/><rect x="9" y="3" width="7" height="5" rx="2" fill="#3abf9e"/><circle cx="18" cy="7" r="3" fill="#7ddfc3"/></svg><div class="sk-sname">All In One Bio Mist<div class="sk-snote">ABSOLUTE final step · peptide overnight seal</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" data-sk-routine="pm" onclick="skToggle(this)" style="border:1.5px solid #ff8c7a55;background:rgba(255,107,107,0.06)"><div class="sk-num pm" style="background:#e07850">10</div><svg width="26" height="16" viewBox="0 0 28 18"><rect x="1" y="4" width="26" height="12" rx="6" fill="#ffeee5" stroke="#e07850" stroke-width="1.2"/><rect x="1" y="3" width="26" height="4" rx="3" fill="#e07850"/></svg><div class="sk-sname">Desonide 0.05% <span style="font-size:9px;background:#2a0e0e;color:#ff8c7a;border-radius:5px;padding:1px 6px;font-weight:800;margin-left:2px;">Rx · PSORIASIS</span><div class="sk-snote">Last step · nose patches ONLY · thin layer · sparingly</div></div><div class="sk-chk">✓</div></div>
+    </div>
+    <div class="sk-quote-box"><div class="sk-kr">밤사이에 피부는 꽃처럼 핀다</div><div class="sk-ro">Bamsaie pibu-neun kkot-cheoreom pinda</div><div class="sk-en">"Skin blooms like a flower overnight"</div></div>
+  </div>
+</div>
+
+<!-- ══ WEEKLY ══ -->
+<div id="sk-weekly" class="sk-panel" style="display:none">
+  <div class="sk-card sk-teal">
+    <div class="sk-hdr">
+      <svg width="26" height="26" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" fill="none" stroke="#3abf9e" stroke-width="1.5"/><path d="M14 7 L14 14 L18 17" stroke="#3abf9e" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <div><h3>WEEKLY MAINTENANCE</h3><div class="sk-sub">Exfoliation &amp; Repair · 1-2x per week</div></div>
+    </div>
+    <div style="font-size:10px;color:var(--tx3);margin-bottom:.65rem;font-weight:600;">Tap days you did your weekly routine this week 👇</div>
+    <div class="sk-week-grid" id="sk-week-grid">
+      <div class="sk-day" onclick="skToggleDay(this)"><div class="sk-day-chk">○</div><div>SUN</div></div>
+      <div class="sk-day" onclick="skToggleDay(this)"><div class="sk-day-chk">○</div><div>MON</div></div>
+      <div class="sk-day" onclick="skToggleDay(this)"><div class="sk-day-chk">○</div><div>TUE</div></div>
+      <div class="sk-day" onclick="skToggleDay(this)"><div class="sk-day-chk">○</div><div>WED</div></div>
+      <div class="sk-day" onclick="skToggleDay(this)"><div class="sk-day-chk">○</div><div>THU</div></div>
+      <div class="sk-day" onclick="skToggleDay(this)"><div class="sk-day-chk">○</div><div>FRI</div></div>
+      <div class="sk-day" onclick="skToggleDay(this)"><div class="sk-day-chk">○</div><div>SAT</div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:.35rem">
+      <div class="sk-weekly-step" onclick="this.classList.toggle('sk-done');var c=this.querySelector('.sk-chk');if(c){c.style.background=this.classList.contains('sk-done')?'#3abf9e':'';c.style.color=this.classList.contains('sk-done')?'#fff':'#3abf9e';}"><svg width="26" height="30" viewBox="0 0 28 32"><rect x="2" y="7" width="24" height="22" rx="6" fill="#fff3b0" stroke="#f5c842" stroke-width="1.5"/><rect x="5" y="2" width="18" height="8" rx="4" fill="#f5c842"/></svg><div style="flex:1"><div class="sk-w-sname">Step 1 · Magic Peeling Gel</div><div class="sk-w-snote">After cleanser · dry face · gentle circular motion · rinse</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-weekly-step" onclick="this.classList.toggle('sk-done');var c=this.querySelector('.sk-chk');if(c){c.style.background=this.classList.contains('sk-done')?'#3abf9e':'';c.style.color=this.classList.contains('sk-done')?'#fff':'#3abf9e';}"><svg width="26" height="18" viewBox="0 0 28 20"><rect x="1" y="4" width="26" height="14" rx="5" fill="#b8f0e0" stroke="#3abf9e" stroke-width="1.5"/><rect x="1" y="3" width="26" height="5" rx="3" fill="#2d9cdb"/></svg><div style="flex:1"><div class="sk-w-sname">Step 2 · Balance Toner + Aqua Cream</div><div class="sk-w-snote">Replenish &amp; restore barrier post-exfoliation</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-weekly-step" onclick="this.classList.toggle('sk-done');var c=this.querySelector('.sk-chk');if(c){c.style.background=this.classList.contains('sk-done')?'#3abf9e':'';c.style.color=this.classList.contains('sk-done')?'#fff':'#3abf9e';}"><svg width="34" height="26" viewBox="0 0 36 28"><ellipse cx="18" cy="16" rx="16" ry="10" fill="#e2d9f3" stroke="#9b7dd4" stroke-width="1.5"/><ellipse cx="18" cy="10" rx="10" ry="5" fill="white" opacity="0.2"/></svg><div style="flex:1"><div class="sk-w-sname">Step 3 · Hydra Soothe Sheet Mask</div><div class="sk-w-snote">15-20 min · pat in excess · then seal with Bio Mist</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-weekly-step" onclick="this.classList.toggle('sk-done');var c=this.querySelector('.sk-chk');if(c){c.style.background=this.classList.contains('sk-done')?'#3abf9e':'';c.style.color=this.classList.contains('sk-done')?'#fff':'#3abf9e';}"><svg width="20" height="22" viewBox="0 0 22 24"><rect x="3" y="7" width="13" height="15" rx="4" fill="#b8f0e0" stroke="#3abf9e" stroke-width="1.2"/><rect x="9" y="3" width="7" height="5" rx="2" fill="#3abf9e"/><circle cx="18" cy="7" r="3" fill="#7ddfc3"/></svg><div style="flex:1"><div class="sk-w-sname">Step 4 · All In One Bio Mist</div><div class="sk-w-snote">Final seal after sheet mask · peptide boost</div></div><div class="sk-chk">✓</div></div>
+    </div>
+    <div class="sk-quote-box"><div class="sk-kr">피부를 사랑하는 시간</div><div class="sk-ro">Pibu-reul saranghaneun sigan</div><div class="sk-en">"Time to love my skin"</div></div>
+  </div>
+</div>
+
+<!-- ══ PRODUCTS ══ -->
+<div id="sk-products" class="sk-panel" style="display:none">
+  <div class="sec-lbl">Tap any product to learn more 👇</div>
+  <div class="sk-product" onclick="skToggleProduct(this)" style="border-left-color:#3abf9e">
+    <svg width="30" height="34" viewBox="0 0 32 36"><rect x="4" y="8" width="24" height="24" rx="7" fill="#082d1c" stroke="#3abf9e" stroke-width="1.5"/><rect x="10" y="3" width="14" height="8" rx="4" fill="#3abf9e"/><circle cx="26" cy="12" r="4" fill="#0a4028"/></svg>
+    <div class="sk-product-info"><h4>All In One Bio Mist</h4><div class="sk-product-use">🕐 AM Step 6 · PM Step 9</div><div class="sk-product-note">Lightweight peptide treatment mist for AM &amp; PM routine</div><div class="sk-product-expand"><p>A multi-functional peptide mist that delivers active ingredients without heaviness. Spray 15-20cm from face, let absorb naturally — don't rub. Contains peptide complex and ginsenosides for skin renewal. Perfect for oily skin.</p></div></div>
+  </div>
+  <div class="sk-product" onclick="skToggleProduct(this)" style="border-left-color:#2d9cdb">
+    <svg width="30" height="34" viewBox="0 0 32 36"><path d="M16 3 L21 14 L21 30 Q21 35 16 35 Q11 35 11 30 L11 14Z" fill="#070f1a" stroke="#2d9cdb" stroke-width="1.5"/><rect x="12" y="1" width="8" height="5" rx="2" fill="#2d9cdb"/></svg>
+    <div class="sk-product-info"><h4>Bubble TocToc Serum</h4><div class="sk-product-use" style="color:#2d9cdb;">🌙 PM Step 3 · MVP for oily skin</div><div class="sk-product-note">Oxygenating bubbles · deep pore cleanse · oil control · PM anchor</div><div class="sk-product-expand"><p>The micro-bubbles penetrate deep into pores to lift sebum and impurities that regular cleansing misses. Apply after toner on PM, let the bubbles activate for 1-2 mins before massaging in. Your Overnight Mitigation Protocol weapon.</p></div></div>
+  </div>
+  <div class="sk-product" onclick="skToggleProduct(this)" style="border-left-color:#9b7dd4">
+    <svg width="30" height="34" viewBox="0 0 32 36"><rect x="6" y="10" width="20" height="22" rx="6" fill="#082d1c" stroke="#3abf9e" stroke-width="1.5"/><rect x="12" y="4" width="12" height="8" rx="4" fill="#3abf9e"/><circle cx="26" cy="15" r="4" fill="#0a4028"/></svg>
+    <div class="sk-product-info"><h4>CK Mist</h4><div class="sk-product-use" style="color:#9b7dd4;">☀️ Throughout the day refresher</div><div class="sk-product-note">Fermented Compound K ginseng mist — midday skin refresh over SPF</div><div class="sk-product-expand"><p>Compound K is a rare bioconverted ginsenoside with powerful antioxidant and skin-balancing properties. Spray lightly over SPF and let absorb without rubbing. Perfectly compatible with Then I Met You sunscreen.</p></div></div>
+  </div>
+  <div class="sk-product" onclick="skToggleProduct(this)" style="border-left-color:#f5c842">
+    <svg width="30" height="26" viewBox="0 0 32 28"><rect x="1" y="6" width="30" height="18" rx="6" fill="#221c06" stroke="#f5c842" stroke-width="1.5"/><rect x="1" y="5" width="30" height="6" rx="4" fill="#f5c842"/></svg>
+    <div class="sk-product-info"><h4>Then I Met You Sunscreen ☀️</h4><div class="sk-product-use" style="color:#f5a623;">🌅 AM Final Step (Step 7)</div><div class="sk-product-note">Clean Korean SPF — seals your AM routine all summer</div><div class="sk-product-expand"><p>Apply as the absolute last step of your AM routine. Use at minimum half a teaspoon for full SPF protection. Reapply every 2hrs outdoors. The CK Mist can be spritzed over it throughout the day without rubbing.</p></div></div>
+  </div>
+  <div class="sk-product" onclick="skToggleProduct(this)" style="border-left-color:#f5c842">
+    <svg width="30" height="34" viewBox="0 0 32 36"><ellipse cx="16" cy="18" rx="14" ry="16" fill="#221c06" stroke="#f5c842" stroke-width="1.5"/></svg>
+    <div class="sk-product-info"><h4>Hydra Soothe Sheet Mask</h4><div class="sk-product-use" style="color:#f5a623;">🧼 Weekly Step 3</div><div class="sk-product-note">Deep calming &amp; hydration reset after exfoliation</div><div class="sk-product-expand"><p>Oily skin is often dehydrated underneath, which causes more oil production — this mask breaks that cycle. Use after Peeling Gel sessions (1-2x per week). The Cupra eco-fabric sheet delivers intense soothing without greasy residue.</p></div></div>
+  </div>
+  <div class="sec-lbl" style="margin-top:.45rem">🍎 Spot Treatment &amp; Korean Additions</div>
+  <div class="sk-product" onclick="skToggleProduct(this)" style="border-left-color:#f5a623">
+    <svg width="30" height="34" viewBox="0 0 32 36"><path d="M16 4 L20 14 L20 30 Q20 35 16 35 Q12 35 12 30 L12 14Z" fill="#221c06" stroke="#f5a623" stroke-width="1.5"/><rect x="13" y="1" width="6" height="5" rx="2" fill="#f5a623"/></svg>
+    <div class="sk-product-info"><h4>Bio K AppleTamin C Serum 🍎</h4><div class="sk-product-use" style="color:#f5a623;">🌙 PM Step 4 · Spot only · Cheek blood spot &amp; PIH</div><div class="sk-product-note">CareCella Vitamin C — actively fading cheek blood spot &amp; PIH marks</div><div class="sk-product-expand"><p>Dab directly on the cheek blood spot and PIH marks after toner. Do NOT apply all over your face — targeted spot treatment only. Vitamin C neutralizes hemosiderin and inhibits melanin in PIH spots. SPF during the day is critical for this to work.</p></div></div>
+  </div>
+  <div class="sk-product" onclick="skToggleProduct(this)" style="border-left-color:#ff8c7a">
+    <svg width="30" height="18" viewBox="0 0 32 20"><ellipse cx="16" cy="10" rx="14" ry="8" fill="#2a0e0e" stroke="#ff8c7a" stroke-width="1.5"/></svg>
+    <div class="sk-product-info"><h4>COSRX Pimple Patches</h4><div class="sk-product-use" style="color:#ff8c7a;">🚨 Emergency · overnight on active spots</div><div class="sk-product-note">Hydrocolloid patches — active pimples &amp; post-pimple marks</div><div class="sk-product-expand"><p>Apply directly on an active pimple overnight. The hydrocolloid material draws out fluid, reduces inflammation dramatically, and protects from bacteria and picking. Apply after all skincare, leave overnight. Remove in AM.</p></div></div>
+  </div>
+  <div class="sk-product" onclick="skToggleProduct(this)" style="border-left-color:#9b7dd4">
+    <svg width="30" height="34" viewBox="0 0 32 36"><path d="M16 4 L20 14 L20 30 Q20 35 16 35 Q12 35 12 30 L12 14Z" fill="#110e1e" stroke="#9b7dd4" stroke-width="1.5"/><rect x="13" y="1" width="6" height="5" rx="2" fill="#9b7dd4"/></svg>
+    <div class="sk-product-info"><h4>Skin1004 Centella Ampoule</h4><div class="sk-product-use" style="color:#9b7dd4;">PM · dab on red/irritated spots · after toner</div><div class="sk-product-note">Pure Centella Asiatica — calms redness, heals post-trauma marks</div><div class="sk-product-expand"><p>Pure Madagascar Centella Asiatica extract — one of the most effective ingredients for post-inflammatory redness and healing. Apply on any red, irritated, or healing spots after toner in your PM routine, before your regular serum. Works synergistically with the Bio K Apple Serum.</p></div></div>
+  </div>
+  <div class="sk-product" onclick="skToggleProduct(this)" style="border-left-color:#2d9cdb">
+    <svg width="30" height="34" viewBox="0 0 32 36"><rect x="4" y="8" width="24" height="24" rx="6" fill="#070f1a" stroke="#2d9cdb" stroke-width="1.5"/><rect x="10" y="3" width="12" height="8" rx="3" fill="#2d9cdb"/></svg>
+    <div class="sk-product-info"><h4>COSRX BHA Blackhead Power Liquid</h4><div class="sk-product-use" style="color:#2d9cdb;">2-3x/week · forehead &amp; cheeks · after toner</div><div class="sk-product-note">Leave-on BHA — targets closed comedones &amp; congested pores</div><div class="sk-product-expand"><p>Leave-on Salicylic Acid that penetrates deeper into pores. Use on non-peeling-gel nights, targeted on forehead and cheek congestion. Do not use on same night as Peeling Gel or Some By Mi toner — rotate to avoid over-exfoliation.</p></div></div>
+  </div>
+</div>
+
+<!-- ══ KOREAN ══ -->
+<div id="sk-korean" class="sk-panel" style="display:none">
+  <div style="font-size:10.5px;color:var(--tx3);font-weight:700;margin-bottom:.8rem;">Your skincare routine in Korean 🇰🇷 — tap each to break it down word by word!</div>
+  <div class="sk-kr-card" onclick="skToggleKorean(this)">
+    <div class="sk-ctx">Header Quote</div>
+    <div class="sk-kr-big">예쁜 피부는 최고의 선물</div>
+    <div class="sk-ro">Yeppeun pibu-neun choego-ui seonmul</div>
+    <div class="sk-en">"Beautiful skin is the greatest gift"</div>
+    <div class="sk-breakdown"><div class="sk-bw"><span class="sk-bw-kr">예쁜</span><span class="sk-bw-info">yeppeun — beautiful, pretty</span></div><div class="sk-bw"><span class="sk-bw-kr">피부는</span><span class="sk-bw-info">pibu-neun — skin + topic marker 는</span></div><div class="sk-bw"><span class="sk-bw-kr">최고의</span><span class="sk-bw-info">choego-ui — the greatest</span></div><div class="sk-bw"><span class="sk-bw-kr">선물</span><span class="sk-bw-info">seonmul — gift, present</span></div></div>
+  </div>
+  <div class="sk-kr-card" onclick="skToggleKorean(this)">
+    <div class="sk-ctx">AM Routine</div>
+    <div class="sk-kr-big">하루의 시작은 아름다움으로</div>
+    <div class="sk-ro">Haru-ui sijak-eun areumdaum-euro</div>
+    <div class="sk-en">"Start your day with beauty"</div>
+    <div class="sk-breakdown"><div class="sk-bw"><span class="sk-bw-kr">하루의</span><span class="sk-bw-info">haru-ui — of the day</span></div><div class="sk-bw"><span class="sk-bw-kr">시작은</span><span class="sk-bw-info">sijak-eun — beginning + topic marker</span></div><div class="sk-bw"><span class="sk-bw-kr">아름다움으로</span><span class="sk-bw-info">areumdaum-euro — with beauty (으로 = with/by)</span></div></div>
+  </div>
+  <div class="sk-kr-card" onclick="skToggleKorean(this)">
+    <div class="sk-ctx">PM Routine</div>
+    <div class="sk-kr-big">밤사이에 피부는 꽃처럼 핀다</div>
+    <div class="sk-ro">Bamsaie pibu-neun kkot-cheoreom pinda</div>
+    <div class="sk-en">"Skin blooms like a flower overnight"</div>
+    <div class="sk-breakdown"><div class="sk-bw"><span class="sk-bw-kr">밤사이에</span><span class="sk-bw-info">bamsaie — overnight, during the night</span></div><div class="sk-bw"><span class="sk-bw-kr">꽃처럼</span><span class="sk-bw-info">kkot-cheoreom — like a flower (처럼 = like)</span></div><div class="sk-bw"><span class="sk-bw-kr">핀다</span><span class="sk-bw-info">pinda — blooms, blossoms</span></div></div>
+  </div>
+  <div class="sk-kr-card" onclick="skToggleKorean(this)">
+    <div class="sk-ctx">Weekly Routine</div>
+    <div class="sk-kr-big">피부를 사랑하는 시간</div>
+    <div class="sk-ro">Pibu-reul saranghaneun sigan</div>
+    <div class="sk-en">"Time to love my skin"</div>
+    <div class="sk-breakdown"><div class="sk-bw"><span class="sk-bw-kr">피부를</span><span class="sk-bw-info">pibu-reul — skin + object marker 를</span></div><div class="sk-bw"><span class="sk-bw-kr">사랑하는</span><span class="sk-bw-info">saranghaneun — loving (사랑하다 = to love)</span></div><div class="sk-bw"><span class="sk-bw-kr">시간</span><span class="sk-bw-info">sigan — time, hour</span></div></div>
+  </div>
+  <div style="background:var(--bg3);border-radius:13px;padding:.85rem;margin-top:.35rem;border:.5px solid var(--bd)">
+    <div style="font-size:11px;font-weight:800;color:var(--tx);margin-bottom:.6rem;">🌟 Bonus Skincare Words in Korean</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.35rem;">
+      <div style="background:var(--card);border-radius:9px;padding:.5rem .65rem;"><div style="font-size:14px;font-weight:900;color:var(--tx);">피부</div><div style="font-size:9px;color:var(--tx3);">pibu — skin</div></div>
+      <div style="background:var(--card);border-radius:9px;padding:.5rem .65rem;"><div style="font-size:14px;font-weight:900;color:var(--tx);">세럼</div><div style="font-size:9px;color:var(--tx3);">serom — serum</div></div>
+      <div style="background:var(--card);border-radius:9px;padding:.5rem .65rem;"><div style="font-size:14px;font-weight:900;color:var(--tx);">수분</div><div style="font-size:9px;color:var(--tx3);">sumin — moisture</div></div>
+      <div style="background:var(--card);border-radius:9px;padding:.5rem .65rem;"><div style="font-size:14px;font-weight:900;color:var(--tx);">보습</div><div style="font-size:9px;color:var(--tx3);">bosip — hydration</div></div>
+      <div style="background:var(--card);border-radius:9px;padding:.5rem .65rem;"><div style="font-size:14px;font-weight:900;color:var(--tx);">세안</div><div style="font-size:9px;color:var(--tx3);">sean — face washing</div></div>
+      <div style="background:var(--card);border-radius:9px;padding:.5rem .65rem;"><div style="font-size:14px;font-weight:900;color:var(--tx);">미백</div><div style="font-size:9px;color:var(--tx3);">mibaek — brightening</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TIPS ══ -->
+<div id="sk-tips" class="sk-panel" style="display:none">
+  <div class="sk-tip-box">
+    <h4>☀️ Summer Sunscreen Protocol</h4>
+    <div class="sk-tip-item"><div class="sk-tip-icon">1️⃣</div><p>Apply Then I Met You SPF as your FINAL AM step — after Bio Mist, last of everything</p></div>
+    <div class="sk-tip-item"><div class="sk-tip-icon">💨</div><p>Spray CK Mist lightly over SPF throughout the day. Do NOT rub or blot — let it absorb on its own</p></div>
+    <div class="sk-tip-item"><div class="sk-tip-icon">🔄</div><p>Outdoors? Reapply sunscreen every 2hrs regardless of misting</p></div>
+  </div>
+  <div class="sk-card sk-teal">
+    <div class="sk-hdr"><div style="font-size:22px;">🍔</div><div><h3>Greasy Food Protocol</h3><div class="sk-sub">Overnight Mitigation · When oiliness spikes</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:.4rem">
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;display:flex;align-items:center;gap:.6rem"><div style="font-size:17px;">💧</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Double Cleanse</div><div style="font-size:9.5px;color:var(--tx3)">Use foam cleanser twice to remove excess sebum build-up</div></div></div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;display:flex;align-items:center;gap:.6rem"><div style="font-size:17px;">✨</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Bubble TocToc Serum</div><div style="font-size:9.5px;color:var(--tx3)">Your hero product after oily days — activate those bubbles</div></div></div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;display:flex;align-items:center;gap:.6rem"><div style="font-size:17px;">🎭</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Hydra Soothe Sheet Mask</div><div style="font-size:9.5px;color:var(--tx3)">Calms inflammation from sebum spike · rebalances barrier</div></div></div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;display:flex;align-items:center;gap:.6rem"><div style="font-size:17px;">💨</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Light finish only</div><div style="font-size:9.5px;color:var(--tx3)">Skip heavy cream — Aqua Cream then Bio Mist as final seal</div></div></div>
+    </div>
+  </div>
+  <div class="sk-card sk-lavender">
+    <div class="sk-hdr"><div style="font-size:22px;">🧪</div><div><h3>Products NOT (Yet) For You</h3><div class="sk-sub">And honest reasons why</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:.4rem">
+      <div style="background:#082d1c;border-radius:11px;padding:.65rem .8rem;border:1.5px solid #3abf9e55;"><div style="font-size:11px;font-weight:800;color:#3abf9e;">✅ Bio K AppleTamin C — NOW IN ROUTINE</div><div style="font-size:10px;color:var(--tx3);margin-top:.25rem;line-height:1.5;">Moved up due to cheek blood spot &amp; PIH. PM Step 4 · targeted spot only.</div></div>
+      <div style="background:var(--bg3);border-radius:11px;padding:.65rem .8rem;"><div style="font-size:11px;font-weight:800;color:var(--tx);">Lifting Gel / Skin Innovator</div><div style="font-size:10px;color:var(--tx3);margin-top:.25rem;line-height:1.5;">Designed for visible sagging. Your skin has good firmness at 33. This is a 40+ product. No rush.</div></div>
+      <div style="background:var(--bg3);border-radius:11px;padding:.65rem .8rem;"><div style="font-size:11px;font-weight:800;color:var(--tx);">CK Mist vs Bio Mist — not redundant!</div><div style="font-size:10px;color:var(--tx3);margin-top:.25rem;line-height:1.5;">Bio Mist = treatment step (AM+PM). CK Mist = lifestyle refresher (all day over SPF). Different jobs.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ EMERGENCY / SOS ══ -->
+<div id="sk-emergency" class="sk-panel" style="display:none">
+  <div style="background:linear-gradient(135deg,#1a0808,#2a0e0e);border:2px solid #ff8c7a55;border-radius:15px;padding:.9rem 1.1rem;margin-bottom:.75rem">
+    <div style="font-size:15px;font-weight:900;color:#ff6b6b;margin-bottom:.2rem;">🚨 PIMPLE EMERGENCY PROTOCOL</div>
+    <div style="font-size:10px;color:#e07850;font-weight:700;">Jon C · CareCella + Korean Skincare SOS Guide</div>
+  </div>
+  <div class="sk-card sk-coral">
+    <div class="sk-hdr"><div style="font-size:24px;">🔴</div><div><h3 style="color:#ff8c7a">Active Pimple — DO NOT POP</h3><div class="sk-sub">Immediate response protocol</div></div></div>
+    <div style="background:rgba(255,107,107,0.08);border-radius:11px;padding:.65rem .8rem;margin-bottom:.6rem;border-left:2px solid #ff8c7a;">
+      <div style="font-size:11px;font-weight:900;color:#ff6b6b;margin-bottom:.35rem;">⛔ SKIP THESE on the affected area tonight:</div>
+      <div style="font-size:10px;color:var(--tx2);line-height:1.8;">❌ Magic Peeling Gel on or near pimple<br>❌ Some By Mi AHA BHA toner on active spot<br>❌ COSRX BHA on active inflamed spot<br>❌ Popping, squeezing, or touching</div>
+    </div>
+    <div style="font-size:11px;font-weight:900;color:var(--tx);margin-bottom:.5rem;">✅ DO THIS INSTEAD:</div>
+    <div style="display:flex;flex-direction:column;gap:.4rem">
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;display:flex;gap:.65rem;align-items:flex-start"><div style="font-size:17px;flex-shrink:0">1️⃣</div><div><div style="font-size:11px;font-weight:800;color:var(--tx)">Complete normal PM routine</div><div style="font-size:9px;color:var(--tx3);margin-top:.15rem">Cleanse → Toner → TocToc → skip Apple Serum on spot → Regular Serum → Eye Cream → Emulsion → Aqua Cream → Bio Mist</div></div></div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;display:flex;gap:.65rem;align-items:flex-start"><div style="font-size:17px;flex-shrink:0">2️⃣</div><div><div style="font-size:11px;font-weight:800;color:var(--tx)">Skin1004 Centella Ampoule</div><div style="font-size:9px;color:var(--tx3);margin-top:.15rem">Dab directly on and around pimple after toner · calms inflammation immediately</div></div></div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;display:flex;gap:.65rem;align-items:flex-start"><div style="font-size:17px;flex-shrink:0">3️⃣</div><div><div style="font-size:11px;font-weight:800;color:var(--tx)">Bubble TocToc Serum</div><div style="font-size:9px;color:var(--tx3);margin-top:.15rem">Apply to entire face · oxygenating action draws out congestion safely</div></div></div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;display:flex;gap:.65rem;align-items:flex-start"><div style="font-size:17px;flex-shrink:0">4️⃣</div><div><div style="font-size:11px;font-weight:800;color:var(--tx)">Hydra Soothe Sheet Mask (if inflamed)</div><div style="font-size:9px;color:var(--tx3);margin-top:.15rem">If red and angry · calms whole face · skip emulsion &amp; cream that night</div></div></div>
+      <div style="background:rgba(255,107,107,0.1);border-radius:10px;padding:.6rem .8rem;display:flex;gap:.65rem;align-items:flex-start;border:1.5px solid #ff8c7a44"><div style="font-size:17px;flex-shrink:0">5️⃣</div><div><div style="font-size:11px;font-weight:800;color:#ff6b6b">COSRX Pimple Patch — overnight</div><div style="font-size:9px;color:#ff8c7a;margin-top:.15rem">Apply LAST after all products absorbed · leave overnight · remove in AM</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PSORIASIS ══ -->
+<div id="sk-psoriasis" class="sk-panel" style="display:none">
+  <div style="background:linear-gradient(135deg,#110e1e,#1a1530);border:1.5px solid #9b7dd455;border-radius:15px;padding:.9rem 1.1rem;margin-bottom:.75rem">
+    <div style="font-size:14px;font-weight:900;color:#9b7dd4;margin-bottom:.2rem">🔴 PSORIASIS PROTOCOL</div>
+    <div style="font-size:10px;color:#6c5fc7;font-weight:700;">Dr. Kohn · Advanced Dermatology · 4660 Kenmore Ave, Alexandria</div>
+  </div>
+  <div class="sk-card sk-lavender">
+    <div class="sk-hdr"><div style="font-size:22px;">🧴</div><div><h3>Daily Topical Protocol</h3><div class="sk-sub">Tap each step when done</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:.35rem" id="sk-psoriasis-steps">
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:18px;flex-shrink:0;">1️⃣</div><div style="flex:1"><div class="sk-sname">Aqua Cream — generous layer on plaques</div><div class="sk-snote">PM · on nose patches · hydration is therapeutic · never skip</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:18px;flex-shrink:0;">2️⃣</div><div style="flex:1"><div class="sk-sname">Skin1004 Centella — on plaques</div><div class="sk-snote">After regular skincare absorbs · dab on nose plaques · directly calms psoriatic inflammation</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:18px;flex-shrink:0;">3️⃣</div><div style="flex:1"><div class="sk-sname">Desonide 0.05% — last step, plaques only</div><div class="sk-snote">Absolute last step PM · thin layer on active plaques only · goal is Protopic transition</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:18px;flex-shrink:0;">☀️</div><div style="flex:1"><div class="sk-sname">SPF every AM — non-negotiable</div><div class="sk-snote">UV worsens psoriasis plaques and post-plaque marks · Then I Met You SPF · never skip</div></div><div class="sk-chk">✓</div></div>
+    </div>
+  </div>
+  <div class="sk-card sk-teal">
+    <div class="sk-hdr"><div style="font-size:22px;">🇰🇷</div><div><h3>Korean Products for Plaques</h3><div class="sk-sub">Purchase priority order</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:.35rem">
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;border-left:3px solid #3abf9e;"><div style="font-size:11px;font-weight:800;color:var(--tx);">⭐ Skin1004 Madagascar Centella — ~$18 Ulta</div><div style="font-size:9.5px;color:var(--tx3);margin-top:.2rem;line-height:1.5">Your #1 non-prescription psoriasis product · patch test first · authentic at Ulta, YesStyle, Stylevana</div></div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;border-left:3px solid #9b7dd4;"><div style="font-size:11px;font-weight:800;color:var(--tx);">⭐ Pyunkang Yul Moisture Ampoule — ~$25 YesStyle</div><div style="font-size:9.5px;color:var(--tx3);margin-top:.2rem;line-height:1.5">70% Astragalus Root · powerful barrier repair · beloved in psoriasis community</div></div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem;border-left:3px solid #2d9cdb;"><div style="font-size:11px;font-weight:800;color:var(--tx);">Atopalm MLE Cream — ~$30 Amazon</div><div style="font-size:9.5px;color:var(--tx3);margin-top:.2rem;line-height:1.5">Korean derm-developed for psoriasis/eczema · MLE tech mimics skin natural lipid barrier</div></div>
+    </div>
+  </div>
+  <div class="sk-card sk-coral">
+    <div class="sk-hdr"><div style="font-size:22px;">⛔</div><div><h3>Never Do On Plaques</h3><div class="sk-sub">Koebner phenomenon — trauma spreads psoriasis</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:.3rem">
+      <div style="background:var(--bg3);border-radius:9px;padding:.5rem .7rem;display:flex;gap:.5rem;align-items:center"><div style="font-size:15px;">❌</div><div style="font-size:11px;font-weight:700;color:#ff8c7a;">Magic Peeling Gel directly on plaques</div></div>
+      <div style="background:var(--bg3);border-radius:9px;padding:.5rem .7rem;display:flex;gap:.5rem;align-items:center"><div style="font-size:15px;">❌</div><div style="font-size:11px;font-weight:700;color:#ff8c7a;">Apple Serum on plaques — Vitamin C too active</div></div>
+      <div style="background:var(--bg3);border-radius:9px;padding:.5rem .7rem;display:flex;gap:.5rem;align-items:center"><div style="font-size:15px;">❌</div><div style="font-size:11px;font-weight:700;color:#ff8c7a;">Any fragrance products on plaques</div></div>
+      <div style="background:var(--bg3);border-radius:9px;padding:.5rem .7rem;display:flex;gap:.5rem;align-items:center"><div style="font-size:15px;">❌</div><div style="font-size:11px;font-weight:700;color:#ff8c7a;">Picking or scratching — spreads via Koebner</div></div>
+      <div style="background:var(--bg3);border-radius:9px;padding:.5rem .7rem;display:flex;gap:.5rem;align-items:center"><div style="font-size:15px;">❌</div><div style="font-size:11px;font-weight:700;color:#ff8c7a;">Hot water — lukewarm only</div></div>
+      <div style="background:var(--bg3);border-radius:9px;padding:.5rem .7rem;display:flex;gap:.5rem;align-items:center"><div style="font-size:15px;">❌</div><div style="font-size:11px;font-weight:700;color:#ff8c7a;">Betamethasone or Calcipotriene on face</div></div>
+    </div>
+  </div>
+  <div style="background:linear-gradient(135deg,#0a1a2e,#110e1e);border-radius:13px;padding:.9rem;margin-bottom:.5rem">
+    <div style="font-size:12px;font-weight:900;color:#e6edf3;margin-bottom:.55rem">📋 What to Tell Dr. Kohn</div>
+    <div style="background:rgba(255,255,255,0.06);border-radius:9px;padding:.65rem .8rem">
+      <div style="font-size:10px;color:var(--tx2);line-height:1.9">
+        ✦ "I have facial psoriasis on my nose and jaw — I want to treat aggressively but safely for facial skin"<br>
+        ✦ "I'm currently using Desonide 0.05% — is Protopic or Elidel appropriate for long term facial use?"<br>
+        ✦ "I want to move away from corticosteroids on my face"<br>
+        ✦ "I also have a blood spot on my cheek, a spider angioma on my forehead, and hair thinning"<br>
+        ✦ "I do Korean skincare — any ingredient conflicts I should know about?"
+      </div>
+    </div>
+  </div>
+  <div class="sk-card sk-yellow">
+    <div class="sk-hdr"><div style="font-size:22px;">⚠️</div><div><h3>Psoriasis Triggers to Manage</h3><div class="sk-sub">Tap when managed today</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:.35rem">
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:18px;flex-shrink:0">😮‍💨</div><div style="flex:1"><div class="sk-sname">Stress managed today</div><div class="sk-snote">Major trigger · meditation, breathwork, dance all help</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:18px;flex-shrink:0">🍔</div><div style="flex:1"><div class="sk-sname">Avoided greasy/inflammatory food</div><div class="sk-snote">Fried, processed, spicy foods worsen Blood Heat psoriasis</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:18px;flex-shrink:0">🚿</div><div style="flex:1"><div class="sk-sname">Lukewarm shower only</div><div class="sk-snote">Hot water strips barrier and inflames plaques</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:18px;flex-shrink:0">💧</div><div style="flex:1"><div class="sk-sname">Stayed hydrated today</div><div class="sk-snote">8+ glasses · psoriasis worsens with dehydration</div></div><div class="sk-chk">✓</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TCM ══ -->
+<div id="sk-tcm" class="sk-panel" style="display:none">
+  <div style="background:linear-gradient(135deg,#071a12,#082d1c);border:1.5px solid #3abf9e55;border-radius:15px;padding:.9rem 1.1rem;margin-bottom:.75rem">
+    <div style="font-size:14px;font-weight:900;color:#4dba8a;margin-bottom:.2rem">🌿 TCM REMEDIES FOR PSORIASIS</div>
+    <div style="font-size:10px;color:#3abf9e;font-weight:700;">Blood Heat Pattern (血热) · Consult Dr. Lau for personalized formula</div>
+  </div>
+  <div class="sk-card sk-teal">
+    <div class="sk-hdr"><div style="font-size:22px;">🔥</div><div><h3>Your TCM Pattern</h3><div class="sk-sub">Blood Heat (血热) — most likely yours</div></div></div>
+    <div style="background:var(--bg3);border-radius:11px;padding:.75rem .85rem">
+      <div style="font-size:11px;color:var(--tx2);line-height:1.8">In TCM, psoriasis is most commonly seen as <strong style="color:#4dba8a">Blood Heat (血热 Xuè Rè)</strong> — your red, active facial plaques fit this pattern. The treatment principle is to <strong style="color:#4dba8a">Cool the Blood, Clear Heat, and Detoxify</strong>. This connects to your diet (greasy food worsens Blood Heat), stress levels, and lifestyle. Dr. Lau will confirm your exact pattern.</div>
+    </div>
+  </div>
+  <div class="sk-card sk-teal">
+    <div class="sk-hdr"><div style="font-size:22px;">🍵</div><div><h3>Daily Teas — Blood Heat Cooling</h3><div class="sk-sub">Tap each one you drank today</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:.35rem">
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:20px;flex-shrink:0">🌸</div><div style="flex:1"><div class="sk-sname">Chrysanthemum Tea 菊花茶</div><div class="sk-snote">júhuā chá · Cooling · anti-inflammatory · addresses Blood Heat directly · daily safe</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:20px;flex-shrink:0">🌼</div><div style="flex:1"><div class="sk-sname">Honeysuckle Tea 金银花茶</div><div class="sk-snote">jīn yínhuā chá · Clears Heat and toxins · inflammatory skin · alternate with Chrysanthemum</div></div><div class="sk-chk">✓</div></div>
+      <div class="sk-step" onclick="skTogglePsoriasis(this)" style="border:1.5px dashed #c0392b55;opacity:.75"><div style="font-size:20px;flex-shrink:0">🌱</div><div style="flex:1"><div class="sk-sname">Dandelion Root Tea <span style="font-size:9px;background:#2a0808;color:#c0392b;border-radius:5px;padding:1px 6px;margin-left:4px;font-weight:800">⚠️ ALLERGY — SKIP</span></div><div class="sk-snote">Pú Gōng Yīng · You have confirmed dandelion root allergy — do NOT consume</div></div><div class="sk-chk" style="color:#c0392b;border-color:#c0392b">✕</div></div>
+      <div class="sk-step" onclick="skTogglePsoriasis(this)"><div style="font-size:20px;flex-shrink:0">🌿</div><div style="flex:1"><div class="sk-sname">Burdock Root Tea 牛蒡子</div><div class="sk-snote">Niú Bàng Zǐ · Blood purifying · skin conditions in TCM · available health food stores</div></div><div class="sk-chk">✓</div></div>
+    </div>
+  </div>
+  <div class="sk-card sk-yellow">
+    <div class="sk-hdr"><div style="font-size:22px;">🏥</div><div><h3>Herbs to Discuss with Dr. Lau</h3><div class="sk-sub">DO NOT self-prescribe · consultation only</div></div></div>
+    <div style="display:flex;flex-direction:column;gap:.35rem">
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem"><div style="font-size:11px;font-weight:800;color:var(--tx)">土茯苓 Tu Fu Ling (Smilax)</div><div style="font-size:9px;color:#4dba8a;font-style:italic">Tǔ Fú Líng — too foo ling</div><div style="font-size:10px;color:var(--tx3);margin-top:.2rem;line-height:1.5">Most historically used herb for psoriasis in TCM · clears Damp Heat and toxins from Blood</div></div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem"><div style="font-size:11px;font-weight:800;color:var(--tx)">白鲜皮 Bai Xian Pi (Dictamnus)</div><div style="font-size:9px;color:#4dba8a;font-style:italic">Bái Xiān Pí — bye shen pee</div><div style="font-size:10px;color:var(--tx3);margin-top:.2rem;line-height:1.5">Clears Heat · dries Dampness · relieves itching specifically · directly targets skin conditions</div></div>
+      <div style="background:var(--bg3);border-radius:10px;padding:.6rem .8rem"><div style="font-size:11px;font-weight:800;color:var(--tx)">生地黄 Sheng Di Huang (Rehmannia)</div><div style="font-size:9px;color:#4dba8a;font-style:italic">Shēng Dì Huáng — shung dee hwang</div><div style="font-size:10px;color:var(--tx3);margin-top:.2rem;line-height:1.5">Cools Blood Heat · nourishes Yin · very commonly used for skin conditions · likely in your formula</div></div>
+    </div>
+    <div style="background:rgba(245,200,66,.1);border-radius:9px;padding:.6rem .8rem;margin-top:.5rem;border:1.5px dashed #f5c84255">
+      <div style="font-size:10px;font-weight:800;color:#a07030">⚠️ These herbs require Dr. Lau's diagnosis. Do NOT purchase or use without consultation. Your VUIM training will help you understand his reasoning! 📚</div>
+    </div>
+  </div>
+  <div class="sk-card sk-coral">
+    <div class="sk-hdr"><div style="font-size:22px;">🚫</div><div><h3>Foods to Avoid</h3><div class="sk-sub">Blood Heat worsening foods</div></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem">
+      <div style="background:var(--bg3);border-radius:8px;padding:.45rem .65rem;display:flex;gap:.4rem;align-items:center"><div style="font-size:13px">❌</div><div style="font-size:10px;font-weight:700;color:#ff8c7a">Spicy food</div></div>
+      <div style="background:var(--bg3);border-radius:8px;padding:.45rem .65rem;display:flex;gap:.4rem;align-items:center"><div style="font-size:13px">❌</div><div style="font-size:10px;font-weight:700;color:#ff8c7a">Fried food</div></div>
+      <div style="background:var(--bg3);border-radius:8px;padding:.45rem .65rem;display:flex;gap:.4rem;align-items:center"><div style="font-size:13px">❌</div><div style="font-size:10px;font-weight:700;color:#ff8c7a">Alcohol</div></div>
+      <div style="background:var(--bg3);border-radius:8px;padding:.45rem .65rem;display:flex;gap:.4rem;align-items:center"><div style="font-size:13px">❌</div><div style="font-size:10px;font-weight:700;color:#ff8c7a">Processed food</div></div>
+      <div style="background:var(--bg3);border-radius:8px;padding:.45rem .65rem;display:flex;gap:.4rem;align-items:center"><div style="font-size:13px">❌</div><div style="font-size:10px;font-weight:700;color:#ff8c7a">Greasy food</div></div>
+      <div style="background:var(--bg3);border-radius:8px;padding:.45rem .65rem;display:flex;gap:.4rem;align-items:center"><div style="font-size:13px">❌</div><div style="font-size:10px;font-weight:700;color:#ff8c7a">Shellfish</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PLAYLIST ══ -->
+<div id="sk-playlist" class="sk-panel" style="display:none">
+  <div style="background:linear-gradient(135deg,#0d0d1e,#111628,#0a1a2e);border:.5px solid #3abf9e33;border-radius:15px;padding:1.1rem;margin-bottom:.75rem;text-align:center">
+    <div style="font-size:26px;margin-bottom:.3rem">🇰🇷🎵</div>
+    <div style="font-size:16px;font-weight:900;color:#e6edf3;margin-bottom:.2rem">Jon C's Korean Skincare Playlist</div>
+    <div style="font-size:10px;color:var(--tx3)">K-Pop · K-Indie · K-R&amp;B · All the vibes 💅</div>
+  </div>
+  <div class="sk-card sk-yellow">
+    <div class="sk-hdr"><div style="font-size:22px;">🌅</div><div><h3>AM Routine — K-Pop Energy</h3><div class="sk-sub">Fresh K-Pop hits · morning glow motivation</div></div></div>
+    <a href="https://www.youtube.com/playlist?list=PLOHoVaTp8R7dfrJW5pumS0iD_dhlXKv17" target="_blank" style="text-decoration:none;display:block;margin-bottom:.65rem">
+      <div style="background:linear-gradient(135deg,#c00,#900);border-radius:13px;padding:1rem;display:flex;align-items:center;gap:.85rem">
+        <div style="background:white;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><div style="font-size:20px;margin-left:3px">▶</div></div>
+        <div><div style="font-size:12px;font-weight:900;color:white">Play K-Pop 2026 Hits</div><div style="font-size:9px;color:rgba(255,255,255,.8);margin-top:2px">aespa · JENNIE · NMIXX · Stray Kids · LE SSERAFIM</div></div>
+      </div>
+    </a>
+    <div style="display:flex;gap:.3rem;flex-wrap:wrap">
+      <span style="background:#221c06;color:#f5a623;font-size:8px;font-weight:800;padding:3px 8px;border-radius:99px">aespa Supernova 🏆</span>
+      <span style="background:#221c06;color:#f5a623;font-size:8px;font-weight:800;padding:3px 8px;border-radius:99px">JENNIE like JENNIE</span>
+      <span style="background:#221c06;color:#f5a623;font-size:8px;font-weight:800;padding:3px 8px;border-radius:99px">NewJeans</span>
+    </div>
+  </div>
+  <div class="sk-card sk-sky">
+    <div class="sk-hdr"><div style="font-size:22px;">🌙</div><div><h3>PM Routine — K-R&amp;B Chill</h3><div class="sk-sub">Smooth Korean R&amp;B · evening recovery vibes</div></div></div>
+    <a href="https://www.youtube.com/watch?v=afGSWWKuMuc" target="_blank" style="text-decoration:none;display:block;margin-bottom:.65rem">
+      <div style="background:linear-gradient(135deg,#0d0d1e,#2d3a8a);border-radius:13px;padding:1rem;display:flex;align-items:center;gap:.85rem">
+        <div style="background:white;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><div style="font-size:20px;margin-left:3px">▶</div></div>
+        <div><div style="font-size:12px;font-weight:900;color:white">Play Korean R&amp;B Vibes</div><div style="font-size:9px;color:rgba(255,255,255,.8);margin-top:2px">Dean · Crush · Heize · pH-1 · BIG Naughty</div></div>
+      </div>
+    </a>
+    <div style="display:flex;gap:.3rem;flex-wrap:wrap">
+      <span style="background:#070f1a;color:#4a9fd4;font-size:8px;font-weight:800;padding:3px 8px;border-radius:99px">Dean 🎵</span>
+      <span style="background:#070f1a;color:#4a9fd4;font-size:8px;font-weight:800;padding:3px 8px;border-radius:99px">Crush</span>
+      <span style="background:#070f1a;color:#4a9fd4;font-size:8px;font-weight:800;padding:3px 8px;border-radius:99px">Heize</span>
+    </div>
+  </div>
+  <div class="sk-card sk-teal">
+    <div class="sk-hdr"><div style="font-size:22px;">🎭</div><div><h3>Weekly Mask Night — K-Indie</h3><div class="sk-sub">IU · Epik High · chill sheet mask energy</div></div></div>
+    <a href="https://www.youtube.com/watch?v=bIFoItzasgc" target="_blank" style="text-decoration:none;display:block;margin-bottom:.65rem">
+      <div style="background:linear-gradient(135deg,#082d1c,#0a3828);border-radius:13px;padding:1rem;display:flex;align-items:center;gap:.85rem">
+        <div style="background:white;border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><div style="font-size:20px;margin-left:3px">▶</div></div>
+        <div><div style="font-size:12px;font-weight:900;color:white">🌻 Summer Chill K-Indie Mix</div><div style="font-size:9px;color:rgba(255,255,255,.8);margin-top:2px">IU · Epik High · AKMU · Younha · 10cm · hyukoh</div></div>
+      </div>
+    </a>
+    <div style="display:flex;gap:.3rem;flex-wrap:wrap">
+      <span style="background:#082d1c;color:#4dba8a;font-size:8px;font-weight:800;padding:3px 8px;border-radius:99px">IU 🌙</span>
+      <span style="background:#082d1c;color:#4dba8a;font-size:8px;font-weight:800;padding:3px 8px;border-radius:99px">Epik High</span>
+      <span style="background:#082d1c;color:#4dba8a;font-size:8px;font-weight:800;padding:3px 8px;border-radius:99px">AKMU</span>
+    </div>
+  </div>
+  <div style="background:linear-gradient(135deg,#071a12,#3abf9e22);border-radius:13px;padding:.85rem;text-align:center">
+    <div style="font-size:13px;font-weight:900;color:#e6edf3;margin-bottom:.35rem">🇰🇷 Pro tip for your Korean studies!</div>
+    <div style="font-size:10px;color:var(--tx3);line-height:1.7">Listening to K-Pop while doing your skincare routine helps your brain absorb Korean naturally. Try reading along with subtitles on YouTube — your skincare routine is now also Korean class! 공부해요!</div>
+  </div>
+</div>
+
+</div><!-- end sec-skincare sec --></div><!-- end sec-skincare -->
 
 <!-- CRISIS MODAL -->
 <div id="crisis-modal">
@@ -3539,6 +4012,67 @@ function initAdvising(){
     if(!ov || Date.now() - ovt > 30 * 60 * 1000) autoTheme();
   }, 5 * 60 * 1000);
 })();
+// ════════════════════════════════════════
+// SKINCARE TAB — sub-nav + interactive logic
+// ════════════════════════════════════════
+(function(){
+  // Sub-nav
+  var skNav = document.getElementById("sk-nav");
+  if(skNav){
+    skNav.addEventListener("click", function(e){
+      var b = e.target.closest(".sk-tab-btn[data-sk]");
+      if(!b) return;
+      skNav.querySelectorAll(".sk-tab-btn").forEach(function(x){x.classList.remove("active");});
+      b.classList.add("active");
+      document.querySelectorAll(".sk-panel").forEach(function(p){p.style.display="none";});
+      var panel = document.getElementById(b.dataset.sk);
+      if(panel) panel.style.display="block";
+    });
+  }
+})();
+
+function skToggle(el){
+  el.classList.toggle("sk-done");
+  var c = el.querySelector(".sk-chk");
+  if(c){c.style.background = el.classList.contains("sk-done")?"#3abf9e":""; c.style.color = el.classList.contains("sk-done")?"#fff":"#3abf9e";}
+  skUpdateProgress(el.dataset.skRoutine);
+}
+function skUpdateProgress(routine){
+  if(!routine) return;
+  var steps = document.querySelectorAll("#sk-"+routine+"-steps .sk-step");
+  var done = document.querySelectorAll("#sk-"+routine+"-steps .sk-step.sk-done").length;
+  var total = steps.length;
+  var pct = total ? (done/total*100) : 0;
+  var fill = document.getElementById("sk-"+routine+"-fill");
+  var lbl = document.getElementById("sk-"+routine+"-lbl");
+  if(fill) fill.style.width = pct+"%";
+  if(lbl) lbl.textContent = done+" of "+total+" steps done"+(done===total?" 🎉":"");
+}
+function skReset(routine){
+  document.querySelectorAll("#sk-"+routine+"-steps .sk-step").forEach(function(s){
+    s.classList.remove("sk-done");
+    var c = s.querySelector(".sk-chk");
+    if(c){c.style.background="";c.style.color="#3abf9e";}
+  });
+  skUpdateProgress(routine);
+}
+function skToggleDay(el){
+  el.classList.toggle("sk-done");
+  var c = el.querySelector(".sk-day-chk");
+  if(c) c.textContent = el.classList.contains("sk-done")?"✓":"○";
+}
+function skToggleProduct(el){
+  var exp = el.querySelector(".sk-product-expand");
+  if(exp) exp.classList.toggle("open");
+}
+function skToggleKorean(el){
+  var bd = el.querySelector(".sk-breakdown");
+  if(bd) bd.classList.toggle("open");
+}
+function skTogglePsoriasis(el){
+  el.classList.toggle("sk-done");
+  var c = el.querySelector(".sk-chk");
+  if(c){c.style.background = el.classList.contains("sk-done")?"#3abf9e":""; c.style.color = el.classList.contains("sk-done")?"#fff":"#3abf9e";}
+}
 </script>
-</body>
 </html>
