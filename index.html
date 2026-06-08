@@ -811,8 +811,10 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 
 <!-- BUY -->
 <div id="sec-buy" style="display:none"><div class="sec">
-  <div class="sec-lbl">Where to buy</div>
+  <div class="sec-lbl">🌿 Herbs & VUIM</div>
   <div id="buy-content"></div>
+  <div class="sec-lbl" style="margin-top:.75rem">💆 Hair & Skincare</div>
+  <div id="buy-hair-skin-content"></div>
 </div></div>
 
 <!-- BACKUP -->
@@ -1098,13 +1100,7 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   </div>
 </div></div>
 
-</div><!-- end main-content -->
 
-<!-- ══════════════════════════════════════════════════════════
-     SKINCARE SECTION — sec-skincare
-     CareCella × Korean Skincare Matrix
-     Dark-themed, adapted from skincare_interactive.html
-═══════════════════════════════════════════════════════════ -->
 <div id="sec-skincare" style="display:none">
 <div class="sec">
 
@@ -1504,6 +1500,8 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 </div>
 
 </div><!-- end sec-skincare sec --></div><!-- end sec-skincare -->
+
+</div><!-- end main-content -->
 
 <!-- CRISIS MODAL -->
 <div id="crisis-modal">
@@ -2109,6 +2107,19 @@ var BUY = [
   {name:"Pacific Botanicals",url:"https://www.pacificbotanicals.com",note:"Organic focus. Excellent for single herbs: Huang Qi, Dang Gui, Ge Gen. Open ordering."},
   {name:"Amazon (food-grade only)",url:"https://www.amazon.com",note:"For Gou Qi Zi berries, Chrysanthemum flowers — food-grade only. Never for clinical herbs."},
   {name:"VUIM Library Resources",url:"https://www.vuim.edu",note:"📚 Your VUIM student account gives access to: Point Location software via school license, EBSCO health databases, and clinical herb formulary references. Ask your program coordinator."}
+];
+
+var BUY_HAIR_SKIN = [
+  {name:"VUIM Clinic — HerbalMint Scalp Shampoo + Tonic",url:"https://vuimclinic.com",note:"⚠️ REORDER NOW — Tonic expired May 23 2026. Primary scalp shampoo + leave-in tonic. Buy both together."},
+  {name:"Koi Beauty 0.5mm Scalp Dermaroller",url:"https://www.amazon.com/s?k=koi+beauty+0.5mm+dermaroller",note:"Amazon ~$15 · titanium needles · replace every 3 months · clean with 70% isopropyl after every use · ⚠️ NEVER on active psoriasis plaques"},
+  {name:"Aromatica Rosemary Root Enhancer",url:"https://www.iherb.com/search#query=aromatica+rosemary+root+enhancer",note:"iHerb ~$18 · also on YesStyle · shake before use · your nightly scalp step after Clobetasol dries"},
+  {name:"Dr. Groot Hair Thickening Shampoo",url:"https://www.amazon.com/s?k=dr+groot+hair+thickening+shampoo",note:"Amazon ~$20 · sulfate/silicone-free · alternate with VUIM shampoo"},
+  {name:"Dr. Groot In-Shower Scalp Treatment",url:"https://www.amazon.com/s?k=dr+groot+miracle+in+shower+treatment",note:"Amazon ~$22 · use after shampoo · massage 3 min · rinse · salicylic acid + niacinamide + rosemary"},
+  {name:"Dr. Groot Hair Loss Control Scalp Tonic",url:"https://www.amazon.com/s?k=dr+groot+hair+loss+control+scalp+tonic",note:"Amazon ~$18 · leave-in · use on Dr. Groot shampoo days"},
+  {name:"Skin1004 Madagascar Centella Ampoule",url:"https://www.amazon.com/s?k=skin1004+centella+ampoule",note:"Amazon or Ulta ~$18 · calms redness + psoriasis-adjacent skin · also on YesStyle · Stylevana"},
+  {name:"COSRX Pimple Patches",url:"https://www.amazon.com/s?k=cosrx+pimple+patches",note:"Amazon ~$12 · buy both Acne Pimple Master Patch (day) and Mighty Patch Original (night)"},
+  {name:"Then I Met You Sunscreen",url:"https://www.sephora.com/search?keyword=then+i+met+you+sunscreen",note:"Sephora · also Ulta · Korean SPF · your final AM step every morning · reapply every 2hrs outdoors"},
+  {name:"GCoop CareCella (all items)",url:"https://www.gcoop.com",note:"Item 279 Body Lotion · Item 281 Body Wash · Item 283 Hair Conditioner · Hydration Basic Set · Bubble TocToc · Eye Puff Cream · Magic Peeling Gel · Hydra Soothe Mask · Bio K Apple Serum"}
 ];
 
 var HANGUL_DATA = {
@@ -3287,6 +3298,17 @@ function initBuy(){
     return '<div class="card" style="margin-bottom:.45rem">'
       +'<div style="font-size:14px;font-weight:600;color:var(--tx);margin-bottom:.2rem">'+s.name+'</div>'
       +'<div style="font-size:12px;color:var(--tx3);margin-bottom:.35rem;line-height:1.5">'+s.note+'</div>'
+      +'<a href="'+s.url+'" target="_blank" style="font-size:12px;color:var(--G2)">Open →</a>'
+      +'</div>';
+  }).join("");
+  var el2=document.getElementById("buy-hair-skin-content");
+  if(!el2) return;
+  el2.innerHTML=BUY_HAIR_SKIN.map(function(s){
+    var urgent=s.note.indexOf("REORDER NOW")!==-1;
+    return '<div class="card" style="margin-bottom:.45rem'+(urgent?';border-color:#c0392b44;background:rgba(192,57,43,.06)':'')+'">'
+      +(urgent?'<div style="font-size:9px;font-weight:900;color:#c0392b;margin-bottom:.25rem;letter-spacing:.06em">⚠️ REORDER NOW</div>':'')
+      +'<div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:.2rem">'+s.name+'</div>'
+      +'<div style="font-size:11px;color:var(--tx3);margin-bottom:.35rem;line-height:1.5">'+s.note.replace("⚠️ REORDER NOW — ","")+'</div>'
       +'<a href="'+s.url+'" target="_blank" style="font-size:12px;color:var(--G2)">Open →</a>'
       +'</div>';
   }).join("");
