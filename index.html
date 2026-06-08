@@ -266,8 +266,8 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 <div id="sec-checkin">
   <div class="hero">
     <div class="hero-num" id="dayNum">—</div>
-    <div class="hero-unit">days on this journey</div>
-    <div class="hero-sub">Since November 23, 2025 · Current streak from June 7, 2026</div>
+    <div class="hero-unit" id="hero-unit-lbl">days on this journey</div>
+    <div class="hero-sub" id="hero-sub-lbl">Since November 23, 2025</div>
     <!-- TIMELINE BAR -->
     <div style="margin:.75rem 0 .3rem">
       <div style="position:relative;height:10px;background:#0a1f12;border-radius:5px;overflow:visible">
@@ -289,7 +289,7 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
     <!-- Clinical fact -->
     <div style="background:rgba(18,163,122,.08);border:1px solid rgba(18,163,122,.2);border-radius:8px;padding:.4rem .75rem;margin:.45rem 0 0;display:flex;align-items:center;gap:.5rem">
       <span style="font-size:16px">🫀</span>
-      <div style="font-size:11px;color:#4dba8a;font-weight:600"><span id="dayNum2">137</span> days sober → AST dropped from 181 to 58</div>
+      <div style="font-size:11px;color:#4dba8a;font-weight:600"><span id="dayNum2">197</span> days since Nov 23 → AST dropped from 181 to 58</div>
     </div>
     <div class="hero-bar" style="margin-top:.6rem"><div class="hero-bar-fill" id="liverBar"></div></div>
     <div class="hero-bar-note" id="liverNote"></div>
@@ -2386,23 +2386,35 @@ function initCounter(){
   if(isNaN(totalDays)||totalDays<0) totalDays = DAYS;
   DAYS = totalDays;
 
-  // Current streak from Jun 7 8:30pm ET
-  var streakDays = Math.floor((now - SLIP_END) / 86400000);
-  if(streakDays < 0) streakDays = 0;
+  // Full journey from Nov 23 2025 — this is THE number
+  var totalDays = Math.floor((now - JOURNEY_START) / 86400000);
+  if(isNaN(totalDays)||totalDays<0) totalDays = 0;
+  DAYS = totalDays;
+
+  // Slip window: Apr 10 8pm ET → Jun 7 8:30pm ET (58 days)
+  // Used only for the visual blip on the timeline bar — not for the counter
+  var streakDays = totalDays; // The number IS the Nov 23 journey
+  var streakDisplay = totalDays;
+  var unitLabel = "days on this journey";
+  var subLabel = "Since November 23, 2025";
 
   var dayEl=document.getElementById("dayNum");
   var dayEl2=document.getElementById("dayNum2");
+  var unitLbl=document.getElementById("hero-unit-lbl");
+  var subLbl=document.getElementById("hero-sub-lbl");
   var wkEl=document.getElementById("wkNum");
   var moEl=document.getElementById("moNum");
-  if(dayEl) dayEl.textContent=streakDays;
+  if(dayEl) dayEl.textContent=streakDisplay;
   if(dayEl2) dayEl2.textContent=totalDays;
-  if(wkEl)  wkEl.textContent=Math.floor(streakDays/7);
-  if(moEl)  moEl.textContent=Math.floor(streakDays/30);
-  var next=MILESTONES.find(function(m){return m.d>streakDays&&!m.slip;});
+  if(unitLbl) unitLbl.textContent=unitLabel;
+  if(subLbl) subLbl.textContent=subLabel;
+  if(wkEl)  wkEl.textContent=Math.floor(totalDays/7);
+  if(moEl)  moEl.textContent=Math.floor(totalDays/30);
+  var next=MILESTONES.find(function(m){return m.d>totalDays&&!m.slip;});
   if(next){
     var nEl=document.getElementById("nxtNum");
     var lEl=document.getElementById("nxtLbl");
-    if(nEl) nEl.textContent=next.d-streakDays;
+    if(nEl) nEl.textContent=next.d-totalDays;
     if(lEl) lEl.textContent="to "+next.l;
   }
   var pct=Math.min(100,Math.round((totalDays/730)*100));
