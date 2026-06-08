@@ -743,6 +743,7 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 
   <!-- TCM HERBS -->
   <div class="sec-lbl">TCM herbs — discuss with Dr. Lau first</div>
+  <div id="health-supp-list"></div>
   <div id="health-herbs-list"></div>
 
   <!-- SUPPLIERS -->
@@ -1005,6 +1006,7 @@ var MEDS = {
     {type:"supp",name:"③ Vitamin D3 + K2 (Life Extension)", dose:"1 cap",  color:"#0a7a58", note:"With fatty breakfast · D3 29.3 → goal 50–80 · fat-soluble — must have fat to absorb"},
     {type:"supp",name:"③ Ubiquinol (Momentus)",          dose:"1 softgel",  color:"#0a7a58", note:"With breakfast · CoQ10 active form · mitochondrial + liver energy · fat-soluble"},
     {type:"herb",name:"③ Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps",     color:"#4a9fd4", note:"With breakfast · Kidney Yin tonic · ED + low Free T + SHBG · take consistently for 6–8 weeks"},
+    {type:"herb",name:"③ Er Zhi Wan 二至丸",              dose:"3 caps",     color:"#4a9fd4", note:"With breakfast · Blood Heat hair loss · Liver/Kidney Yin · pairs with Liu Wei · 6–8 weeks minimum"},
     {type:"herb",name:"③ Xiao Feng San 消风散",           dose:"3 caps",     color:"#4a9fd4", note:"With breakfast · psoriasis / Blood Heat · avoid alcohol, spicy, shellfish while using"}
   ],
   afternoon:[
@@ -1020,6 +1022,7 @@ var MEDS = {
     {type:"rx",  name:"② Lithium Carbonate (2nd dose)",  dose:"150mg",      color:"#c0392b", note:"With dinner · consistent evening time · anchors overnight mood · never with alcohol"},
     {type:"rx",  name:"② Risperidone → tapering to Abilify", dose:"0.25mg", color:"#c0392b", note:"With dinner · tapering now · PRIMARY prolactin driver → low Free T → ED · Abilify switch soon"},
     {type:"herb",name:"② Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps",     color:"#4a9fd4", note:"With dinner · 3rd of 3 daily doses · complete the day's protocol"},
+    {type:"herb",name:"② Er Zhi Wan 二至丸",              dose:"3 caps",     color:"#4a9fd4", note:"With dinner · 2nd of 2 daily doses · always with food · cooling formula"},
     {type:"herb",name:"② Xiao Feng San 消风散",           dose:"3 caps",     color:"#4a9fd4", note:"With dinner · 3rd of 3 daily doses · complete the day's protocol"},
     {type:"herb",name:"② Zeng Ye Cheng Qi Tang 增液承气汤",dose:"3 caps — AS NEEDED only", color:"#4a9fd4", note:"Evening only when needed · bowel support · 5–7 day course max · not daily · monitor with Lithium"},
     {type:"supp",name:"③ Advanced Milk Thistle",          dose:"1 softgel",  color:"#12a37a", note:"🥜 After dinner with fat snack (nuts/PB) · fat-soluble silymarin · anti-fibrotic · take AFTER eating"},
@@ -1028,19 +1031,40 @@ var MEDS = {
   herbs:[
     {type:"herb",name:"Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps · 3× daily with meals — see schedule above",color:"#4a9fd4",note:"Kidney Yin tonic · ED + low Free T (5.0) + SHBG · Rehmannia Six · 6–8 weeks to assess"},
     {type:"herb",name:"Xiao Feng San 消风散",          dose:"3 caps · 3× daily with meals — see schedule above",color:"#4a9fd4",note:"Psoriasis / Blood Heat · DangGui & Arctium · avoid alcohol, spicy, shellfish · 4–8 weeks"},
+    {type:"herb",name:"Er Zhi Wan 二至丸",             dose:"3 caps · 2× daily with meals (breakfast + dinner)",color:"#4a9fd4",note:"Blood Heat + Liver/Kidney Yin hair loss · your exact pattern · Nǚ Zhēn Zǐ + Mò Hàn Lián · hepatoprotective · Kamwo or Lhasa OMS"},
     {type:"herb",name:"Zeng Ye Cheng Qi Tang 增液承气汤",dose:"3 caps · evening only · as needed",color:"#4a9fd4",note:"Bowel support · 5–7 day course max · not for daily use · Da Huang is strong purgative · monitor with Lithium"}
   ],
   topicals:[
+    /* ── BODY / FACE ─────────────────────────────── */
     {type:"rx",  name:"🌅 AM — Calcipotriene + Betamethasone Ointment",dose:"0.005%/0.064% · thin layer · 1× daily AM",color:"#c0392b",note:"Body + genital psoriasis · apply to plaques after morning shower · max 4 weeks continuous then rest · ⚠️ avoid face · Dr. Kohn"},
     {type:"rx",  name:"🌅 AM — Desonide Ointment",dose:"0.05% · face/nose · 1–2× daily",color:"#c0392b",note:"Nose + facial psoriasis · mild steroid safe for sensitive skin · AM + PM if needed · Dr. Kohn (703-370-0073)"},
-    {type:"supp",name:"🚿 AM — VUIM HerbalMint Scalp Shampoo",dose:"Each wash · massage 2 min · rinse",color:"#12a37a",note:"Hair loss + scalp psoriasis · 6 TCM herbs + Persian spearmint + salicylic acid · vuimclinic.com"},
-    {type:"supp",name:"🚿 AM — VUIM HerbalMint Scalp Tonic",dose:"Post-shampoo · fingertips · circular massage · leave in",color:"#c47a1a",note:"⚠️ EXPIRED May 23, 2026 — do not use · reorder at vuimclinic.com · copper tripeptide + TCM herbs"},
-    {type:"rx",  name:"🌙 PM — Clobetasol Propionate Solution",dose:"0.05% · scalp · 1× nightly before bed",color:"#c0392b",note:"Scalp psoriasis · apply to partings at night · works overnight · wash out in AM with VUIM shampoo · max 2 weeks continuous · Dr. Kohn"},
-    {type:"supp",name:"🌙 PM — Rosemary Oil (topical)",dose:"Few drops · massage into scalp after Clobetasol dries",color:"#12a37a",note:"Matches minoxidil for hair density in clinical studies · purely topical — zero liver involvement · anti-inflammatory for scalp · safe with all your meds"},
-    {type:"supp",name:"🚿 Alternate — Ketoconazole Shampoo (Nizoral)",dose:"Alternate days with VUIM shampoo",color:"#6c5fc7",note:"Topical only — not absorbed systemically · reduces scalp DHT locally + anti-inflammatory · helps psoriasis flares · liver-safe"},
-    {type:"herb",name:"🌿 Er Zhi Wan — 女貞子 Nǚ Zhēn Zǐ + 墨旱蓮 Mò Hàn Lián",dose:"3 caps each · 2× daily with meals",color:"#4a9fd4",note:"Classical formula for Blood Heat + Liver/Kidney Yin hair loss — your exact pattern · cools Blood + nourishes Yin · no hepatotoxicity · pairs with Liu Wei Di Huang Wan already in your stack"},
-    {type:"herb",name:"🌿 側柏葉 Cè Bǎi Yè (Biota Leaves)",dose:"9–15g tea · 2× daily · also use as scalp rinse",color:"#4a9fd4",note:"#1 classical herb for Blood Heat hair loss · cools Blood + stops shedding · brew strong tea and pour over scalp as final rinse · no hepatotoxicity · direct pattern match"},
-    {type:"herb",name:"🌿 桑椹 Sāng Shèn (Mulberry Fruit)",dose:"15–30g daily · eat as food or brew as tea",color:"#4a9fd4",note:"Nourishes Liver/Kidney Blood and Jing · food-grade safe · gentle enough daily long-term · your liver handles this easily · addresses Blood deficiency hair loss angle"}
+    {type:"supp",name:"🚿 AM — GCoop Body Wash (item 281)",dose:"Daily shower · loofah or wash cloth · lather · rinse",color:"#12a37a",note:"Centella Asiatica + Ginsenosides + Hyaluronate · also effective on body psoriasis patches · do NOT use as primary shampoo (causes stiffness) · pH 6.00"},
+    {type:"supp",name:"🧴 AM — GCoop CareCella Body Lotion (item 279)",dose:"Post-shower · apply to damp skin · full body",color:"#12a37a",note:"Ceramide NP + Sodium Hyaluronate + Allantoin + Tremella Mushroom + Propolis · fragrance-minimal · psoriasis-friendly barrier repair · apply before fully dry for best absorption"},
+    /* ── FACE SKINCARE ───────────────────────────── */
+    {type:"supp",name:"✨ GCoop Hydration Basic Set",dose:"AM + PM · toner → serum → moisturizer",color:"#4a9fd4",note:"Core CareCella hydration routine · base layer for all other serums · use after cleansing"},
+    {type:"supp",name:"✨ GCoop Bubble TocToc Serum",dose:"AM · after toner · before moisturizer",color:"#4a9fd4",note:"Oxygenating bubble serum · brightening + pore care · normal-to-oily skin ✅"},
+    {type:"supp",name:"✨ GCoop Bio K AppleTamin C Serum",dose:"AM · vitamin C step · before moisturizer",color:"#4a9fd4",note:"Vitamin C brightening + antioxidant · layer after TocToc · AM preferred for antioxidant protection"},
+    {type:"supp",name:"✨ GCoop Eye Puff Cream",dose:"AM + PM · gentle pat around orbital bone",color:"#4a9fd4",note:"Puffiness + dark circles · do not pull or rub · warm fingertip application"},
+    {type:"supp",name:"✨ GCoop Magic Peeling Gel",dose:"1–2× weekly · dry face · rub gently · rinse",color:"#6c5fc7",note:"Physical exfoliant · use before toner step · not for active psoriasis patches on face · patch test first"},
+    {type:"supp",name:"✨ GCoop Hydra Soothing Mask Pack",dose:"1–2× weekly · 15–20 min · do not rinse",color:"#6c5fc7",note:"Intensive hydration · use after peeling gel day or when skin feels tight · leave excess essence, pat in"},
+    {type:"supp",name:"☀️ Then I Met You Sunscreen",dose:"AM · last step · every morning",color:"#c47a1a",note:"Daily SPF · apply after moisturizer · reapply if outdoors · Korean formula · non-greasy"},
+    {type:"supp",name:"🩹 COSRX Pimple Patches",dose:"As needed · clean dry skin · overnight",color:"#6c5fc7",note:"Hydrocolloid · pulls impurities · active acne spots only · remove gently AM"},
+    {type:"supp",name:"💧 Skin1004 Centella Ampoule",dose:"AM or PM · after toner · sensitive/inflamed areas",color:"#12a37a",note:"Centella Asiatica · calms redness and irritation · safe on psoriasis-adjacent skin · layer under moisturizer"},
+    /* ── SCALP / HAIR ────────────────────────────── */
+    {type:"supp",name:"🚿 WASH DAYS — VUIM HerbalMint Scalp Shampoo",dose:"Every other day · massage 2 min · rinse",color:"#12a37a",note:"Primary shampoo · hair loss + scalp psoriasis · 6 TCM herbs + Persian spearmint + salicylic acid · vuimclinic.com · reorder TONIC too"},
+    {type:"supp",name:"🚿 WASH DAYS (alt) — Dr. Groot Hair Thickening Shampoo",dose:"Alternate with VUIM · biotin + rosemary + caffeine · rinse",color:"#0a7a58",note:"Sulfate/silicone-free · 76% scalp buildup removal · clinically reduces breakage · use on days alternating from VUIM · Amazon ~$20"},
+    {type:"supp",name:"🚿 WASH DAYS — Dr. Groot Miracle In-Shower Treatment",dose:"After shampoo · massage into scalp · leave 3 min · rinse",color:"#0a7a58",note:"Harper's Bazaar 2024 Best Scalp Conditioner · salicylic acid + panthenol + niacinamide + rosemary · exfoliates + moisturizes scalp · Amazon ~$22"},
+    {type:"supp",name:"🚿 WASH DAYS — GCoop Hair Conditioner (item 283)",dose:"After shampoo · mid-length to ends only · 2–3 min · rinse",color:"#c47a1a",note:"Copper Tripeptide-1 + Biotin + Hexapeptide-2 + Ceramide NP + Hydrolyzed Keratin · NOT on scalp · use on wash days · pH 4.61"},
+    {type:"supp",name:"🚿 WASH DAYS — VUIM HerbalMint Scalp Tonic",dose:"Post-shampoo · spray on scalp · fingertip massage · leave in",color:"#c47a1a",note:"Wash days only · TCM herbs + copper tripeptide · reorder at vuimclinic.com · last expired May 23 2026"},
+    {type:"supp",name:"🚿 WASH DAYS — Dr. Groot Hair Loss Control Scalp Tonic",dose:"Post-shampoo · spray on scalp · leave in",color:"#0a7a58",note:"Use on Dr. Groot shampoo days instead of VUIM tonic · biotin + ginseng + rosemary · leave-in · Amazon ~$18"},
+    {type:"rx",  name:"🌙 PM EVERY NIGHT — Clobetasol Propionate Solution",dose:"0.05% · scalp partings · 1× nightly",color:"#c0392b",note:"Scalp psoriasis · apply to partings first before anything else · works overnight · max 2 weeks continuous then rest · Dr. Kohn"},
+    {type:"supp",name:"🌙 PM EVERY NIGHT — Aromatica Rosemary Root Enhancer",dose:"Spray on scalp after Clobetasol dries · fingertip massage 1 min",color:"#12a37a",note:"Korean scalp tonic · rosemary oil 368mg + 7 B vitamins + caffeine + salicylic acid BHA + fermented probiotics + Black Food Complex · non-greasy · fast absorbing · iHerb / YesStyle ~$18 · shake before use"},
+    {type:"supp",name:"🌙 PM WEEKLY — Scalp Microneedling (Koi Beauty 0.5mm)",dose:"Once per week only · section hair · 4–5 passes per section · then apply Aromatica immediately",color:"#6c5fc7",note:"0.5mm titanium dermaroller · dramatically boosts serum absorption + stimulates follicles · ⚠️ NEVER on active psoriasis plaques · clean with 70% isopropyl alcohol after each use · replace every 3 months · Amazon ~$15"},
+    {type:"supp",name:"⏸️ ON HOLD — Ketoconazole Shampoo (Nizoral 2%)",dose:"Pending Dr. Kohn prescription",color:"#888888",note:"On hold — ask Dr. Kohn at next visit · antifungal + DHT reduction · topical only · not absorbed systemically · 1% OTC available if needed sooner"},
+    /* ── HAIR HERBS ──────────────────────────────── */
+    {type:"herb",name:"🌿 Er Zhi Wan 二至丸 — Nǚ Zhēn Zǐ + Mò Hàn Lián",dose:"3 caps · 2× daily with meals (breakfast + dinner)",color:"#4a9fd4",note:"Classical formula for Blood Heat + Liver/Kidney Yin hair loss · your exact pattern · cools Blood + nourishes Yin · hepatoprotective · pairs with Liu Wei · Kamwo or Lhasa OMS · 6–8 weeks minimum"},
+    {type:"herb",name:"🌿 側柏葉 Cè Bǎi Yè (Biota Leaves)",dose:"9–15g tea · 2× daily · also use as scalp rinse",color:"#4a9fd4",note:"#1 classical herb for Blood Heat hair loss · cools Blood + stops shedding · brew strong tea and pour over scalp as final rinse · no hepatotoxicity"},
+    {type:"herb",name:"🌿 桑椹 Sāng Shèn (Mulberry Fruit)",dose:"15–30g daily · eat as food or brew as tea",color:"#4a9fd4",note:"Nourishes Liver/Kidney Blood and Jing · food-grade safe · gentle enough for daily long-term use · addresses Blood deficiency hair loss"}
   ]
 };
 
@@ -1211,138 +1235,131 @@ var SK = "#D4956A", SKD = "#9B6240";
 
 var POINT_DATA = {
   wrist:{
-    label:"Right inner forearm — palm facing UP",
+    label:"Right inner forearm — fingers at top · palm facing UP",
     vb:"0 0 200 280",
     pts:[
-      {id:"PC6",cx:100,cy:88,label:"PC6",full:"Pericardium 6 · Nèi Guān",kor:"내관",c:"#12a37a",
+      {id:"PC6",cx:100,cy:135,label:"PC6",full:"Pericardium 6 · Nèi Guān",kor:"내관",c:"#12a37a",
        tip:"🟢 Public. Inner forearm, center between the two tendons, 3 finger-widths above wrist crease. Press firmly toward the bone. Your #1 craving + anxiety interrupt."},
-      {id:"HT7",cx:126,cy:140,label:"HT7",full:"Heart 7 · Shén Mén",kor:"신문",c:"#6c5fc7",
+      {id:"HT7",cx:130,cy:112,label:"HT7",full:"Heart 7 · Shén Mén",kor:"신문",c:"#6c5fc7",
        tip:"🟡 Private. Wrist crease, pinky side — small notch just inside the pisiform bone. Gentle sustained pressure. Calms Shen, anxiety, insomnia."},
-      {id:"LU7",cx:74,cy:128,label:"LU7",full:"Lung 7 · Liè Quē",kor:"열결",c:"#4a9fd4",
+      {id:"LU7",cx:70,cy:116,label:"LU7",full:"Lung 7 · Liè Quē",kor:"열결",c:"#4a9fd4",
        tip:"🟡 Private. Thumb (radial) side, 1.5 cun above wrist crease, just above the styloid process. Opens Lung, releases grief."},
-      {id:"LI4",cx:50,cy:185,label:"LI4",full:"Large Intestine 4 · Hé Gǔ",kor:"합곡",c:"#c47a1a",
+      {id:"LI4",cx:54,cy:72,label:"LI4",full:"Large Intestine 4 · Hé Gǔ",kor:"합곡",c:"#c47a1a",
        tip:"🟡 Private. Fleshy web between thumb and index finger on the BACK of the hand — highest point when pinched. Four Gates with LR3. ⚠️ Avoid in pregnancy."}
     ],
     body:
-      /* forearm — centered */
-      '<rect x="70" y="4" width="60" height="136" rx="30" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-      /* two tendons (palmaris longus + flexor carpi radialis) */
-      +'<line x1="94" y1="10" x2="93" y2="140" stroke="#9B6240" stroke-width="1.1" opacity="0.38"/>'
-      +'<line x1="106" y1="10" x2="107" y2="140" stroke="#9B6240" stroke-width="1.1" opacity="0.38"/>'
-      /* wrist crease */
-      +'<line x1="62" y1="142" x2="138" y2="142" stroke="#9B6240" stroke-width="1.8" stroke-dasharray="4,3" opacity="0.7"/>'
-      +'<text x="140" y="146" font-size="7.5" fill="#9B6240" opacity="0.8" font-family="sans-serif">crease</text>'
-      /* palm / hand */
-      +'<rect x="62" y="140" width="76" height="50" rx="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-      /* thumb — LEFT side (radial, inner forearm palm-up) */
-      +'<ellipse cx="48" cy="172" rx="18" ry="28" fill="#D4956A" stroke="#9B6240" stroke-width="1.5" transform="rotate(-25 48 172)"/>'
-      +'<text x="2" y="158" font-size="7" fill="#c47a1a" font-family="sans-serif" opacity="0.9">thumb ←</text>'
-      /* LI4 label on thumb side */
-      +'<text x="2" y="200" font-size="6.5" fill="#c47a1a" font-family="sans-serif" opacity="0.8">LI4 web</text>'
-      /* 4 fingers — RIGHT side */
-      +'<rect x="138" y="190" width="13" height="50" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-      +'<rect x="126" y="187" width="13" height="56" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-      +'<rect x="113" y="189" width="12" height="53" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-      +'<rect x="101" y="193" width="11" height="46" rx="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-      +'<text x="148" y="196" font-size="7" fill="#6c5fc7" font-family="sans-serif" opacity="0.8">↑ pinky</text>'
-      /* HT7 side label */
-      +'<text x="148" y="148" font-size="6.5" fill="#6c5fc7" font-family="sans-serif" opacity="0.8">← HT7</text>'
-      /* PC6 measurement guide */
-      +'<line x1="58" y1="142" x2="58" y2="88" stroke="#12a37a" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.55"/>'
-      +'<text x="2" y="108" font-size="7" fill="#12a37a" opacity="0.85" font-family="sans-serif">3 finger</text>'
-      +'<text x="5" y="118" font-size="7" fill="#12a37a" opacity="0.85" font-family="sans-serif">widths ↑</text>'
+      /* FINGERS at top */
+      '<rect x="76" y="4" width="12" height="46" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+      +'<rect x="90" y="2" width="13" height="52" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+      +'<rect x="105" y="3" width="12" height="50" rx="6" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+      +'<rect x="119" y="7" width="11" height="43" rx="5" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+      /* THUMB — angled left */
+      +'<ellipse cx="56" cy="64" rx="13" ry="22" fill="#D4956A" stroke="#9B6240" stroke-width="1.4" transform="rotate(18 56 64)"/>'
+      +'<text x="2" y="50" font-size="7" fill="#c47a1a" font-family="sans-serif" opacity="0.85">← thumb</text>'
+      /* PALM */
+      +'<rect x="66" y="46" width="78" height="62" rx="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+      /* WRIST CREASE */
+      +'<line x1="60" y1="110" x2="154" y2="110" stroke="#9B6240" stroke-width="1.8" stroke-dasharray="4,3" opacity="0.7"/>'
+      +'<text x="156" y="114" font-size="7" fill="#9B6240" opacity="0.75" font-family="sans-serif">crease</text>'
+      /* FOREARM below crease */
+      +'<rect x="72" y="108" width="60" height="132" rx="28" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+      /* tendons */
+      +'<line x1="96" y1="112" x2="95" y2="238" stroke="#9B6240" stroke-width="1.1" opacity="0.35"/>'
+      +'<line x1="108" y1="112" x2="109" y2="238" stroke="#9B6240" stroke-width="1.1" opacity="0.35"/>'
+      /* PC6 measure guide from crease upward */
+      +'<line x1="60" y1="110" x2="60" y2="115" stroke="#12a37a" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>'
+      +'<text x="2" y="135" font-size="7" fill="#12a37a" opacity="0.85" font-family="sans-serif">3 widths</text>'
+      +'<text x="5" y="145" font-size="7" fill="#12a37a" opacity="0.85" font-family="sans-serif">↓ = PC6</text>'
+      +'<text x="156" y="58" font-size="7" fill="#6c5fc7" font-family="sans-serif" opacity="0.8">pinky →</text>'
   },
   foot:{
-    label:"Right foot — inner side view · ankle top-right · toes bottom-left",
-    vb:"0 0 200 200",
+    label:"Right foot — top view · toes at top · heel at bottom · ankle right",
+    vb:"0 0 200 240",
     pts:[
-      {id:"SP6",cx:148,cy:38,label:"SP6",full:"Spleen 6 · Sān Yīn Jiāo",kor:"삼음교",c:"#c04474",
+      {id:"SP6",cx:152,cy:55,label:"SP6",full:"Spleen 6 · Sān Yīn Jiāo",kor:"삼음교",c:"#c04474",
        tip:"🟡 Private. On the shin, 4 finger-widths ABOVE the inner ankle bone, just behind the tibia edge. Not on the foot — on the leg. ⚠️ Avoid in pregnancy."},
-      {id:"KD6",cx:148,cy:98,label:"KD6",full:"Kidney 6 · Zhào Hǎi",kor:"조해",c:"#1a6fa8",
+      {id:"KD6",cx:152,cy:108,label:"KD6",full:"Kidney 6 · Zhào Hǎi",kor:"조해",c:"#1a6fa8",
        tip:"🟡 Private. In the soft hollow 1 thumb-width directly BELOW the inner ankle bone. Nourishes Kidney Yin. Best wind-down point."},
-      {id:"LR3",cx:42,cy:80,label:"LR3",full:"Liver 3 · Tài Chōng",kor:"태충",c:"#0a7a58",
+      {id:"LR3",cx:72,cy:78,label:"LR3",full:"Liver 3 · Tài Chōng",kor:"태충",c:"#0a7a58",
        tip:"🟡 Private. TOP of foot — the groove between 1st and 2nd metatarsal bones, about 2 cun back from the web between big toe and 2nd toe."},
-      {id:"KD1",cx:72,cy:148,label:"KD1",full:"Kidney 1 · Yǒng Quán",kor:"용천",c:"#4a9fd4",
+      {id:"KD1",cx:88,cy:150,label:"KD1",full:"Kidney 1 · Yǒng Quán",kor:"용천",c:"#4a9fd4",
        tip:"🟡 Private. SOLE (bottom) of foot, upper third. Press feet hard into the floor right now. Emergency grounding reset."}
     ],
     body:
-      /* shin/ankle column — top-right */
-      '<rect x="125" y="4" width="36" height="78" rx="18" fill="#D4956A" stroke="#9B6240" stroke-width="1.6"/>'
-      /* inner ankle bone bump */
-      +'<ellipse cx="140" cy="86" rx="16" ry="11" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-      /* ankle bone label */
-      +'<text x="155" y="92" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.8">← ankle</text>'
-      /* foot body — sole view from inner side */
-      +'<ellipse cx="80" cy="134" rx="72" ry="52" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-      /* sole darkening hint */
-      +'<ellipse cx="72" cy="148" rx="40" ry="30" fill="#C8906A" stroke="none" opacity="0.22"/>'
-      /* big toe (top-left area) */
-      +'<ellipse cx="14" cy="94" rx="15" ry="13" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-      +'<ellipse cx="22" cy="78" rx="12" ry="11" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
-      +'<ellipse cx="34" cy="68" rx="11" ry="9" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
-      +'<ellipse cx="48" cy="64" rx="10" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
-      +'<ellipse cx="62" cy="66" rx="9" ry="8" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
+      /* SHIN — top right, going down to ankle */
+      '<rect x="130" y="4" width="32" height="72" rx="16" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      /* ankle bump (medial malleolus) */
+      +'<ellipse cx="144" cy="80" rx="18" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      +'<text x="2" y="84" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.7">ankle →</text>'
+      /* SP6 dashed line up shin */
+      +'<line x1="130" y1="76" x2="130" y2="46" stroke="#c04474" stroke-width="1" stroke-dasharray="3,2" opacity="0.55"/>'
+      +'<text x="106" y="38" font-size="7" fill="#c04474" font-family="sans-serif" opacity="0.8">4× up</text>'
+      /* FOOT BODY — oval, toes at top */
+      +'<ellipse cx="90" cy="148" rx="70" ry="88" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+      /* heel — bottom */
+      +'<ellipse cx="90" cy="228" rx="38" ry="18" fill="#C8906A" stroke="#9B6240" stroke-width="1.2"/>'
+      +'<text x="70" y="250" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.7">heel</text>'
+      /* big toe — top left */
+      +'<ellipse cx="38" cy="64" rx="18" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      /* 2nd toe */
+      +'<ellipse cx="62" cy="56" rx="14" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+      /* 3rd toe */
+      +'<ellipse cx="84" cy="54" rx="13" ry="11" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
+      /* 4th toe */
+      +'<ellipse cx="105" cy="57" rx="12" ry="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
+      /* little toe */
+      +'<ellipse cx="123" cy="64" rx="11" ry="9" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/>'
       /* labels */
-      +'<text x="2" y="110" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.75">big toe</text>'
-      +'<text x="90" y="192" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.75">heel →</text>'
-      +'<text x="2" y="165" font-size="7" fill="#4a9fd4" font-family="sans-serif" opacity="0.8">KD1=sole</text>'
-      /* SP6 measurement line from ankle up the shin */
-      +'<line x1="122" y1="86" x2="122" y2="38" stroke="#c04474" stroke-width="1.1" stroke-dasharray="3,3" opacity="0.6"/>'
-      +'<text x="100" y="58" font-size="7" fill="#c04474" font-family="sans-serif" opacity="0.8">4×↑</text>'
+      +'<text x="2" y="72" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.7">big toe</text>'
+      +'<text x="2" y="155" font-size="7" fill="#4a9fd4" font-family="sans-serif" opacity="0.8">KD1=sole</text>'
   },
   ear:{
     label:"Right ear — facing you · tap a point",
-    vb:"0 0 200 240",
+    vb:"0 0 220 260",
     pts:[
-      {id:"SM",cx:88,cy:74,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#0a7a58",
+      {id:"SM",cx:92,cy:72,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#0a7a58",
        tip:"🟢 Public. TRIANGULAR FOSSA — Y-shaped hollow where the inner ridge (antihelix) forks. Press firmly into the fork. Step 1 of the craving protocol."},
-      {id:"CR",cx:38,cy:120,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
+      {id:"CR",cx:36,cy:128,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
        tip:"🟢 Public. TRAGUS — the small tab of cartilage on the face side covering the ear canal. Pinch it firmly. Step 2."},
-      {id:"HRT",cx:108,cy:138,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
+      {id:"HRT",cx:114,cy:142,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
        tip:"🟡 Private. INFERIOR CONCHA — lower part of the main bowl, below the canal opening. Gentle inward pressure. Calms Shen, anxiety, palpitations."},
-      {id:"KD",cx:108,cy:158,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
+      {id:"KD",cx:114,cy:164,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
        tip:"🟡 Private. INFERIOR CONCHA, slightly lower than Heart — above the lobe. Fear, tinnitus, 3am waking, adrenal fatigue."}
     ],
     body:
-      /* outer helix */
-      '<ellipse cx="96" cy="118" rx="66" ry="96" fill="#EDCFA8" stroke="#C8956A" stroke-width="2.2"/>'
-      /* antihelix (inner raised ridge) */
-      +'<ellipse cx="100" cy="112" rx="44" ry="66" fill="#E2BC90" stroke="#C8956A" stroke-width="1.3"/>'
+      /* outer helix — wide enough */
+      '<ellipse cx="104" cy="122" rx="72" ry="104" fill="#EDCFA8" stroke="#C8956A" stroke-width="2.2"/>'
+      /* antihelix inner ridge */
+      +'<ellipse cx="108" cy="116" rx="48" ry="72" fill="#E2BC90" stroke="#C8956A" stroke-width="1.3"/>'
       /* concha bowl */
-      +'<ellipse cx="106" cy="130" rx="28" ry="40" fill="#D4A070" stroke="#C8956A" stroke-width="1.1"/>'
-      /* ear canal */
-      +'<ellipse cx="112" cy="116" rx="11" ry="14" fill="#A0703A" stroke="#8B5A28" stroke-width="1.2"/>'
-      +'<text x="3" y="116" font-size="6.5" fill="#8B5A28" font-family="sans-serif" opacity="0.75">canal →</text>'
+      +'<ellipse cx="114" cy="138" rx="30" ry="42" fill="#D4A070" stroke="#C8956A" stroke-width="1.1"/>'
+      /* ear canal opening */
+      +'<ellipse cx="118" cy="122" rx="12" ry="15" fill="#A0703A" stroke="#8B5A28" stroke-width="1.2"/>'
+      +'<text x="130" y="118" font-size="6.5" fill="#8B5A28" font-family="sans-serif" opacity="0.7">canal</text>'
       /* triangular fossa */
-      +'<ellipse cx="88" cy="74" rx="16" ry="10" fill="#C89060" stroke="#9B6240" stroke-width="1.1" transform="rotate(-15 88 74)"/>'
+      +'<ellipse cx="92" cy="72" rx="18" ry="11" fill="#C89060" stroke="#9B6240" stroke-width="1.1" transform="rotate(-15 92 72)"/>'
       /* fossa fork lines */
-      +'<line x1="82" y1="66" x2="72" y2="46" stroke="#9B6240" stroke-width="1.1" opacity="0.4"/>'
-      +'<line x1="96" y1="82" x2="120" y2="92" stroke="#9B6240" stroke-width="1.1" opacity="0.3"/>'
-      /* fossa label — LEFT of ear, no overlap */
-      +'<text x="2" y="60" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">fossa</text>'
-      +'<text x="2" y="70" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">fork ↓</text>'
+      +'<line x1="86" y1="64" x2="74" y2="42" stroke="#9B6240" stroke-width="1.1" opacity="0.4"/>'
+      +'<line x1="100" y1="80" x2="126" y2="92" stroke="#9B6240" stroke-width="1.1" opacity="0.3"/>'
       /* tragus */
-      +'<ellipse cx="38" cy="120" rx="13" ry="17" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
-      +'<text x="2" y="106" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">tragus</text>'
+      +'<ellipse cx="36" cy="128" rx="14" ry="19" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
       /* lobe */
-      +'<ellipse cx="84" cy="210" rx="24" ry="13" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
-      +'<text x="72" y="230" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.6">lobe</text>'
-      /* Shen Men callout — right side */
-      +'<line x1="96" y1="74" x2="134" y2="58" stroke="#0a7a58" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
-      +'<text x="136" y="56" font-size="7.5" fill="#0a7a58" font-weight="700" font-family="sans-serif">Shen Men</text>'
-      +'<text x="136" y="65" font-size="6" fill="#4dba8a" font-family="sans-serif">tri. fossa</text>'
-      /* Craving callout — left/below tragus */
-      +'<line x1="50" y1="120" x2="70" y2="128" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
-      +'<text x="2" y="138" font-size="7.5" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving</text>'
-      +'<text x="2" y="148" font-size="6" fill="#e05555" font-family="sans-serif">tragus</text>'
-      /* Heart callout — right */
-      +'<line x1="116" y1="138" x2="140" y2="134" stroke="#c04474" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
-      +'<text x="142" y="132" font-size="7.5" fill="#c04474" font-weight="700" font-family="sans-serif">Heart 心</text>'
-      +'<text x="142" y="140" font-size="6" fill="#d4779a" font-family="sans-serif">inf. concha</text>'
-      /* Kidney callout — right */
-      +'<line x1="116" y1="158" x2="140" y2="158" stroke="#1a6fa8" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
-      +'<text x="142" y="156" font-size="7.5" fill="#1a6fa8" font-weight="700" font-family="sans-serif">Kidney 腎</text>'
-      +'<text x="142" y="164" font-size="6" fill="#4a9fd4" font-family="sans-serif">inf. concha ↓</text>'
+      +'<ellipse cx="90" cy="222" rx="26" ry="14" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
+      +'<text x="78" y="244" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.6">lobe</text>'
+      /* labels */
+      +'<text x="2" y="58" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">fossa fork</text>'
+      +'<text x="2" y="112" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">tragus</text>'
+      /* callout lines */
+      +'<line x1="100" y1="72" x2="148" y2="56" stroke="#0a7a58" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
+      +'<text x="150" y="54" font-size="7.5" fill="#0a7a58" font-weight="700" font-family="sans-serif">Shen Men</text>'
+      +'<text x="150" y="63" font-size="6" fill="#4dba8a" font-family="sans-serif">tri. fossa</text>'
+      +'<line x1="50" y1="128" x2="74" y2="136" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
+      +'<text x="2" y="148" font-size="7.5" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving</text>'
+      +'<text x="2" y="157" font-size="6" fill="#e05555" font-family="sans-serif">tragus</text>'
+      +'<line x1="124" y1="142" x2="152" y2="138" stroke="#c04474" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
+      +'<text x="154" y="136" font-size="7.5" fill="#c04474" font-weight="700" font-family="sans-serif">Heart 心</text>'
+      +'<line x1="124" y1="164" x2="152" y2="162" stroke="#1a6fa8" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
+      +'<text x="154" y="160" font-size="7.5" fill="#1a6fa8" font-weight="700" font-family="sans-serif">Kidney 腎</text>'
   }
 };
 
@@ -2930,6 +2947,7 @@ function initHealth(){
 
   // Suppliers
   var suppliers = [
+    {icon:"🏮",n:"Kamwo Meridian Herbs",disc:"East Coast dispensary — order Er Zhi Wan here",note:"kamwostore.com · Er Zhi Wan capsules 5:1 extract, GMP tested, 100 caps ~$18–22 · open practitioner account as VUIM student for pricing · one of oldest Chinese herb dispensaries on East Coast",url:"https://kamwostore.com/er-zhi-wan-capsules/",label:"Order Er Zhi Wan"},
     {icon:"🌿",n:"Mayway Herbs",disc:"🎓 Student wholesale — account not yet created",note:"Plum Flower brand · GMP certified · register at mayway.com with your VUIM email for practitioner pricing · request free welcome pack · most comprehensive student program",url:"https://www.mayway.com/student-benefits",label:"Create Student Account"},
     {icon:"💊",n:"QualiHerb",disc:"✅ Currently using — capsule formulas in your cabinet",note:"Liu Wei Di Huang Wan · Zeng Ye Cheng Qi Tang · Xiao Feng San · 'Tranquility of Nature and Science' · GMP certified · 100 caps per bottle",url:"https://www.qualiherb.com",label:"Shop QualiHerb"},
     {icon:"🌱",n:"Evergreen Herbs",disc:"🎓 Student pricing — account not yet created",note:"Pre-made formulas, granules, capsules · popular among DAOM students · register with VUIM email",url:"https://www.evherbs.com",label:"Create Student Account"},
