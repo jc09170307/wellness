@@ -31,7 +31,7 @@ button,input,textarea,select{font-family:inherit;-webkit-appearance:none;appeara
   --GL:#082d1c;--GD:#082d1c;
 }
 html,body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;min-height:100vh}
-body{padding-bottom:3rem}
+body{padding-bottom:5rem}
 
 /* HEADER */
 .hdr{padding:.9rem 1rem .8rem;border-bottom:.5px solid var(--bd);display:flex;justify-content:space-between;align-items:center;background:var(--bg)}
@@ -231,6 +231,7 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   <button class="pill teal" data-nav="sec-morning">🌄 Morning</button>
   <button class="pill active" data-nav="sec-checkin">🌅 Check-in</button>
   <button class="pill" data-nav="sec-meds">💊 Meds</button>
+  <button class="pill" data-nav="sec-skincare" style="background:rgba(58,191,158,.12);border-color:rgba(58,191,158,.35);color:#3abf9e;font-weight:600;">💆 Skin</button>
   <button class="pill" data-nav="sec-halt">HALT</button>
   <button class="pill" data-nav="sec-mood">🧠 Mood</button>
   <button class="pill" data-nav="sec-dbt">DBT</button>
@@ -257,7 +258,6 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   <button class="pill" data-nav="sec-health">🏥 Health</button>
   <button class="pill" data-nav="sec-study">📚 Study</button>
   <button class="pill" data-nav="sec-advising">🎓 Advising</button>
-  <button class="pill" data-nav="sec-skincare" style="background:rgba(58,191,158,.12);border-color:rgba(58,191,158,.35);color:#3abf9e;font-weight:600;">💆 Skin</button>
 </div></div>
 
 <div id="main-content">
@@ -267,11 +267,32 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   <div class="hero">
     <div class="hero-num" id="dayNum">—</div>
     <div class="hero-unit">days on this journey</div>
-    <div class="hero-sub">Since November 23, 2025</div>
-    <div class="hero-slip">Apr 10, 2026 — rough patch noted. Not a reset.</div>
-    <div style="margin-top:.65rem"><div style="font-size:10px;color:#2d6b4a;margin-bottom:.2rem">Liver healing progress</div>
-    <div class="hero-bar"><div class="hero-bar-fill" id="liverBar"></div></div>
-    <div class="hero-bar-note" id="liverNote"></div></div>
+    <div class="hero-sub">Since November 23, 2025 · Current streak from June 7, 2026</div>
+    <!-- TIMELINE BAR -->
+    <div style="margin:.75rem 0 .3rem">
+      <div style="position:relative;height:10px;background:#0a1f12;border-radius:5px;overflow:visible">
+        <!-- Full bar fill -->
+        <div id="timeline-fill" style="position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--G),var(--G2));border-radius:5px;transition:width 1.2s ease"></div>
+        <!-- Slip dip marker -->
+        <div id="slip-marker" style="position:absolute;top:-3px;width:3px;height:16px;background:#c47a1a;border-radius:2px;z-index:2" title="Apr 10 – Jun 7: rough patch noted. Not a reset."></div>
+        <!-- Slip notch (heartbeat dip) -->
+        <div id="slip-notch" style="position:absolute;top:0;height:100%;background:#09040a;z-index:1" ></div>
+        <!-- Now dot -->
+        <div id="now-dot" style="position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;background:#12a37a;border-radius:50%;border:2px solid #0d1117;z-index:3;box-shadow:0 0 6px #12a37a88"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:.3rem;position:relative">
+        <div style="font-size:9px;color:#2d6b4a">Nov 23 '25</div>
+        <div style="font-size:9px;color:#c47a1a;position:absolute;left:52%" id="slip-label">⚡ Apr 10</div>
+        <div style="font-size:9px;color:#2d6b4a">Today</div>
+      </div>
+    </div>
+    <!-- Clinical fact -->
+    <div style="background:rgba(18,163,122,.08);border:1px solid rgba(18,163,122,.2);border-radius:8px;padding:.4rem .75rem;margin:.45rem 0 0;display:flex;align-items:center;gap:.5rem">
+      <span style="font-size:16px">🫀</span>
+      <div style="font-size:11px;color:#4dba8a;font-weight:600"><span id="dayNum2">137</span> days sober → AST dropped from 181 to 58</div>
+    </div>
+    <div class="hero-bar" style="margin-top:.6rem"><div class="hero-bar-fill" id="liverBar"></div></div>
+    <div class="hero-bar-note" id="liverNote"></div>
   </div>
   <div class="metrics">
     <div class="metric"><div class="metric-val" id="wkNum">—</div><div class="metric-lbl">weeks</div></div>
@@ -1505,6 +1526,11 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 
 <!-- CRISIS MODAL -->
 <div id="crisis-modal">
+  <div id="crisis-dance-btn" style="background:linear-gradient(135deg,#071a10,#0a2a1a);border-radius:14px;padding:1.1rem;border:2px solid #12a37a44;display:flex;justify-content:space-between;align-items:center;cursor:pointer;margin-bottom:1rem">
+    <div><div style="font-size:15px;font-weight:700;color:#4dba8a">💃 Move your body right now</div>
+    <div style="font-size:12px;color:#2d6b4a;margin-top:2px">Cha Cha or Mambo — Liver Qi medicine. Tap to play.</div></div>
+    <div style="width:36px;height:36px;border-radius:50%;background:var(--G);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0">▸</div>
+  </div>
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.4rem">
     <div><div style="font-size:22px;font-weight:700;color:#fff">You are not alone.</div>
     <div style="font-size:13px;color:#e05555;margin-top:4px" id="crisis-days-text"></div></div>
@@ -1547,15 +1573,47 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
       <div>👁️ <b style="color:#12a37a">5 things</b> you can see — name them out loud</div>
       <div>🌬️ <b style="color:#12a37a">Exhale longer</b> than inhale — exhale is safety</div>
     </div></div>
-  <div style="background:#161b22;border-radius:14px;padding:1.1rem;margin-bottom:.9rem;border:1.5px solid #ffffff06;text-align:center">
+  <div id="crisis-quote-wrap" style="background:#161b22;border-radius:14px;padding:1.1rem;margin-bottom:.9rem;border:1.5px solid #ffffff06;text-align:center">
     <div style="font-size:13px;color:#8b949e;line-height:1.7;font-style:italic" id="crisis-quote"></div>
     <div style="font-size:11px;color:#656d76;margin-top:.45rem" id="crisis-quote-src"></div>
   </div>
-  <div id="crisis-dance-btn" style="background:#161b22;border-radius:14px;padding:1.1rem;border:1.5px solid #ffffff0d;display:flex;justify-content:space-between;align-items:center;cursor:pointer">
-    <div><div style="font-size:14px;font-weight:500;color:#fff">💃 Emergency dance prescription</div>
-    <div style="font-size:12px;color:#656d76;margin-top:2px">Cha Cha or Mambo — move the Liver Qi</div></div>
-    <div style="color:#12a37a;font-size:18px">▸</div>
+</div>
+
+<!-- ══ 11AM MINDFULNESS MODAL ══ -->
+<div id="eleven-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:#09040a;overflow-y:auto;padding:0;display:none">
+  <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center">
+    <div style="font-size:13px;font-weight:800;color:#4dba8a;text-transform:uppercase;letter-spacing:.12em;margin-bottom:1.1rem">10:50 AM</div>
+    <div style="font-size:26px;font-weight:700;color:#e6edf3;line-height:1.3;margin-bottom:.55rem">it's almost 11</div>
+    <div style="font-size:17px;color:#8b949e;line-height:1.55;margin-bottom:1.75rem">what are you doing right now<br>instead?</div>
+    <div style="width:100%;max-width:380px">
+      <textarea id="eleven-text" placeholder="Naming it breaks the automatic pilot. Type anything..." style="width:100%;height:120px;background:#161b22;border:1.5px solid #12a37a44;border-radius:14px;padding:.85rem 1rem;font-size:15px;color:#e6edf3;resize:none;outline:none;font-family:inherit;line-height:1.6;transition:border .15s" onfocus="this.style.borderColor='#12a37a'" onblur="this.style.borderColor='#12a37a44'"></textarea>
+      <div style="display:flex;gap:.65rem;margin-top:.75rem">
+        <button onclick="closeElevenModal(true)" style="flex:1;padding:13px;background:var(--G);color:#fff;border:none;border-radius:12px;cursor:pointer;font-size:14px;font-weight:700">I see it. I'm present.</button>
+        <button onclick="closeElevenModal(false)" style="padding:13px 16px;background:#161b22;color:#8b949e;border:1px solid #ffffff12;border-radius:12px;cursor:pointer;font-size:13px">Skip</button>
+      </div>
+      <div style="margin-top:1.2rem;padding:1rem;background:#161b22;border-radius:14px;border:1px solid #ffffff0d">
+        <div style="font-size:11px;font-weight:700;color:#4dba8a;margin-bottom:.4rem">💃 Moving your body resets the clock</div>
+        <div id="eleven-player" style="border-radius:10px;overflow:hidden;border:.5px solid #ffffff0d"></div>
+      </div>
+    </div>
   </div>
+</div>
+
+<!-- ══ PERSISTENT MINI PLAYER ══ -->
+<div id="mini-player" style="position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(13,17,23,.96);border-top:1px solid rgba(255,255,255,.07);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:.5rem .75rem .5rem">
+  <div style="display:flex;align-items:center;gap:.5rem">
+    <div style="display:flex;gap:.3rem;flex:1;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:1px" id="mini-genres">
+      <button class="mini-genre-btn active" data-mg="chacha" style="flex-shrink:0;font-size:11px;padding:4px 10px;border:1px solid rgba(18,163,122,.5);border-radius:20px;background:rgba(18,163,122,.15);color:#4dba8a;cursor:pointer;font-weight:700;white-space:nowrap">💃 Cha Cha</button>
+      <button class="mini-genre-btn" data-mg="mambo" style="flex-shrink:0;font-size:11px;padding:4px 10px;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:transparent;color:#8b949e;cursor:pointer;white-space:nowrap">🔥 Mambo</button>
+      <button class="mini-genre-btn" data-mg="rumba" style="flex-shrink:0;font-size:11px;padding:4px 10px;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:transparent;color:#8b949e;cursor:pointer;white-space:nowrap">🌹 Rumba</button>
+      <button class="mini-genre-btn" data-mg="bolero" style="flex-shrink:0;font-size:11px;padding:4px 10px;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:transparent;color:#8b949e;cursor:pointer;white-space:nowrap">🎭 Bolero</button>
+      <button class="mini-genre-btn" data-mg="swing" style="flex-shrink:0;font-size:11px;padding:4px 10px;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:transparent;color:#8b949e;cursor:pointer;white-space:nowrap">⚡ Swing</button>
+      <button class="mini-genre-btn" data-mg="chill" style="flex-shrink:0;font-size:11px;padding:4px 10px;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:transparent;color:#8b949e;cursor:pointer;white-space:nowrap">🎵 Chill</button>
+      <button class="mini-genre-btn" data-mg="krchill" style="flex-shrink:0;font-size:11px;padding:4px 10px;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:transparent;color:#8b949e;cursor:pointer;white-space:nowrap">🇰🇷 K-Chill</button>
+    </div>
+    <button id="mini-play-btn" onclick="toggleMiniPlayer()" style="flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--G);border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center">▸</button>
+  </div>
+  <div id="mini-iframe-wrap" style="display:none;height:0;overflow:hidden;margin-top:.4rem;border-radius:10px;overflow:hidden"></div>
 </div>
 
 <script>
@@ -1862,92 +1920,158 @@ var POINT_DATA = {
   },
   foot:{
     label:"Right foot — top view · toes at top · heel at bottom · ankle right",
-    vb:"0 0 200 240",
+    vb:"0 0 220 260",
     pts:[
-      {id:"SP6",cx:152,cy:55,label:"SP6",full:"Spleen 6 · Sān Yīn Jiāo",kor:"삼음교",c:"#c04474",
+      {id:"SP6",cx:188,cy:52,label:"SP6",full:"Spleen 6 · Sān Yīn Jiāo",kor:"삼음교",c:"#c04474",
        tip:"🟡 Private. On the shin, 4 finger-widths ABOVE the inner ankle bone, just behind the tibia edge. Not on the foot — on the leg. ⚠️ Avoid in pregnancy."},
-      {id:"KD6",cx:152,cy:108,label:"KD6",full:"Kidney 6 · Zhào Hǎi",kor:"조해",c:"#1a6fa8",
+      {id:"KD6",cx:188,cy:108,label:"KD6",full:"Kidney 6 · Zhào Hǎi",kor:"조해",c:"#1a6fa8",
        tip:"🟡 Private. In the soft hollow 1 thumb-width directly BELOW the inner ankle bone. Nourishes Kidney Yin. Best wind-down point."},
-      {id:"LR3",cx:72,cy:78,label:"LR3",full:"Liver 3 · Tài Chōng",kor:"태충",c:"#0a7a58",
+      {id:"LR3",cx:74,cy:82,label:"LR3",full:"Liver 3 · Tài Chōng",kor:"태충",c:"#0a7a58",
        tip:"🟡 Private. TOP of foot — the groove between 1st and 2nd metatarsal bones, about 2 cun back from the web between big toe and 2nd toe."},
-      {id:"KD1",cx:88,cy:150,label:"KD1",full:"Kidney 1 · Yǒng Quán",kor:"용천",c:"#4a9fd4",
+      {id:"KD1",cx:90,cy:168,label:"KD1",full:"Kidney 1 · Yǒng Quán",kor:"용천",c:"#4a9fd4",
        tip:"🟡 Private. SOLE (bottom) of foot, upper third. Press feet hard into the floor right now. Emergency grounding reset."}
     ],
     body:
-      /* SHIN — top right, going down to ankle */
-      '<rect x="130" y="4" width="32" height="72" rx="16" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      /* SHIN — upper right, narrowing to ankle */
+      '<rect x="162" y="2" width="30" height="80" rx="15" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
       /* ankle bump (medial malleolus) */
-      +'<ellipse cx="144" cy="80" rx="18" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-      +'<text x="2" y="84" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.7">ankle →</text>'
-      /* SP6 dashed line up shin */
-      +'<line x1="130" y1="76" x2="130" y2="46" stroke="#c04474" stroke-width="1" stroke-dasharray="3,2" opacity="0.55"/>'
-      +'<text x="106" y="38" font-size="7" fill="#c04474" font-family="sans-serif" opacity="0.8">4× up</text>'
-      /* FOOT BODY — oval, toes at top */
-      +'<ellipse cx="90" cy="148" rx="70" ry="88" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
-      /* heel — bottom */
-      +'<ellipse cx="90" cy="228" rx="38" ry="18" fill="#C8906A" stroke="#9B6240" stroke-width="1.2"/>'
-      +'<text x="70" y="250" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.7">heel</text>'
-      /* big toe — top left */
-      +'<ellipse cx="38" cy="64" rx="18" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
-      /* 2nd toe */
-      +'<ellipse cx="62" cy="56" rx="14" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
+      +'<ellipse cx="175" cy="86" rx="16" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.4"/>'
+      +'<text x="2" y="90" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.7">ankle →</text>'
+      /* SP6 dashed measure line up shin */
+      +'<line x1="162" y1="80" x2="162" y2="44" stroke="#c04474" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>'
+      +'<text x="138" y="38" font-size="6.5" fill="#c04474" font-family="sans-serif" opacity="0.8">4× up</text>'
+      /* FOOT BODY — proper top-view shape: wider at ball, tapering to narrower heel
+         Using a path for realistic foot silhouette */
+      +'<path d="'
+        /* start at big toe side, ball of foot */
+        +'M 30 110 '
+        /* curve across ball (wide part) */
+        +'C 28 90, 40 72, 56 68 '
+        /* up through metatarsals toward toes */
+        +'C 72 65, 100 64, 130 68 '
+        /* across to pinky side */
+        +'C 148 70, 162 78, 164 90 '
+        /* down outer edge to heel — foot narrows significantly */
+        +'C 166 110, 160 140, 150 170 '
+        /* heel — narrower, rounded */
+        +'C 145 195, 130 210, 110 214 '
+        +'C 90 218, 70 212, 55 200 '
+        /* back up inner arch — notable concavity */
+        +'C 44 188, 28 165, 26 148 '
+        +'C 24 132, 26 118, 30 110 Z'
+      +'" fill="#D4956A" stroke="#9B6240" stroke-width="1.8"/>'
+      /* inner arch concavity indicator */
+      +'<path d="M 30 148 C 38 158, 48 162, 55 160" fill="none" stroke="#9B6240" stroke-width="1" stroke-dasharray="3,2" opacity="0.3"/>'
+      +'<text x="2" y="158" font-size="6" fill="#9B6240" font-family="sans-serif" opacity="0.5">arch</text>'
+      /* TOES — 5 toes graduating left to right, big toe largest */
+      /* Big toe */
+      +'<ellipse cx="38" cy="76" rx="15" ry="20" fill="#D4956A" stroke="#9B6240" stroke-width="1.5"/>'
+      /* 2nd toe — slightly longer than big toe in many people */
+      +'<ellipse cx="62" cy="68" rx="11" ry="18" fill="#D4956A" stroke="#9B6240" stroke-width="1.3"/>'
       /* 3rd toe */
-      +'<ellipse cx="84" cy="54" rx="13" ry="11" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
+      +'<ellipse cx="84" cy="66" rx="10" ry="16" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
       /* 4th toe */
-      +'<ellipse cx="105" cy="57" rx="12" ry="10" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
-      /* little toe */
-      +'<ellipse cx="123" cy="64" rx="11" ry="9" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/>'
+      +'<ellipse cx="105" cy="68" rx="9" ry="14" fill="#D4956A" stroke="#9B6240" stroke-width="1.2"/>'
+      /* Little toe — smallest, more lateral */
+      +'<ellipse cx="123" cy="74" rx="8" ry="12" fill="#D4956A" stroke="#9B6240" stroke-width="1.1"/>'
+      /* toenail hints */
+      +'<ellipse cx="38" cy="62" rx="9" ry="5" fill="#C8906A" stroke="#9B6240" stroke-width="0.7" opacity="0.5"/>'
+      +'<ellipse cx="62" cy="57" rx="7" ry="4" fill="#C8906A" stroke="#9B6240" stroke-width="0.7" opacity="0.5"/>'
+      +'<ellipse cx="84" cy="57" rx="6" ry="3.5" fill="#C8906A" stroke="#9B6240" stroke-width="0.7" opacity="0.5"/>'
+      +'<ellipse cx="105" cy="60" rx="5.5" ry="3" fill="#C8906A" stroke="#9B6240" stroke-width="0.7" opacity="0.5"/>'
+      +'<ellipse cx="123" cy="67" rx="5" ry="3" fill="#C8906A" stroke="#9B6240" stroke-width="0.7" opacity="0.5"/>'
       /* labels */
-      +'<text x="2" y="72" font-size="7" fill="#9B6240" font-family="sans-serif" opacity="0.7">big toe</text>'
-      +'<text x="2" y="155" font-size="7" fill="#4a9fd4" font-family="sans-serif" opacity="0.8">KD1=sole</text>'
+      +'<text x="2" y="76" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.6">big toe</text>'
+      +'<text x="2" y="170" font-size="6.5" fill="#4a9fd4" font-family="sans-serif" opacity="0.8">KD1 = sole</text>'
+      +'<text x="2" y="215" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.5">heel</text>'
   },
   ear:{
     label:"Right ear — facing you · tap a point",
-    vb:"0 0 220 260",
+    vb:"0 0 220 270",
     pts:[
-      {id:"SM",cx:92,cy:72,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#0a7a58",
+      {id:"SM",cx:86,cy:74,label:"Shen Men",full:"Ear Shen Men · 神門",kor:"신문",c:"#0a7a58",
        tip:"🟢 Public. TRIANGULAR FOSSA — Y-shaped hollow where the inner ridge (antihelix) forks. Press firmly into the fork. Step 1 of the craving protocol."},
-      {id:"CR",cx:36,cy:128,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
+      {id:"CR",cx:148,cy:136,label:"Craving",full:"Ear Craving Point",kor:"갈망점",c:"#c0392b",
        tip:"🟢 Public. TRAGUS — the small tab of cartilage on the face side covering the ear canal. Pinch it firmly. Step 2."},
-      {id:"HRT",cx:114,cy:142,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
+      {id:"HRT",cx:104,cy:148,label:"Heart",full:"Heart Point · 心",kor:"심",c:"#c04474",
        tip:"🟡 Private. INFERIOR CONCHA — lower part of the main bowl, below the canal opening. Gentle inward pressure. Calms Shen, anxiety, palpitations."},
-      {id:"KD",cx:114,cy:164,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
+      {id:"KD",cx:104,cy:170,label:"Kidney",full:"Kidney Point · 腎",kor:"신",c:"#1a6fa8",
        tip:"🟡 Private. INFERIOR CONCHA, slightly lower than Heart — above the lobe. Fear, tinnitus, 3am waking, adrenal fatigue."}
     ],
     body:
-      /* outer helix — wide enough */
-      '<ellipse cx="104" cy="122" rx="72" ry="104" fill="#EDCFA8" stroke="#C8956A" stroke-width="2.2"/>'
-      /* antihelix inner ridge */
-      +'<ellipse cx="108" cy="116" rx="48" ry="72" fill="#E2BC90" stroke="#C8956A" stroke-width="1.3"/>'
-      /* concha bowl */
-      +'<ellipse cx="114" cy="138" rx="30" ry="42" fill="#D4A070" stroke="#C8956A" stroke-width="1.1"/>'
-      /* ear canal opening */
-      +'<ellipse cx="118" cy="122" rx="12" ry="15" fill="#A0703A" stroke="#8B5A28" stroke-width="1.2"/>'
-      +'<text x="130" y="118" font-size="6.5" fill="#8B5A28" font-family="sans-serif" opacity="0.7">canal</text>'
-      /* triangular fossa */
-      +'<ellipse cx="92" cy="72" rx="18" ry="11" fill="#C89060" stroke="#9B6240" stroke-width="1.1" transform="rotate(-15 92 72)"/>'
-      /* fossa fork lines */
-      +'<line x1="86" y1="64" x2="74" y2="42" stroke="#9B6240" stroke-width="1.1" opacity="0.4"/>'
-      +'<line x1="100" y1="80" x2="126" y2="92" stroke="#9B6240" stroke-width="1.1" opacity="0.3"/>'
-      /* tragus */
-      +'<ellipse cx="36" cy="128" rx="14" ry="19" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
-      /* lobe */
-      +'<ellipse cx="90" cy="222" rx="26" ry="14" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.8"/>'
-      +'<text x="78" y="244" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.6">lobe</text>'
-      /* labels */
-      +'<text x="2" y="58" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">fossa fork</text>'
-      +'<text x="2" y="112" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">tragus</text>'
-      /* callout lines */
-      +'<line x1="100" y1="72" x2="148" y2="56" stroke="#0a7a58" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
-      +'<text x="150" y="54" font-size="7.5" fill="#0a7a58" font-weight="700" font-family="sans-serif">Shen Men</text>'
-      +'<text x="150" y="63" font-size="6" fill="#4dba8a" font-family="sans-serif">tri. fossa</text>'
-      +'<line x1="50" y1="128" x2="74" y2="136" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
-      +'<text x="2" y="148" font-size="7.5" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving</text>'
-      +'<text x="2" y="157" font-size="6" fill="#e05555" font-family="sans-serif">tragus</text>'
-      +'<line x1="124" y1="142" x2="152" y2="138" stroke="#c04474" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
-      +'<text x="154" y="136" font-size="7.5" fill="#c04474" font-weight="700" font-family="sans-serif">Heart 心</text>'
-      +'<line x1="124" y1="164" x2="152" y2="162" stroke="#1a6fa8" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
-      +'<text x="154" y="160" font-size="7.5" fill="#1a6fa8" font-weight="700" font-family="sans-serif">Kidney 腎</text>'
+      /* OUTER HELIX — kidney/C shape, wider at top, notched at right for tragus gap
+         Right ear facing viewer: lobe at bottom, helix curves around, face side (tragus) on RIGHT */
+      '<path d="'
+        /* start at lobe bottom-right */
+        +'M 120 248 '
+        /* lobe curves left and up */
+        +'C 90 252, 64 244, 52 228 '
+        /* up inner/lower helix */
+        +'C 40 210, 36 188, 38 165 '
+        /* concave inner arch (this is the scapha) */
+        +'C 40 140, 46 115, 56 95 '
+        /* up to top helix — curves outward */
+        +'C 64 74, 76 54, 96 40 '
+        /* across top helix to right */
+        +'C 116 28, 140 30, 154 48 '
+        /* down right side (face side) of helix */
+        +'C 164 62, 166 82, 160 100 '
+        /* helix curves in — notch before tragus gap */
+        +'C 156 112, 150 118, 148 122 '
+        /* gap — intertragic notch — small gap before lobe */
+        +'C 144 130, 138 138, 132 148 '
+        /* down to lobe */
+        +'C 130 168, 128 200, 120 248 Z'
+      +'" fill="#EDCFA8" stroke="#C8956A" stroke-width="2"/>'
+
+      /* ANTIHELIX — inner ridge, Y-shaped fork at top */
+      +'<path d="'
+        +'M 100 230 '
+        +'C 84 210, 76 185, 78 158 '
+        +'C 80 134, 88 112, 96 96 '
+        /* fork splits here */
+        +'C 100 86, 104 78, 100 68 '
+      +'" fill="none" stroke="#C8956A" stroke-width="8" stroke-linecap="round" opacity="0.5"/>'
+      /* upper fork arm — toward triangular fossa */
+      +'<path d="M 100 80 C 94 70, 88 64, 82 58" fill="none" stroke="#C8956A" stroke-width="5" stroke-linecap="round" opacity="0.4"/>'
+      /* lower fork arm */
+      +'<path d="M 100 80 C 108 72, 116 68, 120 64" fill="none" stroke="#C8956A" stroke-width="5" stroke-linecap="round" opacity="0.4"/>'
+
+      /* TRIANGULAR FOSSA — the Y-fork hollow, upper portion */
+      +'<path d="M 76 58 C 80 50, 88 46, 96 48 C 104 50, 108 58, 102 66 C 96 74, 84 74, 80 66 Z" fill="#C89060" stroke="#9B6240" stroke-width="1" opacity="0.7"/>'
+      +'<text x="30" y="54" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">fossa</text>'
+      +'<line x1="56" y1="52" x2="72" y2="58" stroke="#9B6240" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.5"/>'
+
+      /* CONCHA — main bowl */
+      +'<ellipse cx="104" cy="148" rx="26" ry="36" fill="#D4A070" stroke="#C8956A" stroke-width="1.1" opacity="0.8"/>'
+
+      /* EAR CANAL — opening in concha */
+      +'<ellipse cx="118" cy="132" rx="10" ry="13" fill="#8B5020" stroke="#6B4020" stroke-width="1.2"/>'
+      +'<text x="130" y="128" font-size="6" fill="#8B5A28" font-family="sans-serif" opacity="0.6">canal</text>'
+
+      /* TRAGUS — attached to face side (right side), covering canal opening
+         Key: it is a flap connected to the face, projecting inward over the canal */
+      +'<path d="M 148 118 C 156 118, 162 124, 162 132 C 162 142, 156 150, 148 152 C 142 154, 136 150, 134 144 C 132 136, 136 122, 148 118 Z" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.6"/>'
+      +'<text x="158" y="140" font-size="6.5" fill="#6B4020" font-family="sans-serif" opacity="0.8">tragus</text>'
+
+      /* ANTITRAGUS — small bump opposite tragus, above lobe */
+      +'<ellipse cx="110" cy="196" rx="14" ry="9" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.2" opacity="0.8"/>'
+
+      /* LOBE — bottom, rounded and distinct */
+      +'<ellipse cx="108" cy="238" rx="24" ry="16" fill="#EDCFA8" stroke="#C8956A" stroke-width="1.5"/>'
+      +'<text x="88" y="260" font-size="6.5" fill="#9B6240" font-family="sans-serif" opacity="0.6">lobe</text>'
+
+      /* callout lines for points */
+      +'<line x1="86" y1="68" x2="40" y2="48" stroke="#0a7a58" stroke-width="1" stroke-dasharray="3,3" opacity="0.9"/>'
+      +'<text x="2" y="46" font-size="7" fill="#0a7a58" font-weight="700" font-family="sans-serif">Shen Men</text>'
+      +'<text x="2" y="56" font-size="6" fill="#4dba8a" font-family="sans-serif">tri. fossa</text>'
+      +'<line x1="148" y1="136" x2="192" y2="130" stroke="#c0392b" stroke-width="1" stroke-dasharray="3,3" opacity="0.9"/>'
+      +'<text x="194" y="128" font-size="7" fill="#c0392b" font-weight="700" font-family="sans-serif">Craving</text>'
+      +'<text x="194" y="138" font-size="6" fill="#e05555" font-family="sans-serif">tragus</text>'
+      +'<line x1="116" y1="148" x2="192" y2="152" stroke="#c04474" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
+      +'<text x="194" y="150" font-size="7" fill="#c04474" font-weight="700" font-family="sans-serif">Heart 心</text>'
+      +'<line x1="116" y1="170" x2="192" y2="172" stroke="#1a6fa8" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>'
+      +'<text x="194" y="170" font-size="7" fill="#1a6fa8" font-weight="700" font-family="sans-serif">Kidney 腎</text>'
   }
 };
 
@@ -2240,37 +2364,70 @@ function closeCrisis(){
 document.getElementById("crisis-close-btn").addEventListener("click",closeCrisis);
 document.getElementById("crisis-open-btn").addEventListener("click",openCrisis);
 document.getElementById("crisis-dance-btn").addEventListener("click",function(){
-  closeCrisis();showSection("sec-dance");
+  closeCrisis();
+  var genre = Math.random() > 0.5 ? "chacha" : "mambo";
+  if(window.miniPlayGenre) window.miniPlayGenre(genre, true);
 });
 
 // ════════════════════════════════════════
 // COUNTER
 // ════════════════════════════════════════
 function initCounter(){
-  // Recalculate inline — Nov 23 2025 00:00 ET = 1763874000000 ms UTC
-  var d = Math.floor((Date.now() - 1763874000000) / 86400000);
-  if(isNaN(d)||d<0) d=DAYS; // fallback
-  DAYS = d; // sync global
+  // Full journey: Nov 23 2025 00:00 ET = 1763874000000 ms UTC
+  var JOURNEY_START = 1763874000000;
+  // Apr 10 2026 8pm ET (EDT=UTC-4) → Apr 11 00:00 UTC
+  var SLIP_START = 1775865600000;
+  // Jun 7 2026 8:30pm ET (EDT=UTC-4) → Jun 8 00:30 UTC
+  var SLIP_END = 1780878600000;
+  var now = Date.now();
+
+  // Total days from journey start
+  var totalDays = Math.floor((now - JOURNEY_START) / 86400000);
+  if(isNaN(totalDays)||totalDays<0) totalDays = DAYS;
+  DAYS = totalDays;
+
+  // Current streak from Jun 7 8:30pm ET
+  var streakDays = Math.floor((now - SLIP_END) / 86400000);
+  if(streakDays < 0) streakDays = 0;
+
   var dayEl=document.getElementById("dayNum");
+  var dayEl2=document.getElementById("dayNum2");
   var wkEl=document.getElementById("wkNum");
   var moEl=document.getElementById("moNum");
-  if(dayEl) dayEl.textContent=d;
-  if(wkEl)  wkEl.textContent=Math.floor(d/7);
-  if(moEl)  moEl.textContent=Math.floor(d/30);
-  var next=MILESTONES.find(function(m){return m.d>d&&!m.slip;});
+  if(dayEl) dayEl.textContent=streakDays;
+  if(dayEl2) dayEl2.textContent=totalDays;
+  if(wkEl)  wkEl.textContent=Math.floor(streakDays/7);
+  if(moEl)  moEl.textContent=Math.floor(streakDays/30);
+  var next=MILESTONES.find(function(m){return m.d>streakDays&&!m.slip;});
   if(next){
     var nEl=document.getElementById("nxtNum");
     var lEl=document.getElementById("nxtLbl");
-    if(nEl) nEl.textContent=next.d-d;
+    if(nEl) nEl.textContent=next.d-streakDays;
     if(lEl) lEl.textContent="to "+next.l;
   }
-  var pct=Math.min(100,Math.round((d/730)*100));
+  var pct=Math.min(100,Math.round((totalDays/730)*100));
   setTimeout(function(){
     var b=document.getElementById("liverBar");
     if(b) b.style.width=pct+"%";
+    var n=document.getElementById("liverNote");
+    if(n) n.textContent=pct+"% of 2-year liver recovery journey";
+    // Drive timeline bar
+    var totalMs = now - JOURNEY_START;
+    var journeyRange = now - JOURNEY_START; // full range = 100%
+    var slipStartPct = Math.min(99, Math.max(0, ((SLIP_START - JOURNEY_START) / journeyRange) * 100));
+    var slipEndPct   = Math.min(99, Math.max(0, ((SLIP_END   - JOURNEY_START) / journeyRange) * 100));
+    var slipWidthPct = slipEndPct - slipStartPct;
+    var fill = document.getElementById("timeline-fill");
+    var notch = document.getElementById("slip-notch");
+    var marker = document.getElementById("slip-marker");
+    var nowDot = document.getElementById("now-dot");
+    var slipLbl = document.getElementById("slip-label");
+    if(fill) fill.style.width = "100%";
+    if(notch){ notch.style.left = slipStartPct+"%"; notch.style.width = slipWidthPct+"%"; }
+    if(marker){ marker.style.left = slipStartPct+"%"; }
+    if(nowDot){ nowDot.style.left = "100%"; }
+    if(slipLbl){ slipLbl.style.left = Math.max(5, slipStartPct - 4)+"%"; }
   },400);
-  var n=document.getElementById("liverNote");
-  if(n) n.textContent=pct+"% of 2-year liver recovery journey";
 }
 
 // ════════════════════════════════════════
@@ -3959,6 +4116,110 @@ function initSleepCalc(){
   initSPenCanvas("points-canvas","points-pen-color","points-pen-clear");
   initSPenCanvas("scan-canvas","scan-pen-color","scan-pen-clear");
   initSPenCanvas("tracker-canvas","tracker-pen-color","tracker-pen-clear");
+
+  // ── MINI PLAYER INIT ──────────────────
+  var _miniPlaying = false;
+  var _miniGenre = "chacha";
+  var PL_DATA = {
+    chacha:"PLB3qQUxqNGYgRf5Lc3wKiibZB8Vp8tfpI",
+    mambo:"PLB3qQUxqNGYgsH7qeU1_7vlTRJM-OHRV0",
+    rumba:"PLB3qQUxqNGYgVFPNvfmYq8M7_7o6F4tbZ",
+    bolero:"PLB3qQUxqNGYgl7YckT7RJhOzspZvdBifm",
+    swing:"PLB3qQUxqNGYiMdPBN1IApxaghsV4rY8i4",
+    chill:"PLB3qQUxqNGYhQdAANbJEgUlOZaJ-6QDdg",
+    krchill:"PL-_KCC2H1EpqNxi7F6K-4LoIexTXXjJtI"
+  };
+  function setMiniGenre(key, autoPlay){
+    _miniGenre = key;
+    var btns = document.querySelectorAll(".mini-genre-btn");
+    btns.forEach(function(b){
+      var active = b.dataset.mg === key;
+      b.style.background = active ? "rgba(18,163,122,.15)" : "transparent";
+      b.style.color = active ? "#4dba8a" : "#8b949e";
+      b.style.borderColor = active ? "rgba(18,163,122,.5)" : "rgba(255,255,255,.09)";
+      b.style.fontWeight = active ? "700" : "400";
+    });
+    if(autoPlay || _miniPlaying) showMiniIframe(key);
+  }
+  function showMiniIframe(key){
+    var wrap = document.getElementById("mini-iframe-wrap");
+    var btn = document.getElementById("mini-play-btn");
+    if(!wrap) return;
+    wrap.style.display = "block";
+    wrap.style.height = "120px";
+    wrap.innerHTML = '<iframe width="100%" height="120" src="https://www.youtube.com/embed/videoseries?list='+PL_DATA[key]+'&autoplay=1" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen style="border-radius:10px"></iframe>';
+    _miniPlaying = true;
+    if(btn) btn.textContent = "⏸";
+    // Adjust body padding for mini player
+    document.body.style.paddingBottom = "10rem";
+  }
+  function hideMiniIframe(){
+    var wrap = document.getElementById("mini-iframe-wrap");
+    var btn = document.getElementById("mini-play-btn");
+    if(wrap){ wrap.style.display = "none"; wrap.style.height = "0"; wrap.innerHTML = ""; }
+    _miniPlaying = false;
+    if(btn) btn.textContent = "▸";
+    document.body.style.paddingBottom = "3rem";
+  }
+  window.toggleMiniPlayer = function(){
+    if(_miniPlaying) hideMiniIframe();
+    else showMiniIframe(_miniGenre);
+  };
+  window.miniPlayGenre = function(key, autoPlay){
+    setMiniGenre(key, autoPlay !== false);
+  };
+  document.getElementById("mini-genres").addEventListener("click", function(ev){
+    var b = ev.target.closest(".mini-genre-btn");
+    if(!b) return;
+    setMiniGenre(b.dataset.mg, true);
+  });
+
+  // ── 11AM TRIGGER ──────────────────────
+  var _elevenFired = false;
+  function checkElevenTrigger(){
+    if(_elevenFired) return;
+    var et = etNow();
+    var h = et.getHours(), m = et.getMinutes();
+    // Fire at 10:50am ET
+    if(h === 10 && m >= 50 && m < 60){
+      var todayKey = "eleven-fired-" + etDateStr();
+      if(localStorage.getItem(todayKey)) return;
+      _elevenFired = true;
+      localStorage.setItem(todayKey, "1");
+      openElevenModal();
+    }
+  }
+  function openElevenModal(){
+    var modal = document.getElementById("eleven-modal");
+    if(!modal) return;
+    modal.style.display = "flex";
+    // Auto-load Cha Cha in modal player
+    var pl = document.getElementById("eleven-player");
+    if(pl) pl.innerHTML = '<iframe width="100%" height="100" src="https://www.youtube.com/embed/videoseries?list='+PL_DATA.chacha+'&autoplay=1" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen></iframe>';
+    // Also set mini player to Cha Cha
+    setMiniGenre("chacha", false);
+  }
+  window.closeElevenModal = function(save){
+    var modal = document.getElementById("eleven-modal");
+    if(modal) modal.style.display = "none";
+    if(save){
+      var txt = (document.getElementById("eleven-text")||{}).value || "";
+      if(txt.trim()){
+        var key = "journal";
+        var entries = JSON.parse(localStorage.getItem(key)||"[]");
+        var now = new Date();
+        entries.push({d: now.toLocaleDateString(), t: "11am check: " + txt.trim()});
+        localStorage.setItem(key, JSON.stringify(entries));
+      }
+    }
+    // Start Cha Cha in mini player when they close
+    showMiniIframe("chacha");
+  };
+  // Poll every 30s
+  setInterval(checkElevenTrigger, 30000);
+  checkElevenTrigger();
+
+  // ── TRIGGER 11AM CHECK ONCE ON LOAD ───
 
 // ════════════════════════════════════════
 // S PEN CANVAS HELPER
