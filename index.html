@@ -1827,9 +1827,12 @@ var currentSection="sec-now";
 var currentDiagram="wrist";
 
 function showSection(id){
-  document.querySelectorAll("#main-content>div").forEach(function(s){s.style.display="none";});
+  document.querySelectorAll("#main-content>div").forEach(function(s){
+    s.style.display="none";
+    s.style.pointerEvents="none";
+  });
   var t=document.getElementById(id);
-  if(t) t.style.display="block";
+  if(t){t.style.display="block";t.style.pointerEvents="";}
   currentSection=id;
   document.querySelectorAll("#nav-inner .pill").forEach(function(p){
     p.classList.toggle("active",p.dataset.nav===id);
@@ -1842,12 +1845,14 @@ function showSection(id){
   if(id==="sec-anchor"){initAnchorDay();}
 }
 
-document.getElementById("nav-inner").addEventListener("click",function(e){
-  var b=e.target.closest(".pill");
-  if(!b||!b.dataset.nav) return;
-  var n=b.dataset.nav;
-  if(n==="crisis"){openCrisis();return;}
-  showSection(n);
+// Direct pill listeners for reliability on mobile
+document.querySelectorAll("#nav-inner .pill").forEach(function(pill){
+  pill.addEventListener("click", function(){
+    var n = this.dataset.nav;
+    if(!n) return;
+    if(n==="crisis"){openCrisis();return;}
+    showSection(n);
+  });
 });
 document.getElementById("theme-btn").addEventListener("click",toggleTheme);
 
