@@ -2415,9 +2415,10 @@ function showPointDetail(id,type){
     +'<div style="font-size:13px;color:var(--tx2);line-height:1.6">'+p.tip+'</div>';
 }
 // Diagram tab delegation
-document.getElementById("diagram-tabs").addEventListener("click",function(ev){
-  var b=ev.target.closest(".tab-btn[data-diagram]");
-  if(b) showDiagram(b.dataset.diagram);
+document.querySelectorAll("#diagram-tabs .tab-btn[data-diagram]").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    showDiagram(this.dataset.diagram);
+  });
 });
 
 // ════════════════════════════════════════
@@ -3929,17 +3930,17 @@ function initAdvising(){
 // SKINCARE TAB — sub-nav + interactive logic
 // ════════════════════════════════════════
 (function(){
-  // Sub-nav
+  // Sub-nav — direct listeners per button for mobile reliability
   var skNav = document.getElementById("sk-nav");
   if(skNav){
-    skNav.addEventListener("click", function(e){
-      var b = e.target.closest(".sk-tab-btn[data-sk]");
-      if(!b) return;
-      skNav.querySelectorAll(".sk-tab-btn").forEach(function(x){x.classList.remove("active");});
-      b.classList.add("active");
-      document.querySelectorAll(".sk-panel").forEach(function(p){p.style.display="none";});
-      var panel = document.getElementById(b.dataset.sk);
-      if(panel) panel.style.display="block";
+    skNav.querySelectorAll(".sk-tab-btn[data-sk]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        skNav.querySelectorAll(".sk-tab-btn").forEach(function(x){x.classList.remove("active");});
+        this.classList.add("active");
+        document.querySelectorAll(".sk-panel").forEach(function(p){p.style.display="none";});
+        var panel = document.getElementById(this.dataset.sk);
+        if(panel) panel.style.display="block";
+      });
     });
   }
 })();
@@ -3992,14 +3993,14 @@ function skTogglePsoriasis(el){
 (function(){
   var moodNav = document.getElementById("mood-nav");
   if(!moodNav) return;
-  moodNav.addEventListener("click", function(e){
-    var b = e.target.closest(".sk-tab-btn[data-mood]");
-    if(!b) return;
-    moodNav.querySelectorAll(".sk-tab-btn").forEach(function(x){x.classList.remove("active");});
-    b.classList.add("active");
-    document.querySelectorAll(".mood-panel").forEach(function(p){p.style.display="none";});
-    var panel = document.getElementById(b.dataset.mood);
-    if(panel) panel.style.display="block";
+  moodNav.querySelectorAll(".sk-tab-btn[data-mood]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      moodNav.querySelectorAll(".sk-tab-btn").forEach(function(x){x.classList.remove("active");});
+      this.classList.add("active");
+      document.querySelectorAll(".mood-panel").forEach(function(p){p.style.display="none";});
+      var panel = document.getElementById(this.dataset.mood);
+      if(panel) panel.style.display="block";
+    });
   });
 })();
 
