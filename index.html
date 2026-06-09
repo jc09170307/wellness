@@ -217,67 +217,38 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 <div class="hdr">
   <div class="hdr-l">
     <div class="hdr-title">Wellness · 웰니스</div>
-    <div class="hdr-sub">DAcHM candidate · VUIM 2026–2030</div>
+    <div class="hdr-sub">D.AcOM candidate · VUIM 2026–2030</div>
   </div>
   <button class="theme-btn" id="theme-btn">☀️</button>
 </div>
 
-<!-- NAV -->
+<!-- NAV — 8 tabs -->
 <div class="nav-wrap"><div class="nav-inner" id="nav-inner">
   <button class="pill red" data-nav="crisis">🆘 Crisis</button>
-  <button class="pill red" data-nav="sec-wave">📜 Wisdom</button>
-  <button class="pill red" data-nav="sec-now">⚡ Now</button>
-  <button class="pill red" data-nav="sec-contacts">📞 Call</button>
-  <button class="pill teal" data-nav="sec-morning">🌄 Morning</button>
-  <button class="pill active" data-nav="sec-checkin">🌅 Check-in</button>
+  <button class="pill active" data-nav="sec-now">⚡ Now</button>
   <button class="pill" data-nav="sec-meds">💊 Meds</button>
-  <button class="pill" data-nav="sec-skincare" style="background:rgba(58,191,158,.12);border-color:rgba(58,191,158,.35);color:#3abf9e;font-weight:600;">💆 Skin</button>
-  <button class="pill" data-nav="sec-halt">HALT</button>
+  <button class="pill" data-nav="sec-skin" style="background:rgba(58,191,158,.12);border-color:rgba(58,191,158,.35);color:#3abf9e;font-weight:600;">💆 Skin</button>
+  <button class="pill" data-nav="sec-doodle">🎨 Doodle</button>
+  <button class="pill" data-nav="sec-anchor">⚓ Anchor</button>
   <button class="pill" data-nav="sec-mood">🧠 Mood</button>
-  <button class="pill" data-nav="sec-dbt">DBT</button>
   <button class="pill" data-nav="sec-points">👐 Points</button>
-  <button class="pill" data-nav="sec-scan">🔍 Scan</button>
   <button class="pill" data-nav="sec-dance">💃 Dance</button>
-  <button class="pill" data-nav="sec-formulas">📜 Formulas</button>
-  <button class="pill" data-nav="sec-teas">🍵 Teas</button>
-  <button class="pill" data-nav="sec-herbs">🌿 Herbs</button>
-  <button class="pill" data-nav="sec-liver">🫀 Liver</button>
-  <button class="pill" data-nav="sec-labs">🔬 Labs</button>
-  <button class="pill" data-nav="sec-tracker">📊 Tracker</button>
-  <button class="pill" data-nav="sec-milestones">🏅 Milestones</button>
-  <button class="pill" data-nav="sec-wins">⭐ Wins</button>
-  <button class="pill" data-nav="sec-journal">📓 Journal</button>
-  <button class="pill" data-nav="sec-builder">🔧 Builder</button>
-  <button class="pill" data-nav="sec-floor">🏆 Floor</button>
-  <button class="pill" data-nav="sec-music">🎵 Music</button>
-  <button class="pill" data-nav="sec-hangul">한 Hangul</button>
-  <button class="pill" data-nav="sec-buy">🛒 Buy</button>
-  <button class="pill" data-nav="sec-backup">💾 Backup</button>
-  <button class="pill" data-nav="sec-sleep">🌙 Sleep</button>
-  <button class="pill blue" data-nav="sec-winddown">🕯️ Wind-down</button>
-  <button class="pill" data-nav="sec-health">🏥 Health</button>
-  <button class="pill" data-nav="sec-study">📚 Study</button>
-  <button class="pill" data-nav="sec-advising">🎓 Advising</button>
 </div></div>
 
 <div id="main-content">
 
-<!-- CHECK-IN -->
-<div id="sec-checkin">
+<!-- ══ NOW TAB ══ -->
+<div id="sec-now">
+  <!-- Sobriety Hero -->
   <div class="hero">
     <div class="hero-num" id="dayNum">—</div>
     <div class="hero-unit" id="hero-unit-lbl">days on this journey</div>
     <div class="hero-sub" id="hero-sub-lbl">Since November 23, 2025</div>
-    <!-- TIMELINE BAR -->
     <div style="margin:.75rem 0 .3rem">
       <div style="position:relative;height:10px;background:#0a1f12;border-radius:5px;overflow:visible">
-        <!-- Full bar fill -->
         <div id="timeline-fill" style="position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--G),var(--G2));border-radius:5px;transition:width 1.2s ease"></div>
-        <!-- Slip dip marker -->
-        <div id="slip-marker" style="position:absolute;top:-3px;width:3px;height:16px;background:#c47a1a;border-radius:2px;z-index:2" title="Apr 10 – Jun 7: rough patch noted. Not a reset."></div>
-        <!-- Slip notch (heartbeat dip) -->
-        <div id="slip-notch" style="position:absolute;top:0;height:100%;background:#09040a;z-index:1" ></div>
-        <!-- Now dot -->
+        <div id="slip-marker" style="position:absolute;top:-3px;width:3px;height:16px;background:#c47a1a;border-radius:2px;z-index:2"></div>
+        <div id="slip-notch" style="position:absolute;top:0;height:100%;background:#09040a;z-index:1"></div>
         <div id="now-dot" style="position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;background:#12a37a;border-radius:50%;border:2px solid #0d1117;z-index:3;box-shadow:0 0 6px #12a37a88"></div>
       </div>
       <div style="display:flex;justify-content:space-between;margin-top:.3rem;position:relative">
@@ -286,10 +257,9 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
         <div style="font-size:9px;color:#2d6b4a">Today</div>
       </div>
     </div>
-    <!-- Clinical fact -->
     <div style="background:rgba(18,163,122,.08);border:1px solid rgba(18,163,122,.2);border-radius:8px;padding:.4rem .75rem;margin:.45rem 0 0;display:flex;align-items:center;gap:.5rem">
       <span style="font-size:16px">🫀</span>
-      <div style="font-size:11px;color:#4dba8a;font-weight:600"><span id="dayNum2">197</span> days since Nov 23 → AST dropped from 181 to 58</div>
+      <div style="font-size:11px;color:#4dba8a;font-weight:600"><span id="dayNum2">—</span> days since Nov 23 → AST dropped from 181 to 58</div>
     </div>
     <div class="hero-bar" style="margin-top:.6rem"><div class="hero-bar-fill" id="liverBar"></div></div>
     <div class="hero-bar-note" id="liverNote"></div>
@@ -299,750 +269,95 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
     <div class="metric"><div class="metric-val" id="moNum">—</div><div class="metric-lbl">months</div></div>
     <div class="metric"><div class="metric-val" id="nxtNum">—</div><div class="metric-lbl" id="nxtLbl">to next</div></div>
   </div>
+
   <div class="sec">
     <button class="btn red" id="crisis-open-btn" style="margin-bottom:.65rem">🆘 60-Second Craving Emergency</button>
+
+    <!-- Morning check-in -->
     <div class="sec-lbl">Morning check-in</div>
     <div style="margin-bottom:.75rem">
       <div class="field-lbl">Today's intention — one word or phrase</div>
       <div style="display:flex;gap:.4rem;align-items:center">
-        <input type="text" id="intention-input" class="field" placeholder="e.g. steady, present, one day at a time…" style="margin-bottom:0;flex:1" maxlength="60">
-        <button id="intention-save-btn" style="padding:9px 14px;background:var(--G);color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;flex-shrink:0">Set</button>
+        <input class="field" id="intention-input" placeholder="e.g. steady" style="margin-bottom:0;flex:1">
+        <button class="btn" id="intention-set-btn" style="width:auto;padding:10px 16px;flex-shrink:0">Set</button>
       </div>
-      <div id="intention-display" style="display:none;margin-top:.5rem;background:linear-gradient(135deg,#071a10,#0a2218);border:1.5px solid #12a37a33;border-radius:12px;padding:.65rem 1rem;display:flex;justify-content:space-between;align-items:center">
-        <div>
-          <div style="font-size:10px;font-weight:700;color:var(--G2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Today's intention</div>
-          <div id="intention-text" style="font-size:16px;font-weight:700;color:#e6edf3;letter-spacing:-.2px"></div>
-        </div>
-        <button id="intention-clear-btn" style="background:none;border:none;color:var(--tx3);font-size:18px;cursor:pointer;padding:4px 8px">×</button>
-      </div>
+      <div id="intention-display" style="font-size:13px;color:var(--G2);margin-top:.4rem;min-height:18px"></div>
     </div>
-    <div class="chip-lbl">Sleep quality</div><div class="chip-wrap" id="chips-sleep"></div>
-    <div class="chip-lbl">Body energy</div><div class="chip-wrap" id="chips-energy"></div>
-    <div class="chip-lbl">Mood pole</div><div class="chip-wrap" id="chips-mood-pole"></div>
+    <div class="chip-lbl">Sleep quality</div>
+    <div class="chip-wrap" id="chips-sleep"></div>
+    <div class="chip-lbl">Body energy</div>
+    <div class="chip-wrap" id="chips-energy"></div>
+    <div class="chip-lbl">Mood pole</div>
+    <div class="chip-wrap" id="chips-mood-pole"></div>
     <div class="chip-lbl">Craving pressure (0–5)</div>
-    <input type="range" min="0" max="5" value="0" id="craving-slider">
-    <span id="craving-val" style="font-size:14px;font-weight:700;color:var(--tx)">0</span>
-    <div class="sec-lbl">Five Element check-in</div>
-    <div style="font-size:12px;color:var(--tx3);margin-bottom:.45rem">Tap the loudest element today.</div>
-    <div class="halt-grid" id="five-elements"></div>
-    <div id="element-protocol"></div>
+    <input type="range" id="craving-slider" min="0" max="5" value="0">
+    <div style="font-size:13px;font-weight:700;color:var(--G);margin-bottom:.65rem" id="craving-val">0</div>
+
+    <!-- Craving protocols -->
     <div class="sec-lbl">Craving protocols</div>
     <div id="craving-protocols"></div>
+
+    <!-- Now protocols -->
+    <div class="sec-lbl" style="margin-top:.65rem">Right now — tap what matches</div>
+    <div style="font-size:12px;color:var(--tx3);margin-bottom:.45rem">No setup. Just tap. Full protocol expands.</div>
+    <div id="now-protocols"></div>
+
+    <!-- Morning ritual -->
+    <div class="sec-lbl" style="margin-top:.65rem">Morning ritual — 9 minutes</div>
+    <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Sets the Qi, anchors the Shen, checks meds — before the day takes over.</div>
+    <div id="morning-steps-preview"></div>
+    <button class="btn" id="morning-start-btn">Begin morning ritual</button>
+    <div id="morning-active" style="display:none"></div>
+
+    <!-- Wind-down -->
+    <div class="sec-lbl" style="margin-top:1.2rem">Pre-sleep wind-down</div>
+    <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Done before you lie down. Calls the Shen home.</div>
+    <div id="winddown-steps-preview"></div>
+    <button class="btn" style="background:var(--blue)" id="winddown-start-btn">Begin wind-down</button>
+    <div id="winddown-active" style="display:none"></div>
+
+    <!-- Contacts -->
+    <div class="sec-lbl" style="margin-top:1.2rem">Call someone who loves you</div>
+    <div id="contact-cards"></div>
+    <div class="sec-lbl">Professional</div>
+    <div class="card" style="background:#160707;border-color:#c0392b44">
+      <div style="font-size:13px;font-weight:600;color:#e05555;margin-bottom:.25rem">Pro Active Wellness</div>
+      <a href="tel:7038225003" style="font-size:13px;color:#c47a7a;text-decoration:none">📞 703-822-5003</a>
+    </div>
+    <div id="contact-photo-section"></div>
   </div>
 </div>
 
-<!-- ANCIENT WISDOM / DO IT NOW -->
-<div id="sec-wave" style="display:none"><div class="sec" style="padding-top:.75rem">
-
-  <!-- Tab bar -->
-  <div style="display:flex;gap:.4rem;margin-bottom:1rem">
-    <button class="wisdom-tab active" data-wtab="do" style="flex:1;padding:8px;border-radius:12px;border:1.5px solid #12a37a;background:#071a10;color:#12a37a;font-size:13px;font-weight:700;cursor:pointer">🎲 Do It</button>
-    <button class="wisdom-tab" data-wtab="dongui" style="flex:1;padding:8px;border-radius:12px;border:1.5px solid var(--bd);background:var(--card);color:var(--tx3);font-size:13px;font-weight:600;cursor:pointer">동의보감</button>
-    <button class="wisdom-tab" data-wtab="myeong" style="flex:1;padding:8px;border-radius:12px;border:1.5px solid var(--bd);background:var(--card);color:var(--tx3);font-size:13px;font-weight:600;cursor:pointer">명심보감</button>
-  </div>
-
-  <!-- DO IT NOW tab -->
-  <div id="wtab-do">
-    <div style="font-size:12px;color:var(--tx3);margin-bottom:.75rem;text-align:center">Tap the card. Do the thing. That's it.</div>
-    <div id="do-it-card" style="background:linear-gradient(145deg,#071a10,#0d2518);border:1.5px solid #12a37a44;border-radius:20px;padding:2rem 1.5rem;text-align:center;cursor:pointer;min-height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;transition:transform .12s,border-color .2s;-webkit-tap-highlight-color:transparent">
-      <div id="do-it-emoji" style="font-size:52px;line-height:1">🌿</div>
-      <div id="do-it-text" style="font-size:18px;font-weight:700;color:#e6edf3;line-height:1.4;letter-spacing:-.3px">Tap for your next move</div>
-      <div id="do-it-sub" style="font-size:13px;color:#4dba8a;line-height:1.5"></div>
-    </div>
-    <div style="text-align:center;margin-top:.65rem;font-size:11px;color:var(--tx3)">tap card to shuffle</div>
-  </div>
-
-  <!-- DONGUI BOGAM tab -->
-  <div id="wtab-dongui" style="display:none">
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.85rem;line-height:1.55;text-align:center">동의보감 · Dongui Bogam · 1613<br><span style="color:#4dba8a">Royal Korean Medical Encyclopedia — Heo Jun</span></div>
-    <div id="dongui-card" style="cursor:pointer;-webkit-tap-highlight-color:transparent">
-      <div style="background:linear-gradient(145deg,#0a0f0d,#0d1f16);border:1.5px solid #12a37a33;border-radius:20px;padding:1.5rem 1.4rem;margin-bottom:.5rem">
-        <div id="dongui-hanja" style="font-size:22px;color:#2d6b4a;letter-spacing:.15em;margin-bottom:.5rem;line-height:1.6;font-weight:300"></div>
-        <div id="dongui-korean" style="font-size:16px;font-weight:600;color:#4dba8a;margin-bottom:.65rem;line-height:1.5;letter-spacing:-.1px"></div>
-        <div style="height:1px;background:linear-gradient(90deg,transparent,#12a37a33,transparent);margin-bottom:.65rem"></div>
-        <div id="dongui-english" style="font-size:14px;color:#c8d8c8;line-height:1.7;margin-bottom:.75rem"></div>
-        <div style="background:#071a10;border-radius:10px;padding:.65rem .85rem;border-left:3px solid #12a37a">
-          <div style="font-size:10px;font-weight:700;color:#12a37a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Right now</div>
-          <div id="dongui-action" style="font-size:13px;color:#e6edf3;line-height:1.55"></div>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;font-size:11px;color:var(--tx3)">tap card for next passage</div>
-  </div>
-
-  <!-- MYEONGSHIM tab -->
-  <div id="wtab-myeong" style="display:none">
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.85rem;line-height:1.55;text-align:center">명심보감 · Myeongshim Bogam · 1393<br><span style="color:#c47a1a">Mirror of the Clear Mind — Ch'u Hui</span></div>
-    <div id="myeong-card" style="cursor:pointer;-webkit-tap-highlight-color:transparent">
-      <div style="background:linear-gradient(145deg,#120d04,#1a1005);border:1.5px solid #c47a1a33;border-radius:20px;padding:1.5rem 1.4rem;margin-bottom:.5rem">
-        <div id="myeong-hanja" style="font-size:22px;color:#6b4a0a;letter-spacing:.15em;margin-bottom:.5rem;line-height:1.6;font-weight:300"></div>
-        <div id="myeong-korean" style="font-size:16px;font-weight:600;color:#c47a1a;margin-bottom:.65rem;line-height:1.5;letter-spacing:-.1px"></div>
-        <div style="height:1px;background:linear-gradient(90deg,transparent,#c47a1a33,transparent);margin-bottom:.65rem"></div>
-        <div id="myeong-english" style="font-size:14px;color:#d8c8a8;line-height:1.7;margin-bottom:.75rem"></div>
-        <div style="background:#120d04;border-radius:10px;padding:.65rem .85rem;border-left:3px solid #c47a1a">
-          <div style="font-size:10px;font-weight:700;color:#c47a1a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">Sit with this</div>
-          <div id="myeong-reflection" style="font-size:13px;color:#e6dfc8;line-height:1.55"></div>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;font-size:11px;color:var(--tx3)">tap card for next passage</div>
-  </div>
-
-</div></div>
-
-<!-- NOW -->
-<div id="sec-now" style="display:none"><div class="sec">
-  <div class="sec-lbl">Right now — tap what matches</div>
-  <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">No setup. Just tap. Full protocol expands.</div>
-  <div id="now-protocols"></div>
-</div></div>
-
-<!-- CONTACTS -->
-<div id="sec-contacts" style="display:none"><div class="sec">
-  <div class="sec-lbl">Call someone who loves you</div>
-  <div id="contact-cards"></div>
-  <div class="sec-lbl">Professional</div>
-  <div class="card" style="background:#160707;border-color:#c0392b44">
-    <div style="font-size:13px;font-weight:600;color:#e05555;margin-bottom:.25rem">Pro Active Wellness</div>
-    <div style="font-size:13px;color:#c47a7a">📞 703-822-5003</div>
-  </div>
-  <div class="sec-lbl">Contact photos</div>
-  <div id="contact-photo-section"></div>
-</div></div>
-
-<!-- MORNING -->
-<div id="sec-morning" style="display:none"><div class="sec">
-  <div class="sec-lbl">Morning ritual — 9 minutes</div>
-  <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Sets the Qi, anchors the Shen, checks meds — before the day takes over.</div>
-  <div id="morning-steps-preview"></div>
-  <button class="btn" id="morning-start-btn">Begin morning ritual</button>
-  <div id="morning-active" style="display:none"></div>
-</div></div>
-
-<!-- MEDS -->
+<!-- ══ MEDS TAB ══ -->
 <div id="sec-meds" style="display:none"><div class="sec" style="padding-top:.75rem">
-
   <!-- legend -->
   <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.75rem">
     <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(192,57,43,.12);color:#e05555;border:1px solid rgba(192,57,43,.3)">💊 Rx</span>
     <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(18,163,122,.12);color:var(--G2);border:1px solid rgba(18,163,122,.35)">🌿 Supplement</span>
-    <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(74,159,212,.12);color:#4a9fd4;border:1px solid rgba(74,159,212,.3)">🌱 Herb formula</span>
-    <span style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(192,68,116,.12);color:#c04474;border:1px solid rgba(192,68,116,.3)">🧴 Topical</span>
   </div>
 
-  <!-- MORNING -->
   <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
     <div style="background:linear-gradient(135deg,#b8701a,#e89328);border-radius:8px;padding:4px 12px;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.04em">🌅 MORNING</div>
     <div style="flex:1;height:1px;background:linear-gradient(90deg,#e8932888,transparent)"></div>
   </div>
   <div id="meds-morning" style="margin-bottom:1rem"></div>
 
-  <!-- AFTERNOON -->
   <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
     <div style="background:linear-gradient(135deg,#1a6fa8,#4a9fd4);border-radius:8px;padding:4px 12px;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.04em">☀️ AFTERNOON</div>
     <div style="flex:1;height:1px;background:linear-gradient(90deg,#4a9fd488,transparent)"></div>
   </div>
   <div id="meds-afternoon" style="margin-bottom:1rem"></div>
 
-  <!-- EVENING -->
   <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
     <div style="background:linear-gradient(135deg,#3a2060,#6c5fc7);border-radius:8px;padding:4px 12px;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.04em">🌙 EVENING</div>
     <div style="flex:1;height:1px;background:linear-gradient(90deg,#6c5fc788,transparent)"></div>
   </div>
   <div id="meds-evening" style="margin-bottom:1rem"></div>
 
-  <!-- CHINESE HERBS -->
-  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
-    <div style="background:linear-gradient(135deg,#2d5016,#4a8a28);border-radius:8px;padding:4px 12px;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.04em">🌱 HERB FORMULAS</div>
-    <div style="flex:1;height:1px;background:linear-gradient(90deg,#4a8a2888,transparent)"></div>
-  </div>
-  <div style="font-size:10px;color:var(--tx3);margin-bottom:.5rem;line-height:1.5">3 capsules · 3× daily · with meals · unless noted</div>
-  <div id="meds-herbs" style="margin-bottom:1rem"></div>
-
-  <!-- TOPICALS & HAIR — day schedule -->
-  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem">
-    <div style="background:linear-gradient(135deg,#8b0a50,#c04474);border-radius:8px;padding:4px 12px;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:.04em">🧴 TOPICALS & HAIR</div>
-    <div style="flex:1;height:1px;background:linear-gradient(90deg,#c0447488,transparent)"></div>
-  </div>
-
-  <!-- EVERY DAY -->
-  <div style="font-size:9px;font-weight:900;color:#e89328;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.4rem;padding-left:.2rem">📅 EVERY DAY</div>
-
-  <!-- AM row -->
-  <div style="background:var(--card);border:.5px solid var(--bd);border-radius:13px;padding:.75rem .9rem;margin-bottom:.4rem">
-    <div style="font-size:10px;font-weight:900;color:#e89328;margin-bottom:.55rem;letter-spacing:.04em">🌅 AM — After Shower</div>
-    <div style="display:flex;flex-direction:column;gap:.3rem">
-      <div style="display:flex;gap:.6rem;align-items:baseline">
-        <div style="width:3px;align-self:stretch;background:#c0392b;border-radius:2px;flex-shrink:0"></div>
-        <div>
-          <div style="font-size:12px;font-weight:700;color:var(--tx)">Desonide 0.05% <span style="font-size:9px;color:#c0392b;font-weight:800">Rx · face/nose plaques only</span></div>
-          <div style="font-size:10px;color:var(--tx3);margin-top:.1rem">Thin layer · AM + PM if needed · Dr. Kohn</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:.6rem;align-items:baseline">
-        <div style="width:3px;align-self:stretch;background:#c0392b;border-radius:2px;flex-shrink:0"></div>
-        <div>
-          <div style="font-size:12px;font-weight:700;color:var(--tx)">Calcipotriene + Betamethasone <span style="font-size:9px;color:#c0392b;font-weight:800">Rx · body only · ⚠️ not face</span></div>
-          <div style="font-size:10px;color:var(--tx3);margin-top:.1rem">Body + genital plaques · after shower · max 4 weeks then rest</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:.6rem;align-items:baseline">
-        <div style="width:3px;align-self:stretch;background:#12a37a;border-radius:2px;flex-shrink:0"></div>
-        <div>
-          <div style="font-size:12px;font-weight:700;color:var(--tx)">GCoop Body Lotion (item 279)</div>
-          <div style="font-size:10px;color:var(--tx3);margin-top:.1rem">Full body · apply to damp skin immediately after shower</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-    <!-- HAIR PROTOCOL SCHEDULE -->
-  <div style="font-size:9px;font-weight:900;color:#c47a1a;letter-spacing:.08em;text-transform:uppercase;margin:.2rem 0 .5rem .2rem">💇 HAIR PROTOCOL SCHEDULE</div>
-
-  <!-- PM Nightly -->
-  <div style="background:var(--card);border:.5px solid #c47a1a33;border-radius:13px;padding:.75rem .9rem;margin-bottom:.6rem">
-    <div style="font-size:10px;font-weight:900;color:#c47a1a;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">🌙 PM — every night</div>
-    <div style="display:flex;flex-direction:column;gap:.4rem">
-      <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:18px;height:18px;border-radius:50%;background:#c47a1a;color:#fff;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div><div style="font-size:11px;font-weight:700;color:var(--tx)">Clobetasol 0.05% Solution <span style="font-size:9px;color:#c0392b;font-weight:800">Rx · scalp only</span></div><div style="font-size:10px;color:var(--tx3);line-height:1.5">Part hair ~1cm sections · apply along each parting · max 2 continuous weeks then 1-week break</div></div></div>
-      <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:18px;height:18px;border-radius:50%;background:#c47a1a;color:#fff;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div><div><div style="font-size:11px;font-weight:700;color:var(--tx)">Wait 5 min — Clobetasol fully dry</div></div></div>
-      <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:18px;height:18px;border-radius:50%;background:#c47a1a;color:#fff;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div><div><div style="font-size:11px;font-weight:700;color:var(--tx)">Aromatica Rosemary Root Enhancer</div><div style="font-size:10px;color:var(--tx3)">Shake first · spray scalp · fingertip massage 1 min · leave in overnight</div></div></div>
-    </div>
-  </div>
-
-  <!-- WASH DAYS -->
-  <div style="background:var(--card);border:.5px solid #9b8be844;border-radius:13px;padding:.75rem .9rem;margin-bottom:.6rem">
-    <div style="font-size:10px;font-weight:900;color:#9b8be8;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">🚿 WASH DAYS — 2–3× per week</div>
-    <div style="display:flex;flex-direction:column;gap:.4rem">
-      <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:18px;height:18px;border-radius:50%;background:#9b8be8;color:#fff;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div><div style="font-size:11px;font-weight:700;color:var(--tx)">Shampoo — alternate each wash</div><div style="font-size:10px;color:var(--tx3);line-height:1.55"><span style="color:#9b8be8;font-weight:700">Day A:</span> VUIM HerbalMint Shampoo · scalp focus · rinse<br><span style="color:#9b8be8;font-weight:700">Day B:</span> Dr. Groot Hair Thickening Shampoo · scalp focus · rinse</div></div></div>
-      <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:18px;height:18px;border-radius:50%;background:#9b8be8;color:#fff;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div><div><div style="font-size:11px;font-weight:700;color:var(--tx)">GCoop Conditioner</div><div style="font-size:10px;color:var(--tx3)">Mid-length to ends only · ⚠️ NOT on scalp · 2–3 min · rinse</div></div></div>
-      <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:18px;height:18px;border-radius:50%;background:#9b8be8;color:#fff;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div><div><div style="font-size:11px;font-weight:700;color:var(--tx)">Scalp Tonic — match to shampoo</div><div style="font-size:10px;color:var(--tx3);line-height:1.55"><span style="color:#9b8be8;font-weight:700">VUIM day →</span> VUIM HerbalMint Scalp Tonic<br><span style="color:#9b8be8;font-weight:700">Dr. Groot day →</span> Dr. Groot Scalp Tonic<br>Spray towel-dried scalp · massage · leave in</div></div></div>
-      <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:18px;height:18px;border-radius:50%;background:#9b8be8;color:#fff;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">4</div><div><div style="font-size:11px;font-weight:700;color:var(--tx)">Cè Bǎi Yè scalp rinse <span style="font-size:9px;color:#4a9fd4;font-weight:400">optional</span></div><div style="font-size:10px;color:var(--tx3)">Brew strong · cool · pour over scalp · 5 min · light rinse</div></div></div>
-    </div>
-  </div>
-
-  <!-- WEEKLY MICRONEEDLING -->
-  <div style="background:var(--card);border:.5px solid #6c5fc744;border-radius:13px;padding:.75rem .9rem;margin-bottom:.6rem">
-    <div style="font-size:10px;font-weight:900;color:#6c5fc7;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">📆 ONCE PER WEEK</div>
-    <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:18px;height:18px;border-radius:50%;background:#6c5fc7;color:#fff;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div><div style="font-size:11px;font-weight:700;color:var(--tx)">Scalp Microneedling <span style="font-size:9px;color:#9b8be8;font-weight:800">Koi Beauty 0.5mm roller</span></div><div style="font-size:10px;color:var(--tx3);line-height:1.5">Instead of Clobetasol that PM · 4–5 passes per section · apply Aromatica immediately after · ⚠️ NEVER on active psoriasis plaques · clean roller 70% isopropyl · replace every 3 months</div></div></div>
-  </div>
-
-  <!-- DAILY HERBS -->
-  <div style="background:rgba(74,159,212,.06);border:1px solid rgba(74,159,212,.2);border-radius:11px;padding:.6rem .85rem;margin-bottom:.55rem">
-    <div style="font-size:10px;font-weight:800;color:#4a9fd4;margin-bottom:.3rem">🌿 Daily Hair Herbs — with meals</div>
-    <div style="font-size:10.5px;color:var(--tx3);line-height:1.7">🌅 <strong style="color:var(--tx)">Breakfast:</strong> Er Zhi Wan 3 caps + Sāng Shèn 3 caps<br>🌆 <strong style="color:var(--tx)">Dinner:</strong> Er Zhi Wan 3 caps + Cè Bǎi Yè 3 caps<br><span style="font-size:9.5px;font-style:italic">6–8 week minimum · liver-safe · no minoxidil (FIB-4 4.15)</span></div>
-  </div>
-
-  <div id="meds-topicals" style="display:none"></div>
-
   <button class="btn sec" id="meds-reset-btn" style="margin-top:.25rem;font-size:12px">↺ Reset all for tomorrow</button>
 </div></div>
 
-<!-- HALT -->
-<div id="sec-halt" style="display:none"><div class="sec">
-  <div class="sec-lbl">HALT — which one is this?</div>
-  <div class="halt-grid" id="halt-grid"></div>
-  <div id="halt-detail"></div>
-</div></div>
-
-<!-- MOOD -->
-<div id="sec-mood" style="display:none"><div class="sec">
-  <div class="sec-lbl">Hypomania early warning</div>
-  <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Tap any that apply right now.</div>
-  <div id="mood-check-list"></div>
-  <div id="mood-result" style="margin-top:.65rem"></div>
-</div></div>
-
-<!-- DBT -->
-<div id="sec-dbt" style="display:none"><div class="sec">
-  <div class="sec-lbl">DBT skills — EAM mapped</div>
-  <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Western regulation science meets classical channel theory.</div>
-  <div id="dbt-list"></div>
-</div></div>
-
-<!-- POINTS -->
-<div id="sec-points" style="display:none"><div class="sec">
-  <div class="sec-lbl">Acupressure — tap any dot or chip</div>
-  <div style="font-size:12px;color:var(--tx3);margin-bottom:.45rem">🟢 Public (anywhere) · 🟡 Private (home/car/bathroom)</div>
-  <div class="tab-bar" id="diagram-tabs">
-    <button class="tab-btn active" data-diagram="wrist">Wrist & Hand</button>
-    <button class="tab-btn" data-diagram="foot">Foot & Leg</button>
-    <button class="tab-btn" data-diagram="ear">Ear</button>
-  </div>
-  <div id="diagram-area"></div>
-  <div id="point-detail" class="det-card" style="display:none"></div>
-  <!-- S Pen annotation -->
-  <div style="margin-top:.75rem">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
-      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Annotate with S Pen</div>
-      <div style="display:flex;gap:.3rem">
-        <button id="points-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
-        <select id="points-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
-          <option value="#12a37a">Green</option>
-          <option value="#e6edf3">White</option>
-          <option value="#4a9fd4">Blue</option>
-          <option value="#c0392b">Red</option>
-          <option value="#c47a1a">Amber</option>
-        </select>
-      </div>
-    </div>
-    <canvas id="points-canvas" style="width:100%;height:140px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
-  </div>
-</div></div>
-
-<!-- SCAN -->
-<div id="sec-scan" style="display:none"><div class="sec">
-  <div class="sec-lbl">Body scan — where is the tension?</div>
-  <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Tap each zone. Diagram + point + action expands.</div>
-  <div id="scan-content"></div>
-  <!-- S Pen body map notes -->
-  <div style="margin-top:.75rem">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
-      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Mark tension zones with S Pen</div>
-      <div style="display:flex;gap:.3rem">
-        <button id="scan-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
-        <select id="scan-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
-          <option value="#c0392b">Red</option>
-          <option value="#12a37a">Green</option>
-          <option value="#e6edf3">White</option>
-          <option value="#4a9fd4">Blue</option>
-          <option value="#c47a1a">Amber</option>
-        </select>
-      </div>
-    </div>
-    <canvas id="scan-canvas" style="width:100%;height:160px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
-  </div>
-</div></div>
-
-<!-- DANCE -->
-<div id="sec-dance" style="display:none"><div class="sec">
-  <div class="sec-lbl">American Rhythm — your dance pharmacy</div>
-  <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Five dances · Five organs · Five emotional states.</div>
-  <div class="tab-bar" id="dance-tabs"></div>
-  <div id="dance-panel"></div>
-</div></div>
-
-<!-- FORMULAS -->
-<div id="sec-formulas" style="display:none"><div class="sec">
-  <div class="sec-lbl">Classical TCM formulas</div>
-  <div id="formulas-list"></div>
-</div></div>
-
-<!-- TEAS -->
-<div id="sec-teas" style="display:none"><div class="sec">
-  <div class="sec-lbl">Single herb teas</div>
-  <div id="teas-list"></div>
-</div></div>
-
-<!-- HERBS -->
-<div id="sec-herbs" style="display:none"><div class="sec">
-  <div class="sec-lbl">TCM herbs — your materia medica</div>
-  <div id="herbs-list"></div>
-</div></div>
-
-<!-- LIVER -->
-<div id="sec-liver" style="display:none"><div class="sec">
-  <div class="sec-lbl">Your liver — the why behind all of this</div>
-  <div id="liver-markers"></div>
-  <div class="card" style="background:#071a10;border-color:#12a37a30;margin-top:.25rem">
-    <div style="font-size:13px;color:#4dba8a;line-height:1.7">When you were sober Nov 23–Jan 26, your AST dropped from <b>181 → 41</b>. Your body heals when you stop. Every sober day is a healing day. LR3 every day supports liver Qi directly.</div>
-  </div>
-</div></div>
-
-<!-- LABS -->
-<div id="sec-labs" style="display:none"><div class="sec">
-  <div class="sec-lbl">Lab results — FIB-4 trend</div>
-  <div id="labs-content"></div>
-</div></div>
-
-<!-- TRACKER -->
-<div id="sec-tracker" style="display:none"><div class="sec">
-  <div class="sec-lbl">Weekly mood tracker</div>
-  <div id="tracker-content"></div>
-  <div style="margin-top:.75rem">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
-      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Mood notes — S Pen</div>
-      <div style="display:flex;gap:.3rem">
-        <button id="tracker-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
-        <select id="tracker-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
-          <option value="#12a37a">Green</option>
-          <option value="#e6edf3">White</option>
-          <option value="#4a9fd4">Blue</option>
-          <option value="#c0392b">Red</option>
-          <option value="#c47a1a">Amber</option>
-        </select>
-      </div>
-    </div>
-    <canvas id="tracker-canvas" style="width:100%;height:140px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
-  </div>
-</div></div>
-
-<!-- MILESTONES -->
-<div id="sec-milestones" style="display:none"><div class="sec">
-  <div class="sec-lbl">Your milestones — every one earned</div>
-  <div id="ms-list"></div>
-</div></div>
-
-<!-- WINS -->
-<div id="sec-wins" style="display:none"><div class="sec">
-  <div class="sec-lbl">Quick wins</div>
-  <textarea class="field" id="win-input" placeholder="What did you do well today?" rows="2"></textarea>
-  <button class="btn" id="win-btn">Log this win</button>
-  <div id="wins-list" style="margin-top:.65rem"></div>
-</div></div>
-
-<!-- JOURNAL -->
-<div id="sec-journal" style="display:none"><div class="sec">
-  <div class="sec-lbl">Journal</div>
-  <textarea class="field" id="journal-input" placeholder="What is present right now?" rows="4"></textarea>
-  <div style="margin-bottom:.5rem">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
-      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ S Pen — sketch or write</div>
-      <div style="display:flex;gap:.3rem">
-        <button id="journal-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
-        <select id="journal-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
-          <option value="#12a37a">Green</option>
-          <option value="#e6edf3">White</option>
-          <option value="#4a9fd4">Blue</option>
-          <option value="#c0392b">Red</option>
-          <option value="#c47a1a">Amber</option>
-        </select>
-      </div>
-    </div>
-    <canvas id="journal-canvas" style="width:100%;height:160px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair;margin-bottom:.5rem"></canvas>
-  </div>
-  <button class="btn" id="journal-btn">Save entry</button>
-  <div id="journal-list" style="margin-top:.65rem"></div>
-</div></div>
-
-<!-- BUILDER -->
-<div id="sec-builder" style="display:none"><div class="sec">
-  <div class="sec-lbl">Custom protocol builder</div>
-  <div id="builder-content"></div>
-</div></div>
-
-<!-- FLOOR -->
-<div id="sec-floor" style="display:none"><div class="sec">
-  <div class="sec-lbl">Competition floor checklist</div>
-  <div id="floor-content"></div>
-</div></div>
-
-<!-- MUSIC -->
-<div id="sec-music" style="display:none"><div class="sec">
-  <div class="sec-lbl">Your playlists</div>
-  <div class="tab-bar" id="music-tabs"></div>
-  <div id="music-player"></div>
-</div></div>
-
-<!-- HANGUL -->
-<div id="sec-hangul" style="display:none"><div class="sec">
-  <div class="sec-lbl">Hangul practice — S Pen optimized</div>
-  <div class="chip-wrap" id="hangul-cats"></div>
-  <div class="hangul-display" id="hangul-char">ㄱ</div>
-  <div class="hangul-rom" id="hangul-rom">g/k</div>
-  <div class="hangul-name" id="hangul-name">Giyeok</div>
-  <canvas class="hg-canvas" id="hangul-canvas" height="220" style="margin:.65rem 0"></canvas>
-  <div class="hg-btns">
-    <button class="hg-btn" id="hg-clear">Clear</button>
-    <button class="hg-btn" id="hg-prev">← Prev</button>
-    <button class="hg-btn pri" id="hg-next">Next →</button>
-  </div>
-  <div id="phrase-area" style="margin-top:1rem"></div>
-</div></div>
-
-<!-- BUY -->
-<div id="sec-buy" style="display:none"><div class="sec">
-  <div class="sec-lbl">🌿 Herbs & VUIM</div>
-  <div id="buy-content"></div>
-  <div class="sec-lbl" style="margin-top:.75rem">💆 Hair & Skincare</div>
-  <div id="buy-hair-skin-content"></div>
-</div></div>
-
-<!-- BACKUP -->
-<div id="sec-backup" style="display:none"><div class="sec">
-  <div class="sec-lbl">Data backup</div>
-  <div class="card"><div class="card-title">Export</div>
-    <div class="card-sub" style="margin-bottom:.65rem">Journal, sleep, mood, med checks.</div>
-    <button class="btn" id="export-btn">Export backup JSON</button></div>
-  <div class="card" style="margin-top:.6rem"><div class="card-title">Restore</div>
-    <input type="file" id="restore-file" accept=".json" style="color:var(--tx2);margin-top:.4rem"></div>
-</div></div>
-
-<!-- SLEEP -->
-<div id="sec-sleep" style="display:none"><div class="sec">
-  <div class="sec-lbl">Sleep tracker — Kidney Yin pattern</div>
-  <div id="sleep-content"></div>
-
-  <!-- Sleep Cycle Calculator -->
-  <div class="sec-lbl" style="margin-top:.5rem">Sleep cycle calculator</div>
-  <div class="card">
-    <div style="font-size:12px;color:var(--tx3);margin-bottom:.75rem;line-height:1.55">Each sleep cycle is ~90 minutes. Waking between cycles means you feel more rested. Enter your wake-up time and see the ideal bedtimes.</div>
-    <div class="field-lbl">I want to wake up at</div>
-    <input type="time" id="sleep-wake-input" class="field" style="margin-bottom:.65rem">
-    <button class="btn" id="sleep-calc-btn">Calculate bedtimes</button>
-    <div id="sleep-calc-results" style="margin-top:.65rem"></div>
-  </div>
-</div></div>
-
-<!-- WINDDOWN -->
-<div id="sec-winddown" style="display:none"><div class="sec">
-  <div class="sec-lbl">Pre-sleep wind-down</div>
-  <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Done before you lie down. Calls the Shen home.</div>
-  <div id="winddown-steps-preview"></div>
-  <button class="btn" style="background:var(--blue)" id="winddown-start-btn">Begin wind-down</button>
-  <div id="winddown-active" style="display:none"></div>
-</div></div>
-
-
-<!-- HEALTH MATRIX -->
-<div id="sec-health" style="display:none"><div class="sec">
-  <div class="sec-lbl">Clinical overview — Jon C</div>
-  <div style="font-size:11px;color:var(--tx2);margin-bottom:.65rem;line-height:1.6;">For educational reference only. Do not modify medications without Dr. Lawson and Dr. Lau.</div>
-
-  <!-- ROOT CAUSE -->
-  <div style="background:linear-gradient(135deg,#0d1117,#0a2218);border:1.5px solid #12a37a44;border-radius:16px;padding:1.1rem;margin-bottom:.6rem">
-    <div style="font-size:10px;font-weight:700;color:var(--G2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem">Root Cause Chain</div>
-    <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:.2rem">The SHBG Trap</div>
-    <div style="font-size:13px;color:#c47a1a;margin-bottom:.6rem">성호르몬결합글로불린 과다</div>
-    <div style="font-size:12px;color:#8b949e;line-height:1.7">Risperidone → Prolactin 60–69 ↑↑ → SHBG 167 ↑↑↑ → Free T 5.0 ↓ → ED + Hair Loss + Mood + Fatigue</div>
-    <div style="font-size:12px;color:var(--G2);margin-top:.5rem;font-weight:600">✅ Largely reversible: Abilify switch → Prolactin normalizes → SHBG drops → Free T rises</div>
-  </div>
-
-  <!-- KEY NUMBERS -->
-  <div class="sec-lbl">Key numbers at a glance</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.65rem">
-    <div style="background:#1a0808;border:1px solid #c0392b55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:#e05555">1398</div><div style="font-size:9px;font-weight:700;color:#e05555">Total T ng/dL ↑ HIGH</div><div style="font-size:8px;color:var(--tx3)">Ref: 264–916</div></div>
-    <div style="background:#1a1005;border:1px solid #c47a1a55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:#c47a1a">5.0</div><div style="font-size:9px;font-weight:700;color:#c47a1a">Free T pg/mL ↓ LOW</div><div style="font-size:8px;color:var(--tx3)">Ref: 8.7–25.1</div></div>
-    <div style="background:#1a0808;border:1px solid #c0392b55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:#e05555">167</div><div style="font-size:9px;font-weight:700;color:#e05555">SHBG nmol/L ↑ HIGH</div><div style="font-size:8px;color:var(--tx3)">Ref: 16.5–55.9</div></div>
-    <div style="background:#1a0808;border:1px solid #c0392b55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:#e05555">60</div><div style="font-size:9px;font-weight:700;color:#e05555">Prolactin ↑ HIGH</div><div style="font-size:8px;color:var(--tx3)">Ref: 3.9–22.7</div></div>
-    <div style="background:#1a0f04;border:1px solid #d4622d55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:#d4622d">58</div><div style="font-size:9px;font-weight:700;color:#d4622d">Platelets 🚨 ALERT</div><div style="font-size:8px;color:var(--tx3)">Ref: 150–450</div></div>
-    <div style="background:#071a10;border:1px solid #12a37a55;border-radius:12px;padding:.7rem;text-align:center"><div style="font-size:22px;font-weight:800;color:var(--G2)">12.6</div><div style="font-size:9px;font-weight:700;color:var(--G2)">Hemoglobin ↑ Better</div><div style="font-size:8px;color:var(--tx3)">Was 8.7 in Jan</div></div>
-  </div>
-
-  <!-- TCM PATTERNS -->
-  <div class="sec-lbl">TCM pattern diagnosis</div>
-  <div class="card" style="margin-bottom:.45rem"><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:.2rem">🔥 Blood Heat (血热) — Psoriasis</div><div style="font-size:11px;color:var(--tx3);line-height:1.5">Red facial plaques · greasy food triggers · Cool Blood, Clear Heat</div></div>
-  <div class="card" style="margin-bottom:.45rem"><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:.2rem">🔵 Liver Qi Stagnation (肝气郁结) — Hormones</div><div style="font-size:11px;color:var(--tx3);line-height:1.5">High SHBG · elevated bilirubin · mood instability · Move Liver Qi</div></div>
-  <div class="card" style="margin-bottom:.45rem"><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:.2rem">⚡ Kidney Yang Deficiency (肾阳虚) — ED/Fatigue</div><div style="font-size:11px;color:var(--tx3);line-height:1.5">Low free T · ED · low DHEA · low IGF-1 · Warm and Tonify Kidney Yang</div></div>
-  <div class="card" style="margin-bottom:.65rem"><div style="font-size:13px;font-weight:600;color:var(--tx);margin-bottom:.2rem">💛 Liver Blood Deficiency (肝血虚) — Anemia</div><div style="font-size:11px;color:var(--tx3);line-height:1.5">Previously severe anemia · low ferritin · hair loss · Nourish Liver Blood</div></div>
-
-  <!-- MEDICATIONS -->
-  <div class="sec-lbl">Current medications</div>
-
-  <div class="card" style="margin-bottom:.45rem;border-left:3px solid #c0392b">
-    <div style="font-size:12px;font-weight:700;color:#e05555;margin-bottom:.5rem">🧠 Psychiatric</div>
-    <div style="font-size:13px;font-weight:600;color:var(--tx)">Bupropion (Wellbutrin) 150mg</div>
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Once daily AM · Mood anchor · dopamine/norepinephrine support</div>
-    <div style="font-size:13px;font-weight:600;color:var(--tx)">Lithium Carbonate 150mg</div>
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Twice daily · Level 0.2 (sub-therapeutic — discuss with psychiatrist) · Never with alcohol</div>
-    <div style="font-size:13px;font-weight:600;color:#c47a1a">Risperidone — TAPERING</div>
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">0.5mg weeks 1–4 → 0.25mg starting Monday → then Abilify · PRIMARY cause of high prolactin → low Free T → ED</div>
-    <div style="font-size:13px;font-weight:600;color:var(--G2)">Aripiprazole (Abilify) — COMING SOON</div>
-    <div style="font-size:11px;color:var(--tx3)">Prolactin-sparing · will NOT suppress Free T like Risperidone · transformative for the hormonal cascade</div>
-  </div>
-
-  <div class="card" style="margin-bottom:.45rem;border-left:3px solid #1a6fa8">
-    <div style="font-size:12px;font-weight:700;color:#4a9fd4;margin-bottom:.5rem">⚡ ADHD</div>
-    <div style="font-size:13px;font-weight:600;color:var(--tx)">Concerta (Methylphenidate ER) 18mg</div>
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">Morning · Extended-release all-day coverage</div>
-    <div style="font-size:13px;font-weight:600;color:var(--tx)">Ritalin (Methylphenidate IR) 10mg</div>
-    <div style="font-size:11px;color:var(--tx3)">Afternoon · Before 3pm · bridges Concerta fade · TCM: stimulants create Heat/Yin deficiency — Mai Men Dong helps</div>
-  </div>
-
-  <div class="card" style="margin-bottom:.65rem;border-left:3px solid #c47a1a">
-    <div style="font-size:12px;font-weight:700;color:#c47a1a;margin-bottom:.5rem">💊 Hormonal</div>
-    <div style="font-size:13px;font-weight:600;color:var(--tx)">Tadalafil (Cialis) 5mg</div>
-    <div style="font-size:11px;color:var(--tx3)">Once daily · Dr. Lawson · treats ED + improves blood flow to liver and kidneys</div>
-  </div>
-
-
-
-  <!-- LAB TRENDS -->
-  <div class="sec-lbl">Lab trends</div>
-
-  <div class="card" style="margin-bottom:.45rem;border-left:3px solid #c0392b">
-    <div style="font-size:11px;font-weight:700;color:#e05555;margin-bottom:.45rem">🚨 Critical / Alert</div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Platelets</span><span style="font-size:12px;font-weight:700;color:#d4622d">58 🚨 (was 143→93→58)</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Prolactin</span><span style="font-size:12px;font-weight:700;color:#e05555">60 ↑ (ref 3.9–22.7)</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">SHBG</span><span style="font-size:12px;font-weight:700;color:#e05555">167 ↑ (ref 16.5–55.9)</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">FIB-4 Index</span><span style="font-size:12px;font-weight:700;color:#e05555">4.15 ↑ (high risk)</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0"><span style="font-size:12px;color:var(--tx)">Free Testosterone</span><span style="font-size:12px;font-weight:700;color:#c47a1a">5.0 ↓ (ref 8.7–25.1)</span></div>
-  </div>
-
-  <div class="card" style="margin-bottom:.45rem;border-left:3px solid var(--G)">
-    <div style="font-size:11px;font-weight:700;color:var(--G2);margin-bottom:.45rem">✅ Improving</div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Hemoglobin</span><span style="font-size:12px;font-weight:700;color:var(--G2)">8.7 → 12.6 ✅</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Iron</span><span style="font-size:12px;font-weight:700;color:var(--G2)">20 → 131 ✅</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Ferritin</span><span style="font-size:12px;font-weight:700;color:var(--G2)">15 → 120 ✅</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">ALT</span><span style="font-size:12px;font-weight:700;color:var(--G2)">143 → 27 ✅</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0"><span style="font-size:12px;color:var(--tx)">AST</span><span style="font-size:12px;font-weight:700;color:#c47a1a">181 → 58 ⚠️ watch</span></div>
-  </div>
-
-  <div class="card" style="margin-bottom:.65rem;border-left:3px solid #c47a1a">
-    <div style="font-size:11px;font-weight:700;color:#c47a1a;margin-bottom:.45rem">⚠️ Other flags</div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">DHEA-Sulfate</span><span style="font-size:12px;font-weight:700;color:#c47a1a">74.7 ↓</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">IGF-1</span><span style="font-size:12px;font-weight:700;color:#c47a1a">36 ↓</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Reverse T3</span><span style="font-size:12px;font-weight:700;color:#e05555">35.0 ↑</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">Vitamin D</span><span style="font-size:12px;font-weight:700;color:#c47a1a">29.3 ↓</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0"><span style="font-size:12px;color:var(--tx)">Bilirubin Total</span><span style="font-size:12px;font-weight:700;color:#e05555">2.7 ↑</span></div>
-  </div>
-
-  <!-- ALL CLEAR -->
-  <div class="card" style="margin-bottom:.65rem;background:var(--GL);border-color:var(--G)">
-    <div style="font-size:11px;font-weight:700;color:var(--G2);margin-bottom:.45rem">✅ All clear — good news</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem">
-      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ Hepatitis B — Neg</div>
-      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ Hepatitis C — Neg</div>
-      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ Candida — Neg</div>
-      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ Cardiac CRP — Low</div>
-      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ Glucose — 76 ✨</div>
-      <div style="font-size:11px;font-weight:600;color:var(--G2)">✅ HDL — Good 61</div>
-    </div>
-  </div>
-
-  <!-- TCM HERBS -->
-  <div class="sec-lbl">TCM herbs — discuss with Dr. Lau first</div>
-  <div id="health-supp-list"></div>
-  <div id="health-herbs-list"></div>
-
-  <!-- SUPPLIERS -->
-  <div class="sec-lbl">Suppliers — student accounts</div>
-  <div id="health-suppliers-list"></div>
-
-  <!-- TIMELINE -->
-  <div class="sec-lbl">Treatment timeline</div>
-  <div id="health-timeline-list"></div>
-
-  <!-- CONTACTS -->
-  <div class="sec-lbl">Your care team</div>
-  <div class="card" style="margin-bottom:.45rem">
-    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:.2rem">Dr. Lawson — Pro Active Wellness</div>
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">703-822-5003 · Supplements + hormone protocol + Tadalafil · myemedfusion.com portal</div>
-    <a href="tel:7038225003" style="font-size:12px;color:var(--G2)">📞 Call</a>
-  </div>
-  <div class="card" style="margin-bottom:.45rem">
-    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:.2rem">Dr. Lau — TCM Consultation</div>
-    <div style="font-size:11px;color:var(--tx3)">Bring this app · Discuss Blood Heat psoriasis, Liver Qi stagnation, Kidney Yang deficiency</div>
-  </div>
-  <div class="card" style="margin-bottom:.65rem">
-    <div style="font-size:13px;font-weight:700;color:var(--tx);margin-bottom:.2rem">Dr. Kohn — Advanced Dermatology</div>
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.3rem">4660 Kenmore Ave, Alexandria · 703-370-0073 · Psoriasis + spider angioma + hair loss</div>
-    <a href="tel:7033700073" style="font-size:12px;color:var(--G2)">📞 Call</a>
-  </div>
-
-</div></div>
-
-
-<!-- STUDY -->
-<div id="sec-study" style="display:none"><div class="sec">
-  <div class="sec-lbl">VUIM D.AcOM · Spring 2026</div>
-  <div style="font-size:11px;color:var(--tx3);margin-bottom:.65rem">Maintaining A in all courses · graduation target 2030</div>
-
-  <div style="background:linear-gradient(145deg,#071a10,#0a2e1e);border:1.5px solid #12a37a44;border-radius:16px;padding:1.1rem;margin-bottom:.65rem">
-    <div style="font-size:10px;font-weight:700;color:var(--G2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem">Spring 2026 · Active</div>
-    <div style="display:flex;flex-direction:column;gap:.4rem">
-      <div style="background:rgba(18,163,122,.08);border-radius:10px;padding:.6rem .8rem;border:.5px solid #12a37a22"><div style="font-size:13px;font-weight:700;color:#e6edf3">EAM303 — Basic Theory 2</div><div style="font-size:11px;color:#4dba8a;margin-top:1px">A · East Asian Medicine foundations continuing</div></div>
-      <div style="background:rgba(18,163,122,.08);border-radius:10px;padding:.6rem .8rem;border:.5px solid #12a37a22"><div style="font-size:13px;font-weight:700;color:#e6edf3">ME410 — Medical Ethics</div><div style="font-size:11px;color:#4dba8a;margin-top:1px">A · ethics and law in integrative medicine</div></div>
-      <div style="background:rgba(18,163,122,.08);border-radius:10px;padding:.6rem .8rem;border:.5px solid #12a37a22"><div style="font-size:13px;font-weight:700;color:#e6edf3">WM340 — Anatomy &amp; Physiology 1</div><div style="font-size:11px;color:#4dba8a;margin-top:1px">A · foundational anatomy and physiology</div></div>
-      <div style="background:rgba(18,163,122,.08);border-radius:10px;padding:.6rem .8rem;border:.5px solid #12a37a22"><div style="font-size:13px;font-weight:700;color:#e6edf3">WM350 — A&amp;P IV</div><div style="font-size:11px;color:#4dba8a;margin-top:1px">A · fluid/electrolyte, acid-base balance</div></div>
-    </div>
-  </div>
-
-  <div class="sec-lbl">Winter 2026 · Completed</div>
-  <div class="card" style="margin-bottom:.65rem">
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">EAM302 — East Asian Medicine II</span><span style="font-size:12px;font-weight:700;color:var(--G2)">A ✓</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:.5px solid var(--bd2)"><span style="font-size:12px;color:var(--tx)">WM300 — Western Medicine I</span><span style="font-size:12px;font-weight:700;color:var(--G2)">A ✓</span></div>
-    <div style="display:flex;justify-content:space-between;padding:.3rem 0"><span style="font-size:12px;color:var(--tx)">WM301 — Western Medicine II</span><span style="font-size:12px;font-weight:700;color:var(--G2)">A ✓</span></div>
-  </div>
-
-  <div class="sec-lbl">Program roadmap</div>
-  <div class="card" style="margin-bottom:.65rem">
-    <div style="font-size:12px;color:var(--tx2);line-height:1.8">
-      📅 <strong>Started:</strong> Winter 2026<br>
-      🎓 <strong>Target:</strong> D.AcOM graduation Summer 2030<br>
-      🏥 <strong>Clinical:</strong> Pursuing mentorship with local NoVA acupuncturist<br>
-      🌏 <strong>Study abroad:</strong> Korea (solo) or China (VUIM) — in planner Tab 10/12<br>
-      📋 <strong>NCCAOM boards:</strong> Board exam planning TBD with Dr. Ledford
-    </div>
-  </div>
-
-  <div class="sec-lbl">Quick herb quiz</div>
-  <div class="card" id="herb-quiz-card">
-    <div style="font-size:11px;color:var(--tx3);margin-bottom:.5rem">Test yourself on key herbs and clinical markers</div>
-    <div id="herb-quiz-q" style="font-size:15px;font-weight:700;color:var(--tx);margin-bottom:.5rem;min-height:44px;line-height:1.4">Tap Start →</div>
-    <div id="herb-quiz-a" style="display:none;font-size:12px;color:var(--G2);margin-bottom:.5rem;line-height:1.55;background:var(--GL);border-radius:8px;padding:.5rem .65rem"></div>
-    <div style="display:flex;gap:.4rem">
-      <button id="herb-quiz-show" class="btn" style="flex:1;font-size:13px">Show Answer</button>
-      <button id="herb-quiz-next" class="btn sec" style="flex:1;font-size:13px">Next →</button>
-    </div>
-  </div>
-</div></div>
-
-<!-- ADVISING -->
-<div id="sec-advising" style="display:none"><div class="sec">
-  <div class="sec-lbl">Academic advisor</div>
-
-  <div style="background:linear-gradient(145deg,#071a10,#0a2e1e);border:1.5px solid #12a37a44;border-radius:16px;padding:1.1rem;margin-bottom:.65rem">
-    <div style="font-size:10px;font-weight:700;color:var(--G2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem">VUIM D.AcOM Program Advisor</div>
-    <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:.15rem">Dr. Jessica Ledford</div>
-    <div style="font-size:13px;color:#4dba8a;margin-bottom:.65rem">Virginia University of Integrative Medicine</div>
-    <a href="mailto:jledford@vuim.edu" style="display:flex;align-items:center;gap:.5rem;background:rgba(18,163,122,.12);border-radius:10px;padding:.5rem .75rem;text-decoration:none;margin-bottom:.35rem">
-      <span>📧</span><span style="font-size:12px;color:var(--G2);font-weight:600">jledford@vuim.edu</span>
-    </a>
-    <a href="https://vuim.edu" target="_blank" style="display:flex;align-items:center;gap:.5rem;background:rgba(18,163,122,.12);border-radius:10px;padding:.5rem .75rem;text-decoration:none">
-      <span>🌐</span><span style="font-size:12px;color:var(--G2);font-weight:600">vuim.edu</span>
-    </a>
-  </div>
-
-  <div class="sec-lbl">Standing questions</div>
-  <div class="card" style="margin-bottom:.65rem">
-    <div style="font-size:12px;color:var(--tx2);line-height:1.8">
-      📋 Clinical hours requirements — what counts, how many<br>
-      🌏 Study abroad credits — Korea vs China VUIM program<br>
-      🩺 Local acupuncturist mentorship — does it count toward hours?<br>
-      📚 Electives and specialization tracks available<br>
-      📅 Registration windows — Summer &amp; Fall 2026<br>
-      🎓 NCCAOM board exam timeline for D.AcOM path
-    </div>
-  </div>
-
-  <div class="sec-lbl">Meeting log</div>
-  <div id="advising-meetings" style="margin-bottom:.5rem"></div>
-  <div style="display:flex;gap:.4rem;margin-bottom:.4rem">
-    <input type="date" id="advising-date-input" class="field" style="flex:1;margin-bottom:0">
-    <input type="text" id="advising-topic-input" class="field" placeholder="Topic" style="flex:2;margin-bottom:0">
-  </div>
-  <textarea class="field" id="advising-notes-input" placeholder="Notes / action items…" rows="3" style="margin-bottom:.5rem"></textarea>
-
-  <!-- S Pen drawing canvas for handwritten notes -->
-  <div style="margin-bottom:.5rem">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
-      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Handwrite with S Pen</div>
-      <div style="display:flex;gap:.3rem">
-        <button id="advising-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
-        <select id="advising-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
-          <option value="#12a37a">Green</option>
-          <option value="#e6edf3">White</option>
-          <option value="#4a9fd4">Blue</option>
-          <option value="#c0392b">Red</option>
-          <option value="#c47a1a">Amber</option>
-        </select>
-      </div>
-    </div>
-    <canvas id="advising-canvas" style="width:100%;height:180px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
-  </div>
-
-  <button class="btn" id="advising-save-btn">Save notes</button>
-
-  <div class="sec-lbl" style="margin-top:1rem">Email template</div>
-  <div class="card">
-    <div id="advising-email-text" style="font-size:11.5px;color:var(--tx2);line-height:1.7;background:var(--bg3);border-radius:10px;padding:.65rem .8rem;border:.5px solid var(--bd);margin-bottom:.45rem">Dear Dr. Ledford,<br><br>I hope you are doing well. I am writing to schedule a brief advising meeting at your convenience to discuss [topic].<br><br>Would you be available for a 20–30 minute meeting this week or next? I am flexible.<br><br>Thank you for your continued support.<br><br>Warm regards,<br>Jonathan Centeno<br>D.AcOM, Winter 2026 cohort</div>
-    <button class="btn sec" id="advising-email-copy-btn">📋 Copy to clipboard</button>
-  </div>
-</div></div>
-
-
-<div id="sec-skincare" style="display:none">
+<div id="sec-skin" style="display:none">
 <div class="sec">
 
 <!-- Header Banner -->
@@ -1067,6 +382,7 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
   <button class="sk-tab-btn" data-sk="sk-psoriasis" style="color:#9b7dd4;border-color:#9b7dd455;">🔴 Psoriasis</button>
   <button class="sk-tab-btn" data-sk="sk-tcm">🌿 TCM</button>
   <button class="sk-tab-btn" data-sk="sk-playlist">🎵 Playlist</button>
+  <button class="sk-tab-btn" data-sk="sk-hair">💇 Hair</button>
 </div>
 
 <!-- ══ AM ROUTINE ══ -->
@@ -1442,7 +758,286 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
 
 </div><!-- end sec-skincare sec --></div><!-- end sec-skincare -->
 
+<!-- ══ HAIR ══ -->
+<div id="sk-hair" class="sk-panel" style="display:none">
+  <div class="sk-card sk-lavender">
+    <div class="sk-hdr">
+      <svg width="26" height="26" viewBox="0 0 28 28"><path d="M7 4 C7 4 5 10 8 16 C11 22 7 26 7 26" stroke="#9b7dd4" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M11 3 C11 3 9 10 12 16 C15 22 11 27 11 27" stroke="#9b7dd4" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M15 3 C15 3 13 10 16 16 C19 22 15 27 15 27" stroke="#9b7dd4" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M19 4 C19 4 17 10 20 16 C23 22 19 26 19 26" stroke="#9b7dd4" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+      <div><h3>HAIR PROTOCOL</h3><div class="sk-sub">Scalp · Growth · Psoriasis</div></div>
+    </div>
+
+    <!-- PM Nightly -->
+    <div style="background:var(--bg3);border-radius:12px;padding:.75rem .9rem;margin-bottom:.6rem;border:.5px solid #c47a1a44">
+      <div style="font-size:10px;font-weight:900;color:#c47a1a;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">🌙 PM — every night</div>
+      <div style="display:flex;flex-direction:column;gap:.4rem">
+        <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#c47a1a;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Clobetasol 0.05% Solution <span style="font-size:9px;color:#c0392b;font-weight:800">Rx · scalp only</span></div><div style="font-size:10px;color:var(--tx3);line-height:1.5">Part hair ~1cm sections · apply along each parting · max 2 continuous weeks then 1-week break</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#c47a1a;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Wait 5 min — Clobetasol fully dry</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#c47a1a;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Aromatica Rosemary Root Enhancer</div><div style="font-size:10px;color:var(--tx3)">Shake first · spray scalp · fingertip massage 1 min · leave in overnight</div></div></div>
+      </div>
+    </div>
+
+    <!-- Wash Days -->
+    <div style="background:var(--bg3);border-radius:12px;padding:.75rem .9rem;margin-bottom:.6rem;border:.5px solid #9b8be844">
+      <div style="font-size:10px;font-weight:900;color:#9b8be8;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">🚿 WASH DAYS — 2–3× per week</div>
+      <div style="display:flex;flex-direction:column;gap:.4rem">
+        <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#9b8be8;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Shampoo — alternate each wash</div><div style="font-size:10px;color:var(--tx3);line-height:1.55"><span style="color:#9b8be8;font-weight:700">Day A:</span> VUIM HerbalMint Shampoo · scalp focus · rinse<br><span style="color:#9b8be8;font-weight:700">Day B:</span> Dr. Groot Hair Thickening Shampoo · scalp focus · rinse</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#9b8be8;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">GCoop Conditioner</div><div style="font-size:10px;color:var(--tx3)">Mid-length to ends only · ⚠️ NOT on scalp · 2–3 min · rinse</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#9b8be8;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Scalp Tonic — match to shampoo</div><div style="font-size:10px;color:var(--tx3);line-height:1.55"><span style="color:#9b8be8;font-weight:700">VUIM day →</span> VUIM HerbalMint Scalp Tonic<br><span style="color:#9b8be8;font-weight:700">Dr. Groot day →</span> Dr. Groot Scalp Tonic<br>Spray towel-dried scalp · massage · leave in</div></div></div>
+      </div>
+    </div>
+
+    <!-- Weekly Microneedling -->
+    <div style="background:var(--bg3);border-radius:12px;padding:.75rem .9rem;margin-bottom:.6rem;border:.5px solid #6c5fc744">
+      <div style="font-size:10px;font-weight:900;color:#6c5fc7;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">📆 ONCE PER WEEK</div>
+      <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#6c5fc7;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Scalp Microneedling <span style="font-size:9px;color:#9b8be8;font-weight:800">Koi Beauty 0.5mm roller</span></div><div style="font-size:10px;color:var(--tx3);line-height:1.5">Instead of Clobetasol that PM · 4–5 passes per section · apply Aromatica immediately after · ⚠️ NEVER on active psoriasis plaques · clean roller 70% isopropyl · replace every 3 months</div></div></div>
+    </div>
+
+    <!-- Key reminders -->
+    <div style="background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.25);border-radius:10px;padding:.65rem .85rem">
+      <div style="font-size:10px;font-weight:800;color:#e05555;margin-bottom:.3rem">⚠️ KEY RULES</div>
+      <div style="font-size:10.5px;color:var(--tx3);line-height:1.7">No minoxidil · FIB-4 4.15<br>Clobetasol PM only — not AM (hair styling)<br>Microneedling replaces Clobetasol that night<br>Never microneedle on active plaques</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end sec-skin sec --></div><!-- end sec-skin -->
+
+<!-- ══ DOODLE TAB ══ -->
+<div id="sec-doodle" style="display:none"><div class="sec">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.55rem">
+    <div class="sec-lbl" style="margin:0">🎨 Free Canvas</div>
+    <div style="display:flex;gap:.35rem;align-items:center">
+      <select id="doodle-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+        <option value="#e6edf3">White</option>
+        <option value="#12a37a">Green</option>
+        <option value="#4a9fd4">Blue</option>
+        <option value="#c0392b">Red</option>
+        <option value="#c47a1a">Amber</option>
+        <option value="#9b7dd4">Purple</option>
+        <option value="#f5c842">Yellow</option>
+      </select>
+      <select id="doodle-size" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+        <option value="2">Fine</option>
+        <option value="4" selected>Medium</option>
+        <option value="8">Bold</option>
+        <option value="16">Thick</option>
+      </select>
+      <button id="doodle-eraser" style="font-size:11px;padding:4px 9px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Erase</button>
+      <button id="doodle-clear" style="font-size:11px;padding:4px 9px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+    </div>
+  </div>
+  <canvas id="doodle-canvas" style="width:100%;height:420px;border:1.5px solid var(--bd);border-radius:14px;background:#0d1117;touch-action:none;display:block;cursor:crosshair"></canvas>
+  <div style="display:flex;gap:.4rem;margin-top:.5rem">
+    <button id="doodle-save" class="btn" style="flex:1;font-size:13px">💾 Save to gallery</button>
+    <button id="doodle-download" class="btn sec" style="flex:1;font-size:13px">⬇️ Download</button>
+  </div>
+  <div class="sec-lbl" style="margin-top:1rem">Gallery</div>
+  <div id="doodle-gallery" style="display:grid;grid-template-columns:1fr 1fr;gap:.45rem;margin-top:.35rem"></div>
+</div></div>
+
+<!-- ══ ANCHOR TAB (Sobriety Sketchbook) ══ -->
+<div id="sec-anchor" style="display:none"><div class="sec">
+  <div style="background:linear-gradient(145deg,#071a10,#0a2e1e);border:.5px solid #12a37a30;border-radius:16px;padding:1rem 1.2rem;margin-bottom:.75rem;text-align:center">
+    <div style="font-size:28px;font-weight:800;color:#12a37a" id="anchor-day-num">—</div>
+    <div style="font-size:11px;color:#4dba8a;margin-top:2px">days on this journey</div>
+    <div style="font-size:9px;color:#2d6b4a;margin-top:1px">Since November 23, 2025</div>
+  </div>
+
+  <!-- New entry -->
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem">
+    <div style="font-size:12px;font-weight:700;color:var(--G2)">New entry · day <span id="anchor-entry-day">—</span></div>
+    <div style="display:flex;gap:.3rem;align-items:center">
+      <select id="anchor-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+        <option value="#e6edf3">White</option>
+        <option value="#12a37a">Green</option>
+        <option value="#4a9fd4">Blue</option>
+        <option value="#c0392b">Red</option>
+        <option value="#c47a1a">Amber</option>
+        <option value="#9b7dd4">Purple</option>
+      </select>
+      <select id="anchor-size" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+        <option value="2">Fine</option>
+        <option value="4" selected>Medium</option>
+        <option value="8">Bold</option>
+      </select>
+      <button id="anchor-clear" style="font-size:11px;padding:4px 9px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+    </div>
+  </div>
+  <canvas id="anchor-canvas" style="width:100%;height:360px;border:1.5px solid #12a37a44;border-radius:14px;background:#040d08;touch-action:none;display:block;cursor:crosshair"></canvas>
+  <button id="anchor-save" class="btn" style="margin-top:.5rem;font-size:13px">⚓ Save this entry</button>
+
+  <!-- History -->
+  <div class="sec-lbl" style="margin-top:1.1rem">Your journey — tap to view</div>
+  <div id="anchor-history" style="display:flex;flex-direction:column;gap:.4rem;margin-top:.35rem"></div>
+</div></div>
+
+<!-- ══ MOOD TAB ══ -->
+<div id="sec-mood" style="display:none"><div class="sec">
+
+  <!-- Sub-nav -->
+  <div class="sk-tab-bar" id="mood-nav">
+    <button class="sk-tab-btn active" data-mood="mood-halt">HALT</button>
+    <button class="sk-tab-btn" data-mood="mood-hypo">🧠 Mood</button>
+    <button class="sk-tab-btn" data-mood="mood-dbt">DBT</button>
+    <button class="sk-tab-btn" data-mood="mood-tracker">📊 Track</button>
+    <button class="sk-tab-btn" data-mood="mood-milestones">🏅 Miles</button>
+    <button class="sk-tab-btn" data-mood="mood-wins">⭐ Wins</button>
+    <button class="sk-tab-btn" data-mood="mood-journal">📓 Journal</button>
+  </div>
+
+  <!-- HALT -->
+  <div id="mood-halt" class="mood-panel">
+    <div class="sec-lbl">HALT — which one is this?</div>
+    <div class="halt-grid" id="halt-grid"></div>
+    <div id="halt-detail"></div>
+  </div>
+
+  <!-- Hypomania -->
+  <div id="mood-hypo" class="mood-panel" style="display:none">
+    <div class="sec-lbl">Hypomania early warning</div>
+    <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Tap any that apply right now.</div>
+    <div id="mood-check-list"></div>
+    <div id="mood-result" style="margin-top:.65rem"></div>
+  </div>
+
+  <!-- DBT -->
+  <div id="mood-dbt" class="mood-panel" style="display:none">
+    <div class="sec-lbl">DBT skills — EAM mapped</div>
+    <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Western regulation science meets classical channel theory.</div>
+    <div id="dbt-list"></div>
+  </div>
+
+  <!-- Tracker -->
+  <div id="mood-tracker" class="mood-panel" style="display:none">
+    <div class="sec-lbl">Weekly mood tracker</div>
+    <div id="tracker-content"></div>
+    <div style="margin-top:.75rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+        <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Mood notes — S Pen</div>
+        <div style="display:flex;gap:.3rem">
+          <button id="tracker-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+          <select id="tracker-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+            <option value="#12a37a">Green</option>
+            <option value="#e6edf3">White</option>
+            <option value="#4a9fd4">Blue</option>
+            <option value="#c0392b">Red</option>
+            <option value="#c47a1a">Amber</option>
+          </select>
+        </div>
+      </div>
+      <canvas id="tracker-canvas" style="width:100%;height:140px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
+    </div>
+  </div>
+
+  <!-- Milestones -->
+  <div id="mood-milestones" class="mood-panel" style="display:none">
+    <div class="sec-lbl">Your milestones — every one earned</div>
+    <div id="ms-list"></div>
+  </div>
+
+  <!-- Wins -->
+  <div id="mood-wins" class="mood-panel" style="display:none">
+    <div class="sec-lbl">Quick wins</div>
+    <textarea class="field" id="win-input" placeholder="What did you do well today?" rows="2"></textarea>
+    <button class="btn" id="win-btn">Log this win</button>
+    <div id="wins-list" style="margin-top:.65rem"></div>
+  </div>
+
+  <!-- Journal -->
+  <div id="mood-journal" class="mood-panel" style="display:none">
+    <div class="sec-lbl">Journal</div>
+    <textarea class="field" id="journal-input" placeholder="What is present right now?" rows="4"></textarea>
+    <div style="margin-bottom:.5rem">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+        <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ S Pen — sketch or write</div>
+        <div style="display:flex;gap:.3rem">
+          <button id="journal-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+          <select id="journal-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+            <option value="#12a37a">Green</option>
+            <option value="#e6edf3">White</option>
+            <option value="#4a9fd4">Blue</option>
+            <option value="#c0392b">Red</option>
+            <option value="#c47a1a">Amber</option>
+          </select>
+        </div>
+      </div>
+      <canvas id="journal-canvas" style="width:100%;height:160px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair;margin-bottom:.5rem"></canvas>
+    </div>
+    <button class="btn" id="journal-btn">Save entry</button>
+    <div id="journal-list" style="margin-top:.65rem"></div>
+  </div>
+
+</div></div>
+
+<!-- ══ POINTS TAB ══ -->
+<div id="sec-points" style="display:none"><div class="sec">
+  <div class="sec-lbl">Acupressure — tap any dot or chip</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:.45rem">🟢 Public (anywhere) · 🟡 Private (home/car/bathroom)</div>
+  <div class="tab-bar" id="diagram-tabs">
+    <button class="tab-btn active" data-diagram="wrist">Wrist & Hand</button>
+    <button class="tab-btn" data-diagram="foot">Foot & Leg</button>
+    <button class="tab-btn" data-diagram="ear">Ear</button>
+  </div>
+  <div id="diagram-area"></div>
+  <div id="point-detail" class="det-card" style="display:none"></div>
+  <div style="margin-top:.75rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Annotate with S Pen</div>
+      <div style="display:flex;gap:.3rem">
+        <button id="points-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+        <select id="points-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+          <option value="#12a37a">Green</option>
+          <option value="#e6edf3">White</option>
+          <option value="#4a9fd4">Blue</option>
+          <option value="#c0392b">Red</option>
+          <option value="#c47a1a">Amber</option>
+        </select>
+      </div>
+    </div>
+    <canvas id="points-canvas" style="width:100%;height:140px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
+  </div>
+
+  <!-- Body scan folded in -->
+  <div class="sec-lbl" style="margin-top:1.1rem">Body scan — where is the tension?</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Tap each zone. Diagram + point + action expands.</div>
+  <div id="scan-content"></div>
+  <div style="margin-top:.75rem">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+      <div style="font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.07em">✏️ Mark tension zones with S Pen</div>
+      <div style="display:flex;gap:.3rem">
+        <button id="scan-pen-clear" style="font-size:11px;padding:4px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx3);cursor:pointer">Clear</button>
+        <select id="scan-pen-color" style="font-size:11px;padding:4px 8px;border-radius:8px;border:1px solid var(--bd);background:var(--bg3);color:var(--tx);cursor:pointer">
+          <option value="#c0392b">Red</option>
+          <option value="#12a37a">Green</option>
+          <option value="#e6edf3">White</option>
+          <option value="#4a9fd4">Blue</option>
+          <option value="#c47a1a">Amber</option>
+        </select>
+      </div>
+    </div>
+    <canvas id="scan-canvas" style="width:100%;height:160px;border:1.5px solid var(--bd);border-radius:12px;background:var(--bg3);touch-action:none;display:block;cursor:crosshair"></canvas>
+  </div>
+</div></div>
+
+<!-- ══ DANCE TAB ══ -->
+<div id="sec-dance" style="display:none"><div class="sec">
+  <div class="sec-lbl">American Rhythm — your dance pharmacy</div>
+  <div style="font-size:12px;color:var(--tx3);margin-bottom:.65rem">Five dances · Five organs · Five emotional states.</div>
+  <div class="tab-bar" id="dance-tabs"></div>
+  <div id="dance-panel"></div>
+
+  <!-- Music player folded in -->
+  <div class="sec-lbl" style="margin-top:1.1rem">Your playlists</div>
+  <div class="tab-bar" id="music-tabs"></div>
+  <div id="music-player"></div>
+
+  <!-- Floor checklist folded in -->
+  <div class="sec-lbl" style="margin-top:1.1rem">Competition floor checklist</div>
+  <div id="floor-content"></div>
+</div></div>
+
 </div><!-- end main-content -->
+
 
 <!-- CRISIS MODAL -->
 <div id="crisis-modal">
@@ -1598,14 +1193,6 @@ var MEDS = {
     {type:"rx",  name:"③ Lithium Carbonate",             dose:"150mg",      color:"#c0392b", note:"With breakfast · Bipolar 2 stabilizer · same time daily · never with alcohol · full glass of water"},
     {type:"supp",name:"③ CellCore Advanced TUDCA",       dose:"1 cap",      color:"#0a7a58", note:"With breakfast · bile acid liver protection · targets FIB-4 4.15 + bilirubin"},
     {type:"supp",name:"③ Augmented NAC",                 dose:"1 cap",      color:"#0a7a58", note:"With breakfast · glutathione precursor · liver detox primed before meds metabolize"},
-    {type:"supp",name:"③ BodyBio PC",                    dose:"2 caps",     color:"#0a7a58", note:"With breakfast · phosphatidylcholine · rebuilds liver cell membranes · FIB-4 target"},
-    {type:"supp",name:"③ Tongkat Ali (Momentus)",        dose:"1 cap",      color:"#0a7a58", note:"With breakfast · AM dose aligns with natural testosterone peak · reduces SHBG → frees T"},
-    {type:"supp",name:"③ Vitamin D3 + K2 (Life Extension)", dose:"1 cap",  color:"#0a7a58", note:"With fatty breakfast · D3 29.3 → goal 50–80 · fat-soluble — must have fat to absorb"},
-    {type:"supp",name:"③ Ubiquinol (Momentus)",          dose:"1 softgel",  color:"#0a7a58", note:"With breakfast · CoQ10 active form · mitochondrial + liver energy · fat-soluble"},
-    {type:"herb",name:"③ Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps",     color:"#4a9fd4", note:"With breakfast · Kidney Yin tonic · ED + low Free T + SHBG · take consistently for 6–8 weeks"},
-    {type:"herb",name:"③ Er Zhi Wan 二至丸",              dose:"3 caps",     color:"#4a9fd4", note:"With breakfast · Blood Heat hair loss · Liver/Kidney Yin · pairs with Liu Wei · 6–8 weeks minimum"},
-    {type:"herb",name:"③ Xiao Feng San 消风散",           dose:"3 caps",     color:"#4a9fd4", note:"With breakfast · psoriasis / Blood Heat · avoid alcohol, spicy, shellfish while using"}
-  ],
   afternoon:[
     {type:"rx",  name:"Ritalin (Methylphenidate IR)",    dose:"10mg",       color:"#1a6fa8", note:"Before 3pm · bridges Concerta fade · protects sleep if taken too late"},
     {type:"herb",name:"Liu Wei Di Huang Wan 六味地黄丸",  dose:"3 caps",     color:"#4a9fd4", note:"With lunch · 2nd of 3 daily doses · with food"},
@@ -1625,12 +1212,7 @@ var MEDS = {
     {type:"supp",name:"③ Advanced Milk Thistle",          dose:"1 softgel",  color:"#12a37a", note:"🥜 After dinner with fat snack (nuts/PB) · fat-soluble silymarin · anti-fibrotic · take AFTER eating"},
     {type:"supp",name:"③ FLORASSIST Liver Restore",       dose:"1 cap",      color:"#12a37a", note:"With fat snack after dinner · probiotic for hepatic support · overnight colonization · gut-liver axis"}
   ],
-  herbs:[
-    {type:"herb",name:"Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps · 3× daily with meals — see schedule above",color:"#4a9fd4",note:"Kidney Yin tonic · ED + low Free T (5.0) + SHBG · Rehmannia Six · 6–8 weeks to assess"},
-    {type:"herb",name:"Xiao Feng San 消风散",          dose:"3 caps · 3× daily with meals — see schedule above",color:"#4a9fd4",note:"Psoriasis / Blood Heat · DangGui & Arctium · avoid alcohol, spicy, shellfish · 4–8 weeks"},
-    {type:"herb",name:"Er Zhi Wan 二至丸",             dose:"3 caps · 2× daily with meals (breakfast + dinner)",color:"#4a9fd4",note:"Blood Heat + Liver/Kidney Yin hair loss · your exact pattern · Nǚ Zhēn Zǐ + Mò Hàn Lián · hepatoprotective · Kamwo or Lhasa OMS"},
-    {type:"herb",name:"Zeng Ye Cheng Qi Tang 增液承气汤",dose:"3 caps · evening only · as needed",color:"#4a9fd4",note:"Bowel support · 5–7 day course max · not for daily use · Da Huang is strong purgative · monitor with Lithium"}
-  ],
+  herbs:[],
   topicals:[]  // Topicals & Hair now rendered as structured HTML schedule — see below meds-herbs
 };
 
@@ -2246,11 +1828,10 @@ function showSection(id){
   });
   window.scrollTo(0,0);
   if(id==="sec-points") showDiagram(currentDiagram);
-  if(id==="sec-tracker") initTracker();
-  if(id==="sec-sleep") initSleep();
-  if(id==="sec-labs") initLabs();
-  if(id==="sec-floor") initFloor();
-  if(id==="sec-contacts"){initContacts();initContactPhotos();}
+  if(id==="sec-dance"){initFloor();initMusic();}
+  if(id==="sec-mood"){initTracker();initMilestones();renderWins();renderJournal();}
+  if(id==="sec-now"){initContacts();initContactPhotos();}
+  if(id==="sec-anchor"){initAnchorDay();}
 }
 
 document.getElementById("nav-inner").addEventListener("click",function(e){
@@ -4010,6 +3591,7 @@ function initSleepCalc(){
   autoTheme();
   initCounter();
   initCheckin();
+  initAnchorDay();
   initNow();
   initContacts();
   initContactPhotos();
@@ -4021,29 +3603,11 @@ function initSleepCalc(){
   initScan();
   initDance();
   initHealth();
-  initFormulas();
-  initTeas();
-  initHerbs();
-  initLiver();
-  initLabs();
-  initTracker();
-  initMilestones();
-  renderWins();
-  renderJournal();
-  initBuilder();
-  initFloor();
-  initMusic();
-  initHangul();
-  initBuy();
   initMorningPreview();
   initWinddownPreview();
-  initSleep();
   refreshCrisisPhotos();
   initWaveTimer();
   initIntention();
-  initSleepCalc();
-  initStudyQuiz();
-  initAdvising();
   initSPenCanvas("journal-canvas","journal-pen-color","journal-pen-clear");
   initSPenCanvas("points-canvas","points-pen-color","points-pen-clear");
   initSPenCanvas("scan-canvas","scan-pen-color","scan-pen-clear");
@@ -4332,10 +3896,11 @@ function initAdvising(){
   renderMeetings();
 }
 
-  // Hide all sections except checkin
+  // Hide all sections, show Now by default
   document.querySelectorAll("#main-content > div").forEach(function(s){
-    if(s.id !== "sec-checkin") s.style.display = "none";
+    s.style.display = "none";
   });
+  showSection("sec-now");
 
   // Auto-theme refresh every 5 min
   setInterval(function(){
@@ -4405,6 +3970,201 @@ function skTogglePsoriasis(el){
   el.classList.toggle("sk-done");
   var c = el.querySelector(".sk-chk");
   if(c){c.style.background = el.classList.contains("sk-done")?"#3abf9e":""; c.style.color = el.classList.contains("sk-done")?"#fff":"#3abf9e";}
+}// ════════════════════════════════════════
+// MOOD SUB-NAV
+// ════════════════════════════════════════
+(function(){
+  var moodNav = document.getElementById("mood-nav");
+  if(!moodNav) return;
+  moodNav.addEventListener("click", function(e){
+    var b = e.target.closest(".sk-tab-btn[data-mood]");
+    if(!b) return;
+    moodNav.querySelectorAll(".sk-tab-btn").forEach(function(x){x.classList.remove("active");});
+    b.classList.add("active");
+    document.querySelectorAll(".mood-panel").forEach(function(p){p.style.display="none";});
+    var panel = document.getElementById(b.dataset.mood);
+    if(panel) panel.style.display="block";
+  });
+})();
+
+// ════════════════════════════════════════
+// ANCHOR DAY INIT
+// ════════════════════════════════════════
+function initAnchorDay(){
+  var JOURNEY_START = 1763874000000;
+  var d = Math.floor((Date.now() - JOURNEY_START) / 86400000);
+  var el = document.getElementById("anchor-day-num");
+  var el2 = document.getElementById("anchor-entry-day");
+  if(el) el.textContent = d;
+  if(el2) el2.textContent = d;
+  renderAnchorHistory();
 }
+
+function renderAnchorHistory(){
+  var el = document.getElementById("anchor-history");
+  if(!el) return;
+  var entries = JSON.parse(localStorage.getItem("anchor-entries") || "[]");
+  if(!entries.length){
+    el.innerHTML = '<div style="font-size:13px;color:var(--tx3)">No entries yet. Your first mark on this journey.</div>';
+    return;
+  }
+  el.innerHTML = entries.slice().reverse().map(function(e){
+    return '<div style="background:var(--bg3);border-radius:12px;padding:.65rem .85rem;border:.5px solid var(--bd);cursor:pointer" onclick="viewAnchorEntry(this)" data-img="'+e.img+'">'
+      +'<div style="display:flex;justify-content:space-between;align-items:center">'
+      +'<div style="font-size:12px;font-weight:700;color:var(--G2)">Day '+e.day+'</div>'
+      +'<div style="font-size:10px;color:var(--tx3)">'+e.date+'</div>'
+      +'</div>'
+      +'<img src="'+e.img+'" style="width:100%;border-radius:8px;margin-top:.45rem;display:block">'
+      +'</div>';
+  }).join("");
+}
+
+window.viewAnchorEntry = function(el){
+  var img = el.dataset.img;
+  if(!img) return;
+  var ov = document.createElement("div");
+  ov.style.cssText = "position:fixed;inset:0;z-index:9998;background:#000d;display:flex;align-items:center;justify-content:center;padding:1rem";
+  ov.innerHTML = '<img src="'+img+'" style="max-width:100%;max-height:90vh;border-radius:12px"><button onclick="this.parentElement.remove()" style="position:absolute;top:1rem;right:1rem;background:#fff2;border:none;color:#fff;border-radius:50%;width:36px;height:36px;font-size:20px;cursor:pointer">×</button>';
+  document.body.appendChild(ov);
+};
+
+// ════════════════════════════════════════
+// DOODLE CANVAS
+// ════════════════════════════════════════
+(function(){
+  var canvas = document.getElementById("doodle-canvas");
+  if(!canvas) return;
+  var ctx = canvas.getContext("2d");
+  var drawing = false;
+  var isEraser = false;
+
+  function resize(){
+    var r = canvas.getBoundingClientRect();
+    var dpr = window.devicePixelRatio||1;
+    var img = ctx.getImageData(0,0,canvas.width,canvas.height);
+    canvas.width = r.width*dpr;
+    canvas.height = r.height*dpr;
+    ctx.scale(dpr,dpr);
+    ctx.lineCap="round";ctx.lineJoin="round";
+    ctx.putImageData(img,0,0);
+  }
+  setTimeout(resize,150);
+
+  function getPos(e){
+    var r=canvas.getBoundingClientRect();
+    var src=e.touches?e.touches[0]:e;
+    return{x:src.clientX-r.left,y:src.clientY-r.top};
+  }
+  function getColor(){ return document.getElementById("doodle-color").value; }
+  function getSize(){ return parseInt(document.getElementById("doodle-size").value)||4; }
+
+  canvas.addEventListener("pointerdown",function(e){
+    if(e.pointerType==="touch")return;
+    e.preventDefault();drawing=true;
+    var p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);
+  });
+  canvas.addEventListener("pointermove",function(e){
+    if(!drawing||e.pointerType==="touch")return;
+    e.preventDefault();
+    var p=getPos(e);
+    ctx.globalCompositeOperation=isEraser?"destination-out":"source-over";
+    ctx.strokeStyle=getColor();ctx.lineWidth=getSize();
+    ctx.lineTo(p.x,p.y);ctx.stroke();
+  });
+  canvas.addEventListener("pointerup",function(){drawing=false;ctx.beginPath();});
+  canvas.addEventListener("mousedown",function(e){drawing=true;var p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);});
+  canvas.addEventListener("mousemove",function(e){
+    if(!drawing)return;
+    var p=getPos(e);
+    ctx.globalCompositeOperation=isEraser?"destination-out":"source-over";
+    ctx.strokeStyle=getColor();ctx.lineWidth=getSize();
+    ctx.lineTo(p.x,p.y);ctx.stroke();
+  });
+  canvas.addEventListener("mouseup",function(){drawing=false;ctx.beginPath();});
+
+  document.getElementById("doodle-clear").addEventListener("click",function(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+  });
+  document.getElementById("doodle-eraser").addEventListener("click",function(){
+    isEraser=!isEraser;
+    this.textContent=isEraser?"✏️ Draw":"Erase";
+    this.style.color=isEraser?"var(--G2)":"var(--tx3)";
+  });
+  document.getElementById("doodle-save").addEventListener("click",function(){
+    var saved=JSON.parse(localStorage.getItem("doodle-gallery")||"[]");
+    var img=canvas.toDataURL("image/png");
+    saved.push({img:img,date:new Date().toLocaleDateString()});
+    if(saved.length>20) saved=saved.slice(-20);
+    localStorage.setItem("doodle-gallery",JSON.stringify(saved));
+    renderDoodleGallery();
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+  });
+  document.getElementById("doodle-download").addEventListener("click",function(){
+    var a=document.createElement("a");
+    a.download="doodle-"+Date.now()+".png";
+    a.href=canvas.toDataURL();a.click();
+  });
+  renderDoodleGallery();
+  function renderDoodleGallery(){
+    var el=document.getElementById("doodle-gallery");
+    if(!el)return;
+    var saved=JSON.parse(localStorage.getItem("doodle-gallery")||"[]");
+    if(!saved.length){el.innerHTML='<div style="font-size:13px;color:var(--tx3);grid-column:span 2">No saves yet.</div>';return;}
+    el.innerHTML=saved.slice().reverse().map(function(d,i){
+      return '<div style="position:relative;border-radius:10px;overflow:hidden;border:.5px solid var(--bd)">'
+        +'<img src="'+d.img+'" style="width:100%;display:block;background:#0d1117">'
+        +'<div style="position:absolute;bottom:0;left:0;right:0;padding:4px 7px;background:rgba(0,0,0,.6);font-size:9px;color:#8b949e">'+d.date+'</div>'
+        +'</div>';
+    }).join("");
+  }
+})();
+
+// ════════════════════════════════════════
+// ANCHOR CANVAS
+// ════════════════════════════════════════
+(function(){
+  var canvas = document.getElementById("anchor-canvas");
+  if(!canvas) return;
+  var ctx = canvas.getContext("2d");
+  var drawing = false;
+
+  function resize(){
+    var r=canvas.getBoundingClientRect();
+    var dpr=window.devicePixelRatio||1;
+    canvas.width=r.width*dpr;canvas.height=r.height*dpr;
+    ctx.scale(dpr,dpr);ctx.lineCap="round";ctx.lineJoin="round";
+  }
+  setTimeout(resize,150);
+
+  function getPos(e){var r=canvas.getBoundingClientRect();var src=e.touches?e.touches[0]:e;return{x:src.clientX-r.left,y:src.clientY-r.top};}
+  function getColor(){return document.getElementById("anchor-color").value;}
+  function getSize(){return parseInt(document.getElementById("anchor-size").value)||4;}
+
+  canvas.addEventListener("pointerdown",function(e){if(e.pointerType==="touch")return;e.preventDefault();drawing=true;var p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);});
+  canvas.addEventListener("pointermove",function(e){if(!drawing||e.pointerType==="touch")return;e.preventDefault();var p=getPos(e);ctx.strokeStyle=getColor();ctx.lineWidth=getSize();ctx.lineTo(p.x,p.y);ctx.stroke();});
+  canvas.addEventListener("pointerup",function(){drawing=false;ctx.beginPath();});
+  canvas.addEventListener("mousedown",function(e){drawing=true;var p=getPos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);});
+  canvas.addEventListener("mousemove",function(e){if(!drawing)return;var p=getPos(e);ctx.strokeStyle=getColor();ctx.lineWidth=getSize();ctx.lineTo(p.x,p.y);ctx.stroke();});
+  canvas.addEventListener("mouseup",function(){drawing=false;ctx.beginPath();});
+
+  document.getElementById("anchor-clear").addEventListener("click",function(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+  });
+
+  document.getElementById("anchor-save").addEventListener("click",function(){
+    var JOURNEY_START=1763874000000;
+    var d=Math.floor((Date.now()-JOURNEY_START)/86400000);
+    var img=canvas.toDataURL("image/png");
+    var entries=JSON.parse(localStorage.getItem("anchor-entries")||"[]");
+    entries.push({day:d,date:new Date().toLocaleDateString(),img:img});
+    if(entries.length>50) entries=entries.slice(-50);
+    localStorage.setItem("anchor-entries",JSON.stringify(entries));
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    renderAnchorHistory();
+    var btn=document.getElementById("anchor-save");
+    btn.textContent="✅ Saved";
+    setTimeout(function(){btn.textContent="⚓ Save this entry";},1500);
+  });
+})();
 </script>
 </html>
