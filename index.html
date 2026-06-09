@@ -780,7 +780,7 @@ input[type=range]{width:100%;accent-color:var(--G);margin:.35rem 0}
     <div style="background:var(--bg3);border-radius:12px;padding:.75rem .9rem;margin-bottom:.6rem;border:.5px solid #9b8be844">
       <div style="font-size:10px;font-weight:900;color:#9b8be8;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">🚿 WASH DAYS — 2–3× per week</div>
       <div style="display:flex;flex-direction:column;gap:.4rem">
-        <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#9b8be8;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Shampoo — alternate each wash</div><div style="font-size:10px;color:var(--tx3);line-height:1.55"><span style="color:#9b8be8;font-weight:700">Day A:</span> VUIM HerbalMint Shampoo · scalp focus · rinse<br><span style="color:#9b8be8;font-weight:700">Day B:</span> Dr. Groot Hair Thickening Shampoo · scalp focus · rinse</div></div></div>
+        <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#9b8be8;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">1</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Shampoo — alternate each wash day</div><div style="font-size:10px;color:var(--tx3);line-height:1.55"><span style="color:#9b8be8;font-weight:700">Day A:</span> VUIM HerbalMint Shampoo · scalp focus · rinse<br><span style="color:#9b8be8;font-weight:700">Day B:</span> Dr. Groot Hair Thickening Shampoo · scalp focus · rinse<br><span style="font-size:9px;color:var(--tx3);font-style:italic">Switch every wash day — not every other day. Mon=A, Wed=B, Fri=A etc.</span></div></div></div>
         <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#9b8be8;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">2</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">GCoop Conditioner</div><div style="font-size:10px;color:var(--tx3)">Mid-length to ends only · ⚠️ NOT on scalp · 2–3 min · rinse</div></div></div>
         <div style="display:flex;align-items:flex-start;gap:.6rem"><div style="width:22px;height:22px;border-radius:50%;background:#9b8be8;color:#fff;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">3</div><div><div style="font-size:12px;font-weight:700;color:var(--tx)">Scalp Tonic — match to shampoo</div><div style="font-size:10px;color:var(--tx3);line-height:1.55"><span style="color:#9b8be8;font-weight:700">VUIM day →</span> VUIM HerbalMint Scalp Tonic<br><span style="color:#9b8be8;font-weight:700">Dr. Groot day →</span> Dr. Groot Scalp Tonic<br>Spray towel-dried scalp · massage · leave in</div></div></div>
       </div>
@@ -1186,37 +1186,37 @@ var CRISIS_QUOTES = [
 
 var MEDS = {
   morning:[
-    {type:"supp",name:"① ALAmax CR",                   dose:"1 tab — FIRST, empty stomach",color:"#0a7a58", note:"⏱ Take immediately on waking, 30 MIN before eating · controlled-release ALA · liver antioxidant — must be fasted"},
-    {type:"rx",  name:"② Concerta (Methylphenidate ER)", dose:"18mg",      color:"#1a6fa8", note:"Take right after ALAmax, before breakfast · ADHD extended-release · early timing = full afternoon coverage"},
-    {type:"rx",  name:"③ Tadalafil (Cialis)",            dose:"5mg",        color:"#c47a1a", note:"With first few bites of breakfast · daily dose maintains steady levels · ED + liver/kidney blood flow"},
-    {type:"rx",  name:"③ Bupropion (Wellbutrin)",        dose:"150mg",      color:"#c0392b", note:"With breakfast · mood anchor · dopamine/norepinephrine · food reduces nausea"},
-    {type:"rx",  name:"③ Lithium Carbonate",             dose:"150mg",      color:"#c0392b", note:"With breakfast · Bipolar 2 stabilizer · same time daily · never with alcohol · full glass of water"},
-    {type:"supp",name:"③ CellCore Advanced TUDCA",       dose:"1 cap",      color:"#0a7a58", note:"With breakfast · bile acid liver protection · targets FIB-4 4.15 + bilirubin"},
-    {type:"supp",name:"③ Augmented NAC",                 dose:"1 cap",      color:"#0a7a58", note:"With breakfast · glutathione precursor · liver detox primed before meds metabolize"},
+    {type:"supp", name:"① ALAmax CR",                    dose:"1 tab — FIRST, empty stomach", color:"#0a7a58", note:"⏱ Take immediately on waking, 30 MIN before eating · controlled-release ALA · liver antioxidant — must be fasted"},
+    {type:"rx",   name:"② Concerta (Methylphenidate ER)", dose:"18mg",                         color:"#1a6fa8", note:"Take right after ALAmax, before breakfast · ADHD extended-release · early timing = full afternoon coverage"},
+    {type:"rx",   name:"③ Tadalafil (Cialis)",            dose:"5mg",                          color:"#c47a1a", note:"With first few bites of breakfast · daily dose · ED + liver/kidney blood flow"},
+    {type:"rx",   name:"③ Bupropion (Wellbutrin)",        dose:"150mg",                        color:"#c0392b", note:"With breakfast · mood anchor · dopamine/norepinephrine · food reduces nausea"},
+    {type:"rx",   name:"③ Lithium Carbonate",             dose:"150mg",                        color:"#c0392b", note:"With breakfast · Bipolar 2 stabilizer · same time daily · never with alcohol · full glass of water"},
+    {type:"supp", name:"③ CellCore Advanced TUDCA",       dose:"1 cap",                        color:"#0a7a58", note:"With breakfast · bile acid liver protection · targets FIB-4 4.15 + bilirubin"},
+    {type:"supp", name:"③ Augmented NAC",                 dose:"1 cap",                        color:"#0a7a58", note:"With breakfast · glutathione precursor · liver detox support"},
+    {type:"supp", name:"③ Tongkat Ali (Momentus)",        dose:"2 caps",                       color:"#0a7a58", note:"With breakfast · lowers SHBG → frees testosterone"},
+    {type:"supp", name:"③ Vitamin D3 + K2",               dose:"1 cap",                        color:"#0a7a58", note:"With fatty breakfast · D3 29.3 → goal 50–80 · fat-soluble — must have fat to absorb"},
+    {type:"supp", name:"③ BodyBio PC",                    dose:"2 caps",                       color:"#0a7a58", note:"With breakfast · liver cell membrane repair · FIB-4 target"},
+    {type:"herb", name:"③ Liu Wei Di Huang Wan 六味地黄丸", dose:"3 caps",                      color:"#4a9fd4", note:"With breakfast · Kidney Yin tonic · ED + low Free T + SHBG · take consistently 6–8 weeks"},
+    {type:"herb", name:"③ Xiao Feng San 消风散",           dose:"3 caps",                      color:"#4a9fd4", note:"With breakfast · psoriasis / Blood Heat · avoid alcohol, spicy, shellfish while using"}
+  ],
   afternoon:[
-    {type:"rx",  name:"Ritalin (Methylphenidate IR)",    dose:"10mg",       color:"#1a6fa8", note:"Before 3pm · bridges Concerta fade · protects sleep if taken too late"},
-    {type:"herb",name:"Liu Wei Di Huang Wan 六味地黄丸",  dose:"3 caps",     color:"#4a9fd4", note:"With lunch · 2nd of 3 daily doses · with food"},
-    {type:"herb",name:"Xiao Feng San 消风散",             dose:"3 caps",     color:"#4a9fd4", note:"With lunch · 2nd of 3 daily doses · with food"}
+    {type:"rx",   name:"Ritalin (Methylphenidate IR)",    dose:"10mg",                         color:"#1a6fa8", note:"Before 3pm · bridges Concerta fade · don't take late or sleep suffers"}
   ],
   evening:[
-    {type:"supp",name:"① ALAmax CR (2nd dose)",          dose:"1 tab — BEFORE dinner, empty stomach", color:"#12a37a", note:"⏱ Take 30 MIN before eating dinner · same as morning — must be fasted · overnight liver antioxidant"},
-    {type:"supp",name:"② CellCore Advanced TUDCA (2nd)", dose:"1 cap",      color:"#12a37a", note:"With dinner · liver does deepest repair overnight · sustains bile acid protection"},
-    {type:"supp",name:"② Augmented NAC (2nd dose)",      dose:"1 cap",      color:"#12a37a", note:"With dinner · keeps glutathione up overnight · evening Rx meds are all liver-processed"},
-    {type:"supp",name:"② Tongkat Ali (Momentus) 2nd",    dose:"1 cap",      color:"#12a37a", note:"With dinner · maintains SHBG reduction around the clock"},
-    {type:"rx",  name:"② Lithium Carbonate (2nd dose)",  dose:"150mg",      color:"#c0392b", note:"With dinner · consistent evening time · anchors overnight mood · never with alcohol"},
-    {type:"rx",  name:"② Risperidone → tapering to Abilify", dose:"0.25mg", color:"#c0392b", note:"With dinner · tapering now · PRIMARY prolactin driver → low Free T → ED · Abilify switch soon"},
-    {type:"herb",name:"② Liu Wei Di Huang Wan 六味地黄丸",dose:"3 caps",     color:"#4a9fd4", note:"With dinner · 3rd of 3 daily doses · complete the day's protocol"},
-    {type:"herb",name:"② Er Zhi Wan 二至丸",              dose:"3 caps",     color:"#4a9fd4", note:"With dinner · 2nd of 2 daily doses · always with food · cooling formula"},
-    {type:"herb",name:"② Xiao Feng San 消风散",           dose:"3 caps",     color:"#4a9fd4", note:"With dinner · 3rd of 3 daily doses · complete the day's protocol"},
-    {type:"herb",name:"② Zeng Ye Cheng Qi Tang 增液承气汤",dose:"3 caps — AS NEEDED only", color:"#4a9fd4", note:"Evening only when needed · bowel support · 5–7 day course max · not daily · monitor with Lithium"},
-    {type:"supp",name:"③ Advanced Milk Thistle",          dose:"1 softgel",  color:"#12a37a", note:"🥜 After dinner with fat snack (nuts/PB) · fat-soluble silymarin · anti-fibrotic · take AFTER eating"},
-    {type:"supp",name:"③ FLORASSIST Liver Restore",       dose:"1 cap",      color:"#12a37a", note:"With fat snack after dinner · probiotic for hepatic support · overnight colonization · gut-liver axis"}
+    {type:"supp", name:"① ALAmax CR (2nd dose)",          dose:"1 tab — BEFORE dinner, empty stomach", color:"#0a7a58", note:"⏱ Take 30 MIN before eating dinner · same as morning — must be fasted"},
+    {type:"supp", name:"② CellCore Advanced TUDCA (2nd)", dose:"1 cap",                        color:"#0a7a58", note:"With dinner · overnight liver repair support · continuous coverage critical for FIB-4 4.15"},
+    {type:"supp", name:"② Augmented NAC (2nd dose)",      dose:"1 cap",                        color:"#0a7a58", note:"With dinner · maintains glutathione overnight"},
+    {type:"supp", name:"② Advanced Milk Thistle",         dose:"1 softgel",                    color:"#0a7a58", note:"After dinner with fat snack (nuts/PB) · fat-soluble silymarin · anti-fibrotic"},
+    {type:"supp", name:"② FLORASSIST Liver Restore",      dose:"1 cap",                        color:"#0a7a58", note:"With fat snack after dinner · gut-liver axis support · overnight colonization"},
+    {type:"rx",   name:"② Lithium Carbonate (2nd dose)",  dose:"150mg",                        color:"#c0392b", note:"With dinner · anchors overnight mood stability · never with alcohol"},
+    {type:"rx",   name:"② Risperidone → tapering to Abilify", dose:"0.25mg",                  color:"#c47a1a", note:"With dinner · tapering · PRIMARY prolactin driver → low Free T → ED · Abilify switch coming"},
+    {type:"herb", name:"② Liu Wei Di Huang Wan 六味地黄丸", dose:"3 caps",                      color:"#4a9fd4", note:"With dinner · 3rd of 3 daily doses · complete the day's protocol"},
+    {type:"herb", name:"② Xiao Feng San 消风散",           dose:"3 caps",                      color:"#4a9fd4", note:"With dinner · 3rd of 3 daily doses · complete the day's protocol"},
+    {type:"herb", name:"② Zeng Ye Cheng Qi Tang 增液承气汤", dose:"3 caps — AS NEEDED only",   color:"#4a9fd4", note:"Evening only when needed · bowel support · 5–7 day course max · not daily · monitor with Lithium"}
   ],
   herbs:[],
-  topicals:[]  // Topicals & Hair now rendered as structured HTML schedule — see below meds-herbs
-};
-
-var MILESTONES = [
+  topicals:[]
+};var MILESTONES = [
   {d:7,  l:"1 week",             dt:"Nov 30, 2025"},
   {d:30, l:"30 days",            dt:"Dec 23, 2025"},
   {d:60, l:"60 days",            dt:"Jan 22, 2026"},
